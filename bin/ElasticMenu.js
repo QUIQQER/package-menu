@@ -230,11 +230,20 @@ define('package/quiqqer/menu/bin/ElasticMenu', [
             this.$open    = true;
             this.$animate = true;
 
-            this.$Elm.removeClass( 'hide-on-mobile' );
-            this.$MobileClose.removeClass( 'hide-on-mobile' );
+            this.$Elm.removeClass('hide-on-mobile');
+            this.$MobileClose.removeClass('hide-on-mobile');
+
+            var maxSize   = document.body.getSize(),
+                maxWidth  = maxSize.x;
+
+            if (maxWidth <= 510)
+            {
+                document.body.setStyles({
+                    overflow : 'hidden'
+                });
+            }
 
             this.$calcMenu();
-
 
             (function()
             {
@@ -269,9 +278,9 @@ define('package/quiqqer/menu/bin/ElasticMenu', [
                 self.getElm().focus();
 
                 // move container
-                if ( self.getAttribute( 'moveCointainer' ) )
+                if (self.getAttribute('moveCointainer'))
                 {
-                    moofx( self.getAttribute( 'moveCointainer' ) ).animate({
+                    moofx(self.getAttribute('moveCointainer')).animate({
                         width : document.body.getSize().x - self.getElm().getSize().x,
                         left  : self.getElm().getSize().x
                     });
@@ -318,6 +327,10 @@ define('package/quiqqer/menu/bin/ElasticMenu', [
                 opacity : 1
             });
 
+            document.body.setStyles({
+                overflow : null
+            });
+
             this.$Path.stop().animate({
                 path : this.$Shape.getAttribute('data-morph-close')
             }, 350, mina.easeout, function()
@@ -341,16 +354,16 @@ define('package/quiqqer/menu/bin/ElasticMenu', [
         $mouseenter : function()
         {
             if ( this.$mouseDelay ) {
-                clearTimeout( this.$mouseDelay );
+                clearTimeout(this.$mouseDelay);
             }
 
-            if ( this.$open ) {
+            if (this.$open) {
                 return;
             }
 
             this.$mouseDelay = (function() {
                 this.open();
-            }).delay( this.getAttribute('mouseOpenDelay'), this );
+            }).delay(this.getAttribute('mouseOpenDelay'), this);
         },
 
         /**
@@ -358,17 +371,17 @@ define('package/quiqqer/menu/bin/ElasticMenu', [
          */
         $mouseleave : function()
         {
-            if ( this.$mouseDelay ) {
-                clearTimeout( this.$mouseDelay );
+            if (this.$mouseDelay) {
+                clearTimeout(this.$mouseDelay);
             }
 
-            if ( this.$open === false ) {
+            if (this.$open === false) {
                 return;
             }
 
             this.$mouseDelay = (function() {
                 this.close();
-            }).delay( this.getAttribute('mouseCloseDelay'), this );
+            }).delay(this.getAttribute('mouseCloseDelay'), this);
         },
 
         /**
@@ -381,31 +394,31 @@ define('package/quiqqer/menu/bin/ElasticMenu', [
                 maxHeight = maxSize.y,
                 navSize   = this.$NavElm.getSize();
 
-            if ( navSize.y > maxHeight )
+            if (navSize.y > maxHeight)
             {
-                this.$Shape.setStyle( 'height', navSize.y - 10 );
+                this.$Shape.setStyle('height', navSize.y - 10);
 
             } else
             {
-                this.$Shape.setStyle( 'height', maxHeight - 10 );
+                this.$Shape.setStyle('height', maxHeight - 10);
             }
 
 
-            if ( maxWidth > 510 )
+            if (maxWidth > 510)
             {
-                moofx( this.$Elm ).style({
+                moofx(this.$Elm).style({
                     transform : null
                 });
 
                 return;
             }
 
-            moofx( this.$Elm ).style({
+            moofx(this.$Elm).style({
                 transform : 'translate3d(-'+ maxWidth +'px, 0, 0)',
                 width     : maxWidth
             });
 
-            this.$NavElm.setStyle( 'width', maxWidth );
+            this.$NavElm.setStyle('width', maxWidth);
         }
     });
 });
