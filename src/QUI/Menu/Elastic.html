@@ -1,0 +1,15 @@
+<nav class="page-menu" data-qui="package/quiqqer/menu/bin/ElasticMenu" style="display: none">
+
+    <div class="page-navigation">
+
+        <a href="{url id=1}" class="page-navigation-home">
+            <span class="fa fa-home"></span>
+            {site id=1 attribute="title"}
+        </a>
+
+        {include file="`$FileMenu`"
+                 Site=$Project->firstChild()
+                 ActiveSite=$Site
+        }
+    </div>
+</nav>
