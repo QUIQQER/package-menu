@@ -319,7 +319,7 @@ define('package/quiqqer/menu/bin/ElasticMenu', [
             (function() {
                 self.getElm().removeClass('menu-open');
                 self.$calcMenu();
-            }).delay(300);
+            }).delay(250);
 
             this.MenuButton.setStyle('display', null);
 
@@ -333,11 +333,11 @@ define('package/quiqqer/menu/bin/ElasticMenu', [
 
             this.$Path.stop().animate({
                 path : this.$Shape.getAttribute('data-morph-close')
-            }, 350, mina.easeout, function()
+            }, 300, mina.easeout, function()
             {
                 self.$Path.stop().animate({
                     path : self.$pathReset
-                }, 800, mina.elastic, function()
+                }, 10, mina.elastic, function()
                 {
                     self.$animate = false;
                     self.$open    = false;
