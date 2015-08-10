@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file contains \QUI\Menu\Elastic
+ * This file contains \QUI\Menu\SlideOut
  */
 
 namespace QUI\Menu;
@@ -9,22 +9,14 @@ namespace QUI\Menu;
 use QUI;
 
 /**
- * Class Elastic
- * Creates an elastic menu
+ * Class SlideOut
+ * Creates an slideout menu
  *
  * @package QUI\Menu
  * @author  www.pcsg.de (Henning Leutz)
  */
-class Elastic extends QUI\Control
+class SlideOut extends QUI\Control
 {
-    /**
-     * @param array $attributes
-     */
-    public function __construct($attributes = array())
-    {
-        parent::__construct($attributes);
-    }
-
     /**
      * @return string
      * @throws QUI\Exception
@@ -38,7 +30,7 @@ class Elastic extends QUI\Control
             'this'      => $this,
             'Site'      => $this->_getSite(),
             'Project'   => $this->_getProject(),
-            'jsControl' => 'package/quiqqer/menu/bin/ElasticMenu'
+            'jsControl' => 'package/quiqqer/menu/bin/SlideOut'
         ));
 
         return $Engine->fetch(dirname(__FILE__).'/Menu.html');

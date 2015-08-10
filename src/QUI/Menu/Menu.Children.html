@@ -2,9 +2,9 @@
 {assign var=children value=$Site->getNavigation()}
 
 {if !isset($level)}
-{assign var=level value=1}
+    {assign var=level value=1}
 {else}
-{assign var=level value=$level+1}
+    {assign var=level value=$level+1}
 {/if}
 
 {if count($children)}

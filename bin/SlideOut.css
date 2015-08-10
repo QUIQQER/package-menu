@@ -1,0 +1,194 @@
+/** page navigation
+ * ========================================================== */
+
+.page-menu {
+    background: rgba(37, 33, 34, 1);
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}
+
+.page-menu-opener {
+    color: #333;
+    cursor: pointer;
+    background: #dddddd;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    padding: 7px;
+    position: absolute;
+    right: 10px;
+    text-align: center;
+    top: 10px;
+    z-index: 2000;
+}
+
+.page-menu-opener .fa {
+    clear: both;
+    float: left;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.page-menu-opener-text {
+    clear: both;
+    float: left;
+    font-size: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.page-navigation {
+    overflow-y: auto;
+    padding: 20px;
+    position: relative;
+    z-index: 100;
+}
+
+.page-menu-morph {
+    position: absolute;
+    width: 120px;
+    height: 99%;
+    top: 0;
+    right: 0;
+}
+
+.page-menu-morph svg path {
+    stroke: #aaa;
+    stroke-width: 5px;
+}
+
+.page-navigation ul {
+    clear: both;
+    padding-left: 0;
+}
+
+.page-navigation li {
+    clear: both;
+    float: left;
+    list-style-type: none;
+    text-align: left;
+    width: 100%;
+}
+
+.page-navigation a {
+    clear: both;
+    color: #fff;
+    float: left;
+    text-decoration: none;
+    width: 100%;
+}
+
+.page-navigation-home {
+    float: left;
+    font-size: 16px;
+    padding: 10px !important;
+    width: 100%;
+}
+
+.page-navigation-home .fa {
+    text-align: left;
+    width: 30px;
+}
+
+.page-navigation-level-1 a {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 20px;
+    padding: 10px 0;
+    text-transform: uppercase;
+    vertical-align: bottom;
+}
+
+.page-navigation-level-1 .fa {
+    font-size: 22px;
+    text-align: center;
+    width: 40px;
+}
+
+.page-navigation-level-2 a {
+    border-top: none;
+    font-size: 14px;
+    padding: 5px 0;
+}
+
+.page-navigation-level-3 {
+    margin-left: 40px;
+}
+
+.page-navigation-level-3 a {
+    font-size: 14px;
+}
+
+.page-navigation-level-3 .fa {
+    font-size: 14px;
+    width: 20px;
+}
+
+
+/** page navigation -> mobile
+ * ========================================================== */
+
+.slideout-menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 0;
+    width: 256px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    display: none;
+}
+
+.slideout-panel {
+    position:relative;
+    z-index: 1;
+}
+
+.slideout-open,
+.slideout-open body,
+.slideout-open .slideout-panel {
+    overflow: hidden;
+}
+
+.slideout-open .slideout-menu {
+    display: block;
+}
+
+/** page navigation -> mobile
+ * ========================================================== */
+
+.page-menu-mobile {
+    background: #dddddd;
+    cursor: pointer;
+    color: #333;
+    left: 0;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.page-menu-mobile .fa {
+    margin-right: 10px;
+}
+
+
+
+@media screen and (max-width: 767px) {
+    .hide-on-mobile {
+        display: none !important;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .hide-on-desktop {
+        display: none !important;
+    }
+}
