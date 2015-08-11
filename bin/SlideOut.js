@@ -60,11 +60,11 @@ define('package/quiqqer/menu/bin/SlideOut', [
 
             // menu button
             this.MenuButton = new Element('button', {
-                'class' : 'page-menu-opener hide-on-mobile',
+                'class' : 'page-menu-opener',
                 html    : '<span class="fa fa-list"></span>'+
                           '<span class="page-menu-opener-text">MENU</span>',
                 styles : {
-                    left : 10,
+                    left : -100,
                     opacity : 0,
                     position : 'fixed',
                     top : 10
@@ -95,15 +95,84 @@ define('package/quiqqer/menu/bin/SlideOut', [
 
             this.Slideout.on('beforeopen', function() {
                 BodyWrapper.setStyle('boxShadow', '2px 0 10px 5px rgba(0, 0, 0, 0.3');
+
+                moofx(self.MenuButton).animate({
+                    left : -100,
+                    opacity : 0
+                }, {
+                    duration: 250,
+                    equation: 'cubic-bezier(.42,.4,.46,1.29)',
+                    callback : function() {
+                        self.MenuButton.setStyle('display', 'none');
+                    }
+                });
+            });
+
+            this.Slideout.on('open', function() {
+
+                var Closer = new Element('div', {
+                    html    : '<span class="fa fa-angle-double-left"></span>',
+                    'class' : 'page-menu-close',
+                    styles  : {
+                        height: 40,
+                        lineHeight: 20,
+                        left : -20,
+                        position : 'absolute',
+                        textAlign: 'center',
+                        top : 10,
+                        width: 40,
+                        zIndex: 1000
+                    },
+                    events : {
+                        click : self.toggle
+                    }
+                }).inject(BodyWrapper);
+
+                moofx(Closer).animate({
+                    left : 10,
+                    opacity : 1
+                }, {
+                    duration: 250,
+                    equation: 'cubic-bezier(.42,.4,.46,1.29)'
+                });
+
             });
 
             this.Slideout.on('close', function() {
                 BodyWrapper.setStyle('boxShadow', null);
+
+                self.MenuButton.setStyle('display', null);
+
+                var Closer = document.getElement('.page-menu-close');
+
+                if (Closer) {
+                    moofx(Closer).animate({
+                        left : -100,
+                        opacity : 0
+                    }, {
+                        duration: 250,
+                        equation: 'cubic-bezier(.42,.4,.46,1.29)',
+                        callback : function() {
+                            Closer.destroy();
+                        }
+                    });
+                }
+
+                moofx(self.MenuButton).animate({
+                    left : 10,
+                    opacity : 1
+                }, {
+                    duration: 250,
+                    equation: 'cubic-bezier(.42,.4,.46,1.29)'
+                });
             });
 
             moofx(this.MenuButton).animate({
+                left : 10,
                 opacity : 1
             }, {
+                duration : 250,
+                equation : 'cubic-bezier(.42,.4,.46,1.29)',
                 callback : function() {
                     self.getElm().setStyle('display', null);
                 }
