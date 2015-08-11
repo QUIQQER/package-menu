@@ -96,15 +96,8 @@ define('package/quiqqer/menu/bin/SlideOut', [
             this.Slideout.on('beforeopen', function() {
                 BodyWrapper.setStyle('boxShadow', '2px 0 10px 5px rgba(0, 0, 0, 0.3');
 
-                moofx(self.MenuButton).animate({
-                    left : -100,
-                    opacity : 0
-                }, {
-                    duration: 250,
-                    equation: 'cubic-bezier(.42,.4,.46,1.29)',
-                    callback : function() {
-                        self.MenuButton.setStyle('display', 'none');
-                    }
+                self.hideMenuButton(function() {
+                    self.MenuButton.setStyle('display', 'none');
                 });
             });
 
@@ -139,6 +132,7 @@ define('package/quiqqer/menu/bin/SlideOut', [
             });
 
             this.Slideout.on('close', function() {
+
                 BodyWrapper.setStyle('boxShadow', null);
 
                 self.MenuButton.setStyle('display', null);
@@ -158,24 +152,13 @@ define('package/quiqqer/menu/bin/SlideOut', [
                     });
                 }
 
-                moofx(self.MenuButton).animate({
-                    left : 10,
-                    opacity : 1
-                }, {
-                    duration: 250,
-                    equation: 'cubic-bezier(.42,.4,.46,1.29)'
+                self.showMenuButton(function() {
+                    self.getElm().setStyle('display', null);
                 });
             });
 
-            moofx(this.MenuButton).animate({
-                left : 10,
-                opacity : 1
-            }, {
-                duration : 250,
-                equation : 'cubic-bezier(.42,.4,.46,1.29)',
-                callback : function() {
-                    self.getElm().setStyle('display', null);
-                }
+            this.showMenuButton(function() {
+                self.getElm().setStyle('display', null);
             });
         },
 
@@ -185,8 +168,47 @@ define('package/quiqqer/menu/bin/SlideOut', [
         toggle : function()
         {
             this.Slideout.toggle();
-        }
+        },
 
+        /**
+         *
+         * @param callback
+         */
+        hideMenuButton : function(callback)
+        {
+            moofx(this.MenuButton).animate({
+                left : -100,
+                opacity : 0
+            }, {
+                duration: 250,
+                equation: 'cubic-bezier(.42,.4,.46,1.29)',
+                callback : function() {
+                    if (typeof callback === 'function') {
+                        callback();
+                    }
+                }.bind(this)
+            });
+        },
+
+        /**
+         *
+         * @param callback
+         */
+        showMenuButton : function(callback)
+        {
+            moofx(this.MenuButton).animate({
+                left : 10,
+                opacity : 1
+            }, {
+                duration : 250,
+                equation : 'cubic-bezier(.42,.4,.46,1.29)',
+                callback : function() {
+                    if (typeof callback === 'function') {
+                        callback();
+                    }
+                }.bind(this)
+            });
+        }
     });
 
 });
