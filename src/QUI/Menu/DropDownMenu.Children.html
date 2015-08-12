@@ -1,0 +1,25 @@
+{assign var=children value=$Site->getNavigation()}
+
+{if !isset($level)}
+    {assign var=level value=1}
+{else}
+    {assign var=level value=$level+1}
+{/if}
+
+{if count($children)}
+<ul class="qui-menu-dropdown-children qui-menu-dropdown-children-level-{$level}"
+    data-level="{$level}"
+        >
+    {foreach from=$children item=Child}
+    <li>
+        <a href="{url site=$Child}">
+            {$Child->getAttribute('title')}
+        </a>
+
+        {if $Child->hasChildren()}
+            {include file="`$FileMenu`" Site=$Child level=$level}
+        {/if}
+    </li>
+    {/foreach}
+</ul>
+{/if}

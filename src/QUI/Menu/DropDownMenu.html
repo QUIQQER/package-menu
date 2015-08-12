@@ -1,0 +1,18 @@
+
+{assign var=children value=$Site->getNavigation()}
+
+{if count($children)}
+<ul>
+{foreach from=$children item=Child}
+    <li>
+        <a href="{url site=$Child}" title="{$Child->getAttribute('title')|escape:"html"}">
+            {$Child->getAttribute('title')}
+        </a>
+
+        {if $Child->hasChildren()}
+            {include file="`$FileMenu`" Site=$Child}
+        {/if}
+    </li>
+{/foreach}
+</ul>
+{/if}
