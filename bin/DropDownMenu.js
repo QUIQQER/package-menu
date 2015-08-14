@@ -9,9 +9,10 @@
 define('package/quiqqer/menu/bin/DropDownMenu', [
 
     'qui/QUI',
-    'qui/controls/Control'
+    'qui/controls/Control',
+    'qui/utils/PageVisibility'
 
-], function(QUI, QUIControl)
+], function(QUI, QUIControl, QUIPageVisibilityUtils)
 {
     "use strict";
 
@@ -156,6 +157,10 @@ define('package/quiqqer/menu/bin/DropDownMenu', [
          */
         $onParentEnter : function(event)
         {
+            if ("hasFocus" in document && !document.hasFocus()) {
+                return;
+            }
+
             this.$onMouseEnter(event);
             event.target.focus();
         },
