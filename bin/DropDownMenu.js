@@ -9,10 +9,9 @@
 define('package/quiqqer/menu/bin/DropDownMenu', [
 
     'qui/QUI',
-    'qui/controls/Control',
-    'qui/utils/PageVisibility'
+    'qui/controls/Control'
 
-], function(QUI, QUIControl, QUIPageVisibilityUtils)
+], function(QUI, QUIControl)
 {
     "use strict";
 
