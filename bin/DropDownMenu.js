@@ -119,6 +119,10 @@ define('package/quiqqer/menu/bin/DropDownMenu', [
             var Target = event.target;
             var Children = Target.getElements('.qui-menu-dropdown-children');
 
+            if (!Children.length) {
+                return;
+            }
+
             moofx(Children).animate({
                 opacity : 0
             }, {
@@ -138,16 +142,18 @@ define('package/quiqqer/menu/bin/DropDownMenu', [
             var Target = event.target;
             var Child = Target.getChildren('.qui-menu-dropdown-children');
 
-            if (Child) {
-                Child.setStyle('opacity', 0);
-                Child.setStyle('display', 'inline');
-
-                moofx(Child).animate({
-                    opacity : 1
-                }, {
-                    duration : 250
-                });
+            if (!Child.length) {
+                return;
             }
+            
+            Child.setStyle('opacity', 0);
+            Child.setStyle('display', 'inline');
+
+            moofx(Child).animate({
+                opacity : 1
+            }, {
+                duration : 250
+            });
         },
 
         /**
