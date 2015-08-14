@@ -8,6 +8,7 @@
  * @require qui/QUI
  * @require qui/controls/Control
  * @require URL_OPT_DIR +quiqqer/menu/bin/slideout.min.js
+ * @require css!package/quiqqer/menu/bin/SlideOut.css
  */
 define('package/quiqqer/menu/bin/SlideOut', [
 
@@ -31,7 +32,8 @@ define('package/quiqqer/menu/bin/SlideOut', [
             top : 10,
             left : 10,
             bottom : false,
-            right : false
+            right : false,
+            'data-show-button-on-desktop' : true
         },
 
         Binds : [
@@ -84,6 +86,12 @@ define('package/quiqqer/menu/bin/SlideOut', [
                 }
             }).inject(document.body);
 
+            if (typeOf(Elm.get('data-show-button-on-desktop')) === 'string') {
+                this.setAttribute(
+                    'show-button-on-desktop',
+                    Elm.get('data-show-button-on-desktop').toInt()
+                );
+            }
 
             // button position
             if (Elm.get('data-menu-right')) {
@@ -107,6 +115,7 @@ define('package/quiqqer/menu/bin/SlideOut', [
             }
 
 
+            // attributes
             if (this.getAttribute('top')) {
                 this.MenuButton.setStyle('top', this.getAttribute('top'));
                 this.MenuButton.setStyle('bottom', null);
@@ -127,6 +136,9 @@ define('package/quiqqer/menu/bin/SlideOut', [
                 this.MenuButton.setStyle('top', null);
             }
 
+            if (!this.getAttribute('show-button-on-desktop')) {
+                this.MenuButton.addClass('hide-on-desktop');
+            }
 
 
             var computedStyle, scrollPosition;

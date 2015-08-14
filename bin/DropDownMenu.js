@@ -70,12 +70,20 @@ define('package/quiqqer/menu/bin/DropDownMenu', [
                 return this.getSize();
             };
 
+            var elmMousedown = function(event) {
+                event.stop();
+            };
+
             list = this.getElm().getElements('.qui-menu-dropdown-children');
 
             for (i = 0, len = list.length; i < len; i++) {
 
                 Elm = list[i];
                 Parent = Elm.getParent();
+
+                Elm.addEvents({
+                    mousedown : elmMousedown
+                });
 
                 level = Elm.get('data-level');
                 size = Parent.measure(getSize);
@@ -109,9 +117,16 @@ define('package/quiqqer/menu/bin/DropDownMenu', [
         $onMouseLeave : function(event)
         {
             var Target = event.target;
+            var Children = Target.getElements('.qui-menu-dropdown-children');
 
-            Target.getElements('.qui-menu-dropdown-children')
-                  .setStyle('display', 'none');
+            moofx(Children).animate({
+                opacity : 0
+            }, {
+                duration : 250,
+                callback : function() {
+                    Children.setStyle('display', 'none');
+                }
+            });
         },
 
         /**
@@ -124,7 +139,14 @@ define('package/quiqqer/menu/bin/DropDownMenu', [
             var Child = Target.getChildren('.qui-menu-dropdown-children');
 
             if (Child) {
+                Child.setStyle('opacity', 0);
                 Child.setStyle('display', 'inline');
+
+                moofx(Child).animate({
+                    opacity : 1
+                }, {
+                    duration : 250
+                });
             }
         },
 
@@ -144,8 +166,16 @@ define('package/quiqqer/menu/bin/DropDownMenu', [
          */
         $onParentBlur : function(event)
         {
-            event.target.getElements('.qui-menu-dropdown-children')
-                        .setStyle('display', 'none');
+            var Children = event.target.getElements('.qui-menu-dropdown-children');
+
+            moofx(Children).animate({
+                opacity : 0
+            }, {
+                duration : 250,
+                callback : function() {
+                    Children.setStyle('display', 'none');
+                }
+            });
         }
     });
 });
