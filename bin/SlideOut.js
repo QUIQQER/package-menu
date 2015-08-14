@@ -27,6 +27,13 @@ define('package/quiqqer/menu/bin/SlideOut', [
         Extends : QUIControl,
         Type : 'package/quiqqer/menu/bin/SlideOut',
 
+        options : {
+            top : 10,
+            left : 10,
+            bottom : false,
+            right : false
+        },
+
         Binds : [
             'toggle',
             '$onImport'
@@ -52,6 +59,8 @@ define('package/quiqqer/menu/bin/SlideOut', [
             var self = this,
                 Elm  = this.getElm();
 
+            Elm = Elm.getParent();
+
             // body childrens
             var children = document.body.getChildren();
             var BodyWrapper = new Element('div').inject(document.body);
@@ -65,15 +74,59 @@ define('package/quiqqer/menu/bin/SlideOut', [
                 html    : '<span class="fa fa-list"></span>'+
                           '<span class="page-menu-opener-text">MENU</span>',
                 styles : {
-                    left : -100,
+                    display : 'none',
+                    'float' : 'left',
                     opacity : 0,
-                    position : 'fixed',
-                    top : 10
+                    position : 'fixed'
                 },
                 events : {
                     click : this.toggle
                 }
             }).inject(document.body);
+
+
+            // button position
+            if (Elm.get('data-menu-right')) {
+                this.setAttribute('left', false);
+                this.setAttribute('right', Elm.get('data-menu-right').toInt());
+            }
+
+            if (Elm.get('data-menu-left')) {
+                this.setAttribute('left', Elm.get('data-menu-left').toInt());
+                this.setAttribute('right', false);
+            }
+
+            if (Elm.get('data-menu-top')) {
+                this.setAttribute('top', Elm.get('data-menu-top').toInt());
+                this.setAttribute('bottom', false);
+            }
+
+            if (Elm.get('data-menu-bottom')) {
+                this.setAttribute('bottom', Elm.get('data-menu-bottom').toInt());
+                this.setAttribute('top', false);
+            }
+
+
+            if (this.getAttribute('top')) {
+                this.MenuButton.setStyle('top', this.getAttribute('top'));
+                this.MenuButton.setStyle('bottom', null);
+            }
+
+            if (this.getAttribute('left')) {
+                this.MenuButton.setStyle('left', this.getAttribute('left'));
+                this.MenuButton.setStyle('right', null);
+            }
+
+            if (this.getAttribute('right')) {
+                this.MenuButton.setStyle('right', this.getAttribute('right'));
+                this.MenuButton.setStyle('left', null);
+            }
+
+            if (this.getAttribute('bottom')) {
+                this.MenuButton.setStyle('bottom', this.getAttribute('bottom'));
+                this.MenuButton.setStyle('top', null);
+            }
+
 
 
             var computedStyle, scrollPosition;
@@ -95,7 +148,7 @@ define('package/quiqqer/menu/bin/SlideOut', [
                 tolerance : 70
             });
 
-            this.Slideout.on('beforeopen', function(event) {
+            this.Slideout.on('beforeopen', function() {
                 BodyWrapper.setStyle('boxShadow', '2px 0 10px 5px rgba(0, 0, 0, 0.3');
 
                 scrollPosition = window.getScroll();
@@ -204,12 +257,13 @@ define('package/quiqqer/menu/bin/SlideOut', [
         hideMenuButton : function(callback)
         {
             moofx(this.MenuButton).animate({
-                left : -100,
                 opacity : 0
             }, {
                 duration: 250,
                 equation: 'cubic-bezier(.42,.4,.46,1.29)',
                 callback : function() {
+                    this.MenuButton.setStyle('display', 'none');
+
                     if (typeof callback === 'function') {
                         callback();
                     }
@@ -228,8 +282,9 @@ define('package/quiqqer/menu/bin/SlideOut', [
                 return;
             }
 
+            this.MenuButton.setStyle('display', null);
+
             moofx(this.MenuButton).animate({
-                left : 10,
                 opacity : 1
             }, {
                 duration : 250,
