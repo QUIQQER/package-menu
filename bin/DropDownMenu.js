@@ -176,7 +176,13 @@ define('package/quiqqer/menu/bin/DropDownMenu', [
          */
         $onParentBlur : function(event)
         {
-            var Children = event.target.getElements('.qui-menu-dropdown-children');
+            var Children = event.target.getElements(
+                '.qui-menu-dropdown-children'
+            );
+
+            if (Children.length) {
+                return;
+            }
 
             moofx(Children).animate({
                 opacity : 0
