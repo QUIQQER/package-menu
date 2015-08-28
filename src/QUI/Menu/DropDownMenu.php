@@ -22,10 +22,11 @@ class DropDownMenu extends QUI\Control
      */
     public function __construct($attributes = array())
     {
-        parent::__construct($attributes);
-
         $this->setAttribute('class', 'qui-menu-dropdown');
         $this->setAttribute('qui-class', 'package/quiqqer/menu/bin/DropDownMenu');
+        $this->setAttribute('icons', false);
+
+        parent::__construct($attributes);
 
         $this->addCSSFile(dirname(__FILE__).'/DropDownMenu.css');
     }

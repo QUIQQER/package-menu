@@ -180,7 +180,7 @@ define('package/quiqqer/menu/bin/DropDownMenu', [
                 '.qui-menu-dropdown-children'
             );
 
-            if (Children.length) {
+            if (!Children.length) {
                 return;
             }
 

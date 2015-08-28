@@ -1,8 +1,9 @@
 
 {assign var=children value=$Site->getNavigation()}
+{assign var=placeholder value=$Site->getProject()->getMedia()->getPlaceholder()}
 
 {if count($children)}
-<ul>
+<ul{if $this->getAttribute('icons')} class="qui-menu-dropdown--with-icons"{/if}>
 {foreach from=$children item=Child}
     <li>
         <a href="{url site=$Child}" title="{$Child->getAttribute('title')|escape:"html"}">
@@ -10,7 +11,7 @@
         </a>
 
         {if $Child->hasChildren()}
-            {include file="`$FileMenu`" Site=$Child}
+            {include file="`$FileMenu`" Site=$Child placeholder=$placeholder}
         {/if}
     </li>
 {/foreach}

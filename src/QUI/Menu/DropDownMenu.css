@@ -24,5 +24,34 @@
 .qui-menu-dropdown-children li {
     clear: both;
     float: left;
+    padding: 0;
     width: 100%;
+}
+
+.qui-menu-dropdown-children li a {
+    float: left;
+    padding: 10px;
+    width: 100%;
+}
+
+.qui-menu-dropdown-text {
+    float: left;
+    padding-left: 10px;
+    width: 100%;
+}
+
+.qui-menu-dropdown-icon {
+    float: left;
+    height: 30px;
+    text-align: center;
+    width: 30px;
+}
+
+.qui-menu-dropdown-icon img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.qui-menu-dropdown--with-icons .qui-menu-dropdown-text {
+    width: calc(100% - 30px);
 }

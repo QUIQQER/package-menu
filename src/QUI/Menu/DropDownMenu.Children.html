@@ -9,15 +9,28 @@
 {if count($children)}
 <ul class="qui-menu-dropdown-children qui-menu-dropdown-children-level-{$level}"
     data-level="{$level}"
+    data-siteId="{$Site->getId()}"
         >
     {foreach from=$children item=Child}
     <li>
-        <a href="{url site=$Child}">
-            {$Child->getAttribute('title')}
+        <a href="{url site=$Child}" data-siteId="{$Child->getId()}">
+            {if $this->getAttribute('icons')}
+            <div class="qui-menu-dropdown-icon">
+                {if $Child->getAttribute('image_site')}
+                    {image src=$Child->getAttribute('image_site') width=24 height=24}
+                {else}
+                    <img src="{$placeholder}" />
+                {/if}
+            </div>
+            {/if}
+
+            <div class="qui-menu-dropdown-text">
+                {$Child->getAttribute('title')}
+            </div>
         </a>
 
         {if $Child->hasChildren()}
-            {include file="`$FileMenu`" Site=$Child level=$level}
+            {include file="`$FileMenu`" Site=$Child level=$level placeholder=$placeholder}
         {/if}
     </li>
     {/foreach}
