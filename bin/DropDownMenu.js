@@ -1,4 +1,3 @@
-
 /**
  * @module package/quiqqer/menu/bin/DropDownMenu
  * @author www.pcsg.de (Henning Leutz)
@@ -11,36 +10,33 @@ define('package/quiqqer/menu/bin/DropDownMenu', [
     'qui/QUI',
     'qui/controls/Control'
 
-], function(QUI, QUIControl)
-{
+], function (QUI, QUIControl) {
     "use strict";
 
     return new Class({
 
-        Extends : QUIControl,
-        Type : 'package/quiqqer/menu/bin/DropDownMenu',
+        Extends: QUIControl,
+        Type   : 'package/quiqqer/menu/bin/DropDownMenu',
 
-        Binds : [
+        Binds: [
             '$onMouseEnter',
             '$onMouseLeave',
             '$onParentBlur',
             '$onParentEnter'
         ],
 
-        initialize : function(options)
-        {
+        initialize: function (options) {
             this.parent(options);
 
             this.addEvents({
-                onImport : this.$onImport
+                onImport: this.$onImport
             });
         },
 
         /**
          * event : on insert
          */
-        $onImport : function()
-        {
+        $onImport: function () {
             var i, len, size, list, level,
                 Elm, Parent;
 
@@ -52,25 +48,26 @@ define('package/quiqqer/menu/bin/DropDownMenu', [
                 Parent = list[i];
 
                 Parent.set({
-                    'tabindex' : -1,
-                    styles : {
-                        outline : 'none'
+                    'tabindex': -1,
+                    styles    : {
+                        outline: 'none'
                     }
                 });
 
                 Parent.addEvents({
-                    blur : this.$onParentBlur,
-                    mouseenter : this.$onParentEnter
+                    blur      : this.$onParentBlur,
+                    mouseenter: this.$onParentEnter,
+                    mouseleave: this.$onParentBlur
                 });
             }
 
 
             // children dropdown pos
-            var getSize = function() {
+            var getSize = function () {
                 return this.getSize();
             };
 
-            var elmMousedown = function(event) {
+            var elmMousedown = function (event) {
                 event.stop();
             };
 
@@ -78,20 +75,20 @@ define('package/quiqqer/menu/bin/DropDownMenu', [
 
             for (i = 0, len = list.length; i < len; i++) {
 
-                Elm = list[i];
+                Elm    = list[i];
                 Parent = Elm.getParent();
 
                 Elm.addEvents({
-                    mousedown : elmMousedown
+                    mousedown: elmMousedown
                 });
 
                 level = Elm.get('data-level');
-                size = Parent.measure(getSize);
+                size  = Parent.measure(getSize);
 
                 if (level == 1) {
 
                     Elm.setStyles({
-                        left : 0,
+                        left: 0,
                         top : size.y
                     });
 
@@ -99,12 +96,12 @@ define('package/quiqqer/menu/bin/DropDownMenu', [
                 }
 
                 Parent.addEvents({
-                    mouseenter : this.$onMouseEnter,
-                    mouseleave : this.$onMouseLeave
+                    mouseenter: this.$onMouseEnter,
+                    mouseleave: this.$onMouseLeave
                 });
 
                 Elm.setStyles({
-                    left : size.x,
+                    left: size.x,
                     top : 0
                 });
             }
@@ -114,9 +111,8 @@ define('package/quiqqer/menu/bin/DropDownMenu', [
          *
          * @param {DOMEvent} event
          */
-        $onMouseLeave : function(event)
-        {
-            var Target = event.target;
+        $onMouseLeave: function (event) {
+            var Target   = event.target;
             var Children = Target.getElements('.qui-menu-dropdown-children');
 
             if (!Children.length) {
@@ -124,10 +120,10 @@ define('package/quiqqer/menu/bin/DropDownMenu', [
             }
 
             moofx(Children).animate({
-                opacity : 0
+                opacity: 0
             }, {
-                duration : 250,
-                callback : function() {
+                duration: 250,
+                callback: function () {
                     Children.setStyle('display', 'none');
                 }
             });
@@ -137,22 +133,21 @@ define('package/quiqqer/menu/bin/DropDownMenu', [
          *
          * @param {DOMEvent} event
          */
-        $onMouseEnter : function(event)
-        {
+        $onMouseEnter: function (event) {
             var Target = event.target;
-            var Child = Target.getChildren('.qui-menu-dropdown-children');
+            var Child  = Target.getChildren('.qui-menu-dropdown-children');
 
             if (!Child.length) {
                 return;
             }
-            
+
             Child.setStyle('opacity', 0);
             Child.setStyle('display', 'inline');
 
             moofx(Child).animate({
-                opacity : 1
+                opacity: 1
             }, {
-                duration : 250
+                duration: 250
             });
         },
 
@@ -160,10 +155,9 @@ define('package/quiqqer/menu/bin/DropDownMenu', [
          *
          * @param {DOMEvent} event
          */
-        $onParentEnter : function(event)
-        {
+        $onParentEnter: function (event) {
             if ("hasFocus" in document && !document.hasFocus()) {
-                return;
+                //    return;
             }
 
             this.$onMouseEnter(event);
@@ -174,8 +168,7 @@ define('package/quiqqer/menu/bin/DropDownMenu', [
          *
          * @param {DOMEvent} event
          */
-        $onParentBlur : function(event)
-        {
+        $onParentBlur: function (event) {
             var Children = event.target.getElements(
                 '.qui-menu-dropdown-children'
             );
@@ -185,10 +178,10 @@ define('package/quiqqer/menu/bin/DropDownMenu', [
             }
 
             moofx(Children).animate({
-                opacity : 0
+                opacity: 0
             }, {
-                duration : 250,
-                callback : function() {
+                duration: 250,
+                callback: function () {
                     Children.setStyle('display', 'none');
                 }
             });
