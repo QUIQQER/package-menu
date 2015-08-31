@@ -1,4 +1,3 @@
-
 /**
  * Slideout menu control
  *
@@ -15,57 +14,54 @@ define('package/quiqqer/menu/bin/SlideOut', [
     'qui/QUI',
     'qui/controls/Control',
 
-    URL_OPT_DIR +'quiqqer/menu/bin/slideout.min.js',
+    URL_OPT_DIR + 'quiqqer/menu/bin/slideout.min.js',
 
     'css!package/quiqqer/menu/bin/SlideOut.css'
 
-], function(QUI, QUIControl, Slideout)
-{
+], function (QUI, QUIControl, Slideout) {
     "use strict";
 
     return new Class({
 
-        Extends : QUIControl,
-        Type : 'package/quiqqer/menu/bin/SlideOut',
+        Extends: QUIControl,
+        Type   : 'package/quiqqer/menu/bin/SlideOut',
 
-        options : {
-            top : 10,
-            left : 10,
-            bottom : false,
-            right : false,
-            'data-show-button-on-desktop' : true,
-            'menu-width' : 256
+        options: {
+            top                          : 10,
+            left                         : 10,
+            bottom                       : false,
+            right                        : false,
+            'data-show-button-on-desktop': true,
+            'menu-width'                 : 256
         },
 
-        Binds : [
+        Binds: [
             'toggle',
             '$onImport'
         ],
 
-        initialize : function(options)
-        {
+        initialize: function (options) {
             this.parent(options);
 
-            this.MenuButton = null;
+            this.MenuButton  = null;
             this.$__hideMenu = false;
 
             this.addEvents({
-                onImport : this.$onImport
+                onImport: this.$onImport
             });
         },
 
         /**
          * event : on import
          */
-        $onImport : function()
-        {
+        $onImport: function () {
             var self = this,
                 Elm  = this.getElm();
 
             Elm = Elm.getParent();
 
             // body childrens
-            var children = document.body.getChildren();
+            var children    = document.body.getChildren();
             var BodyWrapper = new Element('div').inject(document.body);
 
             children.inject(BodyWrapper);
@@ -73,17 +69,17 @@ define('package/quiqqer/menu/bin/SlideOut', [
 
             // menu button
             this.MenuButton = new Element('button', {
-                'class' : 'page-menu-opener',
-                html    : '<span class="fa fa-list"></span>'+
-                          '<span class="page-menu-opener-text">MENU</span>',
+                'class': 'page-menu-opener',
+                html   : '<span class="fa fa-list"></span>' +
+                         '<span class="page-menu-opener-text">MENU</span>',
                 styles : {
                     display : 'none',
                     'float' : 'left',
                     opacity : 0,
-                    position : 'fixed'
+                    position: 'fixed'
                 },
                 events : {
-                    click : this.toggle
+                    click: this.toggle
                 }
             }).inject(document.body);
 
@@ -157,48 +153,59 @@ define('package/quiqqer/menu/bin/SlideOut', [
 
             // init slideout and set events
             this.Slideout = new Slideout({
-                panel     : BodyWrapper,
-                menu      : Elm,
-                padding   : this.getAttribute('menu-width'),
-                tolerance : 70
+                panel    : BodyWrapper,
+                menu     : Elm,
+                padding  : this.getAttribute('menu-width'),
+                tolerance: 70
             });
 
-            this.Slideout.on('beforeopen', function() {
+            this.Slideout.on('beforeopen', function () {
+
+                var width = window.getSize().x;
+
+                if (self.getAttribute('menu-width') > (width - 60)) {
+                    self.Slideout._padding     = width - 60;
+                    self.Slideout._translateTo = width - 60;
+                } else {
+                    self.Slideout._padding     = self.getAttribute('menu-width');
+                    self.Slideout._translateTo = self.getAttribute('menu-width');
+                }
+
                 BodyWrapper.setStyle('boxShadow', '2px 0 10px 5px rgba(0, 0, 0, 0.3');
 
                 scrollPosition = window.getScroll();
 
-                self.hideMenuButton(function() {
+                self.hideMenuButton(function () {
                     self.MenuButton.setStyle('display', 'none');
                 });
             });
 
-            this.Slideout.on('open', function() {
+            this.Slideout.on('open', function () {
 
                 self.fireEvent('open');
 
                 var Closer = new Element('div', {
-                    html    : '<span class="fa fa-angle-double-left"></span>',
-                    'class' : 'page-menu-close',
-                    styles  : {
-                        height: 40,
+                    html   : '<span class="fa fa-angle-double-left"></span>',
+                    'class': 'page-menu-close',
+                    styles : {
+                        height    : 40,
                         lineHeight: 20,
-                        left : -20,
-                        position : 'absolute',
-                        textAlign: 'center',
-                        top : scrollPosition.y + 10,
-                        width: 40,
-                        zIndex: 1000
+                        left      : -20,
+                        position  : 'absolute',
+                        textAlign : 'center',
+                        top       : scrollPosition.y + 10,
+                        width     : 40,
+                        zIndex    : 1000
                     },
                     events : {
-                        click : self.toggle
+                        click: self.toggle
                     }
                 }).inject(BodyWrapper);
 
 
                 moofx(Closer).animate({
-                    left : 10,
-                    opacity : 1
+                    left   : 10,
+                    opacity: 1
                 }, {
                     duration: 250,
                     equation: 'cubic-bezier(.42,.4,.46,1.29)'
@@ -206,7 +213,7 @@ define('package/quiqqer/menu/bin/SlideOut', [
 
             });
 
-            this.Slideout.on('close', function() {
+            this.Slideout.on('close', function () {
 
                 BodyWrapper.setStyle('boxShadow', null);
 
@@ -216,12 +223,12 @@ define('package/quiqqer/menu/bin/SlideOut', [
 
                 if (Closer) {
                     moofx(Closer).animate({
-                        left : -100,
-                        opacity : 0
+                        left   : -100,
+                        opacity: 0
                     }, {
                         duration: 250,
                         equation: 'cubic-bezier(.42,.4,.46,1.29)',
-                        callback : function() {
+                        callback: function () {
                             Closer.destroy();
                         }
                     });
@@ -229,13 +236,13 @@ define('package/quiqqer/menu/bin/SlideOut', [
 
 
                 if (self.$__hideMenu === false) {
-                    self.showMenuButton(function() {
+                    self.showMenuButton(function () {
                         self.getElm().setStyle('display', null);
                     });
                 }
             });
 
-            this.showMenuButton(function() {
+            this.showMenuButton(function () {
                 self.getElm().setStyle('display', null);
             });
         },
@@ -243,24 +250,21 @@ define('package/quiqqer/menu/bin/SlideOut', [
         /**
          * Toggle
          */
-        toggle : function()
-        {
+        toggle: function () {
             this.Slideout.toggle();
         },
 
         /**
          * Dont show menu button
          */
-        disableMenuButton : function()
-        {
+        disableMenuButton: function () {
             this.$__hideMenu = true;
         },
 
         /**
          * Show menu button
          */
-        enableMenuButton : function()
-        {
+        enableMenuButton: function () {
             this.$__hideMenu = false;
         },
 
@@ -269,14 +273,13 @@ define('package/quiqqer/menu/bin/SlideOut', [
          *
          * @param callback
          */
-        hideMenuButton : function(callback)
-        {
+        hideMenuButton: function (callback) {
             moofx(this.MenuButton).animate({
-                opacity : 0
+                opacity: 0
             }, {
                 duration: 250,
                 equation: 'cubic-bezier(.42,.4,.46,1.29)',
-                callback : function() {
+                callback: function () {
                     this.MenuButton.setStyle('display', 'none');
 
                     if (typeof callback === 'function') {
@@ -291,8 +294,7 @@ define('package/quiqqer/menu/bin/SlideOut', [
          *
          * @param callback
          */
-        showMenuButton : function(callback)
-        {
+        showMenuButton: function (callback) {
             if (this.$__hideMenu) {
                 return;
             }
@@ -300,11 +302,11 @@ define('package/quiqqer/menu/bin/SlideOut', [
             this.MenuButton.setStyle('display', null);
 
             moofx(this.MenuButton).animate({
-                opacity : 1
+                opacity: 1
             }, {
-                duration : 250,
-                equation : 'cubic-bezier(.42,.4,.46,1.29)',
-                callback : function() {
+                duration: 250,
+                equation: 'cubic-bezier(.42,.4,.46,1.29)',
+                callback: function () {
                     if (typeof callback === 'function') {
                         callback();
                     }
