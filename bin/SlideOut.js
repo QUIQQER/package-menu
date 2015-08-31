@@ -49,6 +49,12 @@ define('package/quiqqer/menu/bin/SlideOut', [
             this.addEvents({
                 onImport: this.$onImport
             });
+
+            window.addEvent('resize', function() {
+                if (this.Slideout.isOpen()) {
+                    this.Slideout.close();
+                }
+            }.bind(this));
         },
 
         /**
