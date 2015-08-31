@@ -33,7 +33,8 @@ define('package/quiqqer/menu/bin/SlideOut', [
             left : 10,
             bottom : false,
             right : false,
-            'data-show-button-on-desktop' : true
+            'data-show-button-on-desktop' : true,
+            'menu-width' : 256
         },
 
         Binds : [
@@ -114,6 +115,10 @@ define('package/quiqqer/menu/bin/SlideOut', [
                 this.setAttribute('top', false);
             }
 
+            if (Elm.get('data-qui-options-menu-width')) {
+                this.setAttribute('menu-width', Elm.get('data-qui-options-menu-width').toInt());
+            }
+
 
             // attributes
             if (this.getAttribute('top')) {
@@ -140,7 +145,6 @@ define('package/quiqqer/menu/bin/SlideOut', [
                 this.MenuButton.addClass('hide-on-desktop');
             }
 
-
             var computedStyle, scrollPosition;
 
             if ("getComputedStyle" in window) {
@@ -151,12 +155,11 @@ define('package/quiqqer/menu/bin/SlideOut', [
 
             BodyWrapper.setStyle('background', computedStyle.backgroundColor);
 
-
             // init slideout and set events
             this.Slideout = new Slideout({
                 panel     : BodyWrapper,
                 menu      : Elm,
-                padding   : 0,
+                padding   : this.getAttribute('menu-width'),
                 tolerance : 70
             });
 
