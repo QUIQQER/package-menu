@@ -181,6 +181,8 @@ define('package/quiqqer/menu/bin/SlideOut', [
                     self.Slideout._translateTo = self.getAttribute('menu-width');
                 }
 
+                self.getElm().setStyle('display', null);
+
                 BodyWrapper.setStyle('boxShadow', '2px 0 10px 5px rgba(0, 0, 0, 0.3');
 
                 scrollPosition = window.getScroll();
