@@ -32,7 +32,8 @@ define('package/quiqqer/menu/bin/SlideOut', [
             bottom                       : false,
             right                        : false,
             'data-show-button-on-desktop': true,
-            'menu-width'                 : 256
+            'menu-width'                 : 256,
+            'menu-button'                : true
         },
 
         Binds: [
@@ -50,7 +51,7 @@ define('package/quiqqer/menu/bin/SlideOut', [
                 onImport: this.$onImport
             });
 
-            window.addEvent('resize', function() {
+            window.addEvent('resize', function () {
                 if (this.Slideout.isOpen()) {
                     this.Slideout.close();
                 }
@@ -121,6 +122,9 @@ define('package/quiqqer/menu/bin/SlideOut', [
                 this.setAttribute('menu-width', Elm.get('data-qui-options-menu-width').toInt());
             }
 
+            if (Elm.get('data-qui-options-menu-button')) {
+                this.setAttribute('menu-button', Elm.get('data-qui-options-menu-button').toInt());
+            }
 
             // attributes
             if (this.getAttribute('top')) {
@@ -302,6 +306,10 @@ define('package/quiqqer/menu/bin/SlideOut', [
          */
         showMenuButton: function (callback) {
             if (this.$__hideMenu) {
+                return;
+            }
+
+            if (!this.getAttribute('menu-button')) {
                 return;
             }
 
