@@ -111,6 +111,17 @@
     width: 30px;
 }
 
+.page-navigation .fa {
+    float: left;
+    text-align: center;
+    width: 20px;
+}
+
+.page-navigation .left-menu-text {
+    float: left;
+    width: calc(100% - 20px);
+}
+
 .page-navigation-level-1 a {
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     font-size: 20px;
