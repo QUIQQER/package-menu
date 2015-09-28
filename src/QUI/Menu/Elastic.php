@@ -34,14 +34,14 @@ class Elastic extends QUI\Control
         $Engine = QUI::getTemplateManager()->getEngine();
 
         $Engine->assign(array(
-            'FileMenu'  => dirname(__FILE__).'/Menu.Children.html',
+            'FileMenu'  => dirname(__FILE__) . '/Menu.Children.html',
             'this'      => $this,
             'Site'      => $this->_getSite(),
             'Project'   => $this->_getProject(),
             'jsControl' => 'package/quiqqer/menu/bin/ElasticMenu'
         ));
 
-        return $Engine->fetch(dirname(__FILE__).'/Menu.html');
+        return $Engine->fetch(dirname(__FILE__) . '/Menu.html');
     }
 
     /**

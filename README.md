@@ -45,7 +45,20 @@ MIT
 Entwickler
 --------
 
+**Control Nutzung in Smarty**
+
 ```
 {control control="\QUI\Menu\Elastic"}
 {control control="\QUI\Menu\SlideOut"}
+```
+
+**Beispiel mit Einstellungen**
+
+```
+{control
+    control="\QUI\Menu\DropDownMenu"
+    Site=$Start
+    icons=1
+    showHomeIcon=1
+}
 ```

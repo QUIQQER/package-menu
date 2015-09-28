@@ -4,6 +4,21 @@
 
 {if count($children)}
 <ul{if $this->getAttribute('icons')} class="qui-menu-dropdown--with-icons"{/if}>
+{if $this->getAttribute('showHomeTitle') || $this->getAttribute('showHomeIcon')}
+<li>
+    {assign var=First value=$Site->getProject()->firstChild()}
+    <a href="{url site=$First}" title="{$First->getAttribute('title')|escape:"html"}">
+    {if $this->getAttribute('showHomeIcon')}
+        <span class="fa fa-home icon-home"></span>
+    {/if}
+    {if $this->getAttribute('showHomeTitle')}
+        <span>
+            {$First->getAttribute('title')}
+        </span>
+    {/if}
+    </li>
+</li>
+{/if}
 {foreach from=$children item=Child}
     <li>
         <a href="{url site=$Child}" title="{$Child->getAttribute('title')|escape:"html"}">
