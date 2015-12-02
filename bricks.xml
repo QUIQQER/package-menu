@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <quiqqer>
-    <menu>
+    <bricks>
 
         <!-- Nav (QUI) -->
-        <brick control="\QUI\Controls\Navigation">
+        <brick control="\QUI\Menu\SidebarDropDownMenu">
             <title>
                 <locale group="quiqqer/menu" var="brick.control.navigation.title"/>
             </title>
@@ -37,5 +37,5 @@
             </settings>
         </brick>
 
-    </menu>
+    </bricks>
 </quiqqer>

@@ -2,7 +2,7 @@
 <locales>
     <groups name="quiqqer/menu" datatype="php,js">
 
-        <!-- Nav (QUI) -->
+        <!-- Sidebar Drop Down Menu -->
         <locale name="menu.control.navigation.setting.startId">
             <de><![CDATA[Start-ID]]></de>
             <en><![CDATA[Start ID]]></en>

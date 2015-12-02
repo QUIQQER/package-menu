@@ -30,7 +30,8 @@ class SidebarDropDownMenu extends QUI\Control
             'levels' => false,
             'homeIcon' => 'fa-home',
             'listIcon' => 'fa-angle-right',
-            'levelIcon' => 'fa-angle-double-down'
+            'levelIcon' => 'fa-angle-double-down',
+            'qui-class' => 'package/quiqqer/menu/bin/SidebarDropDownMenu'
         ));
 
         parent::__construct($attributes);
@@ -90,7 +91,7 @@ class SidebarDropDownMenu extends QUI\Control
             'Site' => $Site,
             'homeLink' => $homeLink = $this->getAttribute('homeLink'),
             'activeId' => $activeId,
-            'navTemplate' => dirname(__FILE__) . '/Navigation.html',
+            'navTemplate' => dirname(__FILE__) . '/SidebarDropDownMenu.html',
             'levels' => $levels,
             'Rewrite' => QUI::getRewrite(),
             'homeIcon' => $homeIcon = $this->getAttribute('homeIcon'),
@@ -98,7 +99,7 @@ class SidebarDropDownMenu extends QUI\Control
             'levelIcon' => $levelIcon = $this->getAttribute('levelIcon')
         ));
 
-        $html = $Engine->fetch(dirname(__FILE__) . '/Navigation.html');
+        $html = $Engine->fetch(dirname(__FILE__) . '/SidebarDropDownMenu.html');
         $html = '<nav>' . $html . '</nav>';
 
         return $html;
