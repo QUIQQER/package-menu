@@ -42,13 +42,12 @@ define('package/quiqqer/menu/bin/SidebarDropDownMenu', [
 
             ToggleButton.addEvent("click", function () {
                 var LiLeft = this.getParent('li');
-                var NavSubLeft = LiLeft.getElement("div");
+                var NavSubLeft = LiLeft.getElement("div.quiqqer-sub-nav-div");
 
                 if (!NavSubLeft.getSize().y.toInt()) {
                     self.openMenu(NavSubLeft);
                     return;
                 }
-
                 self.closeMenu(NavSubLeft);
             });
         },

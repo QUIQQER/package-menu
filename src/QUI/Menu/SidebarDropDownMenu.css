@@ -13,14 +13,18 @@
 
 .quiqqer-navigation-link {
     display: flex;
-    line-height: 2.3em;
+    padding: 4px 0;
     width: 100%;
+}
+
+.quiqqer-navigation-link-no-icon {
+    margin-right: 30px;
 }
 
 .quiqqer-fa-levels-icon {
     cursor: pointer;
     display: flex;
-    width:15%;
+    width:40px;
     text-align: center;
     transition: all 0.2s;
     transition-timing-function: ease-in-out;
