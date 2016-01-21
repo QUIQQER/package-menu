@@ -33,7 +33,8 @@ define('package/quiqqer/menu/bin/SlideOut', [
             right                        : false,
             'data-show-button-on-desktop': true,
             'menu-width'                 : 256,
-            'menu-button'                : true
+            'menu-button'                : true,
+            'touch'                      : false
         },
 
         Binds: [
@@ -119,12 +120,26 @@ define('package/quiqqer/menu/bin/SlideOut', [
             }
 
             if (Elm.get('data-qui-options-menu-width')) {
-                this.setAttribute('menu-width', Elm.get('data-qui-options-menu-width').toInt());
+                this.setAttribute(
+                    'menu-width',
+                    Elm.get('data-qui-options-menu-width').toInt()
+                );
             }
 
             if (Elm.get('data-qui-options-menu-button')) {
-                this.setAttribute('menu-button', Elm.get('data-qui-options-menu-button').toInt());
+                this.setAttribute(
+                    'menu-button',
+                    Elm.get('data-qui-options-menu-button').toInt()
+                );
             }
+
+            if (Elm.get('data-qui-options-touch')) {
+                this.setAttribute(
+                    'touch',
+                    Elm.get('data-qui-options-touch').toInt() ? true : false
+                );
+            }
+
 
             // attributes
             if (this.getAttribute('top')) {
@@ -166,7 +181,8 @@ define('package/quiqqer/menu/bin/SlideOut', [
                 panel    : BodyWrapper,
                 menu     : Elm,
                 padding  : this.getAttribute('menu-width'),
-                tolerance: 70
+                tolerance: 70,
+                touch    : this.getAttribute('touch')
             });
 
             this.Slideout.on('beforeopen', function () {
