@@ -3,7 +3,6 @@
 }
 
 .quiqqer-navigation-entry {
-    border-bottom: 1px solid #ddd;
     display: flex !important;
     flex-direction: row;
     justify-content: space-between;
@@ -56,7 +55,19 @@
 
 /*
  * ab hier soll Template liefern
- */
+
+.quiqqer-navigation-entry {
+    border-bottom: 1px solid #ddd;
+}
+
+h2.quiqqer-navigation-title-style {
+    margin-bottom: 2em;
+    padding-bottom: 0.5em;
+    padding-left: 10px;
+    font-weight: bold;
+    color: #5d5d5d;
+    border-bottom: 1px solid #eee;
+}
 
 .quiqqer-navigation-li {
     margin-bottom: 0 !important;

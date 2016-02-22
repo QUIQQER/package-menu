@@ -8,9 +8,11 @@
 {/if}
 
 
-
 {if count( $children )}
 <ul class="fa-ul quiqqer-navigation-level-{$level}">
+    {if $level == 1 && $this->getAttribute('showBrickTitle') != ""}
+    <h2 class="quiqqer-navigation-title-style">{$this->getAttribute('showBrickTitle')}</h2>aaaaaaaa
+    {/if}
     {if $homeLink && $level == 1}
     <li class="quiqqer-navigation-li">
         <div class="quiqqer-navigation-entry">
@@ -26,38 +28,41 @@
     {/if}
     {foreach from=$children item=Child}
     <li class="quiqqer-navigation-li {if $Rewrite->isIdInPath($Child->getId())} active-bgcolor {/if}">
-
+        {assign var=subnavigation value=$Child->getNavigation()}
         <div class="quiqqer-navigation-entry
             {if
                 $Rewrite->isIdInPath($Child->getId()) &&
                 $activeId != $Child->getId() &&
                 $level == 1
             } quiqqer-first-li-bg{/if}
+
             {if $activeId == $Child->getId()} quiqqer-navigation-active{/if}">
-            {assign var=subnavigation value=$Child->getNavigation()}
+
             {if $listIcon}
             <i class="fa quiqqer-fa-list-icon fa-fw {$listIcon}"></i>
             {/if}
             <a href="{url site=$Child}" class="quiqqer-navigation-link
             {if !count ( $subnavigation )} quiqqer-navigation-link-no-icon{/if}"
-            {if !$listIcon}style="margin-left: 30px;"{/if}
+               {if !$listIcon}style="margin-left: 30px;"{/if}
             >
-                {$Child->getAttribute('title')}
+            {$Child->getAttribute('title')}
             </a>
             {if count ( $subnavigation )}
             <i class="fa quiqqer-fa-levels-icon {$levelIcon} {if $Rewrite->isIdInPath($Child->getId())} fa-nav-levels-rotate {/if} "></i>
             {/if}
         </div>
 
+        {if $levels === false || $levels-1 >= $level}
         <div class="quiqqer-sub-nav-div {if !$Rewrite->isIdInPath($Child->getId())}quiqqer-navigation-close{/if}">
-            {if $levels === false || $levels-1 >= $level}
+
             {include file=$navTemplate
             Site=$Child
             level=$level
             levels=$levels
             }
-            {/if}
+
         </div>
+        {/if}
     </li>
     {/foreach}
 </ul>

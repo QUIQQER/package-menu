@@ -9,7 +9,7 @@
     {assign var=First value=$Site->getProject()->firstChild()}
     <a href="{url site=$First}" title="{$First->getAttribute('title')|escape:"html"}">
     {if $this->getAttribute('showHomeIcon')}
-        <span class="fa fa-home icon-home"></span>
+        <span class="fa fa-home"></span>
     {/if}
     {if $this->getAttribute('showHomeTitle')}
         <span>
