@@ -26,14 +26,14 @@ class SlideOut extends QUI\Control
         $Engine = QUI::getTemplateManager()->getEngine();
 
         $Engine->assign(array(
-            'FileMenu'  => dirname(__FILE__).'/Menu.Children.html',
-            'this'      => $this,
-            'Site'      => $this->_getSite(),
-            'Project'   => $this->_getProject(),
+            'FileMenu' => dirname(__FILE__) . '/Menu.Children.html',
+            'this' => $this,
+            'Site' => $this->getSite(),
+            'Project' => $this->getProject(),
             'jsControl' => 'package/quiqqer/menu/bin/SlideOut'
         ));
 
-        return $Engine->fetch(dirname(__FILE__).'/Menu.html');
+        return $Engine->fetch(dirname(__FILE__) . '/Menu.html');
     }
 
     /**
@@ -41,7 +41,7 @@ class SlideOut extends QUI\Control
      *
      * @return mixed|QUI\Projects\Site
      */
-    protected function _getSite()
+    protected function getSite()
     {
         if ($this->getAttribute('Site')) {
             return $this->getAttribute('Site');

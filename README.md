@@ -62,3 +62,15 @@ Entwickler
     showHomeIcon=1
 }
 ```
+
+```
+{control control="\QUI\Menu\SlideOut"
+    data-menu-right=10
+    data-menu-top=15
+    data-show-button-on-desktop=0
+    data-qui-options-menu-width=400
+    data-qui-options-menu-button=0
+    data-qui-options-touch=0
+    data-qui-options-buttonids=mobileMenu
+}
+```

@@ -28,7 +28,7 @@ class DropDownMenu extends QUI\Control
 
         parent::__construct($attributes);
 
-        $this->addCSSFile(dirname(__FILE__).'/DropDownMenu.css');
+        $this->addCSSFile(dirname(__FILE__) . '/DropDownMenu.css');
     }
 
     /**
@@ -42,13 +42,13 @@ class DropDownMenu extends QUI\Control
         $Engine = QUI::getTemplateManager()->getEngine();
 
         $Engine->assign(array(
-            'this'     => $this,
-            'Site'     => $this->_getSite(),
-            'Project'  => $this->_getProject(),
-            'FileMenu' => dirname(__FILE__).'/DropDownMenu.Children.html'
+            'this' => $this,
+            'Site' => $this->getSite(),
+            'Project' => $this->getProject(),
+            'FileMenu' => dirname(__FILE__) . '/DropDownMenu.Children.html'
         ));
 
-        return $Engine->fetch(dirname(__FILE__).'/DropDownMenu.html');
+        return $Engine->fetch(dirname(__FILE__) . '/DropDownMenu.html');
     }
 
     /**
@@ -56,7 +56,7 @@ class DropDownMenu extends QUI\Control
      *
      * @return mixed|QUI\Projects\Site
      */
-    protected function _getSite()
+    protected function getSite()
     {
         if ($this->getAttribute('Site')) {
             return $this->getAttribute('Site');

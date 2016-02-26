@@ -50,8 +50,8 @@ class SidebarDropDownMenu extends QUI\Control
      */
     public function getBody()
     {
-        $Engine = QUI::getTemplateManager()->getEngine();
-        $Project = $this->getProject();
+        $Engine   = QUI::getTemplateManager()->getEngine();
+        $Project  = $this->getProject();
         $activeId = false;
 
         // start
