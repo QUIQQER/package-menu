@@ -34,7 +34,8 @@ define('package/quiqqer/menu/bin/SlideOut', [
             'data-show-button-on-desktop': true,
             'menu-width'                 : 256,
             'menu-button'                : true,
-            'touch'                      : false
+            'touch'                      : false,
+            'buttonids'                  : false
         },
 
         Binds: [
@@ -96,6 +97,24 @@ define('package/quiqqer/menu/bin/SlideOut', [
                     'show-button-on-desktop',
                     Elm.get('data-show-button-on-desktop').toInt()
                 );
+            }
+
+            if (typeOf(Elm.get('data-qui-options-buttonids')) === 'string') {
+                this.setAttribute('buttonids', Elm.get('data-qui-options-buttonids'));
+            }
+
+
+            if (this.getAttribute('buttonids')) {
+                var i, len, Button,
+                    ids = this.getAttribute('buttonids').split(',');
+
+                for (i = 0, len = ids.length; i < len; i++) {
+                    Button = document.id(ids[i]);
+
+                    if (Button) {
+                        Button.addEvent('click', this.toggle);
+                    }
+                }
             }
 
             // button position
@@ -175,6 +194,7 @@ define('package/quiqqer/menu/bin/SlideOut', [
             }
 
             BodyWrapper.setStyle('background', computedStyle.backgroundColor);
+            Elm.setStyle('width', this.getAttribute('menu-width'));
 
             // init slideout and set events
             this.Slideout = new Slideout({
