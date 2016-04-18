@@ -3,6 +3,7 @@
 }
 
 .quiqqer-navigation-entry {
+    align-items: flex-start;
     display: flex !important;
     flex-direction: row;
     justify-content: space-between;
