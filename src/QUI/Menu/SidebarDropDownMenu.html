@@ -7,7 +7,6 @@
 {assign var=level value=$level+1}
 {/if}
 
-
 {if count( $children )}
 <ul class="fa-ul quiqqer-navigation-level-{$level}">
     {if $level == 1 && $this->getAttribute('showBrickTitle') != ""}
@@ -47,7 +46,7 @@
             >
             {$Child->getAttribute('title')}
             </a>
-            {if count ( $subnavigation )}
+            {if count ( $subnavigation ) && ($level < $levels || $levels == 0)}
             <i class="fa quiqqer-fa-levels-icon {$levelIcon} {if $Rewrite->isIdInPath($Child->getId())} fa-nav-levels-rotate {/if} "></i>
             {/if}
         </div>
