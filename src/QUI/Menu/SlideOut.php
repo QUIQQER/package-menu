@@ -26,10 +26,10 @@ class SlideOut extends QUI\Control
         $Engine = QUI::getTemplateManager()->getEngine();
 
         $Engine->assign(array(
-            'FileMenu' => dirname(__FILE__) . '/Menu.Children.html',
-            'this' => $this,
-            'Site' => $this->getSite(),
-            'Project' => $this->getProject(),
+            'FileMenu'  => dirname(__FILE__) . '/Menu.Children.html',
+            'this'      => $this,
+            'Site'      => $this->getSite(),
+            'Project'   => $this->getProject(),
             'jsControl' => 'package/quiqqer/menu/bin/SlideOut'
         ));
 

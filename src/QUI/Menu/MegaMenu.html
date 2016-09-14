@@ -1,0 +1,44 @@
+<nav>
+    <ul class="quiqqer-menu-megaMenu-list">
+        {if $this->getAttribute('showStart')}
+        <li class="quiqqer-menu-megaMenu-list-item{if $Site->getId() == $Start->getId()} quiqqer-menu-megaMenu-list-item--current{/if}">
+            <a href="{url site=$Start}" title="{$Start->getAttribute('title')|escape:" html"}">
+            {$Start->getAttribute('title')}
+            </a>
+        </li>
+        {/if}
+
+        {foreach $children as $Child}
+            {assign var=isInPath value=0}
+            {if $Child->getId() == $Site->getId() ||
+                $Rewrite->isIdInPath($Child->getId())
+            }
+                {assign var=isInPath value=1}
+            {/if}
+        <li class="quiqqer-menu-megaMenu-list-item{if $isInPath} quiqqer-menu-megaMenu-list-item--current{/if}">
+            <a href="{url site=$Child}" title="{$Child->getAttribute('title')|escape:"html"}">
+            {$Child->getAttribute('title')}
+            </a>
+
+            <div class="quiqqer-menu-megaMenu-list-item-menu">
+                <div class="quiqqer-menu-megaMenu-list-item-menu-children">
+                    {assign var=subchildren value=$Child->getNavigation()}
+                    <ul class="quiqqer-menu-megaMenu-list-item-menu-children-list">
+                        {foreach $subchildren as $SubChild}
+                        <li class="quiqqer-menu-megaMenu-list-item-menu-children-list-entry">
+                            <a href="{url site=$SubChild}"
+                               title="{$SubChild->getAttribute('title')|escape:"html"}">
+                            {$SubChild->getAttribute('title')}
+                            </a>
+                        </li>
+                        {/foreach}
+                    </ul>
+                </div>
+                <div class="quiqqer-menu-megaMenu-list-item-menu-icon">
+                    {image src=$Child->getAttribute('image_site')}
+                </div>
+            </div>
+        </li>
+        {/foreach}
+    </ul>
+</nav>

@@ -1,0 +1,66 @@
+.quiqqer-menu-megaMenu {
+    float: left;
+    position: relative;
+    z-index: 1000;
+}
+
+.quiqqer-menu-megaMenu-list {
+    margin: 0;
+    padding: 0;
+}
+
+.quiqqer-menu-megaMenu-list-item {
+    display: block;
+    float: left;
+    list-style-type: none;
+    padding: 10px;
+    position: relative;
+}
+
+.quiqqer-menu-megaMenu-list-item a {
+    display: block;
+}
+
+/** sub menu data
+ ================================================= */
+
+.quiqqer-menu-megaMenu-list-item-menu {
+    align-content: stretch;
+    display: none;
+    flex-direction: row;
+    left: 0;
+    position: absolute;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.quiqqer-menu-megaMenu-list-item-menu-children {
+    align-self: stretch;
+    float: left;
+    flex: 1;
+    padding: 20px;
+    width: 80%;
+}
+
+.quiqqer-menu-megaMenu-list-item-menu-children-list-entry {
+    float: left;
+    margin-bottom: 20px;
+    width: 25%;
+}
+
+.quiqqer-menu-megaMenu-list-item-menu-children-list-entry:nth-child(4n+1) {
+    clear: both;
+}
+
+.quiqqer-menu-megaMenu-list-item-menu-children li {
+    list-style-type: none;
+}
+
+.quiqqer-menu-megaMenu-list-item-menu-icon {
+    background: rgba(255, 255, 255, 0.5);
+    /*display: flex;*/
+    float: left;
+    flex: 0 0 20%;
+    text-align: center;
+    width: 20%;
+}
