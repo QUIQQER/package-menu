@@ -17,12 +17,13 @@
             {/if}
         <li class="quiqqer-menu-megaMenu-list-item{if $isInPath} quiqqer-menu-megaMenu-list-item--current{/if}">
             <a href="{url site=$Child}" title="{$Child->getAttribute('title')|escape:"html"}">
-            {$Child->getAttribute('title')}
+                {$Child->getAttribute('title')}
             </a>
 
+            {assign var=subchildren value=$Child->getNavigation()}
+            {if count($subchildren)}
             <div class="quiqqer-menu-megaMenu-list-item-menu">
                 <div class="quiqqer-menu-megaMenu-list-item-menu-children">
-                    {assign var=subchildren value=$Child->getNavigation()}
                     <ul class="quiqqer-menu-megaMenu-list-item-menu-children-list">
                         {foreach $subchildren as $SubChild}
                         <li class="quiqqer-menu-megaMenu-list-item-menu-children-list-entry">
@@ -30,6 +31,11 @@
                                title="{$SubChild->getAttribute('title')|escape:"html"}">
                             {$SubChild->getAttribute('title')}
                             </a>
+                            {if $SubChild->getAttribute('short')}
+                            <div class="quiqqer-menu-megaMenu-list-item-menu-children-list-entry-short">
+                                {$SubChild->getAttribute('short')}
+                            </div>
+                            {/if}
                         </li>
                         {/foreach}
                     </ul>
@@ -38,6 +44,7 @@
                     {image src=$Child->getAttribute('image_site')}
                 </div>
             </div>
+            {/if}
         </li>
         {/foreach}
     </ul>

@@ -87,7 +87,7 @@ define('package/quiqqer/menu/bin/MegaMenu', [
             var Menu = liElement.getElement('.quiqqer-menu-megaMenu-list-item-menu');
 
             if (!Menu) {
-                return Promise.resolve();
+                return this.$hide();
             }
 
             this.$Menu.set('html', Menu.get('html'));
