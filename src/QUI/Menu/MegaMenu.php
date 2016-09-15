@@ -12,7 +12,7 @@ use QUI;
  *
  * @package QUI\Menu
  */
-class MegaMenu extends QUI\Control
+class MegaMenu extends AbstractMenu
 {
     /**
      * @param array $attributes
@@ -46,7 +46,9 @@ class MegaMenu extends QUI\Control
             'Start'     => $this->getStart(),
             'children'  => $this->getStart()->getNavigation(),
             'Rewrite'   => QUI::getRewrite(),
-            'jsControl' => 'package/quiqqer/menu/bin/MegaMenu'
+            'jsControl' => 'package/quiqqer/menu/bin/MegaMenu',
+            'prepend'   => $this->prepend,
+            'append'    => $this->append
         ));
 
         return $Engine->fetch(dirname(__FILE__) . '/MegaMenu.html');

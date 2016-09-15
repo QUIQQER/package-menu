@@ -1,4 +1,6 @@
 <nav>
+    {$prepend}
+
     <ul class="quiqqer-menu-megaMenu-list">
         {if $this->getAttribute('showStart')}
         <li class="quiqqer-menu-megaMenu-list-item{if $Site->getId() == $Start->getId()} quiqqer-menu-megaMenu-list-item--current{/if}">
@@ -66,4 +68,6 @@
         </li>
         {/foreach}
     </ul>
+
+    {$append}
 </nav>
