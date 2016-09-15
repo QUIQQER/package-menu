@@ -31,10 +31,28 @@
                                title="{$SubChild->getAttribute('title')|escape:"html"}">
                             {$SubChild->getAttribute('title')}
                             </a>
-                            {if $SubChild->getAttribute('short')}
+
+                            {assign var=subsubchildren value=$SubChild->getNavigation()}
+
+                            {if count($subsubchildren)}
                             <div class="quiqqer-menu-megaMenu-list-item-menu-children-list-entry-short">
-                                {$SubChild->getAttribute('short')}
+                            <ul>
+                                {foreach $subsubchildren as $SubSubChild}
+                                <li>
+                                    <a href="{url site=$SubSubChild}"
+                                       title="{$SubSubChild->getAttribute('title')|escape:"html"}">
+                                    {$SubSubChild->getAttribute('title')}
+                                    </a>
+                                </li>
+                                {/foreach}
+                            </ul>
                             </div>
+                            {else}
+                                {if $SubChild->getAttribute('short')}
+                                <div class="quiqqer-menu-megaMenu-list-item-menu-children-list-entry-short">
+                                    {$SubChild->getAttribute('short')}
+                                </div>
+                                {/if}
                             {/if}
                         </li>
                         {/foreach}
