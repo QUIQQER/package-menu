@@ -18,11 +18,13 @@
                 {assign var=isInPath value=1}
             {/if}
         <li class="quiqqer-menu-megaMenu-list-item{if $isInPath} quiqqer-menu-megaMenu-list-item--current{/if}">
+            {assign var=subchildren value=$Child->getNavigation()}
             <a href="{url site=$Child}" title="{$Child->getAttribute('title')|escape:"html"}">
                 {$Child->getAttribute('title')}
+
+                {if count($subchildren)}<span class="fa fa-angle-down"></span>{/if}
             </a>
 
-            {assign var=subchildren value=$Child->getNavigation()}
             {if count($subchildren)}
             <div class="quiqqer-menu-megaMenu-list-item-menu">
                 <div class="quiqqer-menu-megaMenu-list-item-menu-children">
