@@ -28,75 +28,8 @@
 .quiqqer-menu-megaMenu-list-item-menu {
     align-content: stretch;
     display: none;
-    flex-direction: row;
     left: 0;
     position: absolute;
     max-width: 1200px;
     width: 100%;
-}
-
-.quiqqer-menu-megaMenu-list-item-menu-children {
-    align-self: stretch;
-    float: left;
-    flex: 1;
-    padding: 10px;
-    width: 80%;
-}
-
-/* ul */
-.quiqqer-menu-megaMenu-list-item-menu-children-list {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-/* li's */
-.quiqqer-menu-megaMenu-list-item-menu-children-list-entry {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    float: left;
-    font-size: 14px;
-    font-weight: bold;
-    list-style-type: none;
-    padding: 20px;
-    width: 33.3333%;
-}
-
-.quiqqer-menu-megaMenu-list-item-menu-children-list-entry:hover {
-    background: rgba(0, 0, 0, 0.1);
-}
-
-.quiqqer-menu-megaMenu-list-item-menu-children-list-entry-short {
-    clear: both;
-    float: left;
-    font-size: 12px;
-    font-weight: normal;
-    margin: 10px 0 0;
-    width: 100%;
-}
-
-.quiqqer-menu-megaMenu-list-item-menu-children-list-entry-short ul {
-    margin-left: 20px;
-}
-
-.quiqqer-menu-megaMenu-list-item-menu-children-list-entry:nth-child(3n+1) {
-    clear: both;
-}
-
-.quiqqer-menu-megaMenu-list-item-menu-icon {
-    align-items: center;
-    background: rgba(255, 255, 255, 0.5);
-    display: flex;
-    float: left;
-    flex: 0 0 20%;
-    justify-content: center;
-    text-align: center;
-    width: 20%;
-}
-
-.quiqqer-menu-megaMenu-list-item-menu-icon .quiqqer-icon {
-    font-size: 60px;
-    opacity: 0.5;
-}
-
-.quiqqer-menu-megaMenu-list-item-menu-icon .quiqqer-empty-image {
-    display: none;
 }

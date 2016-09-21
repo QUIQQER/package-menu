@@ -25,46 +25,10 @@
                 {if count($subchildren)}<span class="fa fa-angle-down"></span>{/if}
             </a>
 
-            {if count($subchildren)}
+            {control control=$childControl Site=$Child assign=Control}
+            {if $Control->count()}
             <div class="quiqqer-menu-megaMenu-list-item-menu">
-                <div class="quiqqer-menu-megaMenu-list-item-menu-children">
-                    <ul class="quiqqer-menu-megaMenu-list-item-menu-children-list">
-                        {foreach $subchildren as $SubChild}
-                        <li class="quiqqer-menu-megaMenu-list-item-menu-children-list-entry">
-                            <a href="{url site=$SubChild}"
-                               title="{$SubChild->getAttribute('title')|escape:"html"}">
-                            {$SubChild->getAttribute('title')}
-                            </a>
-
-                            {assign var=subsubchildren value=$SubChild->getNavigation()}
-
-                            {if count($subsubchildren)}
-                            <div class="quiqqer-menu-megaMenu-list-item-menu-children-list-entry-short">
-                            <ul>
-                                {foreach $subsubchildren as $SubSubChild}
-                                <li>
-                                    <a href="{url site=$SubSubChild}"
-                                       title="{$SubSubChild->getAttribute('title')|escape:"html"}">
-                                    {$SubSubChild->getAttribute('title')}
-                                    </a>
-                                </li>
-                                {/foreach}
-                            </ul>
-                            </div>
-                            {else}
-                                {if $SubChild->getAttribute('short')}
-                                <div class="quiqqer-menu-megaMenu-list-item-menu-children-list-entry-short">
-                                    {$SubChild->getAttribute('short')}
-                                </div>
-                                {/if}
-                            {/if}
-                        </li>
-                        {/foreach}
-                    </ul>
-                </div>
-                <div class="quiqqer-menu-megaMenu-list-item-menu-icon">
-                    {image src=$Child->getAttribute('image_site') width=200}
-                </div>
+                {$Control->create()}
             </div>
             {/if}
         </li>

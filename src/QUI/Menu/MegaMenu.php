@@ -20,9 +20,10 @@ class MegaMenu extends AbstractMenu
     public function __construct($attributes = array())
     {
         $this->setAttributes(array(
-            'showStart' => false,
-            'Start'     => false,
-            'data-qui'  => 'package/quiqqer/menu/bin/MegaMenu'
+            'showStart'   => false,
+            'Start'       => false,
+            'data-qui'    => 'package/quiqqer/menu/bin/MegaMenu',
+            'displayType' => ''
         ));
 
         parent::__construct($attributes);
@@ -39,16 +40,24 @@ class MegaMenu extends AbstractMenu
     {
         $Engine = QUI::getTemplateManager()->getEngine();
 
+        switch ($this->getAttribute('displayType')) {
+            default:
+            case QUI\Menu\Mega\Standard::class:
+                $childControl = QUI\Menu\Mega\Standard::class;
+                break;
+        }
+
         $Engine->assign(array(
-            'this'      => $this,
-            'Site'      => $this->getSite(),
-            'Project'   => $this->getProject(),
-            'Start'     => $this->getStart(),
-            'children'  => $this->getStart()->getNavigation(),
-            'Rewrite'   => QUI::getRewrite(),
-            'jsControl' => 'package/quiqqer/menu/bin/MegaMenu',
-            'prepend'   => $this->prepend,
-            'append'    => $this->append
+            'this'         => $this,
+            'Site'         => $this->getSite(),
+            'Project'      => $this->getProject(),
+            'Start'        => $this->getStart(),
+            'children'     => $this->getStart()->getNavigation(),
+            'Rewrite'      => QUI::getRewrite(),
+            'jsControl'    => 'package/quiqqer/menu/bin/MegaMenu',
+            'prepend'      => $this->prepend,
+            'append'       => $this->append,
+            'childControl' => $childControl
         ));
 
         return $Engine->fetch(dirname(__FILE__) . '/MegaMenu.html');
