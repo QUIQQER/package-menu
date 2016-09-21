@@ -1,24 +1,41 @@
 .quiqqer-menu-megaMenu-children-image {
+    display: flex;
+    flex-wrap: wrap;
     float: left;
     width: 100%;
 }
 
 .quiqqer-menu-megaMenu-children-image-entry {
+    /*flex-grow: 1;*/
     float: left;
-    padding: 0 10px;
-    width: 25%
+    margin-bottom: 10px;
+    min-width: 25%;
+    padding: 10px;
+    width: 25%;
 }
 
 .quiqqer-menu-megaMenu-children-image-entry-img {
     background-position: center center;
+    background-repeat: no-repeat;
     background-size: cover;
+    border: 1px solid rgba(0, 0, 0, 0.2);
     float: left;
-    padding-bottom: 56.25%; /*   16:9*/
+    padding-bottom: 56.25%; /* 16:9 */
+    position: relative;
+    width: 100%;
+}
+
+.quiqqer-menu-megaMenu-children-image-entry-img .quiqqer-icon {
+    font-size: 60px;
+    position: absolute;
+    top: calc(50% - 30px);
+    text-align: center;
     width: 100%;
 }
 
 .quiqqer-menu-megaMenu-children-image-entry-title {
     clear: both;
     float: left;
+    padding: 5px 0;
     width: 100%;
 }

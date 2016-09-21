@@ -1,10 +1,16 @@
 {foreach $children as $Child}
 <div class="quiqqer-menu-megaMenu-children-image-entry">
-    <div class="quiqqer-menu-megaMenu-children-image-entry-img">
-        {image src=$Child->getAttribute('image_site') width=300}
-    </div>
-    <a href="{url Site=$Child}" class="quiqqer-menu-megaMenu-children-image-entry-title">
-        {$Child->getAttribute('title')}
+    <a href="{url Site=$Child}">
+        {image src=$Child->getAttribute('image_site') width=300 assign=bg onlysrc=1}
+        <div class="quiqqer-menu-megaMenu-children-image-entry-img"
+             style="background-image: url('{$bg}')"
+        >
+            &nbsp;
+            {image src=$Child->getAttribute('image_site') onlyicon=1}
+        </div>
+        <span class="quiqqer-menu-megaMenu-children-image-entry-title">
+            {$Child->getAttribute('title')}
+        </span>
     </a>
 </div>
 {/foreach}

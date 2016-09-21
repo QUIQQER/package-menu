@@ -27,6 +27,7 @@
 
 .quiqqer-menu-megaMenu-list-item-menu {
     align-content: stretch;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.35);
     display: none;
     left: 0;
     position: absolute;
