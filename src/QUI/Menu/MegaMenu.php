@@ -20,10 +20,10 @@ class MegaMenu extends AbstractMenu
     public function __construct($attributes = array())
     {
         $this->setAttributes(array(
-            'showStart'   => false,
-            'Start'       => false,
-            'data-qui'    => 'package/quiqqer/menu/bin/MegaMenu',
-            'displayType' => ''
+            'showStart' => false,
+            'Start'     => false,
+            'data-qui'  => 'package/quiqqer/menu/bin/MegaMenu',
+            'display'   => ''
         ));
 
         parent::__construct($attributes);
@@ -40,8 +40,14 @@ class MegaMenu extends AbstractMenu
     {
         $Engine = QUI::getTemplateManager()->getEngine();
 
-        switch ($this->getAttribute('displayType')) {
+        switch ($this->getAttribute('display')) {
+            case 'Image':
+            case QUI\Menu\Mega\Image::class:
+                $childControl = QUI\Menu\Mega\Image::class;
+                break;
+
             default:
+            case 'Standard':
             case QUI\Menu\Mega\Standard::class:
                 $childControl = QUI\Menu\Mega\Standard::class;
                 break;
