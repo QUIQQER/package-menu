@@ -23,7 +23,7 @@ class MegaMenu extends AbstractMenu
             'showStart' => false,
             'Start'     => false,
             'data-qui'  => 'package/quiqqer/menu/bin/MegaMenu',
-            'display'   => ''
+            'display'   => $this->getProject()->getConfig('menu.settings.type')
         ));
 
         parent::__construct($attributes);
