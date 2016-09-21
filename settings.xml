@@ -16,7 +16,7 @@
                 <categories>
                     <category name="menu">
                         <text>Menu</text>
-                        <icon>fa fa-menu</icon>
+                        <icon>fa fa-bars</icon>
 
                         <settings title="menu.settings" name="menu.settings">
                             <title>
