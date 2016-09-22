@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <locales>
     <groups name="quiqqer/menu" datatype="php,js">
+        <locale name="menu.settings.category">
+            <de><![CDATA[Menü]]></de>
+            <en><![CDATA[Menu]]></en>
+        </locale>
+        <locale name="menu.settings.title">
+            <de><![CDATA[Menü]]></de>
+            <en><![CDATA[Menu]]></en>
+        </locale>
+        <locale name="menu.settings.type">
+            <de><![CDATA[Menü Art]]></de>
+            <en><![CDATA[Menu type]]></en>
+        </locale>
+        <locale name="menu.settings.Standard">
+            <de><![CDATA[MegaMenu - mit Unterseiten]]></de>
+            <en><![CDATA[MegaMenu - with sub pages]]></en>
+        </locale>
+        <locale name="menu.settings.Icons">
+            <de><![CDATA[MegaMenu - Unterseiten mit Icons]]></de>
+            <en><![CDATA[MegaMenu - Sub pages with icons]]></en>
+        </locale>
+        <locale name="menu.settings.IconsDescription">
+            <de><![CDATA[MegaMenu - Unterseiten mit Icons, Bilder und Beschreibung]]></de>
+            <en><![CDATA[MegaMenu - Sub pages with Icons, Images and Descriptions]]></en>
+        </locale>
+        <locale name="menu.settings.Image">
+            <de><![CDATA[MegaMenu - Grosse Seitenbilder]]></de>
+            <en><![CDATA[MegaMenu - Big page images]]></en>
+        </locale>
+
         <locale name="menu.control.navigation.setting.startId">
             <de><![CDATA[Start-ID]]></de>
             <en><![CDATA[Start ID]]></en>

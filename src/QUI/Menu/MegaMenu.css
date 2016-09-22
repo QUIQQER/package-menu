@@ -1,0 +1,50 @@
+.quiqqer-menu-megaMenu {
+    float: left;
+    position: relative;
+    z-index: 50;
+    width: 100%;
+}
+
+.quiqqer-menu-megaMenu-list {
+    margin: 0;
+    padding: 0;
+}
+
+.quiqqer-menu-megaMenu-list-item {
+    display: block;
+    float: left;
+    list-style-type: none;
+    padding: 10px;
+    position: relative;
+}
+
+.quiqqer-menu-megaMenu-list-item a {
+    display: block;
+}
+
+/** sub menu data
+ ================================================= */
+
+.quiqqer-menu-megaMenu-list-item-menu {
+    align-content: stretch;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.35);
+    display: none;
+    left: 0;
+    position: absolute;
+    max-width: 1200px;
+    width: 100%;
+}
+
+
+
+/** sub menu data
+ ================================================= */
+
+.quiqqer-menu-megaMenu-mobile {
+    cursor: pointer;
+    display: block;
+    float: right;
+    font-size: 20px;
+    line-height: 60px;
+    padding: 0 10px;
+}

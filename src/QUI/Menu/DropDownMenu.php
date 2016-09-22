@@ -42,9 +42,9 @@ class DropDownMenu extends QUI\Control
         $Engine = QUI::getTemplateManager()->getEngine();
 
         $Engine->assign(array(
-            'this' => $this,
-            'Site' => $this->getSite(),
-            'Project' => $this->getProject(),
+            'this'     => $this,
+            'Site'     => $this->getSite(),
+            'Project'  => $this->getProject(),
             'FileMenu' => dirname(__FILE__) . '/DropDownMenu.Children.html'
         ));
 

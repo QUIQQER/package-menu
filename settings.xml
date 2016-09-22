@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiqqer>
+    <project>
+
+        <settings>
+            <config>
+                <section name="menu.settings">
+                    <conf name="type">
+                        <type><![CDATA[string]]></type>
+                    </conf>
+                </section>
+            </config>
+
+
+            <window>
+                <categories>
+                    <category name="menu">
+                        <text>
+                            <locale group="quiqqer/menu" var="menu.settings.category"/>
+                        </text>
+                        <icon>fa fa-bars</icon>
+
+                        <settings title="menu.settings" name="menu.settings">
+                            <title>
+                                <locale group="quiqqer/menu" var="menu.settings.title"/>
+                            </title>
+                            <select conf="menu.settings.type">
+                                <text>
+                                    <locale group="quiqqer/menu" var="menu.settings.type"/>
+                                </text>
+                                <option value="Standard">
+                                    <locale group="quiqqer/menu" var="menu.settings.Standard"/>
+                                </option>
+                                <option value="Icons">
+                                    <locale group="quiqqer/menu" var="menu.settings.Icons"/>
+                                </option>
+                                <option value="IconsDescription">
+                                    <locale group="quiqqer/menu" var="menu.settings.IconsDescription"/>
+                                </option>
+                                <option value="Image">
+                                    <locale group="quiqqer/menu" var="menu.settings.Image"/>
+                                </option>
+                            </select>
+                        </settings>
+                    </category>
+                </categories>
+
+            </window>
+        </settings>
+
+    </project>
+</quiqqer>

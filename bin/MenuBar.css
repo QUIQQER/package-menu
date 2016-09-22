@@ -1,0 +1,31 @@
+.quiqqer-menu-menubar {
+    background: rgba(255, 255, 255, 0.9);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+    box-sizing: content-box;
+    height: 60px;
+    left: 0;
+    position: fixed;
+    top: -100px;
+    width: 100%;
+    z-index: 900;
+}
+
+.quiqqer-menu-menubar-item {
+    border: none;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    float: left;
+    padding: 0 20px;
+    position: relative;
+    line-height: 58px;
+}
+
+.quiqqer-menu-menubar-item-icon,
+.quiqqer-menu-menubar-item-title {
+    float: left;
+    line-height: 60px;
+}
+
+.quiqqer-menu-menubar-item-icon {
+    padding-right: 10px;
+}

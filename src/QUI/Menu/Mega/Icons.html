@@ -1,0 +1,38 @@
+<ul class="quiqqer-menu-megaMenu-children-icons-list">
+    {foreach $children as $Child}
+    <li class="quiqqer-menu-megaMenu-children-icons-list-entry">
+        <a href="{url site=$Child}"
+           title="{$Child->getAttribute('title')|escape:" html"}">
+        {$Child->getAttribute('title')}
+        </a>
+
+        {assign var=subchildren value=$Child->getNavigation()}
+
+        {if count($subchildren)}
+        <div class="quiqqer-menu-megaMenu-children-icons-list-entry-short">
+            <ul>
+                {foreach $subchildren as $SubChild}
+                <li>
+                    <a href="{url site=$SubChild}"
+                       title="{$SubChild->getAttribute('title')|escape:" html"}"
+                       class="quiqqer-menu-megaMenu-children-icons-list-entry-short-link"
+                    >
+                        {image src=$SubChild->getAttribute('image_site') onlyicon=1}
+                        <span class="quiqqer-menu-megaMenu-children-icons-list-entry-short-link-title">
+                            {$SubChild->getAttribute('title')}
+                        </span>
+                    </a>
+                </li>
+                {/foreach}
+            </ul>
+        </div>
+        {else}
+        {if $Child->getAttribute('short')}
+        <div class="quiqqer-menu-megaMenu-children-icons-list-entry-short quiqqer-menu-megaMenu-children-icons-list-short-text">
+            {$Child->getAttribute('short')}
+        </div>
+        {/if}
+        {/if}
+    </li>
+    {/foreach}
+</ul>

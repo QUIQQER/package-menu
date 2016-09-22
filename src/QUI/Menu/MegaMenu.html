@@ -1,0 +1,50 @@
+<nav class="hide-on-mobile">
+    {$prepend}
+
+    <ul class="quiqqer-menu-megaMenu-list">
+        {if $this->getAttribute('showStart')}
+        <li class="quiqqer-menu-megaMenu-list-item{if $Site->getId() == $Start->getId()} quiqqer-menu-megaMenu-list-item--current{/if}">
+            <a href="{url site=$Start}" title="{$Start->getAttribute('title')|escape:" html"}">
+            {$Start->getAttribute('title')}
+            </a>
+        </li>
+        {/if}
+
+        {foreach $children as $Child}
+            {assign var=isInPath value=0}
+            {if $Child->getId() == $Site->getId() ||
+                $Rewrite->isIdInPath($Child->getId())
+            }
+                {assign var=isInPath value=1}
+            {/if}
+        <li class="quiqqer-menu-megaMenu-list-item{if $isInPath} quiqqer-menu-megaMenu-list-item--current{/if}">
+            {assign var=subchildren value=$Child->getNavigation()}
+            <a href="{url site=$Child}" title="{$Child->getAttribute('title')|escape:"html"}">
+                {$Child->getAttribute('title')}
+
+                {if count($subchildren)}<span class="fa fa-angle-down"></span>{/if}
+            </a>
+
+            {control control=$childControl Site=$Child assign=Control}
+            {if $Control->count()}
+            <div class="quiqqer-menu-megaMenu-list-item-menu">
+                {$Control->create()}
+            </div>
+            {/if}
+        </li>
+        {/foreach}
+    </ul>
+
+    {$append}
+</nav>
+<div class="hide-on-desktop">
+    {$prepend}
+
+    <div class="quiqqer-menu-megaMenu-mobile">
+        <span class="fa fa-bars"></span>
+        <span>Menü</span>
+    </div>
+
+    {$append}
+    {$Mobile->create()}
+</div>

@@ -2,9 +2,9 @@
 
     <div class="page-navigation">
 
-        <a href="{url id=1}" class="page-navigation-home">
+        <a href="{url site=$Project->firstChild()}" class="page-navigation-home">
             <span class="fa fa-home"></span>
-            {site id=1 attribute="title"}
+            {$Project->firstChild()->getAttribute('title')}
         </a>
 
         {include file="`$FileMenu`"
