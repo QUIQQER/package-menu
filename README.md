@@ -13,6 +13,13 @@ Packetname:
 Features
 --------
 
+- Mega Menu (mobile fähig - wechsel auf SlideOut)
+    - besitzt verschiedenen Anzeigearten
+        - MegaMenu - mit Unterseiten
+        - MegaMenu - Unterseiten mit Icons
+        - MegaMenu - Unterseiten mit Icons, Bilder und Beschreibung
+        - MegaMenu - Grosse Seitenbilder
+        - MegaMenu - Big page images
 - Elastic Menu (mobile fähig)
 - SlideOut Menu (mobile fähig)
 
@@ -44,6 +51,34 @@ MIT
 
 Entwickler
 --------
+
+**MegaMenu Beispiel**
+
+
+```php
+<?php
+
+$Menu = new \QUI\Menu\MegaMenu(array(
+    'showStart' => true,
+    'Project'   => $Site->getProject()
+));
+
+// logo hinzufügen
+$Menu->appendHTML(
+    '<a href="{url id=1}" class="page-header-menu-logo" title="Zur Startseite">
+        <img src="' . $Engine->getTemplateVariable('URL_TPL_DIR') . 'bin/images/logo.png"/>
+    </a>'
+);
+
+```
+
+```
+    <div class="page-header-menu">
+        <div class="grid-container">
+            {$Menu->create()}
+        </div>
+    </div>
+```
 
 **Control Nutzung in Smarty**
 
