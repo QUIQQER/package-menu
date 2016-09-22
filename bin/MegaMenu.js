@@ -57,8 +57,6 @@ define('package/quiqqer/menu/bin/MegaMenu', [
                 }
             }).inject(this.getElm());
 
-            this.$liSize = this.getElm().getSize().y;
-
             this.$Nav.getElements('.quiqqer-menu-megaMenu-list-item').addEvents({
                 mouseenter: function (event) {
                     var Target = event.target;
@@ -91,6 +89,13 @@ define('package/quiqqer/menu/bin/MegaMenu', [
                     }
                 }
             });
+
+            // resize
+            this.$liSize = this.getElm().getSize().y;
+
+            QUI.addEvent('resize', function () {
+                this.$liSize = this.getElm().getSize().y;
+            }.bind(this));
         },
 
         /**
