@@ -8,6 +8,7 @@
 .quiqqer-menu-megaMenu-children-icons-list {
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 /* li's */
