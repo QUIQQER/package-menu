@@ -1,4 +1,4 @@
-<nav>
+<nav class="hide-on-mobile">
     {$prepend}
 
     <ul class="quiqqer-menu-megaMenu-list">
@@ -37,3 +37,14 @@
 
     {$append}
 </nav>
+<div class="hide-on-desktop">
+    {$prepend}
+
+    <div class="quiqqer-menu-megaMenu-mobile">
+        <span class="fa fa-bars"></span>
+        <span>Menü</span>
+    </div>
+
+    {$append}
+    {$Mobile->create()}
+</div>

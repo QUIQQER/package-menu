@@ -76,6 +76,21 @@ define('package/quiqqer/menu/bin/MegaMenu', [
                     this.$hideCheck();
                 }.bind(this)
             });
+
+            var SlideNode = document.getElement('[data-qui="package/quiqqer/menu/bin/SlideOut"]'),
+                SlideOut  = QUI.Controls.getById(SlideNode.get('data-quiid'));
+
+            this.getElm().getElement('.quiqqer-menu-megaMenu-mobile').addEvents({
+                click: function () {
+                    if (!SlideOut) {
+                        SlideOut = QUI.Controls.getById(SlideNode.get('data-quiid'))
+                    }
+
+                    if (SlideOut) {
+                        SlideOut.toggle();
+                    }
+                }
+            });
         },
 
         /**

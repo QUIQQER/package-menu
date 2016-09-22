@@ -34,3 +34,17 @@
     max-width: 1200px;
     width: 100%;
 }
+
+
+
+/** sub menu data
+ ================================================= */
+
+.quiqqer-menu-megaMenu-mobile {
+    cursor: pointer;
+    display: block;
+    float: right;
+    font-size: 20px;
+    line-height: 60px;
+    padding: 0 10px;
+}

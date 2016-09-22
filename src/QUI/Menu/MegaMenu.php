@@ -15,6 +15,11 @@ use QUI;
 class MegaMenu extends AbstractMenu
 {
     /**
+     * @var SlideOut
+     */
+    protected $Mobile;
+
+    /**
      * @param array $attributes
      */
     public function __construct($attributes = array())
@@ -30,6 +35,20 @@ class MegaMenu extends AbstractMenu
 
         $this->addCSSClass('quiqqer-menu-megaMenu');
         $this->addCSSFile(dirname(__FILE__) . '/MegaMenu.css');
+
+        $this->Mobile = new QUI\Menu\SlideOut();
+
+        // defaults
+        $this->Mobile->setAttribute('Project', $this->getProject());
+        $this->Mobile->setAttribute('Site', $this->getSite());
+
+        $this->Mobile->setAttribute('data-menu-right', 10);
+        $this->Mobile->setAttribute('data-menu-top', 15);
+        $this->Mobile->setAttribute('data-show-button-on-desktop', 0);
+        $this->Mobile->setAttribute('data-qui-options-menu-width', 400);
+        $this->Mobile->setAttribute('data-qui-options-menu-button', 0);
+        $this->Mobile->setAttribute('data-qui-options-touch', 0);
+        $this->Mobile->setAttribute('data-qui-options-buttonids', 'mobileMenu');
     }
 
     /**
@@ -63,10 +82,22 @@ class MegaMenu extends AbstractMenu
                 break;
         }
 
+        $this->Mobile->setAttribute('Project', $this->getProject());
+        $this->Mobile->setAttribute('Site', $this->getSite());
+
+        $this->Mobile->setAttribute('data-menu-right', 10);
+        $this->Mobile->setAttribute('data-menu-top', 15);
+        $this->Mobile->setAttribute('data-show-button-on-desktop', 0);
+        $this->Mobile->setAttribute('data-qui-options-menu-width', 400);
+        $this->Mobile->setAttribute('data-qui-options-menu-button', 0);
+        $this->Mobile->setAttribute('data-qui-options-touch', 0);
+        $this->Mobile->setAttribute('data-qui-options-buttonids', 'mobileMenu');
+
         $Engine->assign(array(
             'this'         => $this,
             'Site'         => $this->getSite(),
             'Project'      => $this->getProject(),
+            'Mobile'       => $this->Mobile,
             'Start'        => $this->getStart(),
             'children'     => $this->getStart()->getNavigation(),
             'Rewrite'      => QUI::getRewrite(),
