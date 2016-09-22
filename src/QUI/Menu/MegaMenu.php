@@ -51,6 +51,11 @@ class MegaMenu extends AbstractMenu
                 $childControl = QUI\Menu\Mega\Icons::class;
                 break;
 
+            case 'IconsDescription':
+            case QUI\Menu\Mega\IconsDescription::class:
+                $childControl = QUI\Menu\Mega\IconsDescription::class;
+                break;
+
             default:
             case 'Standard':
             case QUI\Menu\Mega\Standard::class:

@@ -24,9 +24,18 @@
                             </title>
                             <select conf="menu.settings.type">
                                 <text>Header-Logo</text>
-                                <option value="Standard">MegaMenu - mit Unterseiten</option>
-                                <option value="Image">MegaMenu - Grosse Seitenbilder</option>
-                                <option value="Icons">MegaMenu - mit Icons</option>
+                                <option value="Standard">
+                                    MegaMenu - mit Unterseiten
+                                </option>
+                                <option value="Icons">
+                                    MegaMenu - Unterseiten mit Icons
+                                </option>
+                                <option value="IconsDescription">
+                                    MegaMenu - Unterseiten mit Icons, Bilder und Beschreibung
+                                </option>
+                                <option value="Image">
+                                    MegaMenu - Grosse Seitenbilder
+                                </option>
                             </select>
                         </settings>
                     </category>
