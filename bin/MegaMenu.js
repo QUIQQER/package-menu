@@ -22,6 +22,10 @@ define('package/quiqqer/menu/bin/MegaMenu', [
             '$onImport'
         ],
 
+        options: {
+            delay: 500
+        },
+
         initialize: function (options) {
             this.parent(options);
 
@@ -29,9 +33,11 @@ define('package/quiqqer/menu/bin/MegaMenu', [
                 onImport: this.$onImport
             });
 
-            this.$liSize = 0;
-            this.$enter  = false;
-            this.$Nav    = null;
+            this.$liSize  = 0;
+            this.$enter   = false;
+            this.$visible = false;
+            this.$Nav     = null;
+            this.$timer   = null;
         },
 
         /**
@@ -66,10 +72,22 @@ define('package/quiqqer/menu/bin/MegaMenu', [
                     }
 
                     this.$enter = true;
-                    this.showMenuFor(Target);
+
+                    if (this.$visible) {
+                        this.showMenuFor(Target);
+                        return;
+                    }
+
+                    this.$timer = (function () {
+                        this.showMenuFor(Target);
+                    }).delay(this.getAttribute('delay'), this);
                 }.bind(this),
 
                 mouseleave: function () {
+                    if (this.$timer) {
+                        clearTimeout(this.$timer);
+                    }
+
                     this.$enter = false;
                     this.$hideCheck();
                 }.bind(this)
@@ -121,6 +139,7 @@ define('package/quiqqer/menu/bin/MegaMenu', [
          */
         $show: function () {
             return new Promise(function (resolve) {
+                this.$visible = true;
                 this.$Menu.setStyles({
                     display: 'flex',
                     top    : this.$liSize // vorerst, sonst schauts doof aus
@@ -142,6 +161,7 @@ define('package/quiqqer/menu/bin/MegaMenu', [
          */
         $hide: function () {
             return new Promise(function (resolve) {
+                this.$visible = false;
                 moofx(this.$Menu).animate({
                     opacity: 0,
                     top    : this.$liSize - 10
