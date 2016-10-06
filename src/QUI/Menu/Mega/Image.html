@@ -1,6 +1,6 @@
 {foreach $children as $Child}
 <div class="quiqqer-menu-megaMenu-children-image-entry">
-    <a href="{url Site=$Child}">
+    <a href="{url site=$Child}">
         {image src=$Child->getAttribute('image_site') width=300 assign=bg onlysrc=1}
         <div class="quiqqer-menu-megaMenu-children-image-entry-img"
              style="background-image: url('{$bg}')"
