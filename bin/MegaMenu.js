@@ -107,6 +107,30 @@ define('package/quiqqer/menu/bin/MegaMenu', [
 
             this.$Menu.set('html', Menu.get('html'));
 
+            this.$Menu.getElements('a').addEvent('click', function (event) {
+                var Link = event.target;
+                if (Link.nodeName != 'A') {
+                    Link = Link.getParent('a');
+                }
+
+                event.stop();
+                window.location = Link.get('href');
+            });
+
+            this.$Menu.getElements('li').addEvent('click', function (event) {
+                var List = event.target;
+                if (List.nodeName != 'LI') {
+                    List = List.getParent('LI');
+                }
+
+                var children = List.getChildren('a');
+
+                if (children.length) {
+                    event.stop();
+                    window.location = children[0].get('href');
+                }
+            });
+
             return this.$show();
         },
 

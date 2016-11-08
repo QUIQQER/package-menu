@@ -24,6 +24,7 @@
 
 .quiqqer-menu-megaMenu-children-iconsDesc-list-entry:hover {
     background: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
 .quiqqer-menu-megaMenu-children-iconsDesc-list-entry li {
