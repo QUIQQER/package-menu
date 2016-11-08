@@ -22,10 +22,6 @@ define('package/quiqqer/menu/bin/MegaMenu', [
             '$onImport'
         ],
 
-        options: {
-            delay: 500
-        },
-
         initialize: function (options) {
             this.parent(options);
 
@@ -33,11 +29,9 @@ define('package/quiqqer/menu/bin/MegaMenu', [
                 onImport: this.$onImport
             });
 
-            this.$liSize  = 0;
-            this.$enter   = false;
-            this.$visible = false;
-            this.$Nav     = null;
-            this.$timer   = null;
+            this.$liSize = 0;
+            this.$enter  = false;
+            this.$Nav    = null;
         },
 
         /**
@@ -63,6 +57,8 @@ define('package/quiqqer/menu/bin/MegaMenu', [
                 }
             }).inject(this.getElm());
 
+            this.$liSize = this.getElm().getSize().y;
+
             this.$Nav.getElements('.quiqqer-menu-megaMenu-list-item').addEvents({
                 mouseenter: function (event) {
                     var Target = event.target;
@@ -72,22 +68,10 @@ define('package/quiqqer/menu/bin/MegaMenu', [
                     }
 
                     this.$enter = true;
-
-                    if (this.$visible) {
-                        this.showMenuFor(Target);
-                        return;
-                    }
-
-                    this.$timer = (function () {
-                        this.showMenuFor(Target);
-                    }).delay(this.getAttribute('delay'), this);
+                    this.showMenuFor(Target);
                 }.bind(this),
 
                 mouseleave: function () {
-                    if (this.$timer) {
-                        clearTimeout(this.$timer);
-                    }
-
                     this.$enter = false;
                     this.$hideCheck();
                 }.bind(this)
@@ -107,13 +91,6 @@ define('package/quiqqer/menu/bin/MegaMenu', [
                     }
                 }
             });
-
-            // resize
-            this.$liSize = this.getElm().getSize().y;
-
-            QUI.addEvent('resize', function () {
-                this.$liSize = this.getElm().getSize().y;
-            }.bind(this));
         },
 
         /**
@@ -130,6 +107,30 @@ define('package/quiqqer/menu/bin/MegaMenu', [
 
             this.$Menu.set('html', Menu.get('html'));
 
+            this.$Menu.getElements('a').addEvent('click', function (event) {
+                var Link = event.target;
+                if (Link.nodeName != 'A') {
+                    Link = Link.getParent('a');
+                }
+
+                event.stop();
+                window.location = Link.get('href');
+            });
+
+            this.$Menu.getElements('li').addEvent('click', function (event) {
+                var List = event.target;
+                if (List.nodeName != 'LI') {
+                    List = List.getParent('LI');
+                }
+
+                var children = List.getChildren('a');
+
+                if (children.length) {
+                    event.stop();
+                    window.location = children[0].get('href');
+                }
+            });
+
             return this.$show();
         },
 
@@ -139,7 +140,6 @@ define('package/quiqqer/menu/bin/MegaMenu', [
          */
         $show: function () {
             return new Promise(function (resolve) {
-                this.$visible = true;
                 this.$Menu.setStyles({
                     display: 'flex',
                     top    : this.$liSize // vorerst, sonst schauts doof aus
@@ -161,7 +161,6 @@ define('package/quiqqer/menu/bin/MegaMenu', [
          */
         $hide: function () {
             return new Promise(function (resolve) {
-                this.$visible = false;
                 moofx(this.$Menu).animate({
                     opacity: 0,
                     top    : this.$liSize - 10

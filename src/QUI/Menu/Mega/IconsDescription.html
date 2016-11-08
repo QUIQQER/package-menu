@@ -15,10 +15,10 @@
                 <li>
                     <a href="{url site=$SubChild}"
                        title="{$SubChild->getAttribute('title')|escape:" html"}"
-                       class="quiqqer-menu-megaMenu-children-iconsDesc-list-entry-short-link"
+                    class="quiqqer-menu-megaMenu-children-iconsDesc-list-entry-short-link"
                     >
-                        {image src=$SubChild->getAttribute('image_site') width=40}
-                        <span class="quiqqer-menu-megaMenu-children-iconsDesc-list-entry-short-link-title">
+                    {image src=$SubChild->getAttribute('image_site') width=40}
+                    <span class="quiqqer-menu-megaMenu-children-iconsDesc-list-entry-short-link-title">
                             {$SubChild->getAttribute('title')}
                             {if $SubChild->getAttribute('short') !== ''}
                             <span class="quiqqer-menu-megaMenu-children-iconsDesc-list-entry-short-link-title-description">
