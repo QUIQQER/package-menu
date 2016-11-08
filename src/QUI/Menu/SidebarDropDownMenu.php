@@ -40,7 +40,7 @@ class SidebarDropDownMenu extends QUI\Control
             dirname(__FILE__) . '/SidebarDropDownMenu.css'
         );
 
-        $this->setAttribute('class', 'quiqqer-sidebar-dropdown-navigation grid-100');
+        $this->setAttribute('class', 'quiqqer-sidebar-dropdown-navigation');
     }
 
     /**
