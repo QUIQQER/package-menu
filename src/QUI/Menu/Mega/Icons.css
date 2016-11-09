@@ -58,7 +58,7 @@
 }
 
 .quiqqer-menu-megaMenu-children-icons-list-short-text {
-    color: rgba(0, 0, 0, 0.4);
+    opacity: 0.6;
 }
 
 .quiqqer-menu-megaMenu-children-icons-entry-short ul {
