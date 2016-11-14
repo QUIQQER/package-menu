@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+    <!-- global extra attributes for all sites -->
+    <attributes>
+        <attribute>quiqqer.megamenu.settings.type</attribute>
+    </attributes>
+
+    <!-- list settings -->
+    <settings>
+
+        <category>
+            <settings>
+                <title>
+                    <locale group="quiqqer/menu" var="menu.settings.category"/>
+                </title>
+
+                <select conf="quiqqer.megamenu.settings.type">
+                    <title>
+                        <locale group="quiqqer/menu" var="menu.settings.title"/>
+                    </title>
+                    <select conf="menu.settings.type">
+                        <text>
+                            <locale group="quiqqer/menu" var="menu.settings.type"/>
+                        </text>
+                        <option value=""></option>
+                        <option value="Standard">
+                            <locale group="quiqqer/menu" var="menu.settings.Standard"/>
+                        </option>
+                        <option value="Icons">
+                            <locale group="quiqqer/menu" var="menu.settings.Icons"/>
+                        </option>
+                        <option value="IconsDescription">
+                            <locale group="quiqqer/menu" var="menu.settings.IconsDescription"/>
+                        </option>
+                        <option value="Image">
+                            <locale group="quiqqer/menu" var="menu.settings.Image"/>
+                        </option>
+                    </select>
+                </select>
+            </settings>
+        </category>
+
+    </settings>
+</site>
