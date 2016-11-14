@@ -12,6 +12,7 @@
 
         {foreach $children as $Child}
             {assign var=isInPath value=0}
+            {assign var=usedControl value=$childControl}
             {if $Child->getId() == $Site->getId() ||
                 $Rewrite->isIdInPath($Child->getId())
             }
@@ -25,7 +26,11 @@
                 {if count($subchildren)}<span class="fa fa-angle-down"></span>{/if}
             </a>
 
-            {control control=$childControl Site=$Child assign=Control}
+            {if $Child->getAttribute('quiqqer.megamenu.settings.type') && $Child->getAttribute('quiqqer.megamenu.settings.type') !== ''}
+                {assign var=usedControl value=$this->getMenuControl($Child->getAttribute('quiqqer.megamenu.settings.type'))}
+            {/if}
+
+            {control control=$usedControl Site=$Child assign=Control}
             {if $Control->count()}
             <div class="quiqqer-menu-megaMenu-list-item-menu">
                 {$Control->create()}
