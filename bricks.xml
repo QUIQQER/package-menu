@@ -15,18 +15,32 @@
                 <setting name="startId" class="project-site">
                     <locale group="quiqqer/menu" var="menu.control.navigation.setting.startId"/>
                 </setting>
-                <setting name="homeLink" type="checkbox">
-                    <locale group="quiqqer/menu" var="menu.control.navigation.setting.homelink"/>
+                <setting name="parentLink" type="checkbox">
+                    <locale group="quiqqer/menu" var="menu.control.navigation.setting.parentLink"/>
                 </setting>
                 <setting name="levels" type="number">
                     <locale group="quiqqer/menu" var="menu.control.navigation.setting.levels"/>
                 </setting>
-                <setting name="homeIcon" type="text">
-                    <locale group="quiqqer/menu" var="menu.control.navigation.setting.homeIcon"/>
+
+                <setting name="listType" type="select">
+                    <locale group="quiqqer/menu" var="menu.control.navigation.setting.listType" />
+
+                    <option value="fontAwesome">
+                        <locale group="quiqqer/menu"
+                                var="menu.control.navigation.setting.listType.fontAwesome" />
+                    </option>
+                    <option value="sitePicture">
+                        <locale group="quiqqer/menu"
+                                var="menu.control.navigation.setting.listType.sitePicture" />
+                    </option>
+                    <option value="none">
+                        <locale group="quiqqer/menu"
+                                var="menu.control.navigation.setting.listType.none" />
+                    </option>
                 </setting>
-                <description name="homeIconDescription">
-                    <locale group="quiqqer/menu" var="menu.control.navigation.setting.homeIcon.description"/>
-                </description>
+                <setting name="parentIcon" type="text">
+                    <locale group="quiqqer/menu" var="menu.control.navigation.setting.parentIcon"/>
+                </setting>
 
                 <setting name="listIcon" type="text">
                     <locale group="quiqqer/menu" var="menu.control.navigation.setting.listIcon"/>

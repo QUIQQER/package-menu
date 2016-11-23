@@ -1,5 +1,7 @@
-.quiqqer-navigation li {
-    list-style: none !important;
+.quiqqer-sidebar-dropdown-navigation ul,
+.quiqqer-sidebar-dropdown-navigation ul li {
+    list-style: none;
+    padding-left: 0;
 }
 
 .quiqqer-navigation-entry {
@@ -9,12 +11,22 @@
     justify-content: space-between;
     width: 100%;
     padding: 6px 0;
+    transition: all 0.2s;
+}
+
+.quiqqer-navigation-entry-image {
+    align-items: center;
+    align-self: stretch;
+    display: flex;
+    padding-right: 10px;
+    width: 30px;
 }
 
 .quiqqer-navigation-link {
     display: flex;
     padding: 4px 0;
-    width: 100%;
+    flex-grow: 2;
+    /*width: 100%;*/
 }
 
 .quiqqer-navigation-link-no-icon {
@@ -29,6 +41,7 @@
     transition: all 0.2s;
     transition-timing-function: ease-in-out;
 }
+
 .quiqqer-fa-list-icon,
 .quiqqer-fa-levels-icon,
 .quiqqer-fa-list-icon::before,
@@ -41,10 +54,30 @@
     margin-right: 6px;
 }
 
+/* site icon */
+.quiqqer-sidebar-dropdown-navigation .quiqqer-icon {
+    line-height: 1.5em;
+    margin: 0 6px 0 0;
+    padding: 4px 0;
+}
+
 .fa-nav-levels-rotate {
     transform: rotate(180deg);
     transition: all 0.2s;
     transition-timing-function: ease-in-out;
+}
+
+i.quiqqer-fa-list-icon {
+    padding: 4px 0;
+    line-height: 1.5em;
+    margin: 0 6px 0 0;
+}
+
+i.quiqqer-fa-levels-icon {
+    padding: 4px 0;
+    line-height: 1.5em;
+    margin: 0 auto;
+    display: block;
 }
 
 /* nav toggle */
@@ -52,82 +85,34 @@
     display: none;
 }
 
-
-
-/*
- * ab hier soll Template liefern
-
-.quiqqer-navigation-entry {
-    border-bottom: 1px solid #ddd;
-}
-
-h2.quiqqer-navigation-title-style {
-    margin-bottom: 2em;
-    padding-bottom: 0.5em;
-    padding-left: 10px;
-    font-weight: bold;
-    color: #5d5d5d;
-    border-bottom: 1px solid #eee;
-}
-
-.quiqqer-navigation-li {
-    margin-bottom: 0 !important;
-}
-
-.active-bgcolor {
-    background: #eee;
-}
-
-ul.quiqqer-navigation-level-1,
-ul.quiqqer-navigation-level-2,
-ul.quiqqer-navigation-level-3,
-ul.quiqqer-navigation-level-4 {
-    padding-left: 0;
-    margin: 0 !important;
-}
-
 ul.quiqqer-navigation-level-2 .quiqqer-navigation-entry {
-    padding-left: 20px;
+    margin-left: 20px;
+    width: calc(100% - 20px);
 }
 
 ul.quiqqer-navigation-level-3 .quiqqer-navigation-entry {
-    padding-left: 40px;
+    margin-left: 40px;
+    width: calc(100% - 40px);
 }
 
-ul.quiqqer-navigation-level-4  .quiqqer-navigation-entry {
-    padding-left: 60px;
+ul.quiqqer-navigation-level-4 .quiqqer-navigation-entry {
+    margin-left: 60px;
+    width: calc(100% - 60px);
 }
 
-.quiqqer-navigation-brick {
-    margin-left: 0;
-    padding-left: 1.5em;
+/* for site icons / picture  */
+
+ul.quiqqer-navigation-level-2 .quiqqer-navigation-entry.sitePicture-class {
+    margin-left: 30px;
+    width: calc(100% - 30px);
 }
 
-.quiqqer-navigation-level-1 a,
-a.quiqqer-navigation-home {
-    text-decoration: none;
-    color: #5d5d5d;
+ul.quiqqer-navigation-level-3 .quiqqer-navigation-entry.sitePicture-class {
+    margin-left: 60px;
+    width: calc(100% - 60px);
 }
 
-.quiqqer-navigation-level-1 a:hover,
-a.quiqqer-navigation-home:hover {
-    background: none;
-    box-shadow: none;
-}
-
-.quiqqer-navigation .fa {
-    line-height:2.3em;
-}
-
-.quiqqer-navigation-active {
-    font-weight: bold;
-}
-
-.quiqqer-navigation-open,
-.quiqqer-navigation-close {
-    position: relative;
-}
-
-.quiqqer-first-li-bg {
-    background: #d9d9d9;
+ul.quiqqer-navigation-level-4 .quiqqer-navigation-entry.sitePicture-class {
+    margin-left: 90px;
+    width: calc(100% - 90px);
 }

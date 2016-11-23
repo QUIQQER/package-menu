@@ -25,13 +25,14 @@ class SidebarDropDownMenu extends QUI\Control
     {
         // defaults values
         $this->setAttributes(array(
-            'startId'   => 1, // id or site link
-            'homeLink'  => false,
-            'levels'    => false,
-            'homeIcon'  => 'fa-home',
-            'listIcon'  => 'fa-angle-right',
-            'levelIcon' => 'fa-angle-double-down',
-            'qui-class' => 'package/quiqqer/menu/bin/SidebarDropDownMenu'
+            'startId'    => 1, // id or site link
+            'parentLink' => false,
+            'levels'     => 0,
+            'listType'   => 'fontAwesome',
+            'homeIcon'   => 'fa-home',
+            'listIcon'   => 'fa-angle-right',
+            'levelIcon'  => 'fa-angle-double-down',
+            'qui-class'  => 'package/quiqqer/menu/bin/SidebarDropDownMenu'
         ));
 
         parent::__construct($attributes);
@@ -69,6 +70,14 @@ class SidebarDropDownMenu extends QUI\Control
             return '';
         }
 
+
+        if ($Site->getId() != 1) {
+            $FirstPage = $Site->getParent();
+        } else {
+            $FirstPage = $this->getProject()->firstChild();
+        }
+
+
         // active site
         $ActiveSite = QUI::getRewrite()->getSite();
 
@@ -87,14 +96,16 @@ class SidebarDropDownMenu extends QUI\Control
             'this'        => $this,
             'Project'     => $this->getProject(),
             'Site'        => $Site,
-            'homeLink'    => $homeLink = $this->getAttribute('homeLink'),
+            'FirstPage'   => $FirstPage,
+            'listType'    => $this->getAttribute('listType'),
+            'parentLink'  => $this->getAttribute('parentLink'),
             'activeId'    => $activeId,
             'navTemplate' => dirname(__FILE__) . '/SidebarDropDownMenu.html',
             'levels'      => $levels,
             'Rewrite'     => QUI::getRewrite(),
-            'homeIcon'    => $homeIcon = $this->getAttribute('homeIcon'),
-            'listIcon'    => $listIcon = $this->getAttribute('listIcon'),
-            'levelIcon'   => $levelIcon = $this->getAttribute('levelIcon')
+            'parentIcon'  => $this->getAttribute('parentIcon'),
+            'listIcon'    => $this->getAttribute('listIcon'),
+            'levelIcon'   => $this->getAttribute('levelIcon')
         ));
 
         $html = $Engine->fetch(dirname(__FILE__) . '/SidebarDropDownMenu.html');

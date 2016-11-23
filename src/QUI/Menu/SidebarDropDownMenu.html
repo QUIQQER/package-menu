@@ -1,26 +1,36 @@
+{if !isset($level)}
+    {assign var=level value=1}
+{else}
+    {assign var=level value=$level+1}
+{/if}
+
+{if $level == 1}
+    {if $this->getAttribute('showTitle') && $this->getAttribute('frontendTitle')}
+        <header class="control-header">
+        <h1>{$this->getAttribute('frontendTitle')}</h1>
+        </header>
+    {/if}
+
+    {if $this->getAttribute('content') != ""}
+        <div class="control-content">
+        {$this->getAttribute('content')}
+        </div>
+    {/if}
+{/if}
+
 {strip}
 {assign var=children value=$Site->getNavigation()}
 
-{if !isset($level)}
-{assign var=level value=1}
-{else}
-{assign var=level value=$level+1}
-{/if}
-
 {if count( $children )}
-<ul class="fa-ul quiqqer-navigation-level-{$level}">
-    {if $level == 1 && $this->getAttribute('showBrickTitle') != ""}
-    <h2 class="quiqqer-navigation-title-style">{$this->getAttribute('showBrickTitle')}</h2>
-    {/if}
-    {if $homeLink && $level == 1}
+<ul class="quiqqer-navigation-level-{$level}">
+    {if parentLink && $level == 1}
     <li class="quiqqer-navigation-li">
         <div class="quiqqer-navigation-entry">
-            {if $homeIcon}
-            <i class="fa quiqqer-fa-list-icon fa-fw {$homeIcon}"></i>
+            {if $parentIcon}
+            <i class="fa quiqqer-fa-list-icon fa-fw {$parentIcon}"></i>
             {/if}
-            <a href="{url site=$Site}" class="quiqqer-navigation-home quiqqer-navigation-link">
-                {$Site->getAttribute('title')}
-                {$this->getAttribute('homelink')}
+            <a href="{url site=$FirstPage}" class="quiqqer-navigation-firstpage quiqqer-navigation-link">
+                {$FirstPage->getAttribute('title')}
             </a>
         </div>
     </li>
@@ -28,7 +38,11 @@
     {foreach from=$children item=Child}
     <li class="quiqqer-navigation-li {if $Rewrite->isIdInPath($Child->getId())} active-bgcolor {/if}">
         {assign var=subnavigation value=$Child->getNavigation()}
-        <div class="quiqqer-navigation-entry
+        {assign var=sitePicture value=''}
+        {if $listType == 'sitePicture'}
+            {assign var=sitePicture value='sitePicture-class'}
+        {/if}
+        <div class="quiqqer-navigation-entry {$sitePicture}
             {if
                 $Rewrite->isIdInPath($Child->getId()) &&
                 $activeId != $Child->getId() &&
@@ -37,17 +51,33 @@
 
             {if $activeId == $Child->getId()} quiqqer-navigation-active{/if}">
 
-            {if $listIcon}
-            <i class="fa quiqqer-fa-list-icon fa-fw {$listIcon}"></i>
+            {if $listType == 'fontAwesome' && $listIcon}
+                <i class="fa quiqqer-fa-list-icon fa-fw {$listIcon}"></i>
             {/if}
+
+                {*if $level == 1*}
+            {if $listType == 'sitePicture'}
+                <div class="quiqqer-navigation-entry-image">
+                {if $Child->getAttribute('image_site')}
+                    {image src=$Child->getAttribute('image_site')
+                    style="width: 100%; height: auto;"
+                    maxwidth="280"}
+                {else}
+                    <img src="{$Child->getProject()->getMedia()->getPlaceholder()}" style="width: 100%; height: auto;" />
+                {/if}
+                </div>
+            {/if}
+            {*/if*}
+
+
             <a href="{url site=$Child}" class="quiqqer-navigation-link
             {if !count ( $subnavigation )} quiqqer-navigation-link-no-icon{/if}"
                {if !$listIcon}style="margin-left: 30px;"{/if}
             >
-            {$Child->getAttribute('title')}
+                {$Child->getAttribute('title')}
             </a>
             {if count ( $subnavigation ) && ($level < $levels || $levels == 0)}
-            <i class="fa quiqqer-fa-levels-icon {$levelIcon} {if $Rewrite->isIdInPath($Child->getId())} fa-nav-levels-rotate {/if} "></i>
+                <i class="fa quiqqer-fa-levels-icon {$levelIcon} {if $Rewrite->isIdInPath($Child->getId())} fa-nav-levels-rotate {/if} "></i>
             {/if}
         </div>
 
