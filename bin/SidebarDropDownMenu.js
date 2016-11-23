@@ -12,7 +12,8 @@ define('package/quiqqer/menu/bin/SidebarDropDownMenu', [
     'qui/QUI',
     'qui/controls/Control'
 
-], function (QUI, QUIControl) {
+], function (QUI, QUIControl)
+{
     "use strict";
 
     return new Class({
@@ -24,7 +25,8 @@ define('package/quiqqer/menu/bin/SidebarDropDownMenu', [
             '$onImport'
         ],
 
-        initialize: function (options) {
+        initialize: function (options)
+        {
             this.parent(options);
 
             this.addEvents({
@@ -35,20 +37,36 @@ define('package/quiqqer/menu/bin/SidebarDropDownMenu', [
         /**
          * event : on insert
          */
-        $onImport: function () {
+        $onImport: function ()
+        {
             var self         = this,
                 Parent       = this.getElm(),
                 ToggleButton = Parent.getElements(".quiqqer-fa-levels-icon");
 
-            ToggleButton.addEvent("click", function () {
-                var LiLeft = this.getParent('li');
-                var NavSubLeft = LiLeft.getElement("div.quiqqer-sub-nav-div");
+            var runs = false;
 
-                if (!NavSubLeft.getSize().y.toInt()) {
-                    self.openMenu(NavSubLeft);
+            ToggleButton.addEvent("click", function ()
+            {
+                if (runs) {
                     return;
                 }
-                self.closeMenu(NavSubLeft);
+
+                runs = true;
+
+                var LiLeft = this.getParent('li');
+                var NavSubLeft = LiLeft.getElement("div.quiqqer-sub-nav-div");
+                var Prom;
+
+                if (!NavSubLeft.getSize().y.toInt()) {
+                    Prom = self.openMenu(NavSubLeft);
+                } else {
+                    Prom = self.closeMenu(NavSubLeft);
+                }
+
+                Prom.then(function ()
+                {
+                    runs = false;
+                });
             });
         },
 
@@ -56,58 +74,66 @@ define('package/quiqqer/menu/bin/SidebarDropDownMenu', [
          * open the next level of sub menu
          *
          * @param {HTMLLIElement} NavSubLeft
+         * @return Promise
          */
-        openMenu: function (NavSubLeft) {
+        openMenu: function (NavSubLeft)
+        {
+            return new Promise(function (resolve)
+            {
+                NavSubLeft.setStyles({
+                    height  : 0,
+                    opacity : 0,
+                    overflow: "hidden",
+                    display : "block"
+                });
 
-            NavSubLeft.setStyles({
-                height  : 0,
-                opacity : 0,
-                overflow: "hidden",
-                display : "block"
+                moofx(NavSubLeft).animate({
+                    height : NavSubLeft.getElement("ul").getSize().y.toInt(),
+                    opacity: 1
+                }, {
+                    duration: 200,
+                    callback: function ()
+                    {
+                        NavSubLeft.setStyle('height', '100%');
+
+                        var Prev = NavSubLeft.getPrevious('.quiqqer-navigation-entry'),
+                            Icon = Prev.getChildren('.quiqqer-fa-levels-icon');
+
+                        Icon.addClass("fa-nav-levels-rotate");
+                        resolve();
+                    }
+                });
             });
-
-            moofx(NavSubLeft).animate({
-                height : NavSubLeft.getElement("ul").getSize().y.toInt(),
-                opacity: 1
-            }, {
-                duration: 250,
-                callback: function () {
-                    moofx(NavSubLeft).animate({
-                        height: "100%"
-                    });
-                }
-            });
-
-            var Prev = NavSubLeft.getPrevious('.quiqqer-navigation-entry'),
-                Icon = Prev.getChildren('.quiqqer-fa-levels-icon');
-
-            Icon.addClass("fa-nav-levels-rotate");
         },
 
         /**
          * close the next level of sub menu
          *
          * @param {HTMLLIElement} NavSubLeft
+         * @return Promise
          */
-        closeMenu: function (NavSubLeft) {
-            NavSubLeft.setStyle("overflow", "hidden");
+        closeMenu: function (NavSubLeft)
+        {
+            return new Promise(function (resolve)
+            {
+                NavSubLeft.setStyle("overflow", "hidden");
+                NavSubLeft.setStyle("height", NavSubLeft.getSize().y);
 
-            moofx(NavSubLeft).animate({
-                height : 0,
-                opacity: 0
-            }, {
-                duration: 250,
-                callback: function () {
-                    moofx(NavSubLeft).animate({
-                        height: 0
-                    });
-                }
+                moofx(NavSubLeft).animate({
+                    height : 0,
+                    opacity: 0
+                }, {
+                    duration: 200,
+                    callback: function ()
+                    {
+                        var Prev = NavSubLeft.getPrevious('.quiqqer-navigation-entry'),
+                            Icon = Prev.getChildren('.quiqqer-fa-levels-icon');
+
+                        Icon.removeClass("fa-nav-levels-rotate");
+                        resolve();
+                    }
+                });
             });
-
-            var Prev = NavSubLeft.getPrevious('.quiqqer-navigation-entry'),
-                Icon = Prev.getChildren('.quiqqer-fa-levels-icon');
-
-            Icon.removeClass("fa-nav-levels-rotate");
         }
     });
 });
