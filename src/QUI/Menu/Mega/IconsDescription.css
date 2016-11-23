@@ -66,13 +66,15 @@
 
 .quiqqer-menu-megaMenu-children-iconsDesc-list-entry-short-link-title-description {
     clear: both;
-    color: rgba(0, 0, 0, 0.4);
+    /*color: rgba(0, 0, 0, 0.4);*/
     display: block;
+    opacity: 0.7;
     padding: 5px 0;
 }
 
 .quiqqer-menu-megaMenu-children-iconsDesc-list-short-text {
-    color: rgba(0, 0, 0, 0.4);
+    /*color: rgba(0, 0, 0, 0.4);*/
+    opacity: 0.7;
 }
 
 .quiqqer-menu-megaMenu-children-iconsDesc-entry-short ul {

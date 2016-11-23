@@ -28,7 +28,7 @@ class MegaMenu extends AbstractMenu
             'showStart' => false,
             'Start'     => false,
             'data-qui'  => 'package/quiqqer/menu/bin/MegaMenu',
-            'display'   => $this->getProject()->getConfig('menu.settings.type')
+            'display'   => 'Standard'
         ));
 
         parent::__construct($attributes);
@@ -57,30 +57,8 @@ class MegaMenu extends AbstractMenu
      */
     public function getBody()
     {
-        $Engine = QUI::getTemplateManager()->getEngine();
-
-        switch ($this->getAttribute('display')) {
-            case 'Image':
-            case QUI\Menu\Mega\Image::class:
-                $childControl = QUI\Menu\Mega\Image::class;
-                break;
-
-            case 'Icons':
-            case QUI\Menu\Mega\Icons::class:
-                $childControl = QUI\Menu\Mega\Icons::class;
-                break;
-
-            case 'IconsDescription':
-            case QUI\Menu\Mega\IconsDescription::class:
-                $childControl = QUI\Menu\Mega\IconsDescription::class;
-                break;
-
-            default:
-            case 'Standard':
-            case QUI\Menu\Mega\Standard::class:
-                $childControl = QUI\Menu\Mega\Standard::class;
-                break;
-        }
+        $Engine       = QUI::getTemplateManager()->getEngine();
+        $childControl = $this->getMenuControl($this->getAttribute('display'));
 
         $this->Mobile->setAttribute('Project', $this->getProject());
         $this->Mobile->setAttribute('Site', $this->getSite());
@@ -120,6 +98,55 @@ class MegaMenu extends AbstractMenu
         }
 
         return $this->getProject()->firstChild();
+    }
+
+    /**
+     * Return the menu control class name for a menu control shortcut
+     *
+     * @param $control
+     * @return mixed
+     */
+    public function getMenuControl($control)
+    {
+        switch ($control) {
+            case 'Image':
+            case QUI\Menu\Mega\Image::class:
+                return QUI\Menu\Mega\Image::class;
+
+            case 'Icons':
+            case QUI\Menu\Mega\Icons::class:
+                return QUI\Menu\Mega\Icons::class;
+
+            case 'IconsDescription':
+            case QUI\Menu\Mega\IconsDescription::class:
+                return QUI\Menu\Mega\IconsDescription::class;
+
+            case 'Standard':
+            case QUI\Menu\Mega\Standard::class:
+                return QUI\Menu\Mega\Standard::class;
+        }
+
+        if ($this->getAttribute('display')) {
+            switch ($this->getAttribute('display')) {
+                case 'Image':
+                case QUI\Menu\Mega\Image::class:
+                    return QUI\Menu\Mega\Image::class;
+
+                case 'Icons':
+                case QUI\Menu\Mega\Icons::class:
+                    return QUI\Menu\Mega\Icons::class;
+
+                case 'IconsDescription':
+                case QUI\Menu\Mega\IconsDescription::class:
+                    return QUI\Menu\Mega\IconsDescription::class;
+
+                case 'Standard':
+                case QUI\Menu\Mega\Standard::class:
+                    return QUI\Menu\Mega\Standard::class;
+            }
+        }
+
+        return QUI\Menu\Mega\Standard::class;
     }
 
     /**
