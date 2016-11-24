@@ -53,10 +53,14 @@
 
 
             {if count ( $subnavigation ) && ($level < $levels || $levels == 0)}
-                <i class="fa quiqqer-fa-list-icon fa-fw {$levelIcon} quiqqer-fa-levels-icon
-                {if $Rewrite->isIdInPath($Child->getId())} fa-nav-levels-rotate{/if} "></i>
+                {if $levelIcon}
+                    <i class="fa quiqqer-fa-list-icon fa-fw {$levelIcon} quiqqer-fa-levels-icon
+                        {if $Rewrite->isIdInPath($Child->getId())} fa-nav-levels-rotate{/if} "></i>
+                {/if}
             {else}
+                {if $listIcon}
                 <i class="fa quiqqer-fa-list-icon fa-fw {$listIcon}"></i>
+                {/if}
             {/if}
 
             <a href="{url site=$Child}" class="quiqqer-navigation-link
