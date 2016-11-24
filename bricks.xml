@@ -54,7 +54,7 @@
                                 var="menu.control.navigation.setting.listType.none" />
                     </option>
                 </setting>
-                <setting name="parentIcon" type="text">
+                <!--<setting name="parentIcon" type="text">
                     <locale group="quiqqer/menu" var="menu.control.navigation.setting.parentIcon"/>
                 </setting>
 
@@ -63,7 +63,7 @@
                 </setting>
                 <setting name="levelIcon" type="text">
                     <locale group="quiqqer/menu" var="menu.control.navigation.setting.levelIcon"/>
-                </setting>
+                </setting>-->
             </settings>
         </brick>
 

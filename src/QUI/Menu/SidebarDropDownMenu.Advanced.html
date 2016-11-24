@@ -93,8 +93,7 @@
         </div>
 
         {if $levels === false || $levels-1 >= $level}
-        <div class="quiqqer-sub-nav-div
-                    {if !$Rewrite->isIdInPath($Child->getId())}quiqqer-navigation-close{/if}">
+        <div class="quiqqer-sub-nav-div {if !$Rewrite->isIdInPath($Child->getId())}quiqqer-navigation-close{/if}">
 
             {include file=$navTemplate
             Site=$Child

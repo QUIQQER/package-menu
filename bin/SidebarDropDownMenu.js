@@ -51,13 +51,6 @@ define('package/quiqqer/menu/bin/SidebarDropDownMenu', [
                     return;
                 }
 
-                /*var classNameStr = ToggleButton.className,
-                    rotated      = true;
-
-                if (classNameStr.search('-down') == -1) {
-                    rotated = false;
-                }*/
-
                 runs = true;
 
                 var LiLeft = this.getParent('li');
@@ -81,7 +74,6 @@ define('package/quiqqer/menu/bin/SidebarDropDownMenu', [
          * open the next level of sub menu
          *
          * @param {HTMLLIElement} NavSubLeft
-         * @param {boolean} rotated
          *
          * @return Promise
          */
@@ -108,9 +100,10 @@ define('package/quiqqer/menu/bin/SidebarDropDownMenu', [
                         var Prev = NavSubLeft.getPrevious('.quiqqer-navigation-entry'),
                             Icon = Prev.getChildren('.quiqqer-fa-levels-icon');
 
-//                        if (rotated === true) {
+                        if (Icon.hasClass('fa-angle-double-right')) {
                             Icon.addClass("fa-nav-levels-rotate");
-//                        }
+                        }
+
                         resolve();
                     }
                 });
@@ -121,7 +114,6 @@ define('package/quiqqer/menu/bin/SidebarDropDownMenu', [
          * close the next level of sub menu
          *
          * @param {HTMLLIElement} NavSubLeft
-         * @param {boolean} rotated
          *
          * @return Promise
          */
@@ -142,9 +134,7 @@ define('package/quiqqer/menu/bin/SidebarDropDownMenu', [
                         var Prev = NavSubLeft.getPrevious('.quiqqer-navigation-entry'),
                             Icon = Prev.getChildren('.quiqqer-fa-levels-icon');
 
-//                        if (rotated === true) {
-                            Icon.removeClass("fa-nav-levels-rotate");
-//                        }
+                        Icon.removeClass("fa-nav-levels-rotate");
                         resolve();
                     }
                 });

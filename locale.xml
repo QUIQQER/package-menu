@@ -99,8 +99,8 @@
             <ad><![CDATA[]]></ad>
         </locale>
         <locale name="menu.control.navigation.setting.levelIcon">
-            <de><![CDATA[Weitere Ebenen Icon</br>Standard: </br>fa-angle-double-down]]></de>
-            <en><![CDATA[Navigation levels icon<br/>Default: </br>fa-angle-double-down]]></en>
+            <de><![CDATA[Weitere Ebenen Icon</br>Standard: </br>fa-angle-double-right]]></de>
+            <en><![CDATA[Navigation levels icon<br/>Default: </br>fa-angle-double-right]]></en>
             <ad><![CDATA[]]></ad>
         </locale>
     </groups>

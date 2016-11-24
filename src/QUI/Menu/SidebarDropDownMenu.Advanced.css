@@ -62,7 +62,7 @@
 }
 
 .fa-nav-levels-rotate {
-    transform: rotate(180deg);
+    transform: rotate(90deg);
     transition: all 0.2s;
     transition-timing-function: ease-in-out;
 }

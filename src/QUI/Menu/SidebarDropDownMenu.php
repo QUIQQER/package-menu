@@ -32,7 +32,7 @@ class SidebarDropDownMenu extends QUI\Control
             'listType'            => 'fontAwesome',
             'homeIcon'            => 'fa-home',
             'listIcon'            => 'fa-angle-right',
-            'levelIcon'           => 'fa-angle-double-down',
+            'levelIcon'           => 'fa-angle-double-right',
             'qui-class'           => 'package/quiqqer/menu/bin/SidebarDropDownMenu',
             'display'             => 'simple'
         ));
