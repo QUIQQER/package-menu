@@ -12,6 +12,18 @@
             </description>
 
             <settings>
+                <setting name="display" type="select">
+                    <locale group="quiqqer/menu" var="menu.control.navigation.setting.display" />
+
+                    <option value="simple">
+                        <locale group="quiqqer/menu"
+                                var="menu.control.navigation.setting.display.simple" />
+                    </option>
+                    <option value="advanced">
+                        <locale group="quiqqer/menu"
+                                var="menu.control.navigation.setting.display.advanced" />
+                    </option>
+                </setting>
                 <setting name="startId" class="project-site">
                     <locale group="quiqqer/menu" var="menu.control.navigation.setting.startId"/>
                 </setting>
@@ -20,6 +32,10 @@
                 </setting>
                 <setting name="levels" type="number">
                     <locale group="quiqqer/menu" var="menu.control.navigation.setting.levels"/>
+                </setting>
+                <setting name="onlyFirstLevelIcons" type="checkbox">
+                    <locale group="quiqqer/menu"
+                            var="menu.control.navigation.setting.onlyFirstLevelIcons"/>
                 </setting>
 
                 <setting name="listType" type="select">
@@ -38,7 +54,7 @@
                                 var="menu.control.navigation.setting.listType.none" />
                     </option>
                 </setting>
-                <setting name="parentIcon" type="text">
+                <!--<setting name="parentIcon" type="text">
                     <locale group="quiqqer/menu" var="menu.control.navigation.setting.parentIcon"/>
                 </setting>
 
@@ -47,7 +63,7 @@
                 </setting>
                 <setting name="levelIcon" type="text">
                     <locale group="quiqqer/menu" var="menu.control.navigation.setting.levelIcon"/>
-                </setting>
+                </setting>-->
             </settings>
         </brick>
 

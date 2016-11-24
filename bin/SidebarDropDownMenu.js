@@ -74,6 +74,7 @@ define('package/quiqqer/menu/bin/SidebarDropDownMenu', [
          * open the next level of sub menu
          *
          * @param {HTMLLIElement} NavSubLeft
+         *
          * @return Promise
          */
         openMenu: function (NavSubLeft)
@@ -99,7 +100,10 @@ define('package/quiqqer/menu/bin/SidebarDropDownMenu', [
                         var Prev = NavSubLeft.getPrevious('.quiqqer-navigation-entry'),
                             Icon = Prev.getChildren('.quiqqer-fa-levels-icon');
 
-                        Icon.addClass("fa-nav-levels-rotate");
+                        if (Icon.hasClass('fa-angle-double-right')) {
+                            Icon.addClass("fa-nav-levels-rotate");
+                        }
+
                         resolve();
                     }
                 });
@@ -110,6 +114,7 @@ define('package/quiqqer/menu/bin/SidebarDropDownMenu', [
          * close the next level of sub menu
          *
          * @param {HTMLLIElement} NavSubLeft
+         *
          * @return Promise
          */
         closeMenu: function (NavSubLeft)

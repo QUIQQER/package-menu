@@ -25,21 +25,19 @@ class SidebarDropDownMenu extends QUI\Control
     {
         // defaults values
         $this->setAttributes(array(
-            'startId'    => 1, // id or site link
-            'parentLink' => false,
-            'levels'     => 0,
-            'listType'   => 'fontAwesome',
-            'homeIcon'   => 'fa-home',
-            'listIcon'   => 'fa-angle-right',
-            'levelIcon'  => 'fa-angle-double-down',
-            'qui-class'  => 'package/quiqqer/menu/bin/SidebarDropDownMenu'
+            'startId'             => 1, // id or site link
+            'parentLink'          => false,
+            'levels'              => 0,
+            'onlyFirstLevelIcons' => false,
+            'listType'            => 'fontAwesome',
+            'homeIcon'            => 'fa-home',
+            'listIcon'            => 'fa-angle-right',
+            'levelIcon'           => 'fa-angle-double-right',
+            'qui-class'           => 'package/quiqqer/menu/bin/SidebarDropDownMenu',
+            'display'             => 'simple'
         ));
 
         parent::__construct($attributes);
-
-        $this->addCSSFile(
-            dirname(__FILE__) . '/SidebarDropDownMenu.css'
-        );
 
         $this->setAttribute('class', 'quiqqer-sidebar-dropdown-navigation');
     }
@@ -92,23 +90,39 @@ class SidebarDropDownMenu extends QUI\Control
             $levels = false;
         }
 
+        switch ($this->getAttribute('display')) {
+            default:
+            case 'simple':
+                $css      = dirname(__FILE__) . '/SidebarDropDownMenu.Simple.css';
+                $template = dirname(__FILE__) . '/SidebarDropDownMenu.Simple.html';
+                break;
+
+            case 'advanced':
+                $css      = dirname(__FILE__) . '/SidebarDropDownMenu.Advanced.css';
+                $template = dirname(__FILE__) . '/SidebarDropDownMenu.Advanced.html';
+                break;
+        }
+
         $Engine->assign(array(
-            'this'        => $this,
-            'Project'     => $this->getProject(),
-            'Site'        => $Site,
-            'FirstPage'   => $FirstPage,
-            'listType'    => $this->getAttribute('listType'),
-            'parentLink'  => $this->getAttribute('parentLink'),
-            'activeId'    => $activeId,
-            'navTemplate' => dirname(__FILE__) . '/SidebarDropDownMenu.html',
-            'levels'      => $levels,
-            'Rewrite'     => QUI::getRewrite(),
-            'parentIcon'  => $this->getAttribute('parentIcon'),
-            'listIcon'    => $this->getAttribute('listIcon'),
-            'levelIcon'   => $this->getAttribute('levelIcon')
+            'this'                => $this,
+            'Project'             => $this->getProject(),
+            'Site'                => $Site,
+            'FirstPage'           => $FirstPage,
+            'listType'            => $this->getAttribute('listType'),
+            'parentLink'          => $this->getAttribute('parentLink'),
+            'activeId'            => $activeId,
+            'navTemplate'         => $template,
+            'levels'              => $levels,
+            'Rewrite'             => QUI::getRewrite(),
+            'parentIcon'          => $this->getAttribute('parentIcon'),
+            'listIcon'            => $this->getAttribute('listIcon'),
+            'levelIcon'           => $this->getAttribute('levelIcon'),
+            'onlyFirstLevelIcons' => $this->getAttribute('onlyFirstLevelIcons')
         ));
 
-        $html = $Engine->fetch(dirname(__FILE__) . '/SidebarDropDownMenu.html');
+        $this->addCSSFile($css);
+
+        $html = $Engine->fetch($template);
         $html = '<nav>' . $html . '</nav>';
 
         return $html;
