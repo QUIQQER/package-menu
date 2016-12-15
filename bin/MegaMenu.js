@@ -60,6 +60,43 @@ define('package/quiqqer/menu/bin/MegaMenu', [
             this.$liSize = this.getElm().getSize().y;
 
             this.$Nav.getElements('.quiqqer-menu-megaMenu-list-item').addEvents({
+                touchend: function (event) {
+                    event.stop();
+
+                    var self   = this,
+                        Target = event.target;
+
+                    if (Target.nodeName != 'LI') {
+                        Target = Target.getParent('li');
+                    }
+
+                    var Menu = Target.getElement('.quiqqer-menu-megaMenu-list-item-menu');
+
+                    if (!Menu) {
+                        window.location = Target.getElement('a').get('href');
+                        return;
+                    }
+
+                    if (this.$Menu.getStyle('display') === 'flex') {
+                        window.location = Target.getElement('a').get('href');
+                        return;
+                    }
+
+                    this.$Menu.set('tabindex', -1);
+                    this.$Menu.setStyle('outline', 0);
+
+                    this.$Menu.addEvent('blur', function () {
+                        self.$enter = false;
+                        self.$hideCheck();
+                        self.$Menu.removeEvent('blur', this);
+                    });
+
+                    this.$enter = true;
+                    this.showMenuFor(Target).then(function () {
+                        this.$Menu.focus();
+                    }.bind(this));
+                }.bind(this),
+
                 mouseenter: function (event) {
                     var Target = event.target;
 
@@ -97,6 +134,7 @@ define('package/quiqqer/menu/bin/MegaMenu', [
          * Shows the menu for the li element
          *
          * @param {HTMLLIElement} liElement
+         * @return {Promise}
          */
         showMenuFor: function (liElement) {
             var Menu = liElement.getElement('.quiqqer-menu-megaMenu-list-item-menu');
