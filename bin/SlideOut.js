@@ -170,9 +170,7 @@ define('package/quiqqer/menu/bin/SlideOut', [
                 this.MenuButton.setStyle('top', this.getAttribute('top'));
                 this.MenuButton.setStyle('bottom', null);
             }
-
-            console.warn(Elm.get('data-menu-top'));
-
+            
             if (this.getAttribute('left')) {
                 this.MenuButton.setStyle('left', this.getAttribute('left'));
                 this.MenuButton.setStyle('right', null);
