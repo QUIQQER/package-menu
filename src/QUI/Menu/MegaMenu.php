@@ -64,7 +64,7 @@ class MegaMenu extends AbstractMenu
         $this->Mobile->setAttribute('Site', $this->getSite());
 
         $this->Mobile->setAttribute('data-menu-right', 10);
-        $this->Mobile->setAttribute('data-menu-top', 123);
+        $this->Mobile->setAttribute('data-menu-top', 15);
         $this->Mobile->setAttribute('data-show-button-on-desktop', 0);
         $this->Mobile->setAttribute('data-qui-options-menu-width', 400);
         $this->Mobile->setAttribute('data-qui-options-menu-button', 0);
