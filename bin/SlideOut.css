@@ -28,6 +28,10 @@
     transition: all 0.3s ease-in-out;
 }
 
+/*.page-menu-close {
+    top: 10px !important;
+}*/
+
 .page-menu-close:hover,
 .page-menu-close:focus {
     background: rgba(255,255,255,0.1);
@@ -159,7 +163,6 @@
     position: fixed;
     right: 0;
     top: 0;
-    width: 256px;
     z-index: 0;
 }
 

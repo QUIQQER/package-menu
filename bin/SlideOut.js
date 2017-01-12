@@ -5,6 +5,7 @@
  * @author www.pcsg.de (Henning Leutz)
  *
  * @require qui/QUI
+ * @require qui/utils/Functions
  * @require qui/controls/Control
  * @require URL_OPT_DIR +quiqqer/menu/bin/slideout.min.js
  * @require css!package/quiqqer/menu/bin/SlideOut.css
@@ -12,13 +13,14 @@
 define('package/quiqqer/menu/bin/SlideOut', [
 
     'qui/QUI',
+    'qui/utils/Functions',
     'qui/controls/Control',
 
     URL_OPT_DIR + 'quiqqer/menu/bin/slideout.min.js',
 
     'css!package/quiqqer/menu/bin/SlideOut.css'
 
-], function (QUI, QUIControl, Slideout)
+], function (QUI, QUIUtilsFunctions, QUIControl, Slideout)
 {
     "use strict";
 
@@ -41,7 +43,8 @@ define('package/quiqqer/menu/bin/SlideOut', [
 
         Binds: [
             'toggle',
-            '$onImport'
+            '$onImport',
+            '$onResize'
         ],
 
         initialize: function (options)
@@ -55,7 +58,7 @@ define('package/quiqqer/menu/bin/SlideOut', [
                 onImport: this.$onImport
             });
 
-            window.addEvent('resize', function ()
+            QUI.addEvent('resize', function ()
             {
                 if (this.Slideout.isOpen()) {
                     this.Slideout.close();
@@ -142,12 +145,8 @@ define('package/quiqqer/menu/bin/SlideOut', [
                 this.setAttribute('top', false);
             }
 
-            if (Elm.get('data-qui-options-menu-width')) {
-                this.setAttribute(
-                    'menu-width',
-                    Elm.get('data-qui-options-menu-width').toInt()
-                );
-            }
+            QUI.addEvent('resize', this.$onResize);
+            QUI.addEvent('load', this.$onResize);
 
             if (Elm.get('data-qui-options-menu-button')) {
                 this.setAttribute(
@@ -170,7 +169,7 @@ define('package/quiqqer/menu/bin/SlideOut', [
                 this.MenuButton.setStyle('top', this.getAttribute('top'));
                 this.MenuButton.setStyle('bottom', null);
             }
-            
+
             if (this.getAttribute('left')) {
                 this.MenuButton.setStyle('left', this.getAttribute('left'));
                 this.MenuButton.setStyle('right', null);
@@ -190,7 +189,7 @@ define('package/quiqqer/menu/bin/SlideOut', [
                 this.MenuButton.addClass('hide-on-desktop');
             }
 
-            var computedStyle, scrollPosition;
+            var computedStyle;
 
             if ("getComputedStyle" in window) {
                 computedStyle = window.getComputedStyle(document.body);
@@ -200,6 +199,7 @@ define('package/quiqqer/menu/bin/SlideOut', [
 
             BodyWrapper.setStyle('background', computedStyle.backgroundColor);
             Elm.setStyle('width', this.getAttribute('menu-width'));
+
 
             // init slideout and set events
             this.Slideout = new Slideout({
@@ -212,24 +212,15 @@ define('package/quiqqer/menu/bin/SlideOut', [
 
             this.Slideout.on('beforeopen', function ()
             {
-                var width = QUI.getWindowSize().x;
+                self.$onResize();
 
-                if (self.getAttribute('menu-width') > (width - 60)) {
-                    self.Slideout._padding = width - 60;
-                    self.Slideout._translateTo = width - 60;
-                    Elm.setStyle('width', width - 60);
-                } else {
-                    self.Slideout._padding = self.getAttribute('menu-width');
-                    self.Slideout._translateTo = self.getAttribute('menu-width');
-                    Elm.setStyle('width', self.getAttribute('menu-width'));
+                self.Slideout._padding = self.getAttribute('menu-width');
+                self.Slideout._translateTo = self.getAttribute('menu-width');
 
-                }
-
+                Elm.setStyle('width', self.getAttribute('menu-width'));
                 self.getElm().setStyle('display', null);
 
                 BodyWrapper.setStyle('boxShadow', '2px 0 10px 5px rgba(0, 0, 0, 0.3');
-
-                scrollPosition = window.getScroll();
 
                 self.hideMenuButton(function ()
                 {
@@ -239,7 +230,6 @@ define('package/quiqqer/menu/bin/SlideOut', [
 
             this.Slideout.on('open', function ()
             {
-
                 self.fireEvent('open');
 
                 var Closer = new Element('div', {
@@ -252,7 +242,7 @@ define('package/quiqqer/menu/bin/SlideOut', [
                         right     : -20,
                         position  : 'absolute',
                         textAlign : 'center',
-                        top       : scrollPosition.y + 10,
+                        top       : 10,
                         width     : 45,
                         zIndex    : 1000
                     },
@@ -307,6 +297,21 @@ define('package/quiqqer/menu/bin/SlideOut', [
             {
                 self.getElm().setStyle('display', null);
             });
+
+            this.$onResize();
+        },
+
+        /**
+         * event : on resize
+         */
+        $onResize: function ()
+        {
+            if (QUI.getWindowSize().x > 500) {
+                this.setAttribute('menu-width', 500);
+                return;
+            }
+
+            this.setAttribute('menu-width', QUI.getWindowSize().x);
         },
 
         /**
