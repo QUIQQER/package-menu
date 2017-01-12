@@ -13,18 +13,29 @@
 
 .page-menu-close,
 .page-menu-opener {
-    color: #333;
+    color: #fff;
     cursor: pointer;
-    background: #dddddd;
+    /*background: #dddddd;*/
     border: none;
     border-radius: 3px;
     outline: none;
-    padding: 7px;
+    /*padding: 0;*/
     position: absolute;
     right: 10px;
     text-align: center;
     top: 10px;
     z-index: 2000;
+    transition: all 0.3s ease-in-out;
+}
+
+.page-menu-close:hover,
+.page-menu-close:focus {
+    background: rgba(255,255,255,0.1);
+}
+
+/* bis fontawesome keinen dünnen Closebutton hat wird das verwendet (&times;)*/
+.fa-times-thin:before {
+    content: '\00d7';
 }
 
 .page-menu-opener .fa {
