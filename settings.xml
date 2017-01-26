@@ -40,6 +40,9 @@
                                 <option value="Image">
                                     <locale group="quiqqer/menu" var="menu.settings.Image"/>
                                 </option>
+                                <option value="Simple">
+                                    <locale group="quiqqer/menu" var="menu.settings.Simple"/>
+                                </option>
                             </select>
                         </settings>
                     </category>

@@ -29,6 +29,10 @@
             <de><![CDATA[MegaMenu - Grosse Seitenbilder]]></de>
             <en><![CDATA[MegaMenu - Big page images]]></en>
         </locale>
+        <locale name="menu.settings.Simple">
+            <de><![CDATA[MegaMenu - Einfache Liste mit Untereseiten]]></de>
+            <en><![CDATA[MegaMenu - Simple list mit sub pages]]></en>
+        </locale>
 
 
         <!-- sidebar menu -->

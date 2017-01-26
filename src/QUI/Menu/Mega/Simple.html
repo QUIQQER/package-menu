@@ -1,0 +1,9 @@
+{foreach $children as $Child}
+<div class="quiqqer-menu-megaMenu-children-simple-entry">
+    <a href="{url site=$Child}">
+        <span class="quiqqer-menu-megaMenu-children-simple-entry-title">
+            {$Child->getAttribute('title')}
+        </span>
+    </a>
+</div>
+{/foreach}
