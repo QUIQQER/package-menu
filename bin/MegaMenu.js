@@ -137,23 +137,19 @@ define('package/quiqqer/menu/bin/MegaMenu', [
          * @return {Promise}
          */
         showMenuFor: function (liElement) {
-            var Menu = liElement.getElement('.quiqqer-menu-megaMenu-list-item-menu'),
-                leftOffset = 0;
+            var Menu         = liElement.getElement('.quiqqer-menu-megaMenu-list-item-menu'),
+                isSimpleMenu = false,
+                leftOffset   = 0;
 
             if (!Menu) {
                 return this.$hide();
             }
 
-            // todo michael es muss noch besser gemacht werden
-            // vor allem prüfen, warum "width auto" auch auf andere Elemente gesetzt wird
+            // only for simple menu
             if (Menu.getElement('.quiqqer-menu-megaMenu-children-simple')) {
                 var megaMenu = document.getElement('.quiqqer-menu-megaMenu');
-                leftOffset = liElement.getPosition(megaMenu).x;
-
-                liElement.getParent('.quiqqer-menu-megaMenu').
-                getElement('.quiqqer-menu-megaMenu-list-item-menu.control-background').setStyle(
-                    'width', 'auto'
-                );
+                leftOffset   = parseInt(liElement.getPosition(megaMenu).x);
+                isSimpleMenu = true;
             }
 
             this.$Menu.set('html', Menu.get('html'));
@@ -182,19 +178,26 @@ define('package/quiqqer/menu/bin/MegaMenu', [
                 }
             });
 
-            return this.$show(leftOffset);
+            return this.$show(leftOffset, isSimpleMenu);
         },
 
         /**
          * Show the menu
          * @returns {Promise}
          */
-        $show: function (leftOffset) {
+        $show: function (leftOffset, isSimpleMenu) {
             return new Promise(function (resolve) {
+
+                var width = '';
+                if (isSimpleMenu) {
+                    width = 'auto';
+                }
+
                 this.$Menu.setStyles({
                     display: 'flex',
                     top    : this.$liSize, // vorerst, sonst schauts doof aus
-                    left   : leftOffset
+                    left   : leftOffset,
+                    width  : width
                 });
 
                 moofx(this.$Menu).animate({
