@@ -1,0 +1,24 @@
+.quiqqer-menu-megaMenu-children-simple {
+    width: auto;
+    display: inline-block;
+}
+
+.quiqqer-menu-megaMenu-children-simple-entry {
+    display: block;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+    transition: 0.2s all ease-in-out;
+}
+
+.quiqqer-menu-megaMenu-children-simple-entry:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.quiqqer-menu-megaMenu-children-simple-entry:last-child {
+    border-bottom: none;
+}
+
+.quiqqer-menu-megaMenu-children-simple-entry a {
+    padding: 10px 25px;
+    display: block;
+}

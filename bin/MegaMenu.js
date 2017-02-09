@@ -120,7 +120,7 @@ define('package/quiqqer/menu/bin/MegaMenu', [
             this.getElm().getElement('.quiqqer-menu-megaMenu-mobile').addEvents({
                 click: function () {
                     if (!SlideOut) {
-                        SlideOut = QUI.Controls.getById(SlideNode.get('data-quiid'))
+                        SlideOut = QUI.Controls.getById(SlideNode.get('data-quiid'));
                     }
 
                     if (SlideOut) {
@@ -137,10 +137,19 @@ define('package/quiqqer/menu/bin/MegaMenu', [
          * @return {Promise}
          */
         showMenuFor: function (liElement) {
-            var Menu = liElement.getElement('.quiqqer-menu-megaMenu-list-item-menu');
+            var Menu         = liElement.getElement('.quiqqer-menu-megaMenu-list-item-menu'),
+                isSimpleMenu = false,
+                leftOffset   = 0;
 
             if (!Menu) {
                 return this.$hide();
+            }
+
+            // only for simple menu
+            if (Menu.getElement('.quiqqer-menu-megaMenu-children-simple')) {
+                var megaMenu = document.getElement('.quiqqer-menu-megaMenu');
+                leftOffset   = parseInt(liElement.getPosition(megaMenu).x);
+                isSimpleMenu = true;
             }
 
             this.$Menu.set('html', Menu.get('html'));
@@ -169,18 +178,26 @@ define('package/quiqqer/menu/bin/MegaMenu', [
                 }
             });
 
-            return this.$show();
+            return this.$show(leftOffset, isSimpleMenu);
         },
 
         /**
          * Show the menu
          * @returns {Promise}
          */
-        $show: function () {
+        $show: function (leftOffset, isSimpleMenu) {
             return new Promise(function (resolve) {
+
+                var width = '';
+                if (isSimpleMenu) {
+                    width = 'auto';
+                }
+
                 this.$Menu.setStyles({
                     display: 'flex',
-                    top    : this.$liSize // vorerst, sonst schauts doof aus
+                    top    : this.$liSize, // vorerst, sonst schauts doof aus
+                    left   : leftOffset,
+                    width  : width
                 });
 
                 moofx(this.$Menu).animate({

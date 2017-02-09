@@ -124,6 +124,10 @@ class MegaMenu extends AbstractMenu
             case 'Standard':
             case QUI\Menu\Mega\Standard::class:
                 return QUI\Menu\Mega\Standard::class;
+
+            case 'Simple':
+            case QUI\Menu\Mega\Simple::class:
+                return QUI\Menu\Mega\Simple::class;
         }
 
         if ($this->getAttribute('display')) {
@@ -143,6 +147,10 @@ class MegaMenu extends AbstractMenu
                 case 'Standard':
                 case QUI\Menu\Mega\Standard::class:
                     return QUI\Menu\Mega\Standard::class;
+
+                case 'Simple':
+                case QUI\Menu\Mega\Simple::class:
+                    return QUI\Menu\Mega\Simple::class;
             }
         }
 
