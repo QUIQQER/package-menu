@@ -25,18 +25,20 @@
                title="{$Child->getAttribute('title')|escape:"html"}">
                 {$Child->getAttribute('title')}
 
-                {if count($subchildren)}<span class="fa fa-angle-down"></span>{/if}
+                {if $showMenu && count($subchildren)}<span class="fa fa-angle-down"></span>{/if}
             </a>
 
-            {if $Child->getAttribute('quiqqer.megamenu.settings.type') && $Child->getAttribute('quiqqer.megamenu.settings.type') !== ''}
+            {if $showMenu && $Child->getAttribute('quiqqer.megamenu.settings.type') && $Child->getAttribute('quiqqer.megamenu.settings.type') !== ''}
                 {assign var=usedControl value=$this->getMenuControl($Child->getAttribute('quiqqer.megamenu.settings.type'))}
             {/if}
 
-            {control control=$usedControl Site=$Child assign=Control}
-            {if $Control->count()}
-            <div class="quiqqer-menu-megaMenu-list-item-menu">
-                {$Control->create()}
-            </div>
+            {if $showMenu && $usedControl}
+                {control control=$usedControl Site=$Child assign=Control}
+                {if $Control->count()}
+                <div class="quiqqer-menu-megaMenu-list-item-menu">
+                    {$Control->create()}
+                </div>
+                {/if}
             {/if}
         </li>
         {/foreach}

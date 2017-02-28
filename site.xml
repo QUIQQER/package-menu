@@ -38,6 +38,9 @@
                         <option value="Simple">
                             <locale group="quiqqer/menu" var="menu.settings.Simple"/>
                         </option>
+                        <option value="noMenu">
+                            <locale group="quiqqer/menu" var="menu.settings.noMenu"/>
+                        </option>
                     </select>
                 </select>
             </settings>
