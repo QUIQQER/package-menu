@@ -33,6 +33,10 @@
             <de><![CDATA[MegaMenu - Einfache Liste mit Untereseiten]]></de>
             <en><![CDATA[MegaMenu - Simple list mit sub pages]]></en>
         </locale>
+        <locale name="menu.settings.noMenu">
+            <de><![CDATA[MegaMenu - Kein DropDown Menü]]></de>
+            <en><![CDATA[MegaMenu - No DropDown Menu]]></en>
+        </locale>
 
 
         <!-- sidebar menu -->
@@ -41,16 +45,16 @@
             <en><![CDATA[Layout]]></en>
             <pl><![CDATA[layout]]></pl>
         </locale>
-            <locale name="menu.control.navigation.setting.display.simple">
-                <de><![CDATA[Einfach]]></de>
-                <en><![CDATA[Simple]]></en>
-                <pl><![CDATA[Prosty]]></pl>
-            </locale>
-            <locale name="menu.control.navigation.setting.display.advanced">
-                <de><![CDATA[Erweitert]]></de>
-                <en><![CDATA[Advanced]]></en>
-                <pl><![CDATA[Zaawansowany]]></pl>
-            </locale>
+        <locale name="menu.control.navigation.setting.display.simple">
+            <de><![CDATA[Einfach]]></de>
+            <en><![CDATA[Simple]]></en>
+            <pl><![CDATA[Prosty]]></pl>
+        </locale>
+        <locale name="menu.control.navigation.setting.display.advanced">
+            <de><![CDATA[Erweitert]]></de>
+            <en><![CDATA[Advanced]]></en>
+            <pl><![CDATA[Zaawansowany]]></pl>
+        </locale>
         <locale name="menu.control.navigation.setting.startId">
             <de><![CDATA[Start-ID]]></de>
             <en><![CDATA[Start ID]]></en>
@@ -76,21 +80,21 @@
             <en><![CDATA[List type]]></en>
             <pl><![CDATA[Rodzaj listy]]></pl>
         </locale>
-            <locale name="menu.control.navigation.setting.listType.fontAwesome">
-                <de><![CDATA[Font Awesome Icons]]></de>
-                <en><![CDATA[Font Awesome icons]]></en>
-                <pl><![CDATA[Ikony Font Awesome]]></pl>
-            </locale>
-            <locale name="menu.control.navigation.setting.listType.sitePicture">
-                <de><![CDATA[Seiten Bilder bzw. Icons]]></de>
-                <en><![CDATA[Site picture or icons]]></en>
-                <pl><![CDATA[Zdjecie lub ikona strony]]></pl>
-            </locale>
-            <locale name="menu.control.navigation.setting.listType.none">
-                <de><![CDATA[Ohne]]></de>
-                <en><![CDATA[None]]></en>
-                <pl><![CDATA[Brak]]></pl>
-            </locale>
+        <locale name="menu.control.navigation.setting.listType.fontAwesome">
+            <de><![CDATA[Font Awesome Icons]]></de>
+            <en><![CDATA[Font Awesome icons]]></en>
+            <pl><![CDATA[Ikony Font Awesome]]></pl>
+        </locale>
+        <locale name="menu.control.navigation.setting.listType.sitePicture">
+            <de><![CDATA[Seiten Bilder bzw. Icons]]></de>
+            <en><![CDATA[Site picture or icons]]></en>
+            <pl><![CDATA[Zdjecie lub ikona strony]]></pl>
+        </locale>
+        <locale name="menu.control.navigation.setting.listType.none">
+            <de><![CDATA[Ohne]]></de>
+            <en><![CDATA[None]]></en>
+            <pl><![CDATA[Brak]]></pl>
+        </locale>
 
         <locale name="menu.control.navigation.setting.parentIcon">
             <de><![CDATA[Eltern-Seite Icon<br/>Standard: fa-home]]></de>

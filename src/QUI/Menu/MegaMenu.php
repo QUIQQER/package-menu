@@ -82,8 +82,13 @@ class MegaMenu extends AbstractMenu
             'jsControl'    => 'package/quiqqer/menu/bin/MegaMenu',
             'prepend'      => $this->prepend,
             'append'       => $this->append,
-            'childControl' => $childControl
+            'childControl' => $childControl,
+            'showMenu'     => true
         ));
+
+        if ($this->getProject()->getConfig('menu.settings.type') == 'noMenu') {
+            $Engine->assign('showMenu', false);
+        }
 
         return $Engine->fetch(dirname(__FILE__) . '/MegaMenu.html');
     }
@@ -128,6 +133,9 @@ class MegaMenu extends AbstractMenu
             case 'Simple':
             case QUI\Menu\Mega\Simple::class:
                 return QUI\Menu\Mega\Simple::class;
+
+            case 'noMenu':
+                return false;
         }
 
         if ($this->getAttribute('display')) {
@@ -151,6 +159,9 @@ class MegaMenu extends AbstractMenu
                 case 'Simple':
                 case QUI\Menu\Mega\Simple::class:
                     return QUI\Menu\Mega\Simple::class;
+
+                case 'noMenu':
+                    return false;
             }
         }
 
