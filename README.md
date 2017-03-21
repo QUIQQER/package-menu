@@ -2,10 +2,10 @@
 Header
 ========
 
-Das Menü Plugin stellt verschiedenen Menü Controls zur Verfügung.  
+Das Menü Plugin stellt verschiedene Menü-Controls zur Verfügung.  
 
 
-Packetname:
+Paketname:
 
     quiqqer/menu
 
@@ -13,15 +13,15 @@ Packetname:
 Features
 --------
 
-- Mega Menu (mobile fähig - wechsel auf SlideOut)
-    - besitzt verschiedenen Anzeigearten
-        - MegaMenu - mit Unterseiten
-        - MegaMenu - Unterseiten mit Icons
-        - MegaMenu - Unterseiten mit Icons, Bilder und Beschreibung
-        - MegaMenu - Grosse Seitenbilder
-        - MegaMenu - Big page images
-- Elastic Menu (mobile fähig)
-- SlideOut Menu (mobile fähig)
+- Mega Menu (mobile-fähig & Wechsel auf SlideOut)
+    - besitzt verschiedene Anzeigearten
+        - Mega Menu - mit Unterseiten
+        - Mega Menu - Unterseiten mit Icons
+        - Mega Menu - Unterseiten mit Icons, Bilder und Beschreibung
+        - Mega Menu - Grosse Seitenbilder
+        - Mega Menu - Grosse Seitenbilder
+- Elastic Menu (mobile-fähig)
+- SlideOut Menu (mobile-fähig)
 
 Installation
 ------------
@@ -39,8 +39,10 @@ Mitwirken
 Support
 -------
 
-Falls Sie ein Fehler gefunden haben oder Verbesserungen wünschen,
-Dann können Sie gerne an support@pcsg.de eine E-Mail schreiben.
+Falls Sie Fehler gefunden, Wünsche oder Verbesserungsvorschläge haben, 
+können Sie uns gern per Mail an support@pcsg.de darüber informieren.  
+Wir werden versuchen auf Ihre Wünsche einzugehen bzw. diese an die zuständigen Entwickler 
+des Projektes weiterleiten.
 
 
 License
