@@ -40,83 +40,66 @@
 
 
         <!-- sidebar menu -->
-        <locale name="menu.control.navigation.setting.display">
+        <locale name="menu.control.sidebarDropDownMenu.title">
+            <de><![CDATA[Menü: Sidebar Navigation]]></de>
+            <en><![CDATA[Menu: Sidebar Navigation]]></en>
+            <pl><![CDATA[Menu: Nawigacja boczna]]></pl>
+        </locale>
+
+        <locale name="menu.control.sidebarDropDownMenu.setting.display">
             <de><![CDATA[Layout]]></de>
             <en><![CDATA[Layout]]></en>
             <pl><![CDATA[layout]]></pl>
         </locale>
-        <locale name="menu.control.navigation.setting.display.simple">
+        <locale name="menu.control.sidebarDropDownMenu.setting.display.simple">
             <de><![CDATA[Einfach]]></de>
             <en><![CDATA[Simple]]></en>
             <pl><![CDATA[Prosty]]></pl>
         </locale>
-        <locale name="menu.control.navigation.setting.display.advanced">
+        <locale name="menu.control.sidebarDropDownMenu.setting.display.advanced">
             <de><![CDATA[Erweitert]]></de>
             <en><![CDATA[Advanced]]></en>
             <pl><![CDATA[Zaawansowany]]></pl>
         </locale>
-        <locale name="menu.control.navigation.setting.startId">
+        <locale name="menu.control.sidebarDropDownMenu.setting.startId">
             <de><![CDATA[Start-ID]]></de>
             <en><![CDATA[Start ID]]></en>
-            <pl><![CDATA[]]></pl>
+            <pl><![CDATA[Pierwsza strona]]></pl>
         </locale>
-        <locale name="menu.control.navigation.setting.parentLink">
+        <locale name="menu.control.sidebarDropDownMenu.setting.parentLink">
             <de><![CDATA[Eltern-Seite Link anzeigen]]></de>
             <en><![CDATA[Show the parent site link]]></en>
         </locale>
-        <locale name="menu.control.navigation.setting.levels">
+        <locale name="menu.control.sidebarDropDownMenu.setting.levels">
             <de><![CDATA[Navigationstiefe]]></de>
             <en><![CDATA[Navigation levels]]></en>
             <pl><![CDATA[]]></pl>
         </locale>
-        <locale name="menu.control.navigation.setting.onlyFirstLevelIcons">
+        <locale name="menu.control.sidebarDropDownMenu.setting.onlyFirstLevelIcons">
             <de><![CDATA[Icons nur der erste Ebene anzeigen]]></de>
             <en><![CDATA[Show icons only on first level]]></en>
             <pl><![CDATA[]]></pl>
         </locale>
 
-        <locale name="menu.control.navigation.setting.listType">
+        <locale name="menu.control.sidebarDropDownMenu.setting.listType">
             <de><![CDATA[Listenformatierung]]></de>
             <en><![CDATA[List type]]></en>
             <pl><![CDATA[Rodzaj listy]]></pl>
         </locale>
-        <locale name="menu.control.navigation.setting.listType.fontAwesome">
+        <locale name="menu.control.sidebarDropDownMenu.setting.listType.fontAwesome">
             <de><![CDATA[Font Awesome Icons]]></de>
             <en><![CDATA[Font Awesome icons]]></en>
             <pl><![CDATA[Ikony Font Awesome]]></pl>
         </locale>
-        <locale name="menu.control.navigation.setting.listType.sitePicture">
+        <locale name="menu.control.sidebarDropDownMenu.setting.listType.sitePicture">
             <de><![CDATA[Seiten Bilder bzw. Icons]]></de>
             <en><![CDATA[Site picture or icons]]></en>
             <pl><![CDATA[Zdjecie lub ikona strony]]></pl>
         </locale>
-        <locale name="menu.control.navigation.setting.listType.none">
+        <locale name="menu.control.sidebarDropDownMenu.setting.listType.none">
             <de><![CDATA[Ohne]]></de>
             <en><![CDATA[None]]></en>
             <pl><![CDATA[Brak]]></pl>
-        </locale>
-
-        <locale name="menu.control.navigation.setting.parentIcon">
-            <de><![CDATA[Eltern-Seite Icon<br/>Standard: fa-home]]></de>
-            <en><![CDATA[Parent site icon<br/>Default: fa-home]]></en>
-            <pl><![CDATA[]]></pl>
-        </locale>
-        <locale name="menu.control.navigation.setting.listIcon">
-            <de><![CDATA[List Icon<br/>Standard: fa-angle-right]]></de>
-            <en><![CDATA[List Icon</br>Default: fa-angle-right]]></en>
-            <ad><![CDATA[]]></ad>
-        </locale>
-        <locale name="menu.control.navigation.setting.levelIcon">
-            <de><![CDATA[Weitere Ebenen Icon</br>Standard: </br>fa-angle-double-right]]></de>
-            <en><![CDATA[Navigation levels icon<br/>Default: </br>fa-angle-double-right]]></en>
-            <ad><![CDATA[]]></ad>
-        </locale>
-    </groups>
-    <groups name="quiqqer/menu" datatype="php">
-        <locale name="menu.control.navigation.title">
-            <de><![CDATA[Menü: Seiten-Navigation]]></de>
-            <en><![CDATA[Menu: Site-Navigation]]></en>
-            <ad><![CDATA[]]></ad>
         </locale>
     </groups>
 </locales>

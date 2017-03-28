@@ -5,65 +5,62 @@
         <!-- Nav (QUI) -->
         <brick control="\QUI\Menu\SidebarDropDownMenu">
             <title>
-                <locale group="quiqqer/menu" var="menu.control.navigation.title"/>
+                <locale group="quiqqer/menu"
+                        var="menu.control.sidebarDropDownMenu.title"/>
             </title>
             <description>
-                <locale group="quiqqer/menu" var="menu.control.navigation.description"/>
+                <locale group="quiqqer/menu"
+                        var="menu.control.sidebarDropDownMenu.description"/>
             </description>
 
             <settings>
                 <setting name="display" type="select">
-                    <locale group="quiqqer/menu" var="menu.control.navigation.setting.display" />
+                    <locale group="quiqqer/menu"
+                            var="menu.control.sidebarDropDownMenu.setting.display" />
 
                     <option value="simple">
                         <locale group="quiqqer/menu"
-                                var="menu.control.navigation.setting.display.simple" />
+                                var="menu.control.sidebarDropDownMenu.setting.display.simple" />
                     </option>
                     <option value="advanced">
                         <locale group="quiqqer/menu"
-                                var="menu.control.navigation.setting.display.advanced" />
+                                var="menu.control.sidebarDropDownMenu.setting.display.advanced" />
                     </option>
                 </setting>
                 <setting name="startId" class="project-site">
-                    <locale group="quiqqer/menu" var="menu.control.navigation.setting.startId"/>
+                    <locale group="quiqqer/menu"
+                            var="menu.control.sidebarDropDownMenu.setting.startId"/>
                 </setting>
                 <setting name="parentLink" type="checkbox">
-                    <locale group="quiqqer/menu" var="menu.control.navigation.setting.parentLink"/>
+                    <locale group="quiqqer/menu"
+                            var="menu.control.sidebarDropDownMenu.setting.parentLink"/>
                 </setting>
                 <setting name="levels" type="number">
-                    <locale group="quiqqer/menu" var="menu.control.navigation.setting.levels"/>
+                    <locale group="quiqqer/menu"
+                            var="menu.control.sidebarDropDownMenu.setting.levels"/>
                 </setting>
                 <setting name="onlyFirstLevelIcons" type="checkbox">
                     <locale group="quiqqer/menu"
-                            var="menu.control.navigation.setting.onlyFirstLevelIcons"/>
+                            var="menu.control.sidebarDropDownMenu.setting.onlyFirstLevelIcons"/>
                 </setting>
 
                 <setting name="listType" type="select">
-                    <locale group="quiqqer/menu" var="menu.control.navigation.setting.listType" />
+                    <locale group="quiqqer/menu"
+                            var="menu.control.sidebarDropDownMenu.setting.listType" />
 
                     <option value="fontAwesome">
                         <locale group="quiqqer/menu"
-                                var="menu.control.navigation.setting.listType.fontAwesome" />
+                                var="menu.control.sidebarDropDownMenu.setting.listType.fontAwesome" />
                     </option>
                     <option value="sitePicture">
                         <locale group="quiqqer/menu"
-                                var="menu.control.navigation.setting.listType.sitePicture" />
+                                var="menu.control.sidebarDropDownMenu.setting.listType.sitePicture" />
                     </option>
                     <option value="none">
                         <locale group="quiqqer/menu"
-                                var="menu.control.navigation.setting.listType.none" />
+                                var="menu.control.sidebarDropDownMenu.setting.listType.none" />
                     </option>
                 </setting>
-                <!--<setting name="parentIcon" type="text">
-                    <locale group="quiqqer/menu" var="menu.control.navigation.setting.parentIcon"/>
-                </setting>
-
-                <setting name="listIcon" type="text">
-                    <locale group="quiqqer/menu" var="menu.control.navigation.setting.listIcon"/>
-                </setting>
-                <setting name="levelIcon" type="text">
-                    <locale group="quiqqer/menu" var="menu.control.navigation.setting.levelIcon"/>
-                </setting>-->
             </settings>
         </brick>
 
