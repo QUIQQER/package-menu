@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <locales>
     <groups name="quiqqer/menu" datatype="php,js">
+        <locale name="package.title">
+            <de><![CDATA[QUIQQER - Menü]]></de>
+            <en><![CDATA[QUIQQER - Menu]]></en>
+        </locale>
+        <locale name="package.description" html="true">
+            <de><![CDATA[Das Menü Plugin stellt verschiedene Menü-Controls zur Verfügung.]]></de>
+            <en><![CDATA[The Plugin menu provides various menu controls.]]></en>
+        </locale>
+        
         <locale name="menu.settings.category">
             <de><![CDATA[Menü]]></de>
             <en><![CDATA[Menu]]></en>
