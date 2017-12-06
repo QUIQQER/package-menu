@@ -34,7 +34,8 @@ class SidebarDropDownMenu extends QUI\Control
             'listIcon'            => 'fa-angle-right',
             'levelIcon'           => 'fa-angle-double-right',
             'qui-class'           => 'package/quiqqer/menu/bin/SidebarDropDownMenu',
-            'display'             => 'simple'
+            'display'             => 'simple',
+            'showAllChildren'     => false
         ));
 
         parent::__construct($attributes);
@@ -79,7 +80,7 @@ class SidebarDropDownMenu extends QUI\Control
         // active site
         $ActiveSite = QUI::getRewrite()->getSite();
 
-        if ($ActiveSite && $ActiveSite->getProject() == $Project) {
+        if ($ActiveSite && $ActiveSite->getProject() === $Project) {
             $activeId = $ActiveSite->getId();
         }
 
@@ -93,13 +94,13 @@ class SidebarDropDownMenu extends QUI\Control
         switch ($this->getAttribute('display')) {
             default:
             case 'simple':
-                $css      = dirname(__FILE__) . '/SidebarDropDownMenu.Simple.css';
-                $template = dirname(__FILE__) . '/SidebarDropDownMenu.Simple.html';
+                $css      = dirname(__FILE__).'/SidebarDropDownMenu.Simple.css';
+                $template = dirname(__FILE__).'/SidebarDropDownMenu.Simple.html';
                 break;
 
             case 'advanced':
-                $css      = dirname(__FILE__) . '/SidebarDropDownMenu.Advanced.css';
-                $template = dirname(__FILE__) . '/SidebarDropDownMenu.Advanced.html';
+                $css      = dirname(__FILE__).'/SidebarDropDownMenu.Advanced.css';
+                $template = dirname(__FILE__).'/SidebarDropDownMenu.Advanced.html';
                 break;
         }
 
@@ -123,8 +124,17 @@ class SidebarDropDownMenu extends QUI\Control
         $this->addCSSFile($css);
 
         $html = $Engine->fetch($template);
-        $html = '<nav>' . $html . '</nav>';
+        $html = '<nav>'.$html.'</nav>';
 
         return $html;
+    }
+
+    public function getChildren(QUI\Projects\Site $Site)
+    {
+        if (!$this->getAttribute('showAllChildren')) {
+            return $Site->getNavigation();
+        }
+
+        return $Site->getChildren();
     }
 }

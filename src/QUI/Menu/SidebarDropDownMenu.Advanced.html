@@ -19,7 +19,7 @@
 {/if}
 
 {strip}
-{assign var=children value=$Site->getNavigation()}
+{assign var=children value=$this->getChildren($Site)}
 
 {if count( $children )}
 <ul class="quiqqer-navigation-level-{$level}">
@@ -45,7 +45,7 @@
     {/if}
     {foreach from=$children item=Child}
     <li class="quiqqer-navigation-li {if $Rewrite->isIdInPath($Child->getId())} active-bgcolor {/if}">
-        {assign var=subnavigation value=$Child->getNavigation()}
+        {assign var=subnavigation value=$this->getChildren($Child)}
         {assign var=sitePicture value=''}
         {if $listType == 'sitePicture'}
             {assign var=sitePicture value='sitePicture-class'}

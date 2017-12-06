@@ -9,7 +9,7 @@
             <de><![CDATA[Das Menü Plugin stellt verschiedene Menü-Controls zur Verfügung.]]></de>
             <en><![CDATA[The Plugin menu provides various menu controls.]]></en>
         </locale>
-        
+
         <locale name="menu.settings.category">
             <de><![CDATA[Menü]]></de>
             <en><![CDATA[Menu]]></en>
@@ -109,6 +109,10 @@
             <de><![CDATA[Ohne]]></de>
             <en><![CDATA[None]]></en>
             <pl><![CDATA[Brak]]></pl>
+        </locale>
+        <locale name="menu.control.sidebarDropDownMenu.setting.showAllChildren">
+            <de><![CDATA[Auch Seiten anzeigen welche die Eigenschaft nicht in Navigation anzeigen besitzen.]]></de>
+            <en><![CDATA[Also show pages that do not have the property Show in navigation.]]></en>
         </locale>
     </groups>
 </locales>
