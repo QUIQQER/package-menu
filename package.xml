@@ -8,6 +8,8 @@
             <locale group="quiqqer/menu" var="package.description"/>
         </description>
 
+        <image src="URL_OPT_DIR/quiqqer/menu/bin/images/Logo.jpg"/>
+
         <support>
             <email><![CDATA[support@pcsg.de]]></email>
             <forum><![CDATA[https://community.quiqqer.com]]></forum>
@@ -18,7 +20,8 @@
 
         <copyright>
             <name><![CDATA[PCSG - Computer & Internet Service OHG]]></name>
-            <license><![CDATA[]]></license>
+            <license><![CDATA[PCSG QL-1.0]]></license>
+            <license><![CDATA[GPL-3.0+]]></license>
         </copyright>
     </package>
 </quiqqer>
