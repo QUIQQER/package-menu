@@ -1,11 +1,12 @@
+![QUIQQER Menu](bin/images/Readme.jpg)
 
-Header
+
+QUIQQER Menu
 ========
 
-Das Menü Plugin stellt verschiedene Menü-Controls zur Verfügung.  
+The Plugin menu provides various menu controls.  
 
-
-Paketname:
+Package name:
 
     quiqqer/menu
 
@@ -23,13 +24,14 @@ Features
 - Elastic Menu (mobile-fähig)
 - SlideOut Menu (mobile-fähig)
 
+
 Installation
 ------------
 
 Der Paketname ist: quiqqer/menu
 
 
-Mitwirken
+Contribution
 ----------
 
 - Issue Tracker: https://dev.quiqqer.com/quiqqer/package-menu/issues

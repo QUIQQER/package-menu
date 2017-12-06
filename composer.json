@@ -1,28 +1,31 @@
 {
-    "name": "quiqqer\/menu",
-    "type": "quiqqer-module",
-    "description": "The Plugin menu provides various menu controls.",
-    "version": "dev-dev",
-    "license": "GPL-3.0+",
-    "authors": [
-        {
-            "name": "Henning Leutz",
-            "email": "leutz@pcsg.de",
-            "homepage": "http:\/\/www.pcsg.de",
-            "role": "Developer"
-        }
-    ],
-    "support": {
-        "email": "support@pcsg.de",
-        "url": "http:\/\/www.pcsg.de"
-    },
-    "require": {
-        "php": ">=5.3",
-        "quiqqer\/quiqqer": "*@dev"
-    },
-    "autoload": {
-        "psr-4": {
-            "QUI\\Menu\\": "src\/QUI\/Menu"
-        }
+  "name": "quiqqer\/menu",
+  "type": "quiqqer-module",
+  "description": "The Plugin menu provides various menu controls.",
+  "version": "dev-dev",
+  "license": [
+    "GPL-3.0+",
+    "PCSG QL-1.0"
+  ],
+  "authors": [
+    {
+      "name": "Henning Leutz",
+      "email": "leutz@pcsg.de",
+      "homepage": "http:\/\/www.pcsg.de",
+      "role": "Developer"
     }
+  ],
+  "support": {
+    "email": "support@pcsg.de",
+    "url": "http:\/\/www.pcsg.de"
+  },
+  "require": {
+    "php": ">=5.3",
+    "quiqqer\/quiqqer": "*@dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "QUI\\Menu\\": "src\/QUI\/Menu"
+    }
+  }
 }
