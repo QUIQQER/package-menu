@@ -1,0 +1,23 @@
+<div class="onePageNav-container">
+    <div class="onePageNav">
+        <div class="grid-container">
+            <ul class="onePageNav-entries">
+                {foreach from=$entries item=entry key=key}
+                <li class="onePageNav-entry">
+                     {if $entry.linkType == 'anchor'}
+                    <a href="{$entry.link}" class="onePageNav-entry-siteAnchor"
+                       data-qui-anchor-name="{$entry.link|escape:'html'}"
+                       title="{$entry.linkTitle}">
+                        {$entry.linkTitle}
+                    </a>
+                    {else}
+                    <a href="{$entry.link}" title="{$entry.linkTitle}">
+                        {$entry.linkTitle}
+                    </a>
+                    {/if}
+                </li>
+                {/foreach}
+            </ul>
+        </div>
+    </div>
+</div>
