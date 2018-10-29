@@ -114,5 +114,42 @@
             <de><![CDATA[Auch Seiten anzeigen welche die Eigenschaft nicht in Navigation anzeigen besitzen.]]></de>
             <en><![CDATA[Also show pages that do not have the property Show in navigation.]]></en>
         </locale>
+
+        <!-- one page nav -->
+        <locale name="menu.control.OnePageNav.addLink">
+            <de><![CDATA[Link hinzufügen]]></de>
+            <en><![CDATA[Add link]]></en>
+        </locale>
+        <locale name="menu.control.OnePageNav.entries">
+            <de><![CDATA[Einträge]]></de>
+            <en><![CDATA[Entries]]></en>
+        </locale>
+        <locale name="menu.control.OnePageNav.entries.linkTitle">
+            <de><![CDATA[Link-Titel]]></de>
+            <en><![CDATA[Link title]]></en>
+        </locale>
+        <locale name="menu.control.OnePageNav.entries.linkType">
+            <de><![CDATA[Link-Typ]]></de>
+            <en><![CDATA[Link typ]]></en>
+        </locale>
+            <locale name="menu.control.OnePageNav.entries.linkType.anchor">
+                <de><![CDATA[Anker]]></de>
+                <en><![CDATA[Anchor]]></en>
+            </locale>
+            <locale name="menu.control.OnePageNav.entries.linkType.url">
+                <de><![CDATA[Url]]></de>
+                <en><![CDATA[Url]]></en>
+            </locale>
+        <locale name="menu.control.OnePageNav.entries.link" html="true">
+            <de><![CDATA[Seitenlink oder CSS Selector. <br>
+            <strong>Seitenlink:</strong> die URL muss valid sein. <br>
+            <strong>CSS Selector:</strong> Element, zu dem gescrollt werden soll.
+            Z.B. <i>.css-Klasse</i>, <i>#elementId</i>]]></de>
+            <en><![CDATA[Page link or CSS selector. <br>
+            <strong>Page link:</strong> the URL must be valid. <br>
+            <strong>CSS selector:</strong> Element to scroll to.
+            E.g. <i>.css-class</i>, <i>#elementId</i>]]>
+            </en>
+        </locale>
     </groups>
 </locales>

@@ -73,5 +73,21 @@
             </settings>
         </brick>
 
+        <!-- one page nav -->
+        <brick control="\QUI\Menu\OnePageNav">
+            <title>
+                <locale group="quiqqer/menu" var="menu.control.OnePageNav.title"/>
+            </title>
+            <description>
+                <locale group="quiqqer/menu" var="menu.control.OnePageNav.description"/>
+            </description>
+
+            <settings>
+                <setting name="entries" data-qui="package/quiqqer/menu/bin/Controls/OnePageNavSettings">
+                    <locale group="quiqqer/menu" var="menu.control.OnePageNav.entries"/>
+                </setting>
+            </settings>
+        </brick>
+
     </bricks>
 </quiqqer>

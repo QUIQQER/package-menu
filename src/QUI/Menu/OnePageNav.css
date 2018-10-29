@@ -1,0 +1,59 @@
+.onePageNav-container {
+    position: relative;
+}
+
+.onePageNav {
+    background: rgba(20, 20, 20, 0.2);
+    height: 60px;
+    position: absolute;
+    top: -60px;
+    width: 100%;
+    z-index: 1000;
+    transition: 0.2s background-color;
+}
+
+.onePageNav.fixed {
+    background: #26221d;
+}
+
+.onePageNav .grid-container {
+    height: 100%;
+}
+
+.onePageNav-entries {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+}
+
+.onePageNav-entry {
+    padding: 0 30px 0 0;
+    margin-right: 30px;
+    position: relative;
+}
+
+.onePageNav-entry:after {
+    content: '-';
+    color: #fff;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.onePageNav-entry:last-child:after {
+    content: '';
+    display: none;
+}
+
+.onePageNav-entry a {
+    color: #fff;
+    font-weight: normal;
+}
+
+.onePageNav-entry a.active {
+    font-weight: bold;
+}
