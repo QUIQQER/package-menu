@@ -147,7 +147,8 @@ define('package/quiqqer/menu/bin/MegaMenu', [
 
             // only for simple menu
             if (Menu.getElement('.quiqqer-menu-megaMenu-children-simple')) {
-                leftOffset   = parseInt(liElement.getPosition().x);
+                var megaMenu = document.getElement('.quiqqer-menu-megaMenu');
+                leftOffset   = parseInt(liElement.getPosition(megaMenu).x);
                 isSimpleMenu = true;
             }
 
