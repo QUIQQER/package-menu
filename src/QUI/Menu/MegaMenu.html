@@ -25,7 +25,9 @@
                title="{$Child->getAttribute('title')|escape:"html"}">
                 {$Child->getAttribute('title')}
 
-                {if $showMenu && count($subchildren)}<span class="fa fa-angle-down"></span>{/if}
+                {if $showMenu && count($subchildren) && $Child->getAttribute('quiqqer.megamenu.settings.type') !== 'noMenu'}
+                <span class="fa fa-angle-down"></span>
+                {/if}
             </a>
 
             {if $showMenu && $Child->getAttribute('quiqqer.megamenu.settings.type') && $Child->getAttribute('quiqqer.megamenu.settings.type') !== ''}
