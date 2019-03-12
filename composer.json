@@ -2,7 +2,7 @@
   "name": "quiqqer/menu",
   "type": "quiqqer-module",
   "description": "QUIQQER menus for projects",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "license": "GPL-3.0+",
   "authors": [
     {
