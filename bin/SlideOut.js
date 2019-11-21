@@ -85,13 +85,21 @@ define('package/quiqqer/menu/bin/SlideOut', [
                 Elm.setStyle('z-index', 1);
             }
 
+            Elm.setStyle('display', 'none');
 
+            var BodyWrapper = document.getElement('.slideout-panel');
+
+            if (!BodyWrapper) {
                 // body childrens
                 var children = document.body.getChildren();
-                var BodyWrapper = new Element('div.slideout-wrapper').inject(document.body);
+                BodyWrapper = new Element('div').inject(document.body);
 
                 children.inject(BodyWrapper);
+            }
 
+            if (BodyWrapper.hasClass('slideout-panel')) {
+                BodyWrapper.removeClass('slideout-panel');
+            }
 
             Elm.inject(document.body);
 
@@ -225,6 +233,7 @@ define('package/quiqqer/menu/bin/SlideOut', [
             this.Slideout.on('beforeopen', function ()
             {
                 self.$onResize();
+                Elm.setStyle('display', '');
 
                 self.Slideout._padding = self.getAttribute('menu-width');
                 self.Slideout._translateTo = self.getAttribute('menu-width');
