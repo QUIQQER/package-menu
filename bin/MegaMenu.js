@@ -22,6 +22,10 @@ define('package/quiqqer/menu/bin/MegaMenu', [
             '$onImport'
         ],
 
+        options: {
+            enablemobile : true
+        },
+
         initialize: function (options) {
             this.parent(options);
 
@@ -113,6 +117,10 @@ define('package/quiqqer/menu/bin/MegaMenu', [
                     this.$hideCheck();
                 }.bind(this)
             });
+
+            if (!this.getAttribute('enablemobile')) {
+                return;
+            }
 
             var SlideNode = document.getElement('[data-qui="package/quiqqer/menu/bin/SlideOut"]'),
                 SlideOut  = QUI.Controls.getById(SlideNode.get('data-quiid'));

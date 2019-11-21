@@ -85,11 +85,14 @@ define('package/quiqqer/menu/bin/SlideOut', [
                 Elm.setStyle('z-index', 1);
             }
 
-            // body childrens
-            var children = document.body.getChildren();
-            var BodyWrapper = new Element('div').inject(document.body);
 
-            children.inject(BodyWrapper);
+                // body childrens
+                var children = document.body.getChildren();
+                var BodyWrapper = new Element('div.slideout-wrapper').inject(document.body);
+
+                children.inject(BodyWrapper);
+
+
             Elm.inject(document.body);
 
             // menu button
