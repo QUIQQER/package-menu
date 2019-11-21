@@ -2,7 +2,6 @@
   "name": "quiqqer\/menu",
   "type": "quiqqer-module",
   "description": "The Plugin menu provides various menu controls.",
-  "version": "dev-master",
   "license": [
     "GPL-3.0+",
     "PCSG QL-1.0"
