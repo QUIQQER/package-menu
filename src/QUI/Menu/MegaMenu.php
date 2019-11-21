@@ -17,24 +17,29 @@ class MegaMenu extends AbstractMenu
     /**
      * @var SlideOut
      */
-    protected $Mobile;
+    protected $Mobile = null;
 
     /**
      * @param array $attributes
      */
     public function __construct($attributes = array())
     {
-        $this->setAttributes(array(
-            'showStart' => false,
-            'Start'     => false,
-            'data-qui'  => 'package/quiqqer/menu/bin/MegaMenu',
-            'display'   => 'Standard'
-        ));
+        $this->setAttributes([
+            'showStart'    => false,
+            'Start'        => false,
+            'data-qui'     => 'package/quiqqer/menu/bin/MegaMenu',
+            'display'      => 'Standard',
+            'enableMobile' => true
+        ]);
 
         parent::__construct($attributes);
 
         $this->addCSSClass('quiqqer-menu-megaMenu');
         $this->addCSSFile(dirname(__FILE__) . '/MegaMenu.css');
+
+        if (!$this->getAttribute('enableMobile')) {
+            return;
+        }
 
         $this->Mobile = new QUI\Menu\SlideOut();
 
@@ -60,16 +65,20 @@ class MegaMenu extends AbstractMenu
         $Engine       = QUI::getTemplateManager()->getEngine();
         $childControl = $this->getMenuControl($this->getAttribute('display'));
 
-        $this->Mobile->setAttribute('Project', $this->getProject());
-        $this->Mobile->setAttribute('Site', $this->getSite());
+        if ($this->Mobile) {
+            $this->Mobile->setAttribute('Project', $this->getProject());
+            $this->Mobile->setAttribute('Site', $this->getSite());
 
-        $this->Mobile->setAttribute('data-menu-right', 10);
-        $this->Mobile->setAttribute('data-menu-top', 15);
-        $this->Mobile->setAttribute('data-show-button-on-desktop', 0);
-        $this->Mobile->setAttribute('data-qui-options-menu-width', 400);
-        $this->Mobile->setAttribute('data-qui-options-menu-button', 0);
-        $this->Mobile->setAttribute('data-qui-options-touch', 0);
-        $this->Mobile->setAttribute('data-qui-options-buttonids', 'mobileMenu');
+            $this->Mobile->setAttribute('data-menu-right', 10);
+            $this->Mobile->setAttribute('data-menu-top', 15);
+            $this->Mobile->setAttribute('data-show-button-on-desktop', 0);
+            $this->Mobile->setAttribute('data-qui-options-menu-width', 400);
+            $this->Mobile->setAttribute('data-qui-options-menu-button', 0);
+            $this->Mobile->setAttribute('data-qui-options-touch', 0);
+            $this->Mobile->setAttribute('data-qui-options-buttonids', 'mobileMenu');
+        }
+
+        $this->setAttribute('data-qui-options-enablemobile', $this->getAttribute('enableMobile'));
 
         $Engine->assign(array(
             'this'         => $this,

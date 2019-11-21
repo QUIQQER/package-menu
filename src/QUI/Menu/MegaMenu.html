@@ -48,6 +48,7 @@
 
     {$append}
 </nav>
+{if $Mobile}
 <div class="hide-on-desktop">
     {$prepend}
 
@@ -59,3 +60,4 @@
     {$append}
     {$Mobile->create()}
 </div>
+{/if}
