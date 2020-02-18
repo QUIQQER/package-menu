@@ -73,11 +73,19 @@ class MegaMenu extends AbstractMenu
         $childControl = $this->getMenuControl($this->getAttribute('display'));
 
         try {
+            // load css for sub control
+            if ($childControl) {
+                new $childControl([
+                    'Site'    => $this->getSite(),
+                    'Project' => $this->getProject()
+                ]);
+            }
+
             return QUI\Cache\Manager::get($cache);
         } catch (QUI\Exception $Exception) {
         }
 
-        $Engine       = QUI::getTemplateManager()->getEngine();
+        $Engine = QUI::getTemplateManager()->getEngine();
 
         if ($this->Mobile) {
             $this->Mobile->setAttribute('Project', $this->getProject());
