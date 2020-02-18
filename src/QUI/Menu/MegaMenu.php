@@ -70,13 +70,14 @@ class MegaMenu extends AbstractMenu
             \serialize($this->getAttributes())
         );
 
+        $childControl = $this->getMenuControl($this->getAttribute('display'));
+
         try {
             return QUI\Cache\Manager::get($cache);
         } catch (QUI\Exception $Exception) {
         }
 
         $Engine       = QUI::getTemplateManager()->getEngine();
-        $childControl = $this->getMenuControl($this->getAttribute('display'));
 
         if ($this->Mobile) {
             $this->Mobile->setAttribute('Project', $this->getProject());
