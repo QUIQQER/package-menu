@@ -11,36 +11,38 @@
         {/if}
 
         {foreach $children as $Child}
-            {assign var=isInPath value=0}
-            {assign var=usedControl value=$childControl}
-            {if $Child->getId() == $Site->getId() ||
-                $Rewrite->isIdInPath($Child->getId())
-            }
-                {assign var=isInPath value=1}
-            {/if}
+        {assign var=isInPath value=0}
+        {assign var=usedControl value=$childControl}
+        {if $Child->getId() == $Site->getId() ||
+        $Rewrite->isIdInPath($Child->getId())
+        }
+        {assign var=isInPath value=1}
+        {/if}
         <li class="quiqqer-menu-megaMenu-list-item{if $isInPath} quiqqer-menu-megaMenu-list-item--current{/if}">
             {assign var=subchildren value=$Child->getNavigation()}
             <a href="{url site=$Child}"
                class="qui-menu-siteid-{$Child->getId()}"
-               title="{$Child->getAttribute('title')|escape:"html"}">
+               title="{$Child->getAttribute('title')|escape:'html'}">
                 {$Child->getAttribute('title')}
 
-                {if $showMenu && count($subchildren) && $Child->getAttribute('quiqqer.megamenu.settings.type') !== 'noMenu'}
+                {if $showMenu && count($subchildren) &&
+                $Child->getAttribute('quiqqer.megamenu.settings.type') !== 'noMenu'}
                 <span class="fa fa-angle-down"></span>
                 {/if}
             </a>
 
             {if $showMenu && $Child->getAttribute('quiqqer.megamenu.settings.type') && $Child->getAttribute('quiqqer.megamenu.settings.type') !== ''}
-                {assign var=usedControl value=$this->getMenuControl($Child->getAttribute('quiqqer.megamenu.settings.type'))}
+            {assign var=usedControl value=$this->getMenuControl($Child->getAttribute('quiqqer.megamenu.settings.type'))}
             {/if}
 
             {if $showMenu && $usedControl}
-                {control control=$usedControl Site=$Child assign=Control}
-                {if $Control->count()}
-                <div class="quiqqer-menu-megaMenu-list-item-menu">
-                    {$Control->create()}
-                </div>
-                {/if}
+            {control control=$usedControl Site=$Child assign=Control}
+            {assign var=t_ value=$this->addSubMenu($usedControl)}
+            {if $Control->count()}
+            <div class="quiqqer-menu-megaMenu-list-item-menu">
+                {$Control->create()}
+            </div>
+            {/if}
             {/if}
         </li>
         {/foreach}

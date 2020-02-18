@@ -21,6 +21,11 @@ class MegaMenu extends AbstractMenu
     protected $Mobile = null;
 
     /**
+     * @var array
+     */
+    protected $subMenus = [];
+
+    /**
      * @param array $attributes
      */
     public function __construct($attributes = [])
@@ -73,15 +78,14 @@ class MegaMenu extends AbstractMenu
         $childControl = $this->getMenuControl($this->getAttribute('display'));
 
         try {
-            // load css for sub control
-            if ($childControl) {
-                new $childControl([
-                    'Site'    => $this->getSite(),
-                    'Project' => $this->getProject()
-                ]);
+            $cacheResult = QUI\Cache\Manager::get($cache);
+
+            // load css files of controls
+            foreach ($cacheResult['subMenus'] as $childControl) {
+                new $childControl();
             }
 
-            return QUI\Cache\Manager::get($cache);
+            return $cacheResult['html'];
         } catch (QUI\Exception $Exception) {
         }
 
@@ -121,11 +125,14 @@ class MegaMenu extends AbstractMenu
             $Engine->assign('showMenu', false);
         }
 
-        $result = $Engine->fetch(dirname(__FILE__).'/MegaMenu.html');
+        $result = [
+            'html'     => $Engine->fetch(dirname(__FILE__).'/MegaMenu.html'),
+            'subMenus' => \array_unique($this->subMenus)
+        ];
 
         QUI\Cache\Manager::set($cache, $result);
 
-        return $result;
+        return $result['html'];
     }
 
     /**
@@ -201,6 +208,14 @@ class MegaMenu extends AbstractMenu
         }
 
         return QUI\Menu\Mega\Standard::class;
+    }
+
+    /**
+     * @param $subMenu
+     */
+    public function addSubMenu($subMenu)
+    {
+        $this->subMenus[] = $subMenu;
     }
 
     /**
