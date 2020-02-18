@@ -3,6 +3,7 @@
 /**
  * This file contains QUI\Menu\MegaMenu
  */
+
 namespace QUI\Menu;
 
 use QUI;
@@ -22,7 +23,7 @@ class MegaMenu extends AbstractMenu
     /**
      * @param array $attributes
      */
-    public function __construct($attributes = array())
+    public function __construct($attributes = [])
     {
         $this->setAttributes([
             'showStart'    => false,
@@ -35,7 +36,7 @@ class MegaMenu extends AbstractMenu
         parent::__construct($attributes);
 
         $this->addCSSClass('quiqqer-menu-megaMenu');
-        $this->addCSSFile(dirname(__FILE__) . '/MegaMenu.css');
+        $this->addCSSFile(dirname(__FILE__).'/MegaMenu.css');
 
         if (!$this->getAttribute('enableMobile')) {
             return;
@@ -62,8 +63,21 @@ class MegaMenu extends AbstractMenu
      */
     public function getBody()
     {
-        $Engine       = QUI::getTemplateManager()->getEngine();
+        $cache = EventHandler::menuCacheName().'/megaMenu/';
+
+        $cache .= \md5(
+            $this->getSite()->getCachePath().
+            \serialize($this->getAttributes())
+        );
+
         $childControl = $this->getMenuControl($this->getAttribute('display'));
+
+        try {
+            return QUI\Cache\Manager::get($cache);
+        } catch (QUI\Exception $Exception) {
+        }
+
+        $Engine       = QUI::getTemplateManager()->getEngine();
 
         if ($this->Mobile) {
             $this->Mobile->setAttribute('Project', $this->getProject());
@@ -80,7 +94,7 @@ class MegaMenu extends AbstractMenu
 
         $this->setAttribute('data-qui-options-enablemobile', $this->getAttribute('enableMobile'));
 
-        $Engine->assign(array(
+        $Engine->assign([
             'this'         => $this,
             'Site'         => $this->getSite(),
             'Project'      => $this->getProject(),
@@ -93,13 +107,17 @@ class MegaMenu extends AbstractMenu
             'append'       => $this->append,
             'childControl' => $childControl,
             'showMenu'     => true
-        ));
+        ]);
 
         if ($this->getProject()->getConfig('menu.settings.type') == 'noMenu') {
             $Engine->assign('showMenu', false);
         }
 
-        return $Engine->fetch(dirname(__FILE__) . '/MegaMenu.html');
+        $result = $Engine->fetch(dirname(__FILE__).'/MegaMenu.html');
+
+        QUI\Cache\Manager::set($cache, $result);
+
+        return $result;
     }
 
     /**
