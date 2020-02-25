@@ -41,7 +41,7 @@ class MegaMenu extends AbstractMenu
         parent::__construct($attributes);
 
         $this->addCSSClass('quiqqer-menu-megaMenu');
-        $this->addCSSFile(dirname(__FILE__).'/MegaMenu.css');
+        $this->addCSSFile(dirname(__FILE__) . '/MegaMenu.css');
 
         if (!$this->getAttribute('enableMobile')) {
             return;
@@ -68,10 +68,10 @@ class MegaMenu extends AbstractMenu
      */
     public function getBody()
     {
-        $cache = EventHandler::menuCacheName().'/megaMenu/';
+        $cache = EventHandler::menuCacheName() . '/megaMenu/';
 
         $cache .= \md5(
-            $this->getSite()->getCachePath().
+            $this->getSite()->getCachePath() .
             \serialize($this->getAttributes())
         );
 
@@ -104,7 +104,7 @@ class MegaMenu extends AbstractMenu
             $this->Mobile->setAttribute('data-qui-options-buttonids', 'mobileMenu');
         }
 
-        $this->setAttribute('data-qui-options-enablemobile', $this->getAttribute('enableMobile'));
+        $this->setAttribute('data-qui-options-enablemobile', $this->getAttribute('enableMobile') ? 1 : 0);
 
         $Engine->assign([
             'this'         => $this,
@@ -126,7 +126,7 @@ class MegaMenu extends AbstractMenu
         }
 
         $result = [
-            'html'     => $Engine->fetch(dirname(__FILE__).'/MegaMenu.html'),
+            'html'     => $Engine->fetch(dirname(__FILE__) . '/MegaMenu.html'),
             'subMenus' => \array_unique($this->subMenus)
         ];
 
