@@ -23,7 +23,7 @@ define('package/quiqqer/menu/bin/MegaMenu', [
         ],
 
         options: {
-            enablemobile : true
+            enablemobile: true
         },
 
         initialize: function (options) {
@@ -122,10 +122,15 @@ define('package/quiqqer/menu/bin/MegaMenu', [
                 return;
             }
 
-            var SlideNode = document.getElement('[data-qui="package/quiqqer/menu/bin/SlideOut"]'),
-                SlideOut  = QUI.Controls.getById(SlideNode.get('data-quiid'));
+            var SlideNode  = document.getElement('[data-qui="package/quiqqer/menu/bin/SlideOut"]'),
+                SlideOut   = QUI.Controls.getById(SlideNode.get('data-quiid')),
+                MobileMenu = this.getElm().getElement('.quiqqer-menu-megaMenu-mobile');
+            
+            if (!MobileMenu) {
+                return;
+            }
 
-            this.getElm().getElement('.quiqqer-menu-megaMenu-mobile').addEvents({
+            MobileMenu.addEvents({
                 click: function () {
                     if (!SlideOut) {
                         SlideOut = QUI.Controls.getById(SlideNode.get('data-quiid'));
