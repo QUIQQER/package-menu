@@ -49,10 +49,14 @@ define('package/quiqqer/menu/bin/SlideOut', [
 
         initialize: function (options)
         {
+            var self = this;
+            
             this.parent(options);
 
             this.MenuButton = null;
             this.$__hideMenu = false;
+
+            this.clientWidth = QUI.getWindowSize().x;
 
             this.addEvents({
                 onImport: this.$onImport
@@ -60,6 +64,12 @@ define('package/quiqqer/menu/bin/SlideOut', [
 
             QUI.addEvent('resize', function ()
             {
+                if (self.clientWidth === QUI.getWindowSize().x) {
+                    // do not close the menu when the address bar is shown or hidden
+                    // "resize" was triggered while scrolling down or up (e.g. mobile Chrome).
+                    return;
+                }
+
                 if (this.Slideout.isOpen()) {
                     this.Slideout.close();
                 }
