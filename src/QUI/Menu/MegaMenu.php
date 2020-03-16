@@ -41,7 +41,7 @@ class MegaMenu extends AbstractMenu
         parent::__construct($attributes);
 
         $this->addCSSClass('quiqqer-menu-megaMenu');
-        $this->addCSSFile(dirname(__FILE__) . '/MegaMenu.css');
+        $this->addCSSFile(dirname(__FILE__).'/MegaMenu.css');
 
         if (!$this->getAttribute('enableMobile')) {
             return;
@@ -68,10 +68,10 @@ class MegaMenu extends AbstractMenu
      */
     public function getBody()
     {
-        $cache = EventHandler::menuCacheName() . '/megaMenu/';
+        $cache = EventHandler::menuCacheName().'/megaMenu/';
 
         $cache .= \md5(
-            $this->getSite()->getCachePath() .
+            $this->getSite()->getCachePath().
             \serialize($this->getAttributes())
         );
 
@@ -80,9 +80,16 @@ class MegaMenu extends AbstractMenu
         try {
             $cacheResult = QUI\Cache\Manager::get($cache);
 
-            // load css files of controls
+            // load css files from the controls
+            $cssFiles = [];
+
             foreach ($cacheResult['subMenus'] as $childControl) {
-                new $childControl();
+                $Instance = new $childControl();
+                $cssFiles = \array_merge($cssFiles, $Instance->getCSSFiles());
+            }
+
+            foreach ($cssFiles as $cssFile) {
+                QUI\Control\Manager::addCSSFile($cssFile);
             }
 
             return $cacheResult['html'];
@@ -126,7 +133,7 @@ class MegaMenu extends AbstractMenu
         }
 
         $result = [
-            'html'     => $Engine->fetch(dirname(__FILE__) . '/MegaMenu.html'),
+            'html'     => $Engine->fetch(dirname(__FILE__).'/MegaMenu.html'),
             'subMenus' => \array_unique($this->subMenus)
         ];
 
