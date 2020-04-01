@@ -132,10 +132,9 @@ class MegaMenu extends AbstractMenu
             $Engine->assign('showMenu', false);
         }
 
-        $result = [
-            'html'     => $Engine->fetch(dirname(__FILE__).'/MegaMenu.html'),
-            'subMenus' => \array_unique($this->subMenus)
-        ];
+        $result             = [];
+        $result['html']     = $Engine->fetch(dirname(__FILE__).'/MegaMenu.html');
+        $result['subMenus'] = \array_unique($this->subMenus);
 
         QUI\Cache\Manager::set($cache, $result);
 
