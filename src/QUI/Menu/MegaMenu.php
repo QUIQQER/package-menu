@@ -33,6 +33,7 @@ class MegaMenu extends AbstractMenu
         $this->setAttributes([
             'showStart'    => false,
             'Start'        => false,
+            'startText'    => '', // optional: displayed text
             'data-qui'     => 'package/quiqqer/menu/bin/MegaMenu',
             'display'      => 'Standard',
             'enableMobile' => true

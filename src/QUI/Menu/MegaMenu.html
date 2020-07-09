@@ -3,9 +3,13 @@
 
     <ul class="quiqqer-menu-megaMenu-list">
         {if $this->getAttribute('showStart')}
-        <li class="quiqqer-menu-megaMenu-list-item{if $Site->getId() == $Start->getId()} quiqqer-menu-megaMenu-list-item--current{/if}">
-            <a href="{url site=$Start}" title="{$Start->getAttribute('title')|escape:" html"}">
-            {$Start->getAttribute('title')}
+        <li class="quiqqer-menu-megaMenu-list-item quiqqer-menu-megaMenu-list-item--start {if $Site->getId() == $Start->getId()}quiqqer-menu-megaMenu-list-item--current{/if}">
+            <a href="{url site=$Start}" title="{$Start->getAttribute('title')|escape:'html'}">
+            {if $this->getAttribute('startText')}
+                {$this->getAttribute('startText')|escape:'html'}
+            {else}
+                {$Start->getAttribute('title')}
+            {/if}
             </a>
         </li>
         {/if}
