@@ -39,6 +39,10 @@ class MegaMenu extends AbstractMenu
             'enableMobile' => true
         ]);
 
+        if ($this->getProject()->getConfig('menu.settings.type')) {
+            $this->setAttribute('display', $this->getProject()->getConfig('menu.settings.type'));
+        }
+
         parent::__construct($attributes);
 
         $this->addCSSClass('quiqqer-menu-megaMenu');
