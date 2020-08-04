@@ -199,6 +199,8 @@ define('package/quiqqer/menu/bin/MegaMenu', [
          * @returns {Promise}
          */
         $show: function (leftOffset, isSimpleMenu) {
+            this.$liSize = this.getElm().getSize().y;
+
             return new Promise(function (resolve) {
 
                 var width = '';
