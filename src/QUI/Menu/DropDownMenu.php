@@ -41,11 +41,16 @@ class DropDownMenu extends QUI\Control
     {
         $cache = EventHandler::menuCacheName().'/dropDownMenu/';
 
+        $attributes = $this->getAttributes();
+        $attributes = \array_filter($attributes, function ($entry) {
+            return \is_object($entry) === false;
+        });
+
         $cache .= \md5(
             $this->getSite()->getCachePath().
-            \serialize($this->getAttributes())
+            \serialize($attributes)
         );
-
+        
         try {
             return QUI\Cache\Manager::get($cache);
         } catch (QUI\Exception $Exception) {
