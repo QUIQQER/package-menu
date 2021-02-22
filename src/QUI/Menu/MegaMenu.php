@@ -75,12 +75,18 @@ class MegaMenu extends AbstractMenu
     {
         $cache = EventHandler::menuCacheName().'/megaMenu/';
 
+        $attributes = $this->getAttributes();
+        $attributes = \array_filter($attributes, function ($entry) {
+            return \is_object($entry) === false;
+        });
+
         $cache .= \md5(
             $this->getSite()->getCachePath().
-            \serialize($this->getAttributes())
+            \serialize($attributes)
         );
 
         $childControl = $this->getMenuControl($this->getAttribute('display'));
+
 
         try {
             $cacheResult = QUI\Cache\Manager::get($cache);

@@ -41,6 +41,7 @@ class SidebarDropDownMenu extends QUI\Control
         parent::__construct($attributes);
 
         $this->setAttribute('class', 'quiqqer-sidebar-dropdown-navigation');
+        $this->setAttribute('cacheable', false);
     }
 
     /**
