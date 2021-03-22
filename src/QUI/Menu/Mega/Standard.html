@@ -3,7 +3,7 @@
         {foreach $children as $Child}
         <li class="quiqqer-menu-megaMenu-children-standard-list-entry">
             <a href="{url site=$Child}"
-               title="{$Child->getAttribute('title')|escape:" html"}">
+               title="{$Child->getAttribute('title')|escape:'html'}">
             {$Child->getAttribute('title')}
             </a>
 
@@ -15,7 +15,7 @@
                     {foreach $subchildren as $SubChild}
                     <li>
                         <a href="{url site=$SubChild}"
-                           title="{$SubChild->getAttribute('title')|escape:" html"}">
+                           title="{$SubChild->getAttribute('title')|escape:'html'}">
                         {$SubChild->getAttribute('title')}
                         </a>
                     </li>
