@@ -1,6 +1,12 @@
 <ul class="quiqqer-menu-megaMenu-children-iconsDesc-list">
     {foreach $children as $Child}
-    <li class="quiqqer-menu-megaMenu-children-iconsDesc-list-entry">
+
+    {assign var=isInPath value=0}
+    {if $Child->getId() == $Site->getId() || QUI::getRewrite()->isIdInPath($Child->getId())}
+        {assign var=isInPath value=1}
+    {/if}
+
+    <li class="quiqqer-menu-megaMenu-children-iconsDesc-list-entry {if $isInPath}quiqqer-menu-megaMenu-children-iconsDesc-list-entry--current{/if}">
         <a href="{url site=$Child}"
            title="{$Child->getAttribute('title')|escape:'html'}">
         {$Child->getAttribute('title')}
@@ -12,7 +18,12 @@
         <div class="quiqqer-menu-megaMenu-children-iconsDesc-list-entry-short">
             <ul>
                 {foreach $subchildren as $SubChild}
-                <li>
+
+                {assign var=isInPathSubChild value=0}
+                {if $SubChild->getId() == $Site->getId() || QUI::getRewrite()->isIdInPath($SubChild->getId())}
+                    {assign var=isInPathSubChild value=1}
+                {/if}
+                <li class="quiqqer-menu-megaMenu-children-iconsDesc-list-entry-short-subList {if $isInPathSubChild}quiqqer-menu-megaMenu-children-iconsDesc-list-entry-short-subList--current{/if}">
                     <a href="{url site=$SubChild}"
                        title="{$SubChild->getAttribute('title')|escape:'html'}"
                     class="quiqqer-menu-megaMenu-children-iconsDesc-list-entry-short-link"

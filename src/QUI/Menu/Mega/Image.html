@@ -1,5 +1,9 @@
 {foreach $children as $Child}
-<div class="quiqqer-menu-megaMenu-children-image-entry">
+{assign var=isInPath value=0}
+{if $Child->getId() == $Site->getId() || QUI::getRewrite()->isIdInPath($Child->getId())}
+    {assign var=isInPath value=1}
+{/if}
+<div class="quiqqer-menu-megaMenu-children-image-entry {if $isInPath}quiqqer-menu-megaMenu-children-image-entry--current{/if}">
     <a href="{url site=$Child}">
         {image src=$Child->getAttribute('image_site') width=300 assign=bg onlysrc=1}
         <div class="quiqqer-menu-megaMenu-children-image-entry-img"
