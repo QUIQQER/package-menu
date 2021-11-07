@@ -1,0 +1,15 @@
+<ul class="quiqqer-menu-navTabs-tabs" role="tablist">
+    {foreach from=$entries item=entry key=key}
+        <li class="quiqqer-menu-navTabs-tabs-item {if $key == $active - 1}active{/if}">
+            <a href="#{$entry.title|escape:'url'}">{$entry.title}</a>
+        </li>
+    {/foreach}
+</ul>
+<div class="quiqqer-menu-navTabs-content">
+    {foreach from=$entries item=entry key=key}
+        <div class="quiqqer-menu-navTabs-content-item {if $key == $active - 1}active{/if}"
+             {if $key !== $active - 1}style="display: none;"{/if} id="{$entry.title|escape:'url'}">
+            {$entry.content}
+        </div>
+    {/foreach}
+</div>
