@@ -1,0 +1,67 @@
+/********/
+/* Tabs */
+/********/
+.quiqqer-menu-navTabs {
+    margin: 3rem 0 5rem;
+}
+
+/* nav */
+.quiqqer-menu-navTabs-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    list-style: none;
+    margin-left: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 1rem;
+    padding-left: 0;
+    position: relative;
+    white-space: nowrap;
+}
+
+.quiqqer-menu-navTabs-tabs:before {
+    background-color: #ddd;
+    bottom: 1rem;
+    content: '';
+    height: 1px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.quiqqer-menu-navTabs-tabs li {
+    margin-bottom: 0;
+    padding-left: 0;
+    position: relative;
+}
+
+.quiqqer-menu-navTabs-tabs li a {
+    border-bottom: 1px solid #ddd;
+    display: inline-block;
+    padding: 0.55rem 1.5rem;
+}
+
+.quiqqer-menu-navTabs-tabs li.active a {
+    border-bottom: 1px solid currentColor;
+}
+
+.quiqqer-menu-navTabs-tabs li:not(.active) a {
+    color: inherit;
+}
+
+.quiqqer-menu-navTabs-tabs li a:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* content */
+.quiqqer-menu-navTabs-content {
+    margin-top: var(--spacing-sm, 2rem);
+    overflow-x: visible;
+    overflow-y: hidden;
+    margin-left: -10px;
+    padding-left: 10px;
+}
+
+.quiqqer-menu-navTabs-content-item-shortDesc {
+    margin-bottom: 1rem;
+}
