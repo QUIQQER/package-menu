@@ -116,6 +116,14 @@
         </locale>
 
         <!-- one page nav -->
+        <locale name="menu.control.OnePageNav.title">
+            <de><![CDATA[Menu: One Page Menü (für Landingpage)]]></de>
+            <en><![CDATA[Menu: One Page Navigation (for landingpage)]]></en>
+        </locale>
+        <locale name="menu.control.OnePageNav.description">
+            <de><![CDATA[Menu für eine One-Pager. Die Menüeinträge scrollen zu den entsprechenden Abschnitten auf der Startseite.]]></de>
+            <en><![CDATA[Navigation for one page. The menu items scroll to the corresponding sections on the home page.]]></en>
+        </locale>
         <locale name="menu.control.OnePageNav.addLink">
             <de><![CDATA[Link hinzufügen]]></de>
             <en><![CDATA[Add link]]></en>
@@ -150,6 +158,72 @@
             <strong>CSS selector:</strong> Element to scroll to.
             E.g. <i>.css-class</i>, <i>#elementId</i>]]>
             </en>
+        </locale>
+        
+        <!-- nav tabs vertical -->
+        <locale name="control.navTabsVertical.title">
+            <de><![CDATA[Menu: Navigation Tabs (vertical)]]></de>
+            <en><![CDATA[Menu: Navigation Tabs (vertical)]]></en>
+        </locale>
+        <locale name="control.navTabsVertical.description">
+            <de><![CDATA[Verticale Menüeinträge. Der Inhalt ist neben dem Menü angezeigt.]]></de>
+            <en><![CDATA[Vertical menu items. The content is next to the menu items.]]></en>
+        </locale>
+        <locale name="control.navTabsVertical.imagePos">
+            <de><![CDATA[Bild-Position]]></de>
+            <en><![CDATA[Image position]]></en>
+        </locale>
+        <locale name="control.navTabsVertical.imagePos.top">
+            <de><![CDATA[Vor dem Inhalt]]></de>
+            <en><![CDATA[Before the content]]></en>
+        </locale>
+        <locale name="control.navTabsVertical.imagePos.bottom">
+            <de><![CDATA[Nach dem Inhalt]]></de>
+            <en><![CDATA[After the content]]></en>
+        </locale>
+        <locale name="control.navTabsVertical.imageMaxWidth">
+            <de><![CDATA[Maximale Breite des Bildes]]></de>
+            <en><![CDATA[Image max width]]></en>
+        </locale>
+        <locale name="control.navTabsVertical.imageMaxHeight">
+            <de><![CDATA[Maximale Höhe des Bildes]]></de>
+            <en><![CDATA[Image max height]]></en>
+        </locale>
+        <locale name="control.navTabsVertical.navTitle">
+            <de><![CDATA[Title vor den Tabs]]></de>
+            <en><![CDATA[Title before tabs]]></en>
+        </locale>
+        <locale name="control.navTabsVertical.navContent">
+            <de><![CDATA[Inhalt vor den Tabs]]></de>
+            <en><![CDATA[Content before tabs]]></en>
+        </locale>
+        <locale name="control.navTabsVertical.entries">
+            <de><![CDATA[Tabs]]></de>
+            <en><![CDATA[Tabs]]></en>
+        </locale>
+        <locale name="control.navTabsVertical.entries.addButton">
+            <de><![CDATA[Eintrag hinzufügen]]></de>
+            <en><![CDATA[Add entry]]></en>
+        </locale>
+        <locale name="control.navTabsVertical.entries.entryTitle">
+            <de><![CDATA[Titel]]></de>
+            <en><![CDATA[Title]]></en>
+        </locale>
+        <locale name="control.navTabsVertical.entries.entryTitleIcon">
+            <de><![CDATA[Icon (vor dem Titel)]]></de>
+            <en><![CDATA[Icon (before the title)]]></en>
+        </locale>
+        <locale name="control.navTabsVertical.entries.entryTitleIconColor">
+            <de><![CDATA[Icon-Farbe]]></de>
+            <en><![CDATA[Icon color]]></en>
+        </locale>
+        <locale name="control.navTabsVertical.entries.entryContent">
+            <de><![CDATA[Inhalt]]></de>
+            <en><![CDATA[Content]]></en>
+        </locale>
+        <locale name="control.navTabsVertical.entries.entryImage">
+            <de><![CDATA[Bild]]></de>
+            <en><![CDATA[Image]]></en>
         </locale>
     </groups>
 </locales>
