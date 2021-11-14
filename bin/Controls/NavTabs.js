@@ -46,9 +46,9 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
             var Elm  = this.getElm(),
                 self = this;
 
-            this.navTabs             = Elm.getElements('.quiqqer-menu-navTabs-tabs-item');
-            this.navContents         = Elm.getElements('.quiqqer-menu-navTabs-content-item');
-            this.NavContentContainer = Elm.getElement('.quiqqer-menu-navTabs-content');
+            this.navTabs             = Elm.getElements('.quiqqer-tab-nav-item');
+            this.navContents         = Elm.getElements('.quiqqer-tab-content-item');
+            this.NavContentContainer = Elm.getElement('.quiqqer-tab-content');
 
             if (!this.navTabs || !this.navContents) {
                 return;
@@ -63,8 +63,8 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
                 }
             }
 
-            this.ActiveNavTab  = Elm.getElement('.quiqqer-menu-navTabs-tabs-item.active');
-            this.ActiveContent = Elm.getElement('.quiqqer-menu-navTabs-content-item.active');
+            this.ActiveNavTab  = Elm.getElement('.quiqqer-tab-nav-item.active');
+            this.ActiveContent = Elm.getElement('.quiqqer-tab-content-item.active');
 
             this.navTabs.addEvent('click', function (event) {
                 event.stop();
@@ -131,7 +131,6 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
                 ])
             }).then(function () {
                 self.clicked = false;
-                console.log(TabContent)
                 self.NavContentContainer.setStyle('height', null);
             })
         },

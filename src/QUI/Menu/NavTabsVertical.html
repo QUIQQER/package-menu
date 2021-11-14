@@ -1,0 +1,78 @@
+{if $this->getAttribute('showTitle') && $this->getAttribute('frontendTitle')}
+<header class="control-header">
+    <h1>{$this->getAttribute('frontendTitle')}</h1>
+</header>
+{/if}
+
+{if $this->getAttribute('content') != ""}
+<div class="control-body">
+    {$this->getAttribute('content')}
+</div>
+{/if}
+
+<div class="control-template quiqqer-menu-navTabsVertical-container">
+
+    <div class="quiqqer-menu-navTabsVertical-tabs">
+        {if $navTitle || $navContent}
+            <div class="quiqqer-menu-navTabsVertical-tabs-body">
+                {if $navTitle}
+                    <header class="quiqqer-menu-navTabsVertical-body-header">
+                        <h4>{$navTitle}</h4>
+                    </header>
+                {/if}
+
+                {if $navContent}
+                    {$navContent}
+                {/if}
+            </div>
+        {/if}
+
+        <div class="quiqqer-menu-navTabsVertical-tabs-nav-container">
+            <ul class="quiqqer-menu-navTabsVertical-tabs-nav quiqqer-tab-nav">
+                {foreach from=$entries item=entry key=key}
+                <li class="quiqqer-tab-nav-item {if $key == 0}active{/if}" data-entry-nav-pos="{$key}">
+                    <a href="#{$entry.title|escape:'url'}">
+                        {if isset($entry.titleIcon) && $entry.titleIcon}
+                            {image src=$entry.titleIcon width="80" height="80"}
+                        {/if}
+
+                        <span class="verticalTabSwitcher-nav-entry-label">{$entry.title}</span>
+                    </a>
+                </li>
+                {assign var=modKey value=$key+1}
+                {/foreach}
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="quiqqer-menu-navTabsVertical-content">
+        <ul class="quiqqer-tab-content">
+            {foreach from=$entries item=entry key=key}
+
+            <li class="quiqqer-tab-content-item {if $key == 0}active{/if}" {if $key !== 0}style="display: none;"{/if}
+                    data-entry-content-pos="{$key}" id="{$entry.title|escape:'url'}">
+
+                {if isset($entry.image) && $entry.image && $imagePos == 'top'}
+                <div class="quiqqer-menu-navTabsVertical-content-image
+                            quiqqer-menu-navTabsVertical-content-image__top">
+                    {image src=$entry.image width="600" height="600"}
+                </div>
+                {/if}
+
+                {if isset($entry.content) && $entry.content}
+                    {$entry.content}
+                {/if}
+
+                {if isset($entry.image) && $entry.image && $imagePos == 'bottom'}
+                <div class="quiqqer-menu-navTabsVertical-content-image
+                            quiqqer-menu-navTabsVertical-content-image__bottom">
+                    {image src=$entry.image width="600" height="600"}
+                </div>
+                {/if}
+            </li>
+            {assign var=modKey value=$key+1}
+            {/foreach}
+        </ul>
+    </div>
+</div>

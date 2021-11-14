@@ -1,0 +1,111 @@
+.quiqqer-menu-navTabsVertical-container {
+    display: flex;
+    gap: 4rem;
+}
+
+.quiqqer-menu-navTabsVertical-tabs {
+    width: 35%;
+}
+
+.quiqqer-menu-navTabsVertical-content {
+    width: 65%;
+}
+
+.quiqqer-menu-navTabsVertical .quiqqer-menu-navTabsVertical-tabs-body {
+    margin-bottom: 2rem;
+}
+
+.quiqqer-menu-navTabsVertical-container .quiqqer-menu-navTabsVertical-tabs-nav,
+.quiqqer-menu-navTabsVertical-container .quiqqer-tab-content {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.quiqqer-menu-navTabsVertical-container .quiqqer-tab-nav-item,
+.quiqqer-menu-navTabsVertical-container .quiqqer-tab-content-item {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.quiqqer-menu-navTabsVertical-container .quiqqer-tab-nav-item a {
+    display: block;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+}
+
+.quiqqer-menu-navTabsVertical-container .quiqqer-tab-nav-item:not(.active) a {
+    color: inherit;
+}
+
+.quiqqer-menu-navTabsVertical-container .quiqqer-tab-nav-item.active a {
+    box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
+}
+
+.quiqqer-menu-navTabsVertical-container .quiqqer-tab-nav-item .fa,
+.quiqqer-menu-navTabsVertical-container .quiqqer-tab-nav-item img {
+    margin-right: 1rem;
+}
+
+.quiqqer-menu-navTabsVertical-container .quiqqer-tab-nav-item img {
+    width: 2rem;
+    height: auto;
+    vertical-align: middle;
+}
+
+.quiqqer-menu-navTabsVertical-content-image {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 767px) {
+    .quiqqer-menu-navTabsVertical-container {
+        flex-wrap: wrap;
+        gap: 0;
+    }
+
+    .quiqqer-menu-navTabsVertical-tabs,
+    .quiqqer-menu-navTabsVertical-content {
+        width: 100%;
+    }
+
+    .quiqqer-menu-navTabsVertical .quiqqer-menu-navTabsVertical-tabs {
+        margin-bottom: 0;
+    }
+
+    .quiqqer-menu-navTabsVertical-tabs-nav-container {
+        position: relative;
+    }
+
+    .quiqqer-menu-navTabsVertical-tabs-nav-container:before,
+    .quiqqer-menu-navTabsVertical-tabs-nav-container:after {
+        content: '';
+        height: 100%;
+        position: absolute;
+        top: 0;
+        width: 40px;
+    }
+
+    .quiqqer-menu-navTabsVertical-tabs-nav-container:before {
+        background: linear-gradient(90deg, #fff, transparent);
+        left: 0;
+    }
+
+    .quiqqer-menu-navTabsVertical-tabs-nav-container:after {
+        background: linear-gradient(90deg, transparent, #fff);
+        right: 0;
+    }
+
+    .quiqqer-menu-navTabsVertical-container .quiqqer-menu-navTabsVertical-tabs-nav {
+        display: flex;
+        overflow: auto;
+        padding: 2rem 1rem;
+        white-space: nowrap;
+    }
+
+    .quiqqer-menu-navTabsVertical-container .quiqqer-tab-nav-item {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+        flex-shrink: 0;
+    }
+}

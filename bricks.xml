@@ -88,6 +88,60 @@
                 </setting>
             </settings>
         </brick>
+        
+        <!-- nav tabs vertical -->
+        <brick control="\QUI\Menu\NavTabsVertical">
+            <title>
+                <locale group="quiqqer/menu"
+                        var="control.navTabsVertical.title"/>
+            </title>
+            <description>
+                <locale group="quiqqer/menu"
+                        var="control.verticalTabSwitcher.description"/>
+            </description>
+
+            <settings>
+                <setting name="imagePos" type="select">
+                    <locale group="quiqqer/menu"
+                            var="control.navTabsVertical.imagePos"/>
+
+                    <option value="top">
+                        <locale group="quiqqer/menu"
+                                var="control.navTabsVertical.imagePos.top"/>
+                    </option>
+                    <option value="bottom">
+                        <locale group="quiqqer/menu"
+                                var="control.navTabsVertical.imagePos.bottom"/>
+                    </option>
+                </setting>
+
+                <!--<setting name="imageMaxWidth" type="number" min="0" max="3000">
+                    <locale group="quiqqer/menu"
+                            var="control.navTabsVertical.imageMaxWidth"/>
+                </setting>
+
+                <setting name="imageMaxHeight" type="number" min="0" max="3000">
+                    <locale group="quiqqer/menu"
+                            var="control.navTabsVertical.imageMaxHeight"/>
+                </setting>-->
+
+                <setting name="navTitle" type="text">
+                    <locale group="quiqqer/menu"
+                            var="control.navTabsVertical.navTitle"/>
+                </setting>
+
+                <setting name="navContent" type="text" data-qui="controls/editors/Input">
+                    <locale group="quiqqer/menu"
+                            var="control.navTabsVertical.navContent"/>
+                </setting>
+
+                <setting name="entries"
+                         data-qui="package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings">
+                    <locale group="quiqqer/menu"
+                            var="control.navTabsVertical.entries"/>
+                </setting>
+            </settings>
+        </brick>
 
     </bricks>
 </quiqqer>
