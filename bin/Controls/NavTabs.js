@@ -29,7 +29,8 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
         initialize: function (options) {
             this.parent(options);
 
-            this.navTabs             = false;
+            this.navTab              = false;
+            this.navTabsItems        = false;
             this.navContents         = false;
             this.NavContentContainer = null;
             this.ActiveNavTab        = null;
@@ -46,11 +47,12 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
             var Elm  = this.getElm(),
                 self = this;
 
-            this.navTabs             = Elm.getElements('.quiqqer-tab-nav-item');
+            this.navTab              = Elm.getElement('.quiqqer-tab-nav');
+            this.navTabsItems        = Elm.getElements('.quiqqer-tab-nav-item');
             this.navContents         = Elm.getElements('.quiqqer-tab-content-item');
             this.NavContentContainer = Elm.getElement('.quiqqer-tab-content');
 
-            if (!this.navTabs || !this.navContents) {
+            if (!this.navTabsItems || !this.navContents) {
                 return;
             }
 
@@ -66,7 +68,7 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
             this.ActiveNavTab  = Elm.getElement('.quiqqer-tab-nav-item.active');
             this.ActiveContent = Elm.getElement('.quiqqer-tab-content-item.active');
 
-            this.navTabs.addEvent('click', function (event) {
+            this.navTabsItems.addEvent('click', function (event) {
                 event.stop();
 
                 if (self.clicked) {
@@ -92,9 +94,11 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
                     return;
                 }
 
-                self.toggle(NavTabItem, target);
-            })
+                self.$setNavItemPos(NavTabItem);
 
+
+                self.toggle(NavTabItem, target);
+            });
         },
 
         /**
@@ -128,11 +132,11 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
                     self.enableNavItem(NavItem),
                     self.showContent(TabContent),
                     self.$setHeight(TabContent.offsetHeight)
-                ])
+                ]);
             }).then(function () {
                 self.clicked = false;
                 self.NavContentContainer.setStyle('height', null);
-            })
+            });
         },
 
         /**
@@ -146,7 +150,7 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
                 Item.removeClass('active');
 
                 resolve();
-            })
+            });
         },
 
         /**
@@ -163,8 +167,7 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
                 self.ActiveNavTab = Item;
 
                 resolve();
-            })
-
+            });
         },
 
         /**
@@ -182,8 +185,8 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
                     Item.setStyle('display', 'none');
 
                     resolve();
-                })
-            })
+                });
+            });
         },
 
         /**
@@ -202,9 +205,8 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
                     self.ActiveContent = Item;
 
                     resolve();
-                })
-            })
-
+                });
+            });
         },
 
         /**
@@ -222,8 +224,8 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
                 }, {
                     duration: 250,
                     callback: resolve
-                })
-            })
+                });
+            });
         },
 
         /**
@@ -242,8 +244,8 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
                 }, {
                     duration: 250,
                     callback: resolve
-                })
-            })
+                });
+            });
         },
 
         /**
@@ -256,7 +258,7 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
             Item.setStyles({
                 transform: 'translateX(-10px)',
                 opacity  : 0
-            })
+            });
 
             return new Promise(function (resolve) {
                 moofx(Item).animate({
@@ -265,8 +267,28 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
                 }, {
                     duration: 250,
                     callback: resolve
-                })
-            })
+                });
+            });
+        },
+
+        /**
+         * Scroll active nav item to the left edge (on mobile)
+         *
+         * @param Item
+         */
+        $setNavItemPos: function (Item) {
+            if (!Item) {
+                return;
+            }
+
+            if (QUI.getWindowSize().x > 767) {
+                return;
+            }
+
+            let paddingLeft = window.getComputedStyle(this.navTab, null).getPropertyValue('padding-left'),
+                marginLeft  = window.getComputedStyle(Item, null).getPropertyValue('padding-left');
+            
+            new Fx.Scroll(this.navTab).start(Item.offsetLeft - parseInt(paddingLeft) - parseInt(marginLeft), 0);
         }
     });
 });
