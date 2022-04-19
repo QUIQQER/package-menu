@@ -22,12 +22,12 @@ abstract class AbstractMenuItem
     /**
      * @return string
      */
-    static function itemIcon(): string
+    public static function itemIcon(): string
     {
         return 'fa fa-file-o';
     }
 
-    static function itemJsControl(): string
+    public static function itemJsControl(): string
     {
         return '';
     }
