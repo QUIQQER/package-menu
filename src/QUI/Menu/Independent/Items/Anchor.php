@@ -14,7 +14,7 @@ class Anchor extends AbstractMenuItem
     /**
      * @return string
      */
-    static function itemIcon(): string
+    public static function itemIcon(): string
     {
         return 'fa fa-anchor';
     }
