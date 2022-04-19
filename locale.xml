@@ -121,8 +121,10 @@
             <en><![CDATA[Menu: One Page Navigation (for landingpage)]]></en>
         </locale>
         <locale name="menu.control.OnePageNav.description">
-            <de><![CDATA[Menu für eine One-Pager. Die Menüeinträge scrollen zu den entsprechenden Abschnitten auf der Startseite.]]></de>
-            <en><![CDATA[Navigation for one page. The menu items scroll to the corresponding sections on the home page.]]></en>
+            <de>
+                <![CDATA[Menu für eine One-Pager. Die Menüeinträge scrollen zu den entsprechenden Abschnitten auf der Startseite.]]></de>
+            <en>
+                <![CDATA[Navigation for one page. The menu items scroll to the corresponding sections on the home page.]]></en>
         </locale>
         <locale name="menu.control.OnePageNav.addLink">
             <de><![CDATA[Link hinzufügen]]></de>
@@ -140,14 +142,14 @@
             <de><![CDATA[Link-Typ]]></de>
             <en><![CDATA[Link typ]]></en>
         </locale>
-            <locale name="menu.control.OnePageNav.entries.linkType.anchor">
-                <de><![CDATA[Anker]]></de>
-                <en><![CDATA[Anchor]]></en>
-            </locale>
-            <locale name="menu.control.OnePageNav.entries.linkType.url">
-                <de><![CDATA[Url]]></de>
-                <en><![CDATA[Url]]></en>
-            </locale>
+        <locale name="menu.control.OnePageNav.entries.linkType.anchor">
+            <de><![CDATA[Anker]]></de>
+            <en><![CDATA[Anchor]]></en>
+        </locale>
+        <locale name="menu.control.OnePageNav.entries.linkType.url">
+            <de><![CDATA[Url]]></de>
+            <en><![CDATA[Url]]></en>
+        </locale>
         <locale name="menu.control.OnePageNav.entries.link" html="true">
             <de><![CDATA[Seitenlink oder CSS Selector. <br>
             <strong>Seitenlink:</strong> die URL muss valid sein. <br>
@@ -159,7 +161,7 @@
             E.g. <i>.css-class</i>, <i>#elementId</i>]]>
             </en>
         </locale>
-        
+
         <!-- nav tabs vertical -->
         <locale name="control.navTabsVertical.title">
             <de><![CDATA[Menu: Navigation Tabs (vertical)]]></de>
@@ -224,6 +226,76 @@
         <locale name="control.navTabsVertical.entries.entryImage">
             <de><![CDATA[Bild]]></de>
             <en><![CDATA[Image]]></en>
+        </locale>
+    </groups>
+
+    <groups name="quiqqer/menu" datatype="php">
+        <locale name="menu.text">
+            <de><![CDATA[Menü Verwaltung]]></de>
+            <en><![CDATA[Menu management]]></en>
+        </locale>
+
+        <locale name="item.anchor.title">
+            <de><![CDATA[Menu Eintrag: Zu einem Anker]]></de>
+            <en><![CDATA[Menu entry: To an anchor]]></en>
+        </locale>
+        <locale name="item.custom.title">
+            <de><![CDATA[Menu Eintrag: Custom Event]]></de>
+            <en><![CDATA[Menu entry: Custom Event]]></en>
+        </locale>
+        <locale name="item.site.title">
+            <de><![CDATA[Menu Eintrag: Zu einer internen Seite von einem Projekt]]></de>
+            <en><![CDATA[Menu entry: To an internal page from a project]]></en>
+        </locale>
+        <locale name="item.url.title">
+            <de><![CDATA[Menu Eintrag: Zur einer anderen URL]]></de>
+            <en><![CDATA[Menu entry: To another URL]]></en>
+        </locale>
+
+    </groups>
+
+    <groups name="quiqqer/menu" datatype="js">
+        <locale name="menu.panel.management.title">
+            <de><![CDATA[Menü Verwaltung]]></de>
+            <en><![CDATA[Menu management]]></en>
+        </locale>
+        <locale name="grid.menuId">
+            <de><![CDATA[ID]]></de>
+            <en><![CDATA[ID]]></en>
+        </locale>
+        <locale name="grid.menuTitle">
+            <de><![CDATA[Titel]]></de>
+            <en><![CDATA[Title]]></en>
+        </locale>
+
+        <locale name="creation.window.title">
+            <de><![CDATA[Neues Menü anlegen]]></de>
+            <en><![CDATA[Create new menu]]></en>
+        </locale>
+        <locale name="create.window.headerText">
+            <de><![CDATA[Eigenschaften]]></de>
+            <en><![CDATA[Properties]]></en>
+        </locale>
+        <locale name="create.window.titleText">
+            <de><![CDATA[Titel]]></de>
+            <en><![CDATA[Title]]></en>
+        </locale>
+        <locale name="create.window.workingTitleText">
+            <de><![CDATA[Arbeitstitel]]></de>
+            <en><![CDATA[Working title]]></en>
+        </locale>
+
+        <locale name="deletion.window.title">
+            <de><![CDATA[Menüs löschen]]></de>
+            <en><![CDATA[Delete menus]]></en>
+        </locale>
+        <locale name="deletion.window.text">
+            <de><![CDATA[Möchtest du wirklich die folgenden Menüs löschen?]]></de>
+            <en><![CDATA[Do you really want to delete the following menus?]]></en>
+        </locale>
+        <locale name="deletion.window.information">
+            <de><![CDATA[Die folgenden Menüs werden unwiederruflich gelöscht: [list]]]></de>
+            <en><![CDATA[The following menus are deleted irrevocably: [list]]]></en>
         </locale>
     </groups>
 </locales>
