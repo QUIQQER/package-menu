@@ -17,7 +17,7 @@ abstract class AbstractMenuItem
         $this->attributes = $attributes;
     }
 
-    abstract static function itemTitle();
+    public abstract static function itemTitle();
 
     /**
      * @return string
