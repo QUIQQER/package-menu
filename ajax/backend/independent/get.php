@@ -20,7 +20,9 @@ QUI::$Ajax->registerFunction(
             }
 
             foreach ($data['children'] as $key => $entry) {
-                $icon = QUI\Menu\Independent\Items\Site::itemIcon();
+                /* @var $Item \QUI\Menu\Independent\Items\AbstractMenuItem */
+                $Item = new $entry['type']($entry);
+                $icon = QUI\Menu\Independent\Items\Site::itemIcon(); // default
 
                 if (class_exists($entry['type'])) {
                     $icon = call_user_func([$entry['type'], 'itemIcon']);
@@ -30,7 +32,8 @@ QUI::$Ajax->registerFunction(
                     $data['children'][$key] = parseChildren($entry);
                 }
 
-                $data['children'][$key]['icon'] = $icon;
+                $data['children'][$key]['typeIcon']      = $icon;
+                $data['children'][$key]['titleFrontend'] = $Item->getTitle();
             }
 
             return $data;

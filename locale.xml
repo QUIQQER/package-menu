@@ -297,5 +297,9 @@
             <de><![CDATA[Die folgenden Menüs werden unwiederruflich gelöscht: [list]]]></de>
             <en><![CDATA[The following menus are deleted irrevocably: [list]]]></en>
         </locale>
+        <locale name="quiqqer.menu.independent.addItem.title">
+            <de><![CDATA[Menüeintrag hinzufügen]]></de>
+            <en><![CDATA[Add menu item]]></en>
+        </locale>
     </groups>
 </locales>

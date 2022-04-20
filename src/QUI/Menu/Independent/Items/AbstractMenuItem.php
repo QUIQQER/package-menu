@@ -2,12 +2,19 @@
 
 namespace QUI\Menu\Independent\Items;
 
+use QUI;
+use QUI\Locale;
+
+use function is_string;
+use function json_decode;
+
 /**
- *
+ * Base class for menu items
  */
 abstract class AbstractMenuItem
 {
     protected array $attributes = [];
+    protected array $children = [];
 
     /**
      * @param array $attributes
@@ -16,6 +23,84 @@ abstract class AbstractMenuItem
     {
         $this->attributes = $attributes;
     }
+
+    //region frontend methods
+
+    /**
+     * @param ?Locale $Locale
+     * @return string
+     */
+    public function getTitle(Locale $Locale = null): string
+    {
+        if ($Locale === null) {
+            $Locale = QUI::getLocale();
+        }
+
+        $current = $Locale->getCurrent();
+        $title   = $this->attributes['title'];
+
+        if (is_string($title)) {
+            $title = json_decode($title, true);
+        }
+
+        if (isset($title[$current])) {
+            return $title[$current];
+        }
+
+        return '';
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return '';
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrl(): string
+    {
+        return '';
+    }
+
+    /**
+     * @return string
+     */
+    public function getIcon(): string
+    {
+        if (isset($this->attributes['icon'])) {
+            return $this->attributes['icon'];
+        }
+
+        return '';
+    }
+
+    /**
+     * @return string
+     */
+    public function getIdentifier(): string
+    {
+        return '';
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCustomData()
+    {
+        if (isset($this->attributes['data'])) {
+            return $this->attributes['data'];
+        }
+
+        return null;
+    }
+
+    //endregion
+
+    //region type stuff
 
     abstract public static function itemTitle();
 
@@ -27,48 +112,36 @@ abstract class AbstractMenuItem
         return 'fa fa-file-o';
     }
 
+    /**
+     * @return string
+     */
     public static function itemJsControl(): string
     {
         return '';
     }
 
-    // region frontend methods
+    //endregion
+
+    //region children
 
     /**
-     * @return string
+     * Return the children of this item
+     *
+     * @return AbstractMenuItem[]
      */
-    public function getTitle(): string
+    public function getChildren(): array
     {
-        if (isset($attributes['title'])) {
-            return $attributes['title'];
-        }
-
-        return '';
+        return $this->children;
     }
 
-    public function getName()
+    /**
+     * Add a child item
+     *
+     * @param AbstractMenuItem $Item
+     */
+    public function appendChild(AbstractMenuItem $Item)
     {
-        if (isset($attributes['name'])) {
-            return $attributes['name'];
-        }
-
-        return '';
-    }
-
-    public function getUrl()
-    {
-    }
-
-    public function getIcon()
-    {
-    }
-
-    public function getIdentifier()
-    {
-    }
-
-    public function getCustomData()
-    {
+        $this->children[] = $Item;
     }
 
     //endregion

@@ -3,7 +3,9 @@
 namespace QUI\Menu\Independent;
 
 use QUI;
+use QUI\Menu\Independent\Items\AbstractMenuItem;
 
+use function class_exists;
 use function is_array;
 use function is_numeric;
 use function is_string;
@@ -21,6 +23,7 @@ class Menu
     protected ?array $title = null;
     protected ?array $workingTitle = null;
     protected array $data = [];
+    protected array $children = [];
 
     /**
      * @param int|array $menuId - menu id or menu data
@@ -72,7 +75,58 @@ class Menu
         } elseif (is_array($data['data'])) {
             $this->data = $data['data'];
         }
+
+        // build children
+        if (isset($this->data['children'])) {
+            $this->buildChildren($this, $this->data['children']);
+        }
     }
+
+    //region children
+
+    /**
+     * @param AbstractMenuItem|Menu $Parent
+     * @param array $children
+     * @return void
+     */
+    protected function buildChildren($Parent, array $children)
+    {
+        foreach ($children as $item) {
+            $type = $item['type'];
+
+            if (!class_exists($type)) {
+                continue;
+            }
+
+            if (isset($item['title'])) {
+                $item['title'] = json_decode($item['title'], true);
+            }
+
+            $Item = new $type($item);
+
+            if (!($Item instanceof AbstractMenuItem)) {
+                continue;
+            }
+
+            $Parent->appendChild($Item);
+
+            if (isset($item['children']) && is_array($item['children'])) {
+                $this->buildChildren($Item, $item['children']);
+            }
+        }
+    }
+
+    /**
+     * Add a child item
+     *
+     * @param AbstractMenuItem $Item
+     */
+    public function appendChild(AbstractMenuItem $Item)
+    {
+        $this->children[] = $Item;
+    }
+
+    //endregion
 
     //region getter
 
@@ -274,6 +328,15 @@ class Menu
 
         if (isset($item['title'])) {
             $result['title'] = $item['title'];
+        }
+
+        if (isset($item['data'])) {
+            $result['data'] = $item['data'];
+        }
+
+        // @todo check if fa icon or image
+        if (isset($item['icon'])) {
+            $result['icon'] = $item['icon'];
         }
 
         // @todo check if type is from AbstractMenuItem

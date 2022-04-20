@@ -47,6 +47,11 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
         initialize: function (options) {
             this.parent(options);
 
+            this.$ActiveItem = null;
+            this.$ActiveMapItem = null;
+
+            this.$Map = null;
+
             this.addEvents({
                 onShow  : this.$onShow,
                 onInject: this.$onInject,
@@ -106,7 +111,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                 this.setAttribute('title', menuData.title);
                 this.setAttribute('icon', 'fa fa-bars');
                 this.refresh();
-
+                console.warn('init', menuData);
                 // build sitemap
                 if (menuData.data !== null &&
                     typeof menuData.data.children !== 'undefined' &&
@@ -119,15 +124,10 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
 
                         for (i = 0, len = children.length; i < len; i++) {
                             data = children[i];
-                            title = JSON.parse(data.title);
-
-                            if (typeof title[current] !== 'undefined') {
-                                title = title[current];
-                            }
-
+                            
                             Item = new QUIMapItem({
-                                text     : title,
-                                icon     : data.icon,
+                                text     : data.titleFrontend,
+                                icon     : data.typeIcon,
                                 itemTitle: data.title,
                                 itemType : data.type,
                                 itemIcon : data.icon,
@@ -159,6 +159,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
 
         save: function () {
             this.Loader.show();
+            this.$unloadCurrentItem();
 
             // map to array
             const toArray = function (Item) {
@@ -181,6 +182,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                 }
 
                 return {
+                    icon    : Item.getAttribute('itemIcon'),
                     title   : Item.getAttribute('itemTitle'),
                     type    : Item.getAttribute('itemType'),
                     data    : Item.getAttribute('itemData'),
@@ -191,7 +193,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
             let result = toArray(this.$Map);
             let title = null;
             let workingTitle = null;
-
+            console.log('save', result);
             Handler.saveMenu(
                 this.getAttribute('menuId'),
                 title,
@@ -303,7 +305,11 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
          */
         $openItem: function (Item) {
             this.Loader.show();
+            this.$unloadCurrentItem();
+
             this.$InnerContainer.set('html', '');
+            this.$ActiveItem = null;
+            this.$ActiveMapItem = null;
 
             Handler.getItemTypes().then((list) => {
                 let control = '';
@@ -322,11 +328,14 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                 }
 
                 require([control], (cls) => {
-                    new cls({
-                        title : Item.getAttribute('itemTitle'),
-                        type  : Item.getAttribute('itemType'),
-                        icon  : Item.getAttribute('itemIcon'),
-                        data  : Item.getAttribute('itemData'),
+                    const SitemapItem = this.$getActiveSitemapItem();
+                    this.$ActiveMapItem = this.$getActiveSitemapItem();
+
+                    this.$ActiveItem = new cls({
+                        title : SitemapItem.getAttribute('itemTitle'),
+                        type  : SitemapItem.getAttribute('itemType'),
+                        icon  : SitemapItem.getAttribute('itemIcon'),
+                        data  : SitemapItem.getAttribute('itemData'),
                         events: {
                             load: () => {
                                 this.Loader.hide();
@@ -338,6 +347,36 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                     this.Loader.hide();
                 });
             });
+        },
+
+        $unloadCurrentItem: function () {
+            if (!this.$ActiveItem) {
+                return;
+            }
+
+            if (typeof this.$ActiveItem.save !== 'function') {
+                return;
+            }
+
+            const data = this.$ActiveItem.save();
+
+            if (!this.$ActiveMapItem) {
+                return;
+            }
+
+            this.$ActiveMapItem.setAttribute('itemTitle', data.title);
+            this.$ActiveMapItem.setAttribute('itemIcon', data.icon);
+            this.$ActiveMapItem.setAttribute('itemData', data.data);
+        },
+
+        $getActiveSitemapItem: function () {
+            const item = this.$Map.getSelectedChildren();
+
+            if (item.length) {
+                return item[0];
+            }
+
+            return null;
         },
 
         /**
