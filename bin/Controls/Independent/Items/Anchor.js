@@ -44,7 +44,9 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Anchor', [
             }
 
             try {
-                data = JSON.decode(data);
+                if (typeof data === 'string') {
+                    data = JSON.decode(data);
+                }
             } catch (e) {
             }
 
@@ -74,7 +76,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Anchor', [
 
                 this.$Title.setData(title);
                 this.$Name.setData(data.name);
-                
+
                 this.fireEvent('load');
             });
         },

@@ -3,6 +3,7 @@
 namespace QUI\Menu\Independent\Items;
 
 use QUI;
+use QUI\Locale;
 
 use function is_array;
 
@@ -58,7 +59,11 @@ class Site extends AbstractMenuItem
         return null;
     }
 
-    public function getName(): string
+    /**
+     * @param Locale|null $Locale
+     * @return string
+     */
+    public function getName(Locale $Locale = null): string
     {
         $Site = $this->getSite();
 

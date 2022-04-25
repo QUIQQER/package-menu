@@ -36,11 +36,11 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Site', [
 
             let data = this.getAttribute('data');
 
-            if (typeof data === 'string') {
-                try {
+            try {
+                if (typeof data === 'string') {
                     data = JSON.decode(data);
-                } catch (e) {
                 }
+            } catch (e) {
             }
 
             if (!data) {
@@ -51,6 +51,10 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Site', [
                 this.getElm().getElement('[name="site"]').set('value', data.site);
             }
 
+            if (typeof data.rel !== 'undefined') {
+                this.getElm().getElement('[name="rel"]').set('value', data.rel);
+            }
+            
             QUI.parse(this.getElm()).then(() => {
                 this.fireEvent('load');
             });
@@ -61,7 +65,8 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Site', [
 
             return {
                 data: {
-                    site: Form.elements.site.value
+                    site: Form.elements.site.value,
+                    rel : Form.elements.rel.value
                 }
             };
         }

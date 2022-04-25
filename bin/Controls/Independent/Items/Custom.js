@@ -26,7 +26,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Custom', [
 
         initialize: function (options) {
             this.parent(options);
-            console.warn(options);
+
             this.addEvents({
                 onInject: this.$onInject
             });
@@ -46,7 +46,9 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Custom', [
             }
 
             try {
-                data = JSON.decode(data);
+                if (typeof data === 'string') {
+                    data = JSON.decode(data);
+                }
             } catch (e) {
             }
 
@@ -64,6 +66,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Custom', [
 
             this.getElm().getElement('[name="icon"]').set('value', icon);
             this.getElm().getElement('[name="url"]').set('value', data.url);
+            this.getElm().getElement('[name="rel"]').set('value', data.rel);
 
             QUI.parse(this.getElm()).then(() => {
                 this.$Title = QUI.Controls.getById(
@@ -89,6 +92,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Custom', [
                 icon : Form.elements.icon.value,
                 data : {
                     url  : Form.elements.url.value,
+                    rel  : Form.elements.rel.value,
                     click: Form.elements.click.value,
                     name : this.$Name.getValue()
                 }

@@ -83,14 +83,16 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                 }
             });
 
+            /*
             this.addButton({
-                name    : 'add',
+                name    : 'delete',
                 disabled: true,
                 text    : QUILocale.get('quiqqer/quiqqer', 'remove'),
                 events  : {
                     click: this.addItem
                 }
             });
+            */
 
             // content
             this.$MapContainer = new Element('div', {
@@ -124,7 +126,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
 
                         for (i = 0, len = children.length; i < len; i++) {
                             data = children[i];
-                            
+
                             Item = new QUIMapItem({
                                 text     : data.titleFrontend,
                                 icon     : data.typeIcon,

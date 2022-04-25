@@ -44,7 +44,9 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Url', [
             }
 
             try {
-                data = JSON.decode(data);
+                if (typeof data === 'string') {
+                    data = JSON.decode(data);
+                }
             } catch (e) {
             }
 
@@ -62,6 +64,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Url', [
 
             this.getElm().getElement('[name="icon"]').set('value', icon);
             this.getElm().getElement('[name="url"]').set('value', data.url);
+            this.getElm().getElement('[name="rel"]').set('value', data.rel);
 
             QUI.parse(this.getElm()).then(() => {
                 this.$Title = QUI.Controls.getById(
@@ -87,7 +90,8 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Url', [
                 icon : Form.elements.icon.value,
                 data : {
                     url : Form.elements.url.value,
-                    name: this.$Name.getValue()
+                    name: this.$Name.getValue(),
+                    rel : Form.elements.rel.value
                 }
             };
         }

@@ -28,9 +28,10 @@ class Anchor extends AbstractMenuItem
     }
 
     /**
+     * @param QUI\Locale|null $Locale
      * @return string
      */
-    public function getName(): string
+    public function getName(QUI\Locale $Locale = null): string
     {
         $data = $this->getCustomData();
 
@@ -42,7 +43,7 @@ class Anchor extends AbstractMenuItem
     }
 
     //endregion
-    
+
     //region type stuff
 
     /**

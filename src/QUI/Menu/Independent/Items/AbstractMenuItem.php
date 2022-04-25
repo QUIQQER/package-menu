@@ -5,6 +5,7 @@ namespace QUI\Menu\Independent\Items;
 use QUI;
 use QUI\Locale;
 
+use function is_array;
 use function is_string;
 use function json_decode;
 
@@ -53,7 +54,7 @@ abstract class AbstractMenuItem
     /**
      * @return string
      */
-    public function getName(): string
+    public function getName(Locale $Locale = null): string
     {
         return '';
     }
@@ -87,6 +88,20 @@ abstract class AbstractMenuItem
     }
 
     /**
+     * @return string
+     */
+    public function getRel(): string
+    {
+        $data = $this->getCustomData();
+
+        if (is_array($data) && isset($data['rel'])) {
+            return $data['rel'];
+        }
+
+        return '';
+    }
+
+    /**
      * @return mixed
      */
     public function getCustomData()
@@ -96,6 +111,46 @@ abstract class AbstractMenuItem
         }
 
         return null;
+    }
+
+    /**
+     * @param Locale|null $Locale
+     * @return string
+     */
+    public function getHTML(QUI\Locale $Locale = null): string
+    {
+        if ($Locale === null) {
+            $Locale = QUI::getLocale();
+        }
+
+        $url      = $this->getUrl();
+        $title    = $this->getTitle($Locale);
+        $name     = $this->getName($Locale);
+        $relValue = $this->getRel();
+
+        $rel = '';
+
+        if (!empty($relValue)) {
+            switch ($relValue) {
+                case 'alternate':
+                case 'author':
+                case 'bookmark':
+                case 'external':
+                case 'help':
+                case 'license':
+                case 'next':
+                case 'nofollow':
+                case 'noopener':
+                case 'noreferrer':
+                case 'prev':
+                case 'search':
+                case 'tag':
+                    $rel = 'rel="' . $relValue . '"';
+                    break;
+            }
+        }
+
+        return "<a href=\"$url\" title=\"$title\" $rel>$name</a>";
     }
 
     //endregion
