@@ -424,5 +424,14 @@
             <en><![CDATA[tag - A tag (keyword) for the current document]]></en>
         </locale>
 
+        <locale name="cache.clear.title">
+            <de><![CDATA[Menü Cache]]></de>
+            <en><![CDATA[Menu cache]]></en>
+        </locale>
+        <locale name="cache.clear.button.title">
+            <de><![CDATA[Menü Cache leeren]]></de>
+            <en><![CDATA[Clear menu cache]]></en>
+        </locale>
+
     </groups>
 </locales>

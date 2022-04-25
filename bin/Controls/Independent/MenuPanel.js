@@ -11,6 +11,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
     'qui/controls/windows/Confirm',
     'qui/controls/contextmenu/Menu',
     'qui/controls/contextmenu/Item',
+    'Ajax',
     'Locale',
     'package/quiqqer/menu/bin/classes/Independent/Handler',
 
@@ -19,7 +20,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
     'css!package/quiqqer/menu/bin/Controls/Independent/MenuPanel.css'
 
 ], function (QUI, QUIPanel, QUIMap, QUIMapItem, QUIConfirm, QUIContextMenu, QUIContextMenuItem,
-             QUILocale, MenuHandler, Mustache, templateCreate) {
+             QUIAjax, QUILocale, MenuHandler, Mustache, templateCreate) {
     "use strict";
 
     const lg = 'quiqqer/menu';
@@ -81,6 +82,34 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                 events: {
                     click: () => {
                         this.addItem();
+                    }
+                }
+            });
+
+            this.addButton({
+                textimage: 'fa fa-paint-brush',
+                name     : 'clearcache',
+                text     : QUILocale.get(lg, 'cache.clear.button.title'),
+                styles   : {
+                    'float': 'right'
+                },
+                events   : {
+                    click: (Btn) => {
+                        Btn.disable();
+                        Btn.setAttribute('textimage', 'fa fa-spinner fa-spin');
+                        QUIAjax.post('package_quiqqer_menu_ajax_backend_independent_clearCache', () => {
+                            Btn.setAttribute('textimage', 'fa fa-bars');
+                            Btn.enable();
+
+                            QUI.getMessageHandler(function (QUI) {
+                                QUI.addSuccess(
+                                    QUILocale.get('quiqqer/quiqqer', 'message.clear.cache.successful')
+                                );
+                            });
+                        }, {
+                            'package': 'quiqqer/menu',
+                            menuId   : this.getAttribute('menuId')
+                        });
                     }
                 }
             });

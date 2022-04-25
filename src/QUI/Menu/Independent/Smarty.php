@@ -24,6 +24,20 @@ class Smarty
         }
 
         try {
+            $Project = QUI::getRewrite()->getProject();
+        } catch (QUI\Exception $Exception) {
+            return '';
+        }
+
+        $menuId    = $params['menuId'];
+        $cacheName = Handler::getMenuCacheName($menuId, $Project);
+
+        try {
+            return QUI\Cache\Manager::get($cacheName);
+        } catch (QUI\Exception $Exception) {
+        }
+
+        try {
             $Menu    = QUI\Menu\Independent\Handler::getMenu($params['menuId']);
             $Control = new $params['menuDesign']($Menu);
         } catch (QUI\Exception $Exception) {
@@ -31,6 +45,9 @@ class Smarty
             return '';
         }
 
-        return $Control->create();
+        $html = $Control->create();
+        QUI\Cache\Manager::set($cacheName, $html);
+
+        return $html;
     }
 }

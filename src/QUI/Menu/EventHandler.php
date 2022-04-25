@@ -45,4 +45,15 @@ class EventHandler
             $Smarty->registerPlugin("function", "menu", "QUI\\Menu\\Independent\\Smarty::onSmartyInit");
         }
     }
+
+    /**
+     * QUIQQER Event: onAdminLoadFooter
+     *
+     * @return void
+     */
+    public static function onAdminLoadFooter()
+    {
+        $jsFile = URL_OPT_DIR . 'quiqqer/menu/bin/onAdminLoadFooter.js';
+        echo '<script src="' . $jsFile . '" async></script>';
+    }
 }

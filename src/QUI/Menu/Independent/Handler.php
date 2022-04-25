@@ -4,6 +4,8 @@ namespace QUI\Menu\Independent;
 
 use QUI;
 
+use function md5;
+
 /**
  * Menu handler
  * - get menus
@@ -30,6 +32,29 @@ class Handler
     }
 
     /**
+     * @param bool|int $menuId
+     * @param QUI\Projects\Project|null $Project
+     * @return string
+     */
+    public static function getMenuCacheName($menuId = false, QUI\Projects\Project $Project = null): string
+    {
+        if ($Project) {
+            $project     = $Project->getName();
+            $lang        = $Project->getLang();
+            $template    = $Project->getAttribute('template');
+            $projectHash = '/' . md5($project . '/' . $lang . '/' . $template);
+        } else {
+            $projectHash = '';
+        }
+
+        if ($menuId) {
+            return 'quiqqer/menu/independent/' . $menuId . $projectHash;
+        }
+
+        return 'quiqqer/menu/independent';
+    }
+
+    /**
      * @param int $menuId
      * @return array
      *
@@ -39,7 +64,7 @@ class Handler
     public static function getMenuData(int $menuId): array
     {
         $data = QUI::getDataBase()->fetch([
-            'from' => self::table(),
+            'from'  => self::table(),
             'where' => [
                 'id' => $menuId
             ],
