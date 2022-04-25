@@ -79,7 +79,9 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                 name  : 'add',
                 text  : QUILocale.get('quiqqer/quiqqer', 'add'),
                 events: {
-                    click: this.addItem
+                    click: () => {
+                        this.addItem();
+                    }
                 }
             });
 
@@ -113,7 +115,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                 this.setAttribute('title', menuData.title);
                 this.setAttribute('icon', 'fa fa-bars');
                 this.refresh();
-                console.warn('init', menuData);
+                //console.warn('init', menuData);
                 // build sitemap
                 if (menuData.data !== null &&
                     typeof menuData.data.children !== 'undefined' &&
@@ -193,7 +195,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
             let result = toArray(this.$Map);
             let title = null;
             let workingTitle = null;
-            console.log('save', result);
+            //console.log('save', result);
             Handler.saveMenu(
                 this.getAttribute('menuId'),
                 title,
@@ -214,6 +216,8 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
 
                 if (items.length) {
                     Parent = items[0];
+                } else {
+                    Parent = this.$Map;
                 }
             }
 
@@ -287,7 +291,10 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
 
                         if (where === 'bottom') {
                             Parent.appendChild(new QUIMapItem(itemAttributes));
-                            Parent.open();
+
+                            if (typeof Parent === 'function') {
+                                Parent.open();
+                            }
                         } else {
                             Parent.appendChild(new QUIMapItem(itemAttributes), where);
                         }
