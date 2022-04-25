@@ -7,7 +7,7 @@ use QUI;
 use function is_array;
 
 /**
- *
+ * menu item which gets its data from a site
  */
 class Site extends AbstractMenuItem
 {

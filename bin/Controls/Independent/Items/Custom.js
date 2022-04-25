@@ -1,6 +1,8 @@
 /**
  * @module package/quiqqer/menu/bin/Controls/Independent/Items/Custom
  * @author www.pcsg.de
+ *
+ * @todo click speichern -> js + textarea
  */
 define('package/quiqqer/menu/bin/Controls/Independent/Items/Custom', [
 

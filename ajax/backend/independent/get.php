@@ -20,6 +20,10 @@ QUI::$Ajax->registerFunction(
             }
 
             foreach ($data['children'] as $key => $entry) {
+                if (!class_exists($entry['type'])) {
+                    continue;
+                }
+
                 /* @var $Item \QUI\Menu\Independent\Items\AbstractMenuItem */
                 $Item = new $entry['type']($entry);
                 $icon = QUI\Menu\Independent\Items\Site::itemIcon(); // default
