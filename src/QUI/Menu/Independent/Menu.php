@@ -339,8 +339,9 @@ class Menu
             $result['icon'] = $item['icon'];
         }
 
-        // @todo check if type is from AbstractMenuItem
-        if (isset($item['type'])) {
+        if (isset($item['type'])
+            && class_exists($item['type'])
+            && new $item['type']() instanceof AbstractMenuItem) {
             $result['type'] = $item['type'];
         }
 

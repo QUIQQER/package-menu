@@ -6,12 +6,15 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Anchor', [
 
     'qui/QUI',
     'qui/controls/Control',
+    'Locale',
     'Mustache',
 
     'text!package/quiqqer/menu/bin/Controls/Independent/Items/Anchor.html'
 
-], function (QUI, QUIControl, Mustache, template) {
+], function (QUI, QUIControl, QUILocale, Mustache, template) {
     "use strict";
+
+    const lg = 'quiqqer/menu';
 
     return new Class({
 
@@ -32,7 +35,12 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Anchor', [
 
         $onInject: function () {
             this.getElm().set('data-qui', this.getType());
-            this.getElm().set('html', Mustache.render(template, {}));
+            this.getElm().set('html', Mustache.render(template, {
+                title : QUILocale.get('quiqqer/quiqqer', 'title'),
+                name  : QUILocale.get('quiqqer/quiqqer', 'name'),
+                icon  : QUILocale.get(lg, 'tpl.icon'),
+                anchor: QUILocale.get(lg, 'tpl.anchor'),
+            }));
 
             let title = this.getAttribute('title');
             let icon = this.getAttribute('icon');

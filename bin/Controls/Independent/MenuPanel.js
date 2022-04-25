@@ -120,9 +120,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                     menuData.data.children.length
                 ) {
                     const buildChildren = (Parent, children) => {
-                        let i, len, data, title, Item;
-
-                        const current = QUILocale.getCurrent();
+                        let i, len, data, Item;
 
                         for (i = 0, len = children.length; i < len; i++) {
                             data = children[i];
@@ -401,10 +399,9 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                 }
             });
 
-            // @todo locale
             Menu.appendChild(new QUIContextMenuItem({
                 icon  : 'fa fa-arrow-up',
-                text  : 'Davor einfügen',
+                text  : QUILocale.get(lg, 'context.menu.insertBefore'),
                 events: {
                     click: () => {
                         this.addItem(Item, 'before');
@@ -414,7 +411,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
 
             Menu.appendChild(new QUIContextMenuItem({
                 icon  : 'fa fa-arrow-down',
-                text  : 'Danach einfügen',
+                text  : QUILocale.get(lg, 'context.menu.insertAfter'),
                 events: {
                     click: () => {
                         this.addItem(Item, 'after');
@@ -424,7 +421,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
 
             Menu.appendChild(new QUIContextMenuItem({
                 icon  : 'fa fa-level-down',
-                text  : 'Kind einfügen',
+                text  : QUILocale.get(lg, 'context.menu.insertChild'),
                 events: {
                     click: () => {
                         this.addItem(Item);
@@ -434,7 +431,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
 
             Menu.appendChild(new QUIContextMenuItem({
                 icon  : 'fa fa-trash',
-                text  : 'Löschen',
+                text  : QUILocale.get(lg, 'context.menu.deleteChild'),
                 events: {
                     click: () => {
                         Item.destroy();

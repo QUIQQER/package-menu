@@ -6,7 +6,7 @@
             <td>
                 <label class="field-container">
                     <span class="field-container-item">
-                        Site
+                        {{site}}
                     </span>
                     <input class="field-container-field"
                            type="text"
@@ -20,25 +20,28 @@
             <td>
                 <label class="field-container">
                     <span class="field-container-item">
-                        Rel
+                        {{rel}}
                     </span>
                     <select class="field-container-field" name="rel">
                         <option value=""></option>
-                        <option value="alternate">alternate -</option>
-                        <option value="author">author -</option>
-                        <option value="bookmark">bookmark -</option>
-                        <option value="external">external -</option>
-                        <option value="help">help -</option>
-                        <option value="license">license -</option>
-                        <option value="next">next -</option>
-                        <option value="nofollow">nofollow -</option>
-                        <option value="noopener">noopener -</option>
-                        <option value="noreferrer">noreferrer -</option>
-                        <option value="prev">prev -</option>
-                        <option value="search">search -</option>
-                        <option value="tag">tag -</option>
+                        <option value="alternate">{{alternate}}</option>
+                        <option value="author">{{author}}</option>
+                        <option value="bookmark">{{bookmark}}</option>
+                        <option value="external">{{external}}</option>
+                        <option value="help">{{help}}</option>
+                        <option value="license">{{license}}</option>
+                        <option value="next">{{next}}</option>
+                        <option value="nofollow">{{nofollow}}</option>
+                        <option value="noopener">{{noopener}}</option>
+                        <option value="noreferrer">{{noreferrer}}</option>
+                        <option value="prev">{{prev}}</option>
+                        <option value="search">{{search}}</option>
+                        <option value="tag">{{tag}}</option>
                     </select>
                 </label>
+                <div class="field-container-item-desc">
+                    {{relDescription}}
+                </div>
             </td>
         </tr>
     </table>

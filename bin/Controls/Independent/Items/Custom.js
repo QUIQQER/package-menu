@@ -8,12 +8,15 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Custom', [
 
     'qui/QUI',
     'qui/controls/Control',
+    'Locale',
     'Mustache',
 
     'text!package/quiqqer/menu/bin/Controls/Independent/Items/Custom.html'
 
-], function (QUI, QUIControl, Mustache, template) {
+], function (QUI, QUIControl, QUILocale, Mustache, template) {
     "use strict";
+
+    const lg = 'quiqqer/menu';
 
     return new Class({
 
@@ -34,7 +37,29 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Custom', [
 
         $onInject: function () {
             this.getElm().set('data-qui', this.getType());
-            this.getElm().set('html', Mustache.render(template, {}));
+            this.getElm().set('html', Mustache.render(template, {
+                title         : QUILocale.get('quiqqer/quiqqer', 'title'),
+                name          : QUILocale.get('quiqqer/quiqqer', 'name'),
+                icon          : QUILocale.get(lg, 'tpl.icon'),
+                url           : QUILocale.get(lg, 'tpl.url'),
+                rel           : QUILocale.get(lg, 'tpl.rel'),
+                relDescription: QUILocale.get(lg, 'tpl.relDescription'),
+                click         : QUILocale.get(lg, 'tpl.click'),
+
+                alternate : QUILocale.get(lg, 'tpl.rel.alternate'),
+                author    : QUILocale.get(lg, 'tpl.rel.author'),
+                bookmark  : QUILocale.get(lg, 'tpl.rel.bookmark'),
+                external  : QUILocale.get(lg, 'tpl.rel.external'),
+                help      : QUILocale.get(lg, 'tpl.rel.help'),
+                license   : QUILocale.get(lg, 'tpl.rel.license'),
+                next      : QUILocale.get(lg, 'tpl.rel.next'),
+                nofollow  : QUILocale.get(lg, 'tpl.rel.nofollow'),
+                noopener  : QUILocale.get(lg, 'tpl.rel.noopener'),
+                noreferrer: QUILocale.get(lg, 'tpl.rel.noreferrer'),
+                prev      : QUILocale.get(lg, 'tpl.rel.prev'),
+                search    : QUILocale.get(lg, 'tpl.rel.search'),
+                tag       : QUILocale.get(lg, 'tpl.rel.tag'),
+            }));
 
             let title = this.getAttribute('title');
             let icon = this.getAttribute('icon');
