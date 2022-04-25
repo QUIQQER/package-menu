@@ -4,6 +4,8 @@ namespace QUI\Menu;
 
 use QUI;
 use QUI\Interfaces\Projects\Site;
+use Smarty;
+use SmartyException;
 
 /**
  * Class EventHandler
@@ -15,7 +17,7 @@ class EventHandler
     /**
      * @return string
      */
-    public static function menuCacheName()
+    public static function menuCacheName(): string
     {
         return 'quiqqer/package/menu';
     }
@@ -26,5 +28,21 @@ class EventHandler
     public static function onSiteSave(Site $Site)
     {
         QUI\Cache\Manager::clear(self::menuCacheName());
+    }
+
+    /**
+     * Event : on smarty init
+     * add new brickarea function
+     *
+     * @param Smarty $Smarty
+     * @throws SmartyException
+     */
+    public static function onSmartyInit(Smarty $Smarty)
+    {
+        if (!isset($Smarty->registered_plugins['function'])
+            || !isset($Smarty->registered_plugins['function']['menu'])
+        ) {
+            $Smarty->registerPlugin("function", "menu", "QUI\\Menu\\Independent\\Smarty::onSmartyInit");
+        }
     }
 }
