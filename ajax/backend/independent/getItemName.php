@@ -5,7 +5,7 @@
  */
 
 /**
- * Return the item data
+ * Return the item name
  */
 QUI::$Ajax->registerFunction(
     'package_quiqqer_menu_ajax_backend_independent_getItemName',
