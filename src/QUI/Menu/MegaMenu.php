@@ -124,28 +124,48 @@ class MegaMenu extends AbstractMenu
 
         $this->setAttribute('data-qui-options-enablemobile', $this->getAttribute('enableMobile') ? 1 : 0);
 
-        $Engine->assign([
-            'this'         => $this,
-            'Site'         => $this->getSite(),
-            'Project'      => $this->getProject(),
-            'Mobile'       => $this->Mobile,
-            'Start'        => $this->getStart(),
-            'children'     => $this->getStart()->getNavigation(),
-            'Rewrite'      => QUI::getRewrite(),
-            'jsControl'    => 'package/quiqqer/menu/bin/MegaMenu',
-            'prepend'      => $this->prepend,
-            'append'       => $this->append,
-            'childControl' => $childControl,
-            'showMenu'     => true
-        ]);
 
-        if ($this->getProject()->getConfig('menu.settings.type') == 'noMenu') {
-            $Engine->assign('showMenu', false);
+        if ($this->getAttribute('menuId')) {
+            $IndependentMenu = Independent\Handler::getMenu($this->getAttribute('menuId'));
+
+            $children = $IndependentMenu->getChildren();
+
+            $Engine->assign([
+                'this'         => $this,
+                'Mobile'       => $this->Mobile,
+                'children'     => $children,
+                'prepend'      => $this->prepend,
+                'append'       => $this->append,
+                'childControl' => $childControl,
+                'showMenu'     => true
+            ]);
+
+            $result             = [];
+            $result['html']     = $Engine->fetch(dirname(__FILE__).'/MegaMenu.Independent.html');
+        } else {
+            $Engine->assign([
+                'this'         => $this,
+                'Site'         => $this->getSite(),
+                'Project'      => $this->getProject(),
+                'Mobile'       => $this->Mobile,
+                'Start'        => $this->getStart(),
+                'children'     => $this->getStart()->getNavigation(),
+                'Rewrite'      => QUI::getRewrite(),
+                'jsControl'    => 'package/quiqqer/menu/bin/MegaMenu',
+                'prepend'      => $this->prepend,
+                'append'       => $this->append,
+                'childControl' => $childControl,
+                'showMenu'     => true
+            ]);
+
+            if ($this->getProject()->getConfig('menu.settings.type') == 'noMenu') {
+                $Engine->assign('showMenu', false);
+            }
+
+            $result             = [];
+            $result['html']     = $Engine->fetch(dirname(__FILE__).'/MegaMenu.html');
+            $result['subMenus'] = \array_unique($this->subMenus);
         }
-
-        $result             = [];
-        $result['html']     = $Engine->fetch(dirname(__FILE__).'/MegaMenu.html');
-        $result['subMenus'] = \array_unique($this->subMenus);
 
         QUI\Cache\Manager::set($cache, $result);
 
