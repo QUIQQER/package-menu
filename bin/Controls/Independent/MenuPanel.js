@@ -509,6 +509,10 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
             });
         },
 
+        /**
+         * Unloads the current sitemap item
+         * The save method of the current active control is executed
+         */
         $unloadCurrentItem: function () {
             if (!this.$ActiveItem) {
                 return;
@@ -531,6 +535,11 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
             ActiveItem.setAttribute('itemData', data.data);
         },
 
+        /**
+         * Refresh the name of the active map item
+         *
+         * @returns {Promise}
+         */
         $refreshItemName: function () {
             const Item = this.$ActiveMapItem;
 
@@ -555,6 +564,11 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
             });
         },
 
+        /**
+         * Return the active item of the sitemap
+         *
+         * @returns {null|*}
+         */
         $getActiveSitemapItem: function () {
             const item = this.$Map.getSelectedChildren();
 
@@ -634,7 +648,22 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                 text  : QUILocale.get(lg, 'context.menu.deleteChild'),
                 events: {
                     click: () => {
-                        Item.destroy();
+                        new QUIConfirm({
+                            icon       : 'fa fa-trash',
+                            texticon   : 'fa fa-trash',
+                            title      : QUILocale.get(lg, 'window.deleteItem.title'),
+                            information: QUILocale.get(lg, 'window.deleteItem.information', {
+                                entry: Item.getAttribute('text')
+                            }),
+                            text       : QUILocale.get(lg, 'window.deleteItem.text'),
+                            maxHeight  : 300,
+                            maxWidth   : 500,
+                            events     : {
+                                submit: function () {
+                                    Item.destroy();
+                                }
+                            }
+                        }).open();
                     }
                 }
             }));

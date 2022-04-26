@@ -437,6 +437,26 @@
             <en><![CDATA[Change type]]></en>
         </locale>
 
+        <locale name="window.deleteItem.title">
+            <de><![CDATA[Eintrag löschen?]]></de>
+            <en><![CDATA[Delete entry?]]></en>
+        </locale>
+        <locale name="window.deleteItem.text">
+            <de><![CDATA[Eintrag wirklich löschen?]]></de>
+            <en><![CDATA[Really delete the entry?]]></en>
+        </locale>
+        <locale name="window.deleteItem.information">
+            <de><![CDATA[
+            Möchtest du wirklich den Menüeintrag <b>[entry]</b> löschen?
+            Dieser Eintrag wird unwiederruflich gelöscht und kann nicht wieder hergestellt werden.
+            ]]></de>
+            <en><![CDATA[
+            Do you really want to delete the menu entry <b>[entry]</b>?
+            This entry will be deleted irrevocably and cannot be restored.
+            ]]></en>
+        </locale>
+
+
         <locale name="quiqqer.menu.independent.changeItemType.title">
             <de><![CDATA[Typ ändern]]></de>
             <en><![CDATA[Change type]]></en>
