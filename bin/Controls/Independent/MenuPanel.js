@@ -11,6 +11,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
     'qui/controls/windows/Confirm',
     'qui/controls/contextmenu/Menu',
     'qui/controls/contextmenu/Item',
+    'qui/controls/contextmenu/Separator',
     'Ajax',
     'Locale',
     'package/quiqqer/menu/bin/classes/Independent/Handler',
@@ -19,7 +20,8 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
     'text!package/quiqqer/menu/bin/Controls/Independent/MenuPanel.Create.html',
     'css!package/quiqqer/menu/bin/Controls/Independent/MenuPanel.css'
 
-], function (QUI, QUIPanel, QUIMap, QUIMapItem, QUIConfirm, QUIContextMenu, QUIContextMenuItem,
+], function (QUI, QUIPanel, QUIMap, QUIMapItem, QUIConfirm,
+             QUIContextMenu, QUIContextMenuItem, QUIContextSeparator,
              QUIAjax, QUILocale, MenuHandler, Mustache, templateCreate) {
     "use strict";
 
@@ -70,10 +72,6 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                 events: {
                     click: this.save
                 }
-            });
-
-            this.addButton({
-                type: 'separator'
             });
 
             /*
@@ -260,10 +258,10 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                 };
             };
 
-            let result = toArray(this.$Map);
+            let result = toArray(this.$Map.firstChild());
             let title = null;
             let workingTitle = null;
-            //console.log('save', result);
+            
             Handler.saveMenu(
                 this.getAttribute('menuId'),
                 title,
@@ -320,6 +318,18 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
 
                             return QUI.parse(Win.getContent());
                         }).then(function () {
+                            const Title = QUI.Controls.getById(
+                                Content.getElement('[name="itemTitle"]').get('data-quiid')
+                            );
+
+                            if (Title.isLoaded()) {
+                                Title.open();
+                            } else {
+                                Title.addEvent('load', function () {
+                                    Title.open();
+                                });
+                            }
+
                             Win.Loader.hide();
                         });
                     },
@@ -366,6 +376,77 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                         } else {
                             Parent.appendChild(new QUIMapItem(itemAttributes), where);
                         }
+
+                        Win.close();
+                    }
+                }
+            }).open();
+        },
+
+        /**
+         * opens the item type change confirm window
+         *
+         * @param Item
+         */
+        changeItemType: function (Item) {
+            if (typeof Item === 'undefined') {
+                return;
+            }
+
+            new QUIConfirm({
+                icon     : 'fa fa-edit',
+                title    : QUILocale.get(lg, 'quiqqer.menu.independent.changeItemType.title'),
+                maxHeight: 400,
+                maxWidth : 500,
+                autoclose: false,
+                events   : {
+                    onOpen: (Win) => {
+                        const Content = Win.getContent();
+
+                        Content.set(
+                            'html',
+
+                            QUILocale.get(lg, 'quiqqer.menu.independent.changeItemType.message') +
+                            '' +
+                            '<form style="width: 100%; text-align: center; margin-top: 20px">' +
+                            '   <select name="itemType"></select>' +
+                            '</form>'
+                        );
+
+                        Win.Loader.show();
+
+                        Handler.getItemTypes().then((list) => {
+                            const Types = Content.getElement('[name="itemType"]');
+
+                            for (let i = 0, len = list.length; i < len; i++) {
+                                new Element('option', {
+                                    html       : list[i].title,
+                                    value      : list[i].class,
+                                    'data-icon': list[i].icon
+                                }).inject(Types);
+                            }
+
+                            Types.value = Item.getAttribute('itemType');
+
+                            return QUI.parse(Win.getContent());
+                        }).then(function () {
+                            Win.Loader.hide();
+                        });
+                    },
+
+                    onSubmit: (Win) => {
+                        Win.Loader.show();
+
+                        const Content = Win.getContent();
+                        const Form = Content.getElement('form');
+
+                        const type = Form.elements.itemType.value;
+                        const Option = Form.elements.itemType.getElement(
+                            'option[value="' + CSS.escape(type) + '"]'
+                        );
+
+                        Item.setAttribute('itemType', type);
+                        Item.setAttribute('icon', Option.get('data-icon'));
 
                         Win.close();
                     }
@@ -503,6 +584,20 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                     }
                 }
             }));
+
+            Menu.appendChild(new QUIContextSeparator({}));
+
+            Menu.appendChild(new QUIContextMenuItem({
+                icon  : 'fa fa-edit',
+                text  : QUILocale.get(lg, 'context.menu.changeType'),
+                events: {
+                    click: () => {
+                        this.changeItemType(Item);
+                    }
+                }
+            }));
+
+            Menu.appendChild(new QUIContextSeparator({}));
 
             Menu.appendChild(new QUIContextMenuItem({
                 icon  : 'fa fa-trash',

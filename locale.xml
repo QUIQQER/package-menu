@@ -432,6 +432,25 @@
             <de><![CDATA[Menü Cache leeren]]></de>
             <en><![CDATA[Clear menu cache]]></en>
         </locale>
+        <locale name="context.menu.changeType">
+            <de><![CDATA[Typ ändern]]></de>
+            <en><![CDATA[Change type]]></en>
+        </locale>
+
+        <locale name="quiqqer.menu.independent.changeItemType.title">
+            <de><![CDATA[Typ ändern]]></de>
+            <en><![CDATA[Change type]]></en>
+        </locale>
+        <locale name="quiqqer.menu.independent.changeItemType.message">
+            <de><![CDATA[
+                Ändere den Typ des Menüeintrages.
+                Beachte, das einige Daten dadurch nicht mehr genutzt bzw verwendet werden können.
+            ]]></de>
+            <en><![CDATA[
+                Change the type of the menu item.
+                Note that some data can no longer be used as a result.
+            ]]></en>
+        </locale>
 
     </groups>
 </locales>
