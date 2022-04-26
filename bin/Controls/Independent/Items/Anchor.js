@@ -36,10 +36,10 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Anchor', [
         $onInject: function () {
             this.getElm().set('data-qui', this.getType());
             this.getElm().set('html', Mustache.render(template, {
-                title : QUILocale.get('quiqqer/quiqqer', 'title'),
-                name  : QUILocale.get('quiqqer/quiqqer', 'name'),
-                icon  : QUILocale.get(lg, 'tpl.icon'),
-                anchor: QUILocale.get(lg, 'tpl.anchor'),
+                title    : QUILocale.get('quiqqer/quiqqer', 'title'),
+                linkTitle: QUILocale.get(lg, 'tpl.linkTitle'),
+                icon     : QUILocale.get(lg, 'tpl.icon'),
+                anchor   : QUILocale.get(lg, 'tpl.anchor'),
             }));
 
             let title = this.getAttribute('title');
@@ -100,7 +100,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Anchor', [
                         this.$Name.open();
                     });
                 }
-                
+
                 this.fireEvent('load');
             });
         },

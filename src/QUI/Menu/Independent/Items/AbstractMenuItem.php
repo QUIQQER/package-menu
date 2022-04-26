@@ -80,6 +80,18 @@ abstract class AbstractMenuItem
     }
 
     /**
+     * alias for name
+     * - can be use for the `a title=""` attribute
+     *
+     * @param Locale|null $Locale
+     * @return string
+     */
+    public function getTitleAttribute(Locale $Locale = null): string
+    {
+        return $this->getName($Locale);
+    }
+
+    /**
      * @return string
      */
     public function getUrl(): string

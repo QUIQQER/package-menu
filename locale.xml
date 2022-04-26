@@ -350,6 +350,10 @@
             <de><![CDATA[Site]]></de>
             <en><![CDATA[Site]]></en>
         </locale>
+        <locale name="tpl.linkTitle">
+            <de><![CDATA[Link Titel]]></de>
+            <en><![CDATA[Link title]]></en>
+        </locale>
 
         <locale name="tpl.rel.alternate">
             <de><![CDATA[

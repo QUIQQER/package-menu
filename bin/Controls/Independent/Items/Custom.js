@@ -39,7 +39,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Custom', [
             this.getElm().set('data-qui', this.getType());
             this.getElm().set('html', Mustache.render(template, {
                 title         : QUILocale.get('quiqqer/quiqqer', 'title'),
-                name          : QUILocale.get('quiqqer/quiqqer', 'name'),
+                linkTitle     : QUILocale.get(lg, 'tpl.linkTitle'),
                 icon          : QUILocale.get(lg, 'tpl.icon'),
                 url           : QUILocale.get(lg, 'tpl.url'),
                 rel           : QUILocale.get(lg, 'tpl.rel'),

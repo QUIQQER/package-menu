@@ -187,13 +187,18 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                     menuData.data.children.length
                 ) {
                     const buildChildren = (Parent, children) => {
-                        let i, len, data, Item;
+                        let i, len, data, Item, text;
 
                         for (i = 0, len = children.length; i < len; i++) {
                             data = children[i];
+                            text = data.titleFrontend;
+
+                            if (text === '' || text === '###') {
+                                text = '?';
+                            }
 
                             Item = new QUIMapItem({
-                                text     : data.titleFrontend,
+                                text     : text,
                                 icon     : data.typeIcon,
                                 itemTitle: data.title,
                                 itemType : data.type,
@@ -555,6 +560,10 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
 
             return new Promise(function (resolve, reject) {
                 QUIAjax.get('package_quiqqer_menu_ajax_backend_independent_getItemTitle', (name) => {
+                    if (name === '') {
+                        name = '?';
+                    }
+
                     Item.setAttribute('text', name);
                     resolve();
                 }, {
