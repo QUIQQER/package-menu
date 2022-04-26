@@ -450,6 +450,12 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                         Item.setAttribute('itemType', type);
                         Item.setAttribute('icon', Option.get('data-icon'));
 
+                        if (this.$ActiveMapItem && this.$ActiveMapItem === Item) {
+                            Item.click();
+                            this.$unloadCurrentItem();
+                            this.$refreshItemName().catch(console.error);
+                        }
+
                         Win.close();
                     }
                 }

@@ -5,6 +5,8 @@
 
 .quiqqer-menu-menuPanel-mapContainer {
     border-right: 1px solid #dedede;
+    flex-shrink: 0;
+    overflow: auto;
     padding: 20px;
     width: 300px;
 }
