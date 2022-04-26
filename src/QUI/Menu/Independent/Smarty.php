@@ -7,7 +7,7 @@ use QUI;
 /**
  * Smart function for the smarty {menu} function
  *
- * {menu menuId=ID menuDesign=QUI\Class\Menu\Control}
+ * {menu id=ID control=QUI\Class\Menu\Control}
  */
 class Smarty
 {
@@ -29,7 +29,7 @@ class Smarty
             return '';
         }
 
-        $menuId    = $params['menuId'];
+        $menuId    = $params['id'];
         $cacheName = Handler::getMenuCacheName($menuId, $Project);
 
         try {
@@ -38,8 +38,8 @@ class Smarty
         }
 
         try {
-            $Menu    = QUI\Menu\Independent\Handler::getMenu($params['menuId']);
-            $Control = new $params['menuDesign']($Menu);
+            $Menu    = QUI\Menu\Independent\Handler::getMenu($params['id']);
+            $Control = new $params['control']($Menu);
         } catch (QUI\Exception $Exception) {
             QUI\System\Log::addError($Exception->getMessage());
             return '';
