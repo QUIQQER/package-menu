@@ -126,6 +126,14 @@ class Menu
         $this->children[] = $Item;
     }
 
+    /**
+     * @return array
+     */
+    public function getChildren(): array
+    {
+        return $this->children;
+    }
+
     //endregion
 
     //region getter

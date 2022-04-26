@@ -554,7 +554,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
             }
 
             return new Promise(function (resolve, reject) {
-                QUIAjax.get('package_quiqqer_menu_ajax_backend_independent_getItemName', (name) => {
+                QUIAjax.get('package_quiqqer_menu_ajax_backend_independent_getItemTitle', (name) => {
                     Item.setAttribute('text', name);
                     resolve();
                 }, {

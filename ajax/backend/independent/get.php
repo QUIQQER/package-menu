@@ -37,7 +37,7 @@ QUI::$Ajax->registerFunction(
                 }
 
                 $data['children'][$key]['typeIcon']      = $icon;
-                $data['children'][$key]['titleFrontend'] = $Item->getName();
+                $data['children'][$key]['titleFrontend'] = $Item->getTitle();
             }
 
             return $data;
