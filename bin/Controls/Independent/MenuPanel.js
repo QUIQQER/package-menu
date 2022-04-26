@@ -76,6 +76,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                 type: 'separator'
             });
 
+            /*
             this.addButton({
                 name  : 'add',
                 text  : QUILocale.get('quiqqer/quiqqer', 'add'),
@@ -85,6 +86,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                     }
                 }
             });
+            */
 
             this.addButton({
                 textimage: 'fa fa-paint-brush',
@@ -144,7 +146,43 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                 this.setAttribute('title', menuData.title);
                 this.setAttribute('icon', 'fa fa-bars');
                 this.refresh();
-                //console.warn('init', menuData);
+
+                const Start = new QUIMapItem({
+                    icon  : 'fa fa-home',
+                    text  : menuData.title,
+                    events: {
+                        contextMenu: (Item, event) => {
+                            event.stop();
+
+                            const pos = Item.getElm().getPosition();
+                            const Menu = new QUIContextMenu({
+                                events: {
+                                    onBlur: function (Instance) {
+                                        Instance.hide();
+                                        Instance.destroy();
+                                    }
+                                }
+                            });
+
+                            Menu.appendChild(new QUIContextMenuItem({
+                                icon  : 'fa fa-level-down',
+                                text  : QUILocale.get(lg, 'context.menu.insertChild'),
+                                events: {
+                                    click: () => {
+                                        this.addItem(Item);
+                                    }
+                                }
+                            }));
+
+                            Menu.inject(document.body);
+                            Menu.setPosition(pos.x, pos.y + 30);
+                            Menu.setTitle(Item.getAttribute('text'));
+                            Menu.show();
+                            Menu.focus();
+                        }
+                    }
+                }).inject(this.$Map);
+
                 // build sitemap
                 if (menuData.data !== null &&
                     typeof menuData.data.children !== 'undefined' &&
@@ -177,9 +215,10 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                         }
                     };
 
-                    buildChildren(this.$Map, menuData.data.children);
+                    buildChildren(Start, menuData.data.children);
                 }
 
+                Start.open();
                 this.Loader.hide();
             });
         },
