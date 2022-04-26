@@ -52,11 +52,31 @@ abstract class AbstractMenuItem
     }
 
     /**
+     * @param Locale|null $Locale
      * @return string
      */
     public function getName(Locale $Locale = null): string
     {
-        return '';
+        if ($Locale === null) {
+            $Locale = QUI::getLocale();
+        }
+
+        $data    = $this->getCustomData();
+        $current = $Locale->getCurrent();
+
+        if (is_array($data) && isset($data['name'])) {
+            if (is_string($data['name'])) {
+                $name = json_decode($data['name'], true);
+            } else {
+                $name = $data['name'];
+            }
+
+            if (isset($name[$current])) {
+                return $name[$current];
+            }
+        }
+
+        return $this->getTitle($Locale);
     }
 
     /**

@@ -261,13 +261,15 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
             let result = toArray(this.$Map.firstChild());
             let title = null;
             let workingTitle = null;
-            
-            Handler.saveMenu(
-                this.getAttribute('menuId'),
-                title,
-                workingTitle,
-                result
-            ).then(() => {
+
+            return this.$refreshItemName().then(() => {
+                return Handler.saveMenu(
+                    this.getAttribute('menuId'),
+                    title,
+                    workingTitle,
+                    result
+                );
+            }).then(() => {
                 this.Loader.hide();
             });
         },
@@ -463,11 +465,13 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
             this.Loader.show();
             this.$unloadCurrentItem();
 
-            this.$InnerContainer.set('html', '');
-            this.$ActiveItem = null;
-            this.$ActiveMapItem = null;
+            return this.$refreshItemName().then(() => {
+                this.$InnerContainer.set('html', '');
+                this.$ActiveItem = null;
+                this.$ActiveMapItem = null;
 
-            Handler.getItemTypes().then((list) => {
+                return Handler.getItemTypes();
+            }).then((list) => {
                 let control = '';
                 let type = Item.getAttribute('itemType');
 
@@ -520,9 +524,35 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                 return;
             }
 
-            this.$ActiveMapItem.setAttribute('itemTitle', data.title);
-            this.$ActiveMapItem.setAttribute('itemIcon', data.icon);
-            this.$ActiveMapItem.setAttribute('itemData', data.data);
+            const ActiveItem = this.$ActiveMapItem;
+
+            ActiveItem.setAttribute('itemTitle', data.title);
+            ActiveItem.setAttribute('itemIcon', data.icon);
+            ActiveItem.setAttribute('itemData', data.data);
+        },
+
+        $refreshItemName: function () {
+            const Item = this.$ActiveMapItem;
+
+            if (Item === null) {
+                return Promise.resolve();
+            }
+
+            return new Promise(function (resolve, reject) {
+                QUIAjax.get('package_quiqqer_menu_ajax_backend_independent_getItemName', (name) => {
+                    Item.setAttribute('text', name);
+                    resolve();
+                }, {
+                    'package': 'quiqqer/menu',
+                    item     : JSON.encode({
+                        icon : Item.getAttribute('itemIcon'),
+                        title: Item.getAttribute('itemTitle'),
+                        type : Item.getAttribute('itemType'),
+                        data : Item.getAttribute('itemData'),
+                    }),
+                    onError  : reject
+                });
+            });
         },
 
         $getActiveSitemapItem: function () {

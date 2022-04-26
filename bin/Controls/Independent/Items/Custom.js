@@ -105,6 +105,22 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Custom', [
                 this.$Title.setData(title);
                 this.$Name.setData(data.name);
 
+                if (this.$Title.isLoaded()) {
+                    this.$Title.open();
+                } else {
+                    this.$Title.addEvent('load', () => {
+                        this.$Title.open();
+                    });
+                }
+
+                if (this.$Name.isLoaded()) {
+                    this.$Name.open();
+                } else {
+                    this.$Name.addEvent('load', () => {
+                        this.$Name.open();
+                    });
+                }
+
                 this.fireEvent('load');
             });
         },

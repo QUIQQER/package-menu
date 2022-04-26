@@ -42,7 +42,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Url', [
                 url           : QUILocale.get(lg, 'tpl.url'),
                 rel           : QUILocale.get(lg, 'tpl.rel'),
                 relDescription: QUILocale.get(lg, 'tpl.relDescription'),
-                
+
                 alternate : QUILocale.get(lg, 'tpl.rel.alternate'),
                 author    : QUILocale.get(lg, 'tpl.rel.author'),
                 bookmark  : QUILocale.get(lg, 'tpl.rel.bookmark'),
@@ -102,6 +102,22 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Url', [
                 this.$Title.setData(title);
                 this.$Name.setData(data.name);
 
+                if (this.$Title.isLoaded()) {
+                    this.$Title.open();
+                } else {
+                    this.$Title.addEvent('load', () => {
+                        this.$Title.open();
+                    });
+                }
+
+                if (this.$Name.isLoaded()) {
+                    this.$Name.open();
+                } else {
+                    this.$Name.addEvent('load', () => {
+                        this.$Name.open();
+                    });
+                }
+                
                 this.fireEvent('load');
             });
         },

@@ -27,21 +27,6 @@ class Anchor extends AbstractMenuItem
         return '';
     }
 
-    /**
-     * @param QUI\Locale|null $Locale
-     * @return string
-     */
-    public function getName(QUI\Locale $Locale = null): string
-    {
-        $data = $this->getCustomData();
-
-        if (is_array($data) && isset($data['name'])) {
-            return $data['name'];
-        }
-
-        return '';
-    }
-
     //endregion
 
     //region type stuff
