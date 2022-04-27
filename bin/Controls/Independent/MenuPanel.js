@@ -470,23 +470,27 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
             }).open();
         },
 
+        /**
+         * @param Item
+         */
         sortChildren: function (Item) {
             if (typeof Item === 'undefined') {
                 return;
             }
 
-            new QUIConfirm({
-                icon     : 'fa fa-sort',
-                title    : QUILocale.get(lg, 'quiqqer.menu.independent.sort.title'),
-                maxHeight: 600,
-                maxWidth : 500,
-                autoclose: false,
-                events   : {
-                    onOpen: (Win) => {
-                        Win.getContent().set('html', '');
+            require([
+                'package/quiqqer/menu/bin/Controls/Independent/MenuItemsSorting'
+            ], function (MenuItemSorting) {
+                new MenuItemSorting({
+                    Item  : Item,
+                    events: {
+                        onSubmit: function (Instance, list) {
+                            Item.$items = list;
+                            Item.refresh();
+                        }
                     }
-                }
-            }).open();
+                }).open();
+            });
         },
 
         /**
