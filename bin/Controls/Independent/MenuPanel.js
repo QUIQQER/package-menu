@@ -336,7 +336,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                                 }).inject(Types);
                             }
 
-                            Types.value = 'QUI\\Menu\\Independent\\Items\\Custom';
+                            Types.value = 'QUI\\Menu\\Independent\\Items\\Site';
 
                             return QUI.parse(Win.getContent());
                         }).then(function () {
@@ -381,11 +381,11 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                         }
 
                         Win.close();
-                        Child.click();
-
-                        this.$ActiveMapItem = Child;
 
                         this.save().then(() => {
+                            this.$ActiveMapItem = Child;
+                            Child.click();
+
                             return this.$refreshItemName();
                         });
                     }
@@ -470,23 +470,27 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
             }).open();
         },
 
+        /**
+         * @param Item
+         */
         sortChildren: function (Item) {
             if (typeof Item === 'undefined') {
                 return;
             }
 
-            new QUIConfirm({
-                icon     : 'fa fa-sort',
-                title    : QUILocale.get(lg, 'quiqqer.menu.independent.sort.title'),
-                maxHeight: 600,
-                maxWidth : 500,
-                autoclose: false,
-                events   : {
-                    onOpen: (Win) => {
-                        Win.getContent().set('html', '');
+            require([
+                'package/quiqqer/menu/bin/Controls/Independent/MenuItemsSorting'
+            ], function (MenuItemSorting) {
+                new MenuItemSorting({
+                    Item  : Item,
+                    events: {
+                        onSubmit: function (Instance, list) {
+                            Item.$items = list;
+                            Item.refresh();
+                        }
                     }
-                }
-            }).open();
+                }).open();
+            });
         },
 
         /**

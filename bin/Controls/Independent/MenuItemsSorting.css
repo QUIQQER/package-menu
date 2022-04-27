@@ -1,0 +1,21 @@
+.quiqqer-menu-sortingList {
+    border-top: 1px solid #dedede;
+    list-style-type: none;
+    overflow: visible !important;
+    padding: 0;
+    position: relative;
+}
+
+.quiqqer-menu-sortingList li {
+    border-bottom: 1px solid #dedede;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.quiqqer-menu-sortingList li:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.quiqqer-menu-sortingItem-dd-active {
+
+}
