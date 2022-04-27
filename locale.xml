@@ -512,6 +512,15 @@
             <en><![CDATA[Parent window (_parent)]]></en>
         </locale>
 
+        <locale name="context.menu.sort">
+            <de><![CDATA[Kinder sortieren]]></de>
+            <en><![CDATA[Sort children]]></en>
+        </locale>
+        <locale name="quiqqer.menu.independent.sort.title">
+            <de><![CDATA[Kinder sortieren]]></de>
+            <en><![CDATA[Sort children]]></en>
+        </locale>
+
         <locale name="create.window.text">
             <de><![CDATA[
             Bitte gebe den Typ (Art des Eintrages) an, welcher der neuen Eintrag erhalten soll.

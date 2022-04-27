@@ -4,11 +4,29 @@ namespace QUI\Menu\Independent\Items;
 
 use QUI;
 
+use function is_array;
+
 /**
  * menu item to an external url
  */
 class Url extends AbstractMenuItem
 {
+    /**
+     * @return string
+     */
+    public function getUrl(): string
+    {
+        $data = $this->getCustomData();
+
+        if (is_array($data) && isset($data['url'])) {
+            return $data['url'];
+        }
+
+        return '';
+    }
+
+    //region type stuff
+
     /**
      * @return string
      */
@@ -32,4 +50,6 @@ class Url extends AbstractMenuItem
     {
         return 'package/quiqqer/menu/bin/Controls/Independent/Items/Url';
     }
+
+    //endregion type stuff
 }

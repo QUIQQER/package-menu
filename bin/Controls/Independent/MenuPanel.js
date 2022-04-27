@@ -172,6 +172,18 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                                 }
                             }));
 
+                            if (Item.getChildren().length > 1) {
+                                Menu.appendChild(new QUIContextMenuItem({
+                                    icon  : 'fa fa-sort',
+                                    text  : QUILocale.get(lg, 'context.menu.sort'),
+                                    events: {
+                                        click: () => {
+                                            this.sortChildren(Item);
+                                        }
+                                    }
+                                }));
+                            }
+
                             Menu.inject(document.body);
                             Menu.setPosition(pos.x, pos.y + 30);
                             Menu.setTitle(Item.getAttribute('text'));
@@ -458,6 +470,25 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
             }).open();
         },
 
+        sortChildren: function (Item) {
+            if (typeof Item === 'undefined') {
+                return;
+            }
+
+            new QUIConfirm({
+                icon     : 'fa fa-sort',
+                title    : QUILocale.get(lg, 'quiqqer.menu.independent.sort.title'),
+                maxHeight: 600,
+                maxWidth : 500,
+                autoclose: false,
+                events   : {
+                    onOpen: (Win) => {
+                        Win.getContent().set('html', '');
+                    }
+                }
+            }).open();
+        },
+
         /**
          * opens the item - display the item data
          *
@@ -646,6 +677,18 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                     }
                 }
             }));
+
+            if (Item.getChildren().length > 1) {
+                Menu.appendChild(new QUIContextMenuItem({
+                    icon  : 'fa fa-sort',
+                    text  : QUILocale.get(lg, 'context.menu.sort'),
+                    events: {
+                        click: () => {
+                            this.sortChildren(Item);
+                        }
+                    }
+                }));
+            }
 
             Menu.appendChild(new QUIContextSeparator({}));
 
