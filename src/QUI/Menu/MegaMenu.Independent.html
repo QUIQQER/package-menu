@@ -1,0 +1,53 @@
+<nav class="hide-on-mobile">
+    {$prepend}
+
+    <ul class="quiqqer-menu-megaMenu-list">
+
+        {foreach $children as $Child}
+
+            {assign var=usedControl value=$childControl}
+
+            <li class="quiqqer-menu-megaMenu-list-item">
+                {assign var=subchildren value=$Child->getChildren()}
+                <a href=""
+                   class="qui-menu-siteid-{$Child->getIdentifier()}"
+                   {*title="{$Child->getAttribute('title')|escape:'html'}"*}>
+                    {$Child->getTitle()}
+
+                    {if count($subchildren)}
+                        <span class="fa fa-angle-down"></span>
+                    {/if}
+                </a>
+
+                {*if $Child->getAttribute('quiqqer.megamenu.settings.type') && $Child->getAttribute('quiqqer.megamenu.settings.type') !== ''}
+                    {assign var=usedControl value=$this->getMenuControl($Child->getAttribute('quiqqer.megamenu.settings.type'))}
+                {/if*}
+
+                {*if $usedControl}
+                    {control control=$usedControl Site=$Child assign=Control}
+                    {assign var=t_ value=$this->addSubMenu($usedControl)}
+                    {if $Control->count()}
+                        <div class="quiqqer-menu-megaMenu-list-item-menu">
+                            {$Control->create()}
+                        </div>
+                    {/if}
+                {/if*}
+            </li>
+        {/foreach}
+    </ul>
+
+    {$append}
+</nav>
+{*if $Mobile}
+    <div class="hide-on-desktop">
+        {$prepend}
+
+        <div class="quiqqer-menu-megaMenu-mobile">
+            <span class="fa fa-bars"></span>
+            <span>Menü</span>
+        </div>
+
+        {$append}
+        {$Mobile->create()}
+    </div>
+{/if*}
