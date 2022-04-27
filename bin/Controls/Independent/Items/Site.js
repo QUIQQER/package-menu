@@ -53,6 +53,15 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Site', [
                 prev      : QUILocale.get(lg, 'tpl.rel.prev'),
                 search    : QUILocale.get(lg, 'tpl.rel.search'),
                 tag       : QUILocale.get(lg, 'tpl.rel.tag'),
+
+                target      : QUILocale.get(lg, 'tpl.target'),
+                targetNone  : QUILocale.get(lg, 'tpl.target.none'),
+                targetSelf  : QUILocale.get(lg, 'tpl.target.self'),
+                targetFrame : QUILocale.get(lg, 'tpl.target.frame'),
+                targetPopup : QUILocale.get(lg, 'tpl.target.popup'),
+                targetBlank : QUILocale.get(lg, 'tpl.target.blank'),
+                targetTop   : QUILocale.get(lg, 'tpl.target.top'),
+                targetParent: QUILocale.get(lg, 'tpl.target.parent')
             }));
 
             let data = this.getAttribute('data');
@@ -86,8 +95,9 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Site', [
 
             return {
                 data: {
-                    site: Form.elements.site.value,
-                    rel : Form.elements.rel.value
+                    site  : Form.elements.site.value,
+                    target: Form.elements.target.value,
+                    rel   : Form.elements.rel.value
                 }
             };
         }

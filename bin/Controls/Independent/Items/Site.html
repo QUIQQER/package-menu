@@ -20,6 +20,24 @@
             <td>
                 <label class="field-container">
                     <span class="field-container-item">
+                        {{target}}
+                    </span>
+                    <select class="field-container-field" name="target">
+                        <option value="">{{targetNone}}</option>
+                        <option value="_self">{{targetSelf}}</option>
+                        <option value="frame">{{targetFrame}}</option>
+                        <option value="popup">{{targetPopup}}</option>
+                        <option value="_blank">{{targetBlank}}</option>
+                        <option value="_top">{{targetTop}}</option>
+                        <option value="_parent">{{targetParent}}</option>
+                    </select>
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="field-container">
+                    <span class="field-container-item">
                         {{rel}}
                     </span>
                     <select class="field-container-field" name="rel">

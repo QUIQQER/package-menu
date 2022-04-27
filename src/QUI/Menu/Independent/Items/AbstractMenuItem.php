@@ -134,6 +134,20 @@ abstract class AbstractMenuItem
     }
 
     /**
+     * @return string
+     */
+    public function getTarget(): string
+    {
+        $data = $this->getCustomData();
+
+        if (is_array($data) && isset($data['target'])) {
+            return $data['target'];
+        }
+
+        return '';
+    }
+
+    /**
      * @return mixed
      */
     public function getCustomData()

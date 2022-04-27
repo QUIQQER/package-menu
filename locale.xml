@@ -476,5 +476,38 @@
             ]]></en>
         </locale>
 
+        <locale name="tpl.target">
+            <de><![CDATA[Zielseite (target)]]></de>
+            <en><![CDATA[Target]]></en>
+        </locale>
+        <locale name="tpl.target.none">
+            <de><![CDATA[Standard (Kein target)]]></de>
+            <en><![CDATA[Default (No target)]]></en>
+        </locale>
+        <locale name="tpl.target.self">
+            <de><![CDATA[Gleiches Fenster (_self)]]></de>
+            <en><![CDATA[Same window (_self)]]></en>
+        </locale>
+        <locale name="tpl.target.frame">
+            <de><![CDATA[Frame]]></de>
+            <en><![CDATA[Frame]]></en>
+        </locale>
+        <locale name="tpl.target.popup">
+            <de><![CDATA[Pop-up Fenster]]></de>
+            <en><![CDATA[Popup window)]]></en>
+        </locale>
+        <locale name="tpl.target.blank">
+            <de><![CDATA[Neues Fenster (_blank)]]></de>
+            <en><![CDATA[New window (_blank)]]></en>
+        </locale>
+        <locale name="tpl.target.top">
+            <de><![CDATA[Oberstes Fenster (_top)]]></de>
+            <en><![CDATA[Top window (_top)]]></en>
+        </locale>
+        <locale name="tpl.target.parent">
+            <de><![CDATA[Oberes Fenster (_parent)]]></de>
+            <en><![CDATA[Parent window (_parent)]]></en>
+        </locale>
+
     </groups>
 </locales>
