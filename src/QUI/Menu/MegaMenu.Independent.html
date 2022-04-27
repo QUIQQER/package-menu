@@ -4,34 +4,52 @@
     <ul class="quiqqer-menu-megaMenu-list">
 
         {foreach $children as $Child}
-
             {assign var=usedControl value=$childControl}
 
-            <li class="quiqqer-menu-megaMenu-list-item">
+            {assign var=hasUrl value=1}
+            {if !$Child->getUrl()}
+                {assign var=hasUrl value=0}
+            {/if}
+            <li class="quiqqer-menu-megaMenu-list-item {if !$hasUrl}quiqqer-menu-megaMenu-list-item__noUrl{/if}">
                 {assign var=subchildren value=$Child->getChildren()}
-                <a href=""
-                   class="qui-menu-siteid-{$Child->getIdentifier()}"
-                   {*title="{$Child->getAttribute('title')|escape:'html'}"*}>
-                    {$Child->getTitle()}
 
-                    {if count($subchildren)}
-                        <span class="fa fa-angle-down"></span>
-                    {/if}
-                </a>
+                {if $Child->getUrl()}
+                    <a href="{$Child->getUrl()}"
+                       class="qui-menu-siteid-{$Child->getIdentifier()}"
+                       title="{$Child->getTitleAttribute()|escape:'html'}"
+                       {if $Child->getTarget()}target="{$Child->getTarget()}"{/if}
+                    >
+                        {if $Child->getIcon() && $Child->getIcon()|strpos:'image' !== 'false' }
+                            {image src=$Child->getIcon() onlyicon=1}
+                        {/if}
 
-                {*if $Child->getAttribute('quiqqer.megamenu.settings.type') && $Child->getAttribute('quiqqer.megamenu.settings.type') !== ''}
-                    {assign var=usedControl value=$this->getMenuControl($Child->getAttribute('quiqqer.megamenu.settings.type'))}
-                {/if*}
+                        {$Child->getTitle()}
 
-                {*if $usedControl}
-                    {control control=$usedControl Site=$Child assign=Control}
+                        {if count($subchildren)}
+                            <span class="fa fa-angle-down"></span>
+                        {/if}
+                    </a>
+                {else}
+                    <span class="qui-menu-siteid-{$Child->getIdentifier()}">
+                            {if $Child->getIcon() && $Child->getIcon()|strpos:'image' !== 'false' }
+                                {image src=$Child->getIcon() onlyicon=1}
+                            {/if}
+
+                        {$Child->getTitle()}
+
+                        {if count($subchildren)}
+                            <span class="fa fa-angle-down"></span>
+                        {/if}
+                        </span>
+                {/if}
+
+                {if count($subchildren) && $usedControl}
+                    {control control=$usedControl MenuChild=$Child independentMenu=1 assign=Control}
                     {assign var=t_ value=$this->addSubMenu($usedControl)}
-                    {if $Control->count()}
-                        <div class="quiqqer-menu-megaMenu-list-item-menu">
-                            {$Control->create()}
-                        </div>
-                    {/if}
-                {/if*}
+                    <div class="quiqqer-menu-megaMenu-list-item-menu">
+                        {$Control->create()}
+                    </div>
+                {/if}
             </li>
         {/foreach}
     </ul>

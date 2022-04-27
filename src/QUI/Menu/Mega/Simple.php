@@ -3,6 +3,7 @@
 /**
  * This file contains QUI\Menu\Mega\Simple
  */
+
 namespace QUI\Menu\Mega;
 
 use QUI;
@@ -24,12 +25,17 @@ class Simple extends AbstractChild
      *
      * @param array $params
      */
-    public function __construct(array $params = array())
+    public function __construct(array $params = [])
     {
+        $this->setAttributes([
+            'independentMenu' => false,
+            'MenuChild' => null
+        ]);
+
         parent::__construct($params);
 
         $this->addCSSClass('quiqqer-menu-megaMenu-children-simple');
-        $this->addCSSFile(dirname(__FILE__) . '/Simple.css');
+        $this->addCSSFile(dirname(__FILE__).'/Simple.css');
     }
 
     /**
@@ -42,12 +48,29 @@ class Simple extends AbstractChild
     {
         $Engine = QUI::getTemplateManager()->getEngine();
 
-        $Engine->assign(array(
-            'this'     => $this,
-            'children' => $this->getChildren(),
-            'Site'     => $this->getSite()
-        ));
+        if ($this->getAttribute('independentMenu')) {
+            $MenuChild = $this->getAttribute('MenuChild');
 
-        return $Engine->fetch(dirname(__FILE__) . '/Simple.html');
+            if (!$this->getAttribute('MenuChild') && !$this->isIndependentMenuItem($MenuChild)) {
+                return '';
+            }
+
+            $Engine->assign([
+                'this'     => $this,
+                'children' => $MenuChild->getChildren()
+            ]);
+
+            $template = dirname(__FILE__).'/Simple.Independent.html';
+        } else {
+            $Engine->assign([
+                'this'     => $this,
+                'children' => $this->getChildren(),
+                'Site'     => $this->getSite()
+            ]);
+
+            $template = dirname(__FILE__).'/Simple.html';
+        }
+
+        return $Engine->fetch($template);
     }
 }
