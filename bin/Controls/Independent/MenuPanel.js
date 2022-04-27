@@ -665,7 +665,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                             maxHeight  : 300,
                             maxWidth   : 500,
                             events     : {
-                                submit: function () {
+                                submit: () => {
                                     Item.destroy();
                                     this.save();
                                 }
