@@ -336,7 +336,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                                 }).inject(Types);
                             }
 
-                            Types.value = 'QUI\\Menu\\Independent\\Items\\Custom';
+                            Types.value = 'QUI\\Menu\\Independent\\Items\\Site';
 
                             return QUI.parse(Win.getContent());
                         }).then(function () {
