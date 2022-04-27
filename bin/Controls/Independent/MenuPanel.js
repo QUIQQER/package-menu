@@ -295,6 +295,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
             }
 
             new QUIConfirm({
+                icon     : 'fa fa-plus',
                 title    : QUILocale.get(lg, 'quiqqer.menu.independent.addItem.title'),
                 maxHeight: 400,
                 maxWidth : 500,
@@ -304,7 +305,9 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                         const Content = Win.getContent();
 
                         Win.Loader.show();
+
                         Content.set('html', Mustache.render(templateCreate, {
+                            text     : QUILocale.get(lg, 'create.window.text'),
                             textTitle: QUILocale.get('quiqqer/quiqqer', 'title'),
                             textName : QUILocale.get('quiqqer/quiqqer', 'name'),
                             textType : QUILocale.get('quiqqer/quiqqer', 'type')
@@ -325,18 +328,6 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
 
                             return QUI.parse(Win.getContent());
                         }).then(function () {
-                            const Title = QUI.Controls.getById(
-                                Content.getElement('[name="itemTitle"]').get('data-quiid')
-                            );
-
-                            if (Title.isLoaded()) {
-                                Title.open();
-                            } else {
-                                Title.addEvent('load', function () {
-                                    Title.open();
-                                });
-                            }
-
                             Win.Loader.hide();
                         });
                     },
@@ -345,27 +336,16 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                         const Content = Win.getContent();
                         const Form = Content.getElement('form');
 
-                        let current = QUILocale.getCurrent();
-                        let title = Form.elements.itemTitle.value;
                         let type = Form.elements.itemType.value;
 
                         const Option = Form.elements.itemType.getElement(
                             'option[value="' + CSS.escape(type) + '"]'
                         );
 
-                        try {
-                            title = JSON.decode(title);
-
-                            if (typeof title[current] !== 'undefined') {
-                                title = title[current];
-                            }
-                        } catch (e) {
-                        }
-
                         let itemAttributes = {
-                            text     : title,
+                            text     : '',
                             icon     : Option.get('data-icon'),
-                            itemTitle: Form.elements.itemTitle.value,
+                            itemTitle: '',
                             itemType : Form.elements.itemType.value,
                             itemIcon : '',
                             events   : {
@@ -374,17 +354,28 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                             }
                         };
 
+                        let Child;
+
                         if (where === 'bottom') {
-                            Parent.appendChild(new QUIMapItem(itemAttributes));
+                            Child = new QUIMapItem(itemAttributes);
+                            Parent.appendChild(Child);
 
                             if (typeof Parent === 'function') {
                                 Parent.open();
                             }
                         } else {
-                            Parent.appendChild(new QUIMapItem(itemAttributes), where);
+                            Child = new QUIMapItem(itemAttributes);
+                            Parent.appendChild(Child, where);
                         }
 
                         Win.close();
+                        Child.click();
+
+                        this.$ActiveMapItem = Child;
+
+                        this.save().then(() => {
+                            return this.$refreshItemName();
+                        });
                     }
                 }
             }).open();
@@ -676,6 +667,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                             events     : {
                                 submit: function () {
                                     Item.destroy();
+                                    this.save();
                                 }
                             }
                         }).open();

@@ -19,6 +19,10 @@ QUI::$Ajax->registerFunction(
         $Menu->setWorkingTitle($workingTitle);
         $Menu->setData($data);
         $Menu->save();
+
+        QUI::getMessagesHandler()->addSuccess(
+            QUI::getLocale()->get('quiqqer/menu', 'menu.saved.successfully')
+        );
     },
     ['id', 'title', 'workingTitle', 'data'],
     'Permission::checkAdminUser'

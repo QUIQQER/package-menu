@@ -251,7 +251,10 @@
             <de><![CDATA[Menu Eintrag: Zur einer anderen URL]]></de>
             <en><![CDATA[Menu entry: To another URL]]></en>
         </locale>
-
+        <locale name="menu.saved.successfully">
+            <de><![CDATA[Das Menü wurde erfolgreich gespeichert.]]></de>
+            <en><![CDATA[The menu has been saved successfully.]]></en>
+        </locale>
     </groups>
 
     <groups name="quiqqer/menu" datatype="js">
@@ -509,5 +512,15 @@
             <en><![CDATA[Parent window (_parent)]]></en>
         </locale>
 
+        <locale name="create.window.text">
+            <de><![CDATA[
+            Bitte gebe den Typ (Art des Eintrages) an, welcher der neuen Eintrag erhalten soll.
+            Der Typ kann jederzeit geändert werden.
+            ]]></de>
+            <en><![CDATA[
+            Please specify the type (type of entry), which the new entry should get.
+            The type can be changed at any time.
+            ]]></en>
+        </locale>
     </groups>
 </locales>
