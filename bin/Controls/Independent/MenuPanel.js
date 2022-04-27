@@ -381,11 +381,11 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                         }
 
                         Win.close();
-                        Child.click();
-
-                        this.$ActiveMapItem = Child;
 
                         this.save().then(() => {
+                            this.$ActiveMapItem = Child;
+                            Child.click();
+
                             return this.$refreshItemName();
                         });
                     }
