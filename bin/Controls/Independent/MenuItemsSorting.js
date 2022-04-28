@@ -7,7 +7,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuItemsSorting', [
     'qui/QUI',
     'qui/controls/windows/Confirm',
     'Locale',
-    'package/quiqqer/bricks/bin/Sortables',
+    'package/quiqqer/menu/bin/classes/Independent/Sortables',
 
     'css!package/quiqqer/menu/bin/Controls/Independent/MenuItemsSorting.css'
 
@@ -129,8 +129,6 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuItemsSorting', [
 
             const findInChildren = function (id) {
                 for (let i = 0, len = children.length; i < len; i++) {
-                    console.log(children[i].getId());
-
                     if (children[i].getId() === id) {
                         return children[i];
                     }

@@ -541,5 +541,19 @@
             The type can be changed at any time.
             ]]></en>
         </locale>
+
+        <locale name="quiqqer.menu.select.win.title">
+            <de><![CDATA[Menü zuweisen]]></de>
+            <en><![CDATA[Assign a menu]]></en>
+        </locale>
+        <locale name="quiqqer.menu.select.win.content">
+            <de><![CDATA[Bitte wähle ein Menü aus welches du zuweisen möchtest.]]></de>
+            <en><![CDATA[Please select a menu you want to assign.]]></en>
+        </locale>
+        <locale name="quiqqer.menu.select.win.button">
+            <de><![CDATA[Menü Auswahl]]></de>
+            <en><![CDATA[Select menu]]></en>
+        </locale>
+
     </groups>
 </locales>

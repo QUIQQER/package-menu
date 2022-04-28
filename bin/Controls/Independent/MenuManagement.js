@@ -11,15 +11,14 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuManagement', [
     'Locale',
     'Ajax',
     'Mustache',
-    'package/quiqqer/menu/bin/classes/Independent/Handler',
+    'package/quiqqer/menu/bin/classes/IndependentHandler',
 
     'text!package/quiqqer/menu/bin/Controls/Independent/MenuManagement.Create.html'
 
-], function (QUI, QUIPanel, QUIConfirm, Grid, QUILocale, QUIAjax, Mustache, MenuHandler, templateCreate) {
+], function (QUI, QUIPanel, QUIConfirm, Grid, QUILocale, QUIAjax, Mustache, Handler, templateCreate) {
     "use strict";
 
     const lg = 'quiqqer/menu';
-    const Handler = new MenuHandler();
 
     return new Class({
 
