@@ -20,7 +20,7 @@
                        {if $Child->getTarget()}target="{$Child->getTarget()}"{/if}
                     >
                         {if $this->getAttribute('showFirstLevelIcons') && $Child->getIcon() && $Child->getIcon()|strpos:'image' !== 'false' }
-                            {image src=$Child->getIcon() onlyicon=1 class="fa-fw"}
+                            {image src=$Child->getIcon() onlyicon=1}
                         {/if}
 
                         {$Child->getTitle()}
@@ -32,7 +32,7 @@
                 {else}
                     <span class="qui-menu-siteid-{$Child->getIdentifier()} quiqqer-menu-megaMenu-list-item-inner">
                         {if $this->getAttribute('showFirstLevelIcons') &&  $Child->getIcon() && $Child->getIcon()|strpos:'image' !== 'false' }
-                            {image src=$Child->getIcon() onlyicon=1 class="fa-fw"}
+                            {image src=$Child->getIcon() onlyicon=1}
                         {/if}
 
                         {$Child->getTitle()}
