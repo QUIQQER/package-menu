@@ -60,6 +60,20 @@ class Site extends AbstractMenuItem
     }
 
     /**
+     * @return string
+     */
+    public function getIcon(): string
+    {
+        $Site = $this->getSite();
+
+        if ($Site) {
+            return $Site->getAttribute('image_site');
+        }
+
+        return '';
+    }
+
+    /**
      * @param Locale|null $Locale
      * @return string
      */
