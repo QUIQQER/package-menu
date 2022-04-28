@@ -224,6 +224,10 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
 
                             Parent.appendChild(Item);
 
+                            if (typeof data.data.status !== 'undefined' && data.data.status === 0) {
+                                Item.deactivate();
+                            }
+
                             if (typeof data.children !== 'undefined' && data.children.length) {
                                 buildChildren(Item, data.children);
                             }
@@ -279,7 +283,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
             let title = null;
             let workingTitle = null;
 
-            return this.$refreshItemName().then(() => {
+            return this.$refreshItemDisplay().then(() => {
                 return Handler.saveMenu(
                     this.getAttribute('menuId'),
                     title,
@@ -386,7 +390,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                             this.$ActiveMapItem = Child;
                             Child.click();
 
-                            return this.$refreshItemName();
+                            return this.$refreshItemDisplay();
                         });
                     }
                 }
@@ -461,7 +465,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                         if (this.$ActiveMapItem && this.$ActiveMapItem === Item) {
                             Item.click();
                             this.$unloadCurrentItem();
-                            this.$refreshItemName().catch(console.error);
+                            this.$refreshItemDisplay().catch(console.error);
                         }
 
                         Win.close();
@@ -502,7 +506,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
             this.Loader.show();
             this.$unloadCurrentItem();
 
-            return this.$refreshItemName().then(() => {
+            return this.$refreshItemDisplay().then(() => {
                 this.$InnerContainer.set('html', '');
                 this.$ActiveItem = null;
                 this.$ActiveMapItem = null;
@@ -577,13 +581,23 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
          *
          * @returns {Promise}
          */
-        $refreshItemName: function () {
+        $refreshItemDisplay: function () {
             const Item = this.$ActiveMapItem;
 
             if (Item === null) {
                 return Promise.resolve();
             }
 
+            // check status
+            const data = Item.getAttribute('itemData');
+
+            if (typeof data.status !== 'undefined' && data.status === 0) {
+                Item.deactivate();
+            } else {
+                Item.activate();
+            }
+
+            // check name
             return new Promise(function (resolve, reject) {
                 QUIAjax.get('package_quiqqer_menu_ajax_backend_independent_getItemTitle', (name) => {
                     if (name === '') {

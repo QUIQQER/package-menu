@@ -5,6 +5,7 @@ namespace QUI\Menu\Independent\Items;
 use QUI;
 use QUI\Locale;
 
+use function array_filter;
 use function is_array;
 use function is_string;
 use function json_decode;
@@ -141,7 +142,15 @@ abstract class AbstractMenuItem
         $data = $this->getCustomData();
 
         if (is_array($data) && isset($data['target'])) {
-            return $data['target'];
+            switch ($data['target']) {
+                case "_self":
+                case "frame":
+                case "popup":
+                case "_blank":
+                case "_top":
+                case "_parent":
+                    return $data['target'];
+            }
         }
 
         return '';
@@ -174,6 +183,7 @@ abstract class AbstractMenuItem
         $name     = $this->getName($Locale);
         $relValue = $this->getRel();
 
+        // rel attribute
         $rel = '';
 
         if (!empty($relValue)) {
@@ -196,7 +206,42 @@ abstract class AbstractMenuItem
             }
         }
 
-        return "<a href=\"$url\" title=\"$title\" $rel>$name</a>";
+        // target attribute
+        $target          = $this->getTarget();
+        $targetAttribute = '';
+
+        if (!empty($target)) {
+            $targetAttribute = $target;
+        }
+
+        // html link
+        return "<a href=\"$url\" title=\"$title\" $rel $targetAttribute>$name</a>";
+    }
+
+    //endregion
+
+    //region status
+
+    /**
+     * @return bool
+     */
+    public function isActive(): bool
+    {
+        return $this->getStatus();
+    }
+
+    /**
+     * @return bool
+     */
+    public function getStatus(): bool
+    {
+        $data = $this->getCustomData();
+
+        if (is_array($data) && isset($data['status'])) {
+            return !!$data['status'];
+        }
+
+        return true;
     }
 
     //endregion
@@ -228,11 +273,18 @@ abstract class AbstractMenuItem
     /**
      * Return the children of this item
      *
+     * @param bool $onlyActive - if true, returns only the active children, if false, all children are returned
      * @return AbstractMenuItem[]
      */
-    public function getChildren(): array
+    public function getChildren(bool $onlyActive = true): array
     {
-        return $this->children;
+        if ($onlyActive === false) {
+            return $this->children;
+        }
+
+        return array_filter($this->children, function ($Item) {
+            return $Item->isActive();
+        });
     }
 
     /**

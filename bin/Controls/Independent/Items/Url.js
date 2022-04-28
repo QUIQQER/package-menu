@@ -36,6 +36,9 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Url', [
         $onInject: function () {
             this.getElm().set('data-qui', this.getType());
             this.getElm().set('html', Mustache.render(template, {
+                status           : QUILocale.get('quiqqer/quiqqer', 'status'),
+                statusDescription: QUILocale.get(lg, 'tpl.statusDescription'),
+
                 title         : QUILocale.get('quiqqer/quiqqer', 'title'),
                 linkTitle     : QUILocale.get(lg, 'tpl.linkTitle'),
                 icon          : QUILocale.get(lg, 'tpl.icon'),
@@ -95,6 +98,10 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Url', [
                 data.name = '';
             }
 
+            if (typeof data.status === 'undefined' || data.status) {
+                this.getElm().getElement('[name="status"]').set('checked', true);
+            }
+
             this.getElm().getElement('[name="icon"]').set('value', icon);
             this.getElm().getElement('[name="url"]').set('value', data.url);
             this.getElm().getElement('[name="rel"]').set('value', data.rel);
@@ -140,6 +147,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Url', [
                 data : {
                     url   : Form.elements.url.value,
                     target: Form.elements.target.value,
+                    status: Form.elements.status.checked ? 1 : 0,
                     name  : this.$Name.getValue(),
                     rel   : Form.elements.rel.value
                 }

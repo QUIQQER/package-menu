@@ -5,6 +5,7 @@ namespace QUI\Menu\Independent;
 use QUI;
 use QUI\Menu\Independent\Items\AbstractMenuItem;
 
+use function array_filter;
 use function class_exists;
 use function is_array;
 use function is_numeric;
@@ -127,11 +128,20 @@ class Menu
     }
 
     /**
+     * Return the children of this menu
+     *
+     * @param bool $onlyActive - if true, returns only the active children, if false, all children are returned
      * @return array
      */
-    public function getChildren(): array
+    public function getChildren(bool $onlyActive = true): array
     {
-        return $this->children;
+        if ($onlyActive === false) {
+            return $this->children;
+        }
+
+        return array_filter($this->children, function ($Item) {
+            return $Item->isActive();
+        });
     }
 
     //endregion

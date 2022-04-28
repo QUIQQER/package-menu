@@ -479,6 +479,16 @@
             ]]></en>
         </locale>
 
+        <locale name="tpl.statusDescription">
+            <de><![CDATA[
+            Aktiviert (Haken gesetzt) oder deaktiviert (Kein Haken gesetzt) den Eintrag.
+            Bei Deaktivierung wird der Menüeintrag nicht im Menü angezeigt
+            ]]></de>
+            <en><![CDATA[
+            Enables (checked) or disables (unchecked) the item.
+            If deactivated, the menu entry is not displayed in the menu
+            ]]></en>
+        </locale>
         <locale name="tpl.target">
             <de><![CDATA[Zielseite (target)]]></de>
             <en><![CDATA[Target]]></en>
