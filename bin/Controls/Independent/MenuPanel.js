@@ -14,7 +14,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
     'qui/controls/contextmenu/Separator',
     'Ajax',
     'Locale',
-    'package/quiqqer/menu/bin/classes/Independent/Handler',
+    'package/quiqqer/menu/bin/classes/IndependentHandler',
 
     'Mustache',
     'text!package/quiqqer/menu/bin/Controls/Independent/MenuPanel.Create.html',
@@ -22,11 +22,10 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
 
 ], function (QUI, QUIPanel, QUIMap, QUIMapItem, QUIConfirm,
              QUIContextMenu, QUIContextMenuItem, QUIContextSeparator,
-             QUIAjax, QUILocale, MenuHandler, Mustache, templateCreate) {
+             QUIAjax, QUILocale, IndependentHandler, Mustache, templateCreate) {
     "use strict";
 
     const lg = 'quiqqer/menu';
-    const Handler = new MenuHandler();
 
     return new Class({
 
@@ -140,7 +139,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
         $onInject: function () {
             this.Loader.show();
 
-            Handler.getMenu(this.getAttribute('menuId')).then((menuData) => {
+            IndependentHandler.getMenu(this.getAttribute('menuId')).then((menuData) => {
                 this.setAttribute('title', menuData.title);
                 this.setAttribute('icon', 'fa fa-bars');
                 this.refresh();
@@ -284,7 +283,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
             let workingTitle = null;
 
             return this.$refreshItemDisplay().then(() => {
-                return Handler.saveMenu(
+                return IndependentHandler.saveMenu(
                     this.getAttribute('menuId'),
                     title,
                     workingTitle,
@@ -329,7 +328,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                             textType : QUILocale.get('quiqqer/quiqqer', 'type')
                         }));
 
-                        Handler.getItemTypes().then((list) => {
+                        IndependentHandler.getItemTypes().then((list) => {
                             const Types = Content.getElement('[name="itemType"]');
 
                             for (let i = 0, len = list.length; i < len; i++) {
@@ -385,7 +384,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                         }
 
                         Win.close();
-                        
+
                         this.save().then(() => {
                             Child.click();
                             this.$ActiveMapItem = Child;
@@ -429,7 +428,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
 
                         Win.Loader.show();
 
-                        Handler.getItemTypes().then((list) => {
+                        IndependentHandler.getItemTypes().then((list) => {
                             const Types = Content.getElement('[name="itemType"]');
 
                             for (let i = 0, len = list.length; i < len; i++) {
@@ -511,7 +510,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                 this.$ActiveItem = null;
                 this.$ActiveMapItem = null;
 
-                return Handler.getItemTypes();
+                return IndependentHandler.getItemTypes();
             }).then((list) => {
                 let control = '';
                 let type = Item.getAttribute('itemType');

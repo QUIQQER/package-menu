@@ -11,6 +11,8 @@ define('package/quiqqer/menu/bin/classes/Independent/Handler', [
 ], function (QUI, QUIDOM, QUIAjax) {
     "use strict";
 
+    let itemTypes = null;
+
     return new Class({
 
         Extends: QUIDOM,
@@ -31,11 +33,35 @@ define('package/quiqqer/menu/bin/classes/Independent/Handler', [
          * @returns {Promise}
          */
         getItemTypes: function () {
+            if (itemTypes !== null) {
+                return Promise.resolve(itemTypes);
+            }
+
             return new Promise(function (resolve, reject) {
-                QUIAjax.get('package_quiqqer_menu_ajax_backend_independent_getItemTypes', resolve, {
+                QUIAjax.get('package_quiqqer_menu_ajax_backend_independent_getItemTypes', function (result) {
+                    itemTypes = result;
+                    resolve(itemTypes);
+                }, {
                     'package': 'quiqqer/menu',
                     onError  : reject
                 });
+            });
+        },
+
+        /**
+         * Return the name of the types
+         *
+         * @returns {Promise}
+         */
+        getTypeName: function (type) {
+            return this.getItemTypes().then((list) => {
+                for (let i = 0, len = list.length; i < len; i++) {
+                    if (list[i].class === type) {
+                        return list[i].title;
+                    }
+                }
+
+                return '';
             });
         },
 

@@ -8,10 +8,11 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Anchor', [
     'qui/controls/Control',
     'Locale',
     'Mustache',
+    'package/quiqqer/menu/bin/classes/IndependentHandler',
 
     'text!package/quiqqer/menu/bin/Controls/Independent/Items/Anchor.html'
 
-], function (QUI, QUIControl, QUILocale, Mustache, template) {
+], function (QUI, QUIControl, QUILocale, Mustache, IndependentHandler, template) {
     "use strict";
 
     const lg = 'quiqqer/menu';
@@ -79,6 +80,14 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Anchor', [
             if (typeof data.status === 'undefined' || data.status) {
                 this.getElm().getElement('[name="status"]').set('checked', true);
             }
+
+            IndependentHandler.getTypeName(this.getAttribute('type')).then((name) => {
+                const TH = this.getElm().getElement('th');
+
+                if (TH) {
+                    TH.set('html', name);
+                }
+            });
 
             QUI.parse(this.getElm()).then(() => {
                 this.$Title = QUI.Controls.getById(

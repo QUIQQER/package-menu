@@ -10,10 +10,11 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Custom', [
     'qui/controls/Control',
     'Locale',
     'Mustache',
+    'package/quiqqer/menu/bin/classes/IndependentHandler',
 
     'text!package/quiqqer/menu/bin/Controls/Independent/Items/Custom.html'
 
-], function (QUI, QUIControl, QUILocale, Mustache, template) {
+], function (QUI, QUIControl, QUILocale, Mustache, IndependentHandler, template) {
     "use strict";
 
     const lg = 'quiqqer/menu';
@@ -108,6 +109,14 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Custom', [
             this.getElm().getElement('[name="icon"]').set('value', icon);
             this.getElm().getElement('[name="url"]').set('value', data.url);
             this.getElm().getElement('[name="rel"]').set('value', data.rel);
+
+            IndependentHandler.getTypeName(this.getAttribute('type')).then((name) => {
+                const TH = this.getElm().getElement('th');
+
+                if (TH) {
+                    TH.set('html', name);
+                }
+            });
 
             QUI.parse(this.getElm()).then(() => {
                 this.$Title = QUI.Controls.getById(
