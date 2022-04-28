@@ -31,12 +31,14 @@ class MegaMenu extends AbstractMenu
     public function __construct($attributes = [])
     {
         $this->setAttributes([
-            'showStart'    => false,
-            'Start'        => false,
-            'startText'    => '', // optional: displayed text
-            'data-qui'     => 'package/quiqqer/menu/bin/MegaMenu',
-            'display'      => 'Standard',
-            'enableMobile' => true
+            'showStart'           => false,
+            'Start'               => false,
+            'startText'           => '', // optional: displayed text
+            'data-qui'            => 'package/quiqqer/menu/bin/MegaMenu',
+            'display'             => 'Standard',
+            'enableMobile'        => true,
+            'menuId'              => false,
+            'showFirstLevelIcons' => false // current it works only for independent menu
         ]);
 
         if ($this->getProject()->getConfig('menu.settings.type')) {
@@ -140,8 +142,8 @@ class MegaMenu extends AbstractMenu
                 'showMenu'     => true
             ]);
 
-            $result             = [];
-            $result['html']     = $Engine->fetch(dirname(__FILE__).'/MegaMenu.Independent.html');
+            $result         = [];
+            $result['html'] = $Engine->fetch(dirname(__FILE__).'/MegaMenu.Independent.html');
         } else {
             $Engine->assign([
                 'this'         => $this,
