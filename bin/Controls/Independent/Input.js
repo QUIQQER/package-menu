@@ -49,6 +49,11 @@ define('package/quiqqer/menu/bin/Controls/Independent/Input', [
                 return;
             }
 
+            if (this.$Input.value === '') {
+                this.$Display.set('html', '');
+                return;
+            }
+
             const value = parseInt(this.$Input.value);
 
             IndependentHandler.getList().then((list) => {
@@ -81,16 +86,16 @@ define('package/quiqqer/menu/bin/Controls/Independent/Input', [
                 this.$Input.removeClass('field-container-field');
             }
 
-            this.$Elm.addEvent('click', (e) => {
-                e.stop();
-                this.click();
-            });
-
             this.$Input.type = 'hidden';
 
             this.$Display = new Element('div', {
                 'class': 'quiqqer-menu-independent-input-display'
             }).inject(this.$Elm);
+
+            this.$Display.addEvent('click', (e) => {
+                e.stop();
+                this.click();
+            });
 
             new Element('button', {
                 'class': 'button qui-button--no-icon qui-button qui-utils-noselect',
@@ -100,6 +105,19 @@ define('package/quiqqer/menu/bin/Controls/Independent/Input', [
                     click: (e) => {
                         e.stop();
                         this.click();
+                    }
+                }
+            }).inject(this.$Elm);
+
+            new Element('button', {
+                'class': 'button qui-button--no-icon qui-button qui-utils-noselect',
+                html   : '<span class="fa fa-remove"></span>',
+                title  : QUILocale.get('quiqqer/quiqqer', 'remove'),
+                events : {
+                    click: (e) => {
+                        e.stop();
+                        this.$Input.value = '';
+                        this.refreshDisplay();
                     }
                 }
             }).inject(this.$Elm);
@@ -142,6 +160,11 @@ define('package/quiqqer/menu/bin/Controls/Independent/Input', [
                                     width  : '50%'
                                 }
                             }).inject(Win.getContent());
+
+                            new Element('option', {
+                                'html' : '',
+                                'value': ''
+                            }).inject(Select);
 
                             for (let i = 0, len = list.length; i < len; i++) {
                                 new Element('option', {
