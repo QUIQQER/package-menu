@@ -22,8 +22,9 @@
     position: relative;
 }
 
-.quiqqer-menu-megaMenu-list-item a {
+.quiqqer-menu-megaMenu-list-item-inner {
     display: block;
+    cursor: pointer;
 }
 
 /** sub menu data

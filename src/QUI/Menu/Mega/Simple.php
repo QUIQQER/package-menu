@@ -51,7 +51,7 @@ class Simple extends AbstractChild
         if ($this->getAttribute('independentMenu')) {
             $MenuChild = $this->getAttribute('MenuChild');
 
-            if (!$this->getAttribute('MenuChild') && !$this->isIndependentMenuItem($MenuChild)) {
+            if (!$this->getAttribute('MenuChild') && !$MenuChild instanceof QUI\Menu\Independent\Items\AbstractMenuItem) {
                 return '';
             }
 

@@ -25,7 +25,7 @@
         <li class="quiqqer-menu-megaMenu-list-item{if $isInPath} quiqqer-menu-megaMenu-list-item--current{/if}">
             {assign var=subchildren value=$Child->getNavigation()}
             <a href="{url site=$Child}"
-               class="qui-menu-siteid-{$Child->getId()}"
+               class="qui-menu-siteid-{$Child->getId()} quiqqer-menu-megaMenu-list-item-inner"
                title="{$Child->getAttribute('title')|escape:'html'}">
                 {$Child->getAttribute('title')}
 
