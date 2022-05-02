@@ -141,7 +141,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/Input', [
                 maxHeight: 300,
                 maxWidth : 500,
                 events   : {
-                    onOpen  : function (Win) {
+                    onOpen  : (Win) => {
                         Win.getContent().set('html', '');
                         Win.getContent().setStyle('textAlign', 'center');
                         Win.Loader.show();
@@ -173,6 +173,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/Input', [
                                 }).inject(Select);
                             }
 
+                            Select.value = this.$Input.value;
                             Win.Loader.hide();
                         });
                     },
