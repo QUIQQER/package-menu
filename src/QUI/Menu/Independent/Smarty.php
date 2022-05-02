@@ -18,7 +18,7 @@ class Smarty
      */
     public static function menu($params, $smarty): string
     {
-        if (empty($params['menuId']) || empty($params['menuDesign'])) {
+        if (empty($params['id']) || empty($params['control'])) {
             QUI\System\Log::addError('No menuId or menuDesign param for {menu} smarty function');
             return '';
         }
