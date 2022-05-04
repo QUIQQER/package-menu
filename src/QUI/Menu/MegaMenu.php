@@ -54,7 +54,15 @@ class MegaMenu extends AbstractMenu
             return;
         }
 
-        $this->Mobile = new QUI\Menu\SlideOut();
+        $slideOutParam = [
+            'showHomeLink' => true
+        ];
+
+        if ($this->getAttribute('menuId')) {
+            $slideOutParam['menuId'] = $this->getAttribute('menuId');
+        }
+
+        $this->Mobile = new QUI\Menu\SlideOut($slideOutParam);
 
         // defaults
         $this->Mobile->setAttribute('Project', $this->getProject());

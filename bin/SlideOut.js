@@ -268,13 +268,13 @@ define('package/quiqqer/menu/bin/SlideOut', [
                     'class': 'page-menu-close',
                     styles : {
                         fontSize  : 40,
-                        height    : 45,
-                        lineHeight: 45,
-                        right     : -20,
+                        height    : 50,
+                        lineHeight: 50,
+                        right     : -30,
                         position  : 'absolute',
                         textAlign : 'center',
-                        top       : 10,
-                        width     : 45,
+                        top       : 0,
+                        width     : 50,
                         zIndex    : 1000
                     },
                     events : {
