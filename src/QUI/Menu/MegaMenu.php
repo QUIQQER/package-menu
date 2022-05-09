@@ -152,6 +152,8 @@ class MegaMenu extends AbstractMenu
 
             $result         = [];
             $result['html'] = $Engine->fetch(dirname(__FILE__).'/MegaMenu.Independent.html');
+            $result['subMenus'] = \array_unique($this->subMenus);
+
         } else {
             $Engine->assign([
                 'this'         => $this,
