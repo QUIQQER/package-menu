@@ -40,6 +40,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Anchor', [
                 status           : QUILocale.get('quiqqer/quiqqer', 'status'),
                 statusDescription: QUILocale.get(lg, 'tpl.statusDescription'),
 
+                site     : QUILocale.get(lg, 'tpl.Site'),
                 title    : QUILocale.get('quiqqer/quiqqer', 'title'),
                 linkTitle: QUILocale.get(lg, 'tpl.linkTitle'),
                 icon     : QUILocale.get(lg, 'tpl.icon'),
@@ -79,6 +80,10 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Anchor', [
 
             if (typeof data.status === 'undefined' || data.status) {
                 this.getElm().getElement('[name="status"]').set('checked', true);
+            }
+
+            if (typeof data.site !== 'undefined') {
+                this.getElm().getElement('[name="site"]').set('value', data.site);
             }
 
             IndependentHandler.getTypeName(this.getAttribute('type')).then((name) => {
@@ -128,6 +133,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Anchor', [
                 title: this.$Title.getValue(),
                 icon : Form.elements.icon.value,
                 data : {
+                    site  : Form.elements.site.value,
                     url   : Form.elements.url.value,
                     status: Form.elements.status.checked ? 1 : 0,
                     name  : this.$Name.getValue()
