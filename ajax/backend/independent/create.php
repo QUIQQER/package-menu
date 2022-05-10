@@ -26,5 +26,5 @@ QUI::$Ajax->registerFunction(
         return $Menu->getId();
     },
     ['title', 'workingTitle'],
-    'Permission::checkAdminUser'
+    'quiqqer.menu.create'
 );

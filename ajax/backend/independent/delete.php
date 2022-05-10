@@ -19,5 +19,5 @@ QUI::$Ajax->registerFunction(
         }
     },
     ['ids'],
-    'Permission::checkAdminUser'
+    'quiqqer.menu.delete'
 );

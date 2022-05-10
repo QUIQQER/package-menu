@@ -25,5 +25,5 @@ QUI::$Ajax->registerFunction(
         );
     },
     ['id', 'title', 'workingTitle', 'data'],
-    'Permission::checkAdminUser'
+    'quiqqer.menu.edit'
 );

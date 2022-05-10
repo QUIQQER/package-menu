@@ -4,6 +4,7 @@
           name="menu-management"
           icon="fa fa-bars"
           require="package/quiqqer/menu/bin/Controls/Independent/MenuManagement"
+          permission="quiqqer.menu.edit"
     >
         <locale group="quiqqer/menu" var="menu.text"/>
     </item>

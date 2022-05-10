@@ -227,6 +227,23 @@
             <de><![CDATA[Bild]]></de>
             <en><![CDATA[Image]]></en>
         </locale>
+
+        <locale name="permission.quiqqer.menu._header">
+            <de><![CDATA[QUIQQER Menü]]></de>
+            <en><![CDATA[QUIQQER Menu]]></en>
+        </locale>
+        <locale name="permission.quiqqer.menu.create">
+            <de><![CDATA[Darf Menüs anlegen]]></de>
+            <en><![CDATA[Is allowed to create menus]]></en>
+        </locale>
+        <locale name="permission.quiqqer.menu.delete">
+            <de><![CDATA[Darf Menüs löschen]]></de>
+            <en><![CDATA[Is allowed to delete menus]]></en>
+        </locale>
+        <locale name="permission.quiqqer.menu.edit">
+            <de><![CDATA[Darf Menüs editieren]]></de>
+            <en><![CDATA[Is allowed to edit menus]]></en>
+        </locale>
     </groups>
 
     <groups name="quiqqer/menu" datatype="php">
