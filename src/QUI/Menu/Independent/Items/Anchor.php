@@ -41,6 +41,8 @@ class Anchor extends AbstractMenuItem
 
         if (is_string($data['url'])) {
             $anchor = json_decode($data['url'], true);
+        } elseif (is_array($data['url'])) {
+            $anchor = $data['url'];
         }
 
         if (is_array($anchor) && isset($anchor[$current])) {
