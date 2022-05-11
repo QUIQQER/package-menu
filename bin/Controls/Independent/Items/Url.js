@@ -68,7 +68,15 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Url', [
                 targetPopup : QUILocale.get(lg, 'tpl.target.popup'),
                 targetBlank : QUILocale.get(lg, 'tpl.target.blank'),
                 targetTop   : QUILocale.get(lg, 'tpl.target.top'),
-                targetParent: QUILocale.get(lg, 'tpl.target.parent')
+                targetParent: QUILocale.get(lg, 'tpl.target.parent'),
+
+                menuType                : QUILocale.get(lg, 'menu.settings.type'),
+                menuTypeStandard        : QUILocale.get(lg, 'menu.settings.Standard'),
+                menuTypeIcons           : QUILocale.get(lg, 'menu.settings.Icons'),
+                menuTypeIconsDescription: QUILocale.get(lg, 'menu.settings.IconsDescription'),
+                menuTypeImage           : QUILocale.get(lg, 'menu.settings.Image'),
+                menuTypeSimple          : QUILocale.get(lg, 'menu.settings.Simple'),
+                menuTypeNoMenu          : QUILocale.get(lg, 'menu.settings.noMenu'),
             }));
 
             let title = this.getAttribute('title');
@@ -114,6 +122,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Url', [
             this.getElm().getElement('[name="icon"]').set('value', icon);
             this.getElm().getElement('[name="url"]').set('value', data.url);
             this.getElm().getElement('[name="rel"]').set('value', data.rel);
+            this.getElm().getElement('[name="menuType"]').set('value', data.menuType);
 
             QUI.parse(this.getElm()).then(() => {
                 this.$Title = QUI.Controls.getById(
@@ -154,11 +163,12 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Url', [
                 title: this.$Title.getValue(),
                 icon : Form.elements.icon.value,
                 data : {
-                    url   : Form.elements.url.value,
-                    target: Form.elements.target.value,
-                    status: Form.elements.status.checked ? 1 : 0,
-                    name  : this.$Name.getValue(),
-                    rel   : Form.elements.rel.value
+                    url     : Form.elements.url.value,
+                    target  : Form.elements.target.value,
+                    menuType: Form.elements.menuType.value,
+                    status  : Form.elements.status.checked ? 1 : 0,
+                    name    : this.$Name.getValue(),
+                    rel     : Form.elements.rel.value
                 }
             };
         }

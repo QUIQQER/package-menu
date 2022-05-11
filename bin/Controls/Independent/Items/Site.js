@@ -65,7 +65,15 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Site', [
                 targetPopup : QUILocale.get(lg, 'tpl.target.popup'),
                 targetBlank : QUILocale.get(lg, 'tpl.target.blank'),
                 targetTop   : QUILocale.get(lg, 'tpl.target.top'),
-                targetParent: QUILocale.get(lg, 'tpl.target.parent')
+                targetParent: QUILocale.get(lg, 'tpl.target.parent'),
+
+                menuType                : QUILocale.get(lg, 'menu.settings.type'),
+                menuTypeStandard        : QUILocale.get(lg, 'menu.settings.Standard'),
+                menuTypeIcons           : QUILocale.get(lg, 'menu.settings.Icons'),
+                menuTypeIconsDescription: QUILocale.get(lg, 'menu.settings.IconsDescription'),
+                menuTypeImage           : QUILocale.get(lg, 'menu.settings.Image'),
+                menuTypeSimple          : QUILocale.get(lg, 'menu.settings.Simple'),
+                menuTypeNoMenu          : QUILocale.get(lg, 'menu.settings.noMenu'),
             }));
 
             let data = this.getAttribute('data');
@@ -93,6 +101,8 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Site', [
                 this.getElm().getElement('[name="status"]').set('checked', true);
             }
 
+            this.getElm().getElement('[name="menuType"]').set('value', data.menuType);
+
             IndependentHandler.getTypeName(this.getAttribute('type')).then((name) => {
                 const TH = this.getElm().getElement('th');
 
@@ -111,10 +121,11 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Site', [
 
             return {
                 data: {
-                    site  : Form.elements.site.value,
-                    target: Form.elements.target.value,
-                    status: Form.elements.status.checked ? 1 : 0,
-                    rel   : Form.elements.rel.value
+                    site    : Form.elements.site.value,
+                    target  : Form.elements.target.value,
+                    menuType: Form.elements.menuType.value,
+                    status  : Form.elements.status.checked ? 1 : 0,
+                    rel     : Form.elements.rel.value
                 }
             };
         }

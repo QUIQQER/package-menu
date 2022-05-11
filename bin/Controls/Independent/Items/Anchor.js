@@ -45,6 +45,14 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Anchor', [
                 linkTitle: QUILocale.get(lg, 'tpl.linkTitle'),
                 icon     : QUILocale.get(lg, 'tpl.icon'),
                 anchor   : QUILocale.get(lg, 'tpl.anchor'),
+
+                menuType                : QUILocale.get(lg, 'menu.settings.type'),
+                menuTypeStandard        : QUILocale.get(lg, 'menu.settings.Standard'),
+                menuTypeIcons           : QUILocale.get(lg, 'menu.settings.Icons'),
+                menuTypeIconsDescription: QUILocale.get(lg, 'menu.settings.IconsDescription'),
+                menuTypeImage           : QUILocale.get(lg, 'menu.settings.Image'),
+                menuTypeSimple          : QUILocale.get(lg, 'menu.settings.Simple'),
+                menuTypeNoMenu          : QUILocale.get(lg, 'menu.settings.noMenu'),
             }));
 
             let title = this.getAttribute('title');
@@ -77,6 +85,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Anchor', [
 
             this.getElm().getElement('[name="icon"]').set('value', icon);
             this.getElm().getElement('[name="url"]').set('value', data.url);
+            this.getElm().getElement('[name="menuType"]').set('value', data.menuType);
 
             if (typeof data.status === 'undefined' || data.status) {
                 this.getElm().getElement('[name="status"]').set('checked', true);
@@ -133,10 +142,11 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Anchor', [
                 title: this.$Title.getValue(),
                 icon : Form.elements.icon.value,
                 data : {
-                    site  : Form.elements.site.value,
-                    url   : Form.elements.url.value,
-                    status: Form.elements.status.checked ? 1 : 0,
-                    name  : this.$Name.getValue()
+                    site    : Form.elements.site.value,
+                    url     : Form.elements.url.value,
+                    menuType: Form.elements.menuType.value,
+                    status  : Form.elements.status.checked ? 1 : 0,
+                    name    : this.$Name.getValue()
                 }
             };
         }
