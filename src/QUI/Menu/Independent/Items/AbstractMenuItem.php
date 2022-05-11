@@ -157,6 +157,22 @@ abstract class AbstractMenuItem
     }
 
     /**
+     * return the menu typ for the children
+     *
+     * @return string
+     */
+    public function getMenuType(): string
+    {
+        $data = $this->getCustomData();
+
+        if (is_array($data) && isset($data['menuType'])) {
+            return $data['menuType'];
+        }
+
+        return '';
+    }
+
+    /**
      * @return mixed
      */
     public function getCustomData()
