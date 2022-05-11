@@ -125,7 +125,7 @@ define('package/quiqqer/menu/bin/MegaMenu', [
             var SlideNode  = document.getElement('[data-qui="package/quiqqer/menu/bin/SlideOut"]'),
                 SlideOut   = QUI.Controls.getById(SlideNode.get('data-quiid')),
                 MobileMenu = this.getElm().getElement('.quiqqer-menu-megaMenu-mobile');
-            
+
             if (!MobileMenu) {
                 return;
             }
@@ -167,13 +167,59 @@ define('package/quiqqer/menu/bin/MegaMenu', [
 
             this.$Menu.set('html', Menu.get('html'));
 
+            let getTarget = function (Link) {
+                let href = Link.href;
+
+                if (href.indexOf('#') === -1) {
+                    return false;
+                }
+
+                let targetString = href.substring(href.indexOf('#') + 1);
+
+                if (targetString.length < 1) {
+                    return false;
+                }
+
+                let TargetElm = document.getElementById(targetString);
+
+                if (!TargetElm) {
+                    return false;
+                }
+
+                return TargetElm;
+            };
+
+            let clickEvent = function (Target, offset) {
+                new Fx.Scroll(window, {
+                    offset: {
+                        y: -offset
+                    }
+                }).toElement(Target);
+            };
+
             this.$Menu.getElements('a').addEvent('click', function (event) {
                 var Link = event.target;
-                if (Link.nodeName != 'A') {
+
+                if (Link.nodeName !== 'A') {
                     Link = Link.getParent('a');
                 }
 
                 event.stop();
+
+                let TargetElm = getTarget(Link);
+                console.log("click auf A");
+                if (TargetElm) {
+                    console.log("target gefunden, scrollen");
+                    let offset = Link.get('data-qui-offset');
+
+                    if (!offset) {
+                        offset = window.SCROLL_OFFSET ? window.SCROLL_OFFSET : 0;
+                    }
+
+                    clickEvent(TargetElm, offset);
+                    return;
+                }
+
                 window.location = Link.get('href');
             });
 

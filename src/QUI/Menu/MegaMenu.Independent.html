@@ -40,7 +40,11 @@
                         {if count($subchildren)}
                             <span class="fa fa-angle-down"></span>
                         {/if}
-                        </span>
+                    </span>
+                {/if}
+
+                {if $showMenu && $Child->getMenuType() && $Child->getMenuType() !== ''}
+                    {assign var=usedControl value=$this->getMenuControl($Child->getMenuType())}
                 {/if}
 
                 {if count($subchildren) && $usedControl}
