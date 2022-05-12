@@ -52,6 +52,20 @@ class Site extends AbstractMenuItem
             return null;
         }
 
+        $current = QUI::getLocale()->getCurrent();
+
+        // if current language is another language as the site
+        if ($current !== $Site->getAttribute('lang')) {
+            try {
+                $Project     = $Site->getProject();
+                $langId      = $Site->getId($current);
+                $LangProject = QUI::getProject($Project->getName(), $current);
+                return $LangProject->get($langId);
+            } catch (QUI\Exception $exception) {
+                return null;
+            }
+        }
+
         if ($Site->getAttribute('active')) {
             return $Site;
         }
