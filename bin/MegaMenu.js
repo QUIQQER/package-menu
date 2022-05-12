@@ -207,10 +207,8 @@ define('package/quiqqer/menu/bin/MegaMenu', [
                 event.stop();
 
                 let TargetElm = getTarget(Link);
-                console.log("click auf A");
                 if (TargetElm) {
-                    console.log("target gefunden, scrollen");
-                    let offset = Link.get('data-qui-offset');
+                    let offset = TargetElm.get('data-qui-offset');
 
                     if (!offset) {
                         offset = window.SCROLL_OFFSET ? window.SCROLL_OFFSET : 0;
