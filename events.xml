@@ -3,4 +3,5 @@
     <event on="onSiteSave" fire="\QUI\Menu\EventHandler::onSiteSave"/>
     <event on="onSmartyInit" fire="\QUI\Menu\EventHandler::onSmartyInit"/>
     <event on="onAdminLoadFooter" fire="\QUI\Menu\EventHandler::onAdminLoadFooter"/>
+    <event on="onQuiqqerMenuIndependentClear" fire="\QUI\Menu\EventHandler::onQuiqqerMenuIndependentClear"/>
 </events>

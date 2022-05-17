@@ -56,4 +56,13 @@ class EventHandler
         $jsFile = URL_OPT_DIR . 'quiqqer/menu/bin/onAdminLoadFooter.js';
         echo '<script src="' . $jsFile . '" async></script>';
     }
+
+    /**
+     * @param $menuId
+     * @return void
+     */
+    public static function onQuiqqerMenuIndependentClear($menuId)
+    {
+        QUI\Cache\Manager::clear(self::menuCacheName());
+    }
 }

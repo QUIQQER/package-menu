@@ -16,6 +16,8 @@ QUI::$Ajax->registerFunction(
         QUI\Cache\Manager::clear(
             Handler::getMenuCacheName($menuId)
         );
+
+        QUI::getEvents()->fireEvent('quiqqerMenuIndependentClear', [$menuId]);
     },
     ['menuId'],
     'Permission::checkAdminUser'
