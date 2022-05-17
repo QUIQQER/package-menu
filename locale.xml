@@ -453,8 +453,12 @@
             <en><![CDATA[Menu cache]]></en>
         </locale>
         <locale name="cache.clear.button.title">
-            <de><![CDATA[Menü Cache leeren]]></de>
-            <en><![CDATA[Clear menu cache]]></en>
+            <de><![CDATA[Menü veröffentlichen]]></de>
+            <en><![CDATA[Publish menu]]></en>
+        </locale>
+        <locale name="message.menu.publish.successful">
+            <de><![CDATA[Das Menü wurde erfolgreich veröffentlicht.]]></de>
+            <en><![CDATA[The menu has been successfully published.]]></en>
         </locale>
         <locale name="context.menu.changeType">
             <de><![CDATA[Typ ändern]]></de>

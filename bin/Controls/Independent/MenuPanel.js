@@ -102,7 +102,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
 
                             QUI.getMessageHandler(function (QUI) {
                                 QUI.addSuccess(
-                                    QUILocale.get('quiqqer/quiqqer', 'message.clear.cache.successful')
+                                    QUILocale.get('quiqqer/menu', 'message.menu.publish.successful')
                                 );
                             });
                         }, {
