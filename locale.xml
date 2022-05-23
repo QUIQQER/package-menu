@@ -366,6 +366,16 @@
             <de><![CDATA[Klick Event (JavaScript)]]></de>
             <en><![CDATA[Click event (JavaScript)]]></en>
         </locale>
+        <locale name="tpl.clickDescription">
+            <de><![CDATA[
+                Füge hier den Funktionsnamen der JavaScript Funktion ein welche bei Klick aufgerufen werden soll.
+                Möchtest du eine eigene Funktion per Klick ausführen, kannst du hierzu die custom.js deines Projektes verwenden.
+            ]]></de>
+            <en><![CDATA[
+                Add here the function name of the JavaScript function which should be called on click.
+                If you want to execute your own function on click, you can use the custom.js of your project.
+            ]]></en>
+        </locale>
         <locale name="tpl.Site">
             <de><![CDATA[Site]]></de>
             <en><![CDATA[Site]]></en>
