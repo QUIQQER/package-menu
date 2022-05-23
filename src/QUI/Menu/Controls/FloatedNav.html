@@ -1,27 +1,35 @@
-{foreach $children as $Child}
-    {assign var=hasUrl value=1}
-    {if !$Child->getUrl()}
-        {assign var=hasUrl value=0}
-    {/if}
-    {if $Child->getIcon() && $Child->getIcon()|strpos:'image.php' !== 0}
-        <div class="quiqqer-floatedNav-entry quiqqer-floatedNav-entry__id-{$Child->getIdentifier()} {if !$hasUrl}quiqqer-floatedNav-entry__noUrl{/if}">
-            {if $Child->getUrl()}
-                <a href="{$Child->getUrl()}"
-                   class="quiqqer-floatedNav-entry-inner"
-                   title="{$Child->getTitleAttribute()|escape:'html'}"
-                   {if $Child->getTarget()}target="{$Child->getTarget()}"{/if}
-                >
-                    {image src=$Child->getIcon() onlyicon=1}
-                </a>
-            {else}
-                <span class="quiqqer-floatedNav-entry-inner" title="{$Child->getTitleAttribute()|escape:'html'}">
-                {image src=$Child->getIcon() onlyicon=1}
-            </span>
-            {/if}
-        </div>
-    {/if}
-{/foreach}
-
-{if $LangSwitch}
-    {$LangSwitch->create()}
+{if $showOpenButton}
+<div class="quiqqer-floatedNav-showMobileBtn">
+    <span class="fa fa-angle-double-left"></span>
+</div>
 {/if}
+
+<nav class="quiqqer-floatedNav {$animation}">
+    {foreach $children as $Child}
+        {assign var=hasUrl value=1}
+        {if !$Child->getUrl()}
+            {assign var=hasUrl value=0}
+        {/if}
+        {if $Child->getIcon() && $Child->getIcon()|strpos:'image.php' !== 0}
+            <div class="quiqqer-floatedNav-entry quiqqer-floatedNav-entry__id-{$Child->getIdentifier()} {if !$hasUrl}quiqqer-floatedNav-entry__noUrl{/if}">
+                {if $Child->getUrl()}
+                    <a href="{$Child->getUrl()}"
+                       class="quiqqer-floatedNav-entry-inner"
+                       title="{$Child->getTitleAttribute()|escape:'html'}"
+                       {if $Child->getTarget()}target="{$Child->getTarget()}"{/if}
+                    >
+                        {image src=$Child->getIcon() onlyicon=1}
+                    </a>
+                {else}
+                    <span class="quiqqer-floatedNav-entry-inner" title="{$Child->getTitleAttribute()|escape:'html'}">
+                    {image src=$Child->getIcon() onlyicon=1}
+                </span>
+                {/if}
+            </div>
+        {/if}
+    {/foreach}
+
+    {if $LangSwitch}
+        {$LangSwitch->create()}
+    {/if}
+</nav>

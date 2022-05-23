@@ -25,18 +25,22 @@ class FloatedNav extends QUI\Control
     {
         // default options
         $this->setAttributes([
-            'class'           => 'quiqqer-floatedNav',
-            'nodeName'        => 'nav',
+            'class'           => 'quiqqer-floatedNavControl',
             'menuId'          => false,
             'posX'            => 'right', // right, left
             'size'            => 'medium', // small, medium, large
             'design'          => 'iconBar', // iconBar, flat
-            'animationType'   => false, // false, showOneByOne (show entire control), showSingle (show each entry one by one)
+            'animationType'   => false, // false, showAll (show entire control), showOneByOne (show each entry one by one)
+            'initAnimation'   => false,
             'animationEasing' => 'easeOutExpo', // see easing names on https://easings.net/
-            'showLangSwitch'  => false
+//            'navInitOpen'     => 'always', // always, desktop, never
+            'showOpenButton' => 'mobile', // always, mobile, hide,
+            'showLangSwitch'  => false,
         ]);
 
         parent::__construct($attributes);
+
+        $this->setJavaScriptControl('package/quiqqer/menu/bin/Controls/FloatedNav');
 
         $this->addCSSFile(
             dirname(__FILE__).'/FloatedNav.css'
@@ -65,35 +69,54 @@ class FloatedNav extends QUI\Control
             return '';
         }
 
-        switch ($this->getAttribute('design')) {
+        $showOpenButton = true;
+        switch ($this->getAttribute('showOpenButton')) {
+            case 'always':
+                $this->setJavaScriptControlOption('showopenbutton', 'always');
+                break;
+
+            case 'mobile':
+                $this->setJavaScriptControlOption('showopenbutton', 'mobile');
+                break;
+
+            case 'hide':
+                $this->addCSSClass('quiqqer-floatedNavControl__noOpenBtn');
+                $showOpenButton = false;
+                break;
+        }
+
+        switch ($this->getAttribute('size')) {
             case 'small':
             case 'medium':
             case 'large':
-                $size = 'quiqqer-floatedNav__size-'.$this->getAttribute('size');
+                $size = 'quiqqer-floatedNavControl__size-'.$this->getAttribute('size');
                 break;
 
             default:
-                $size = 'quiqqer-floatedNav__size-medium';
+                $size = 'quiqqer-floatedNavControl__size-medium';
         }
 
         switch ($this->getAttribute('design')) {
             case 'flat':
-                $design = 'quiqqer-floatedNav__design-'.$this->getAttribute('design');
+                $design = 'quiqqer-floatedNavControl__design-'.$this->getAttribute('design');
                 break;
 
             case 'iconBar':
             default:
-                $design = 'quiqqer-floatedNav__design-iconsBar';
+                $design = 'quiqqer-floatedNavControl__design-iconsBar';
         }
 
         switch ($this->getAttribute('posX')) {
             case 'left':
             case 'right':
-                $posX = 'quiqqer-floatedNav__posX-'.$this->getAttribute('posX');
+                $posX = 'quiqqer-floatedNavControl__posX-'.$this->getAttribute('posX');
+                $this->setJavaScriptControlOption('position', $this->getAttribute('posX'));
                 break;
 
             default:
-                $posX = 'quiqqer-floatedNav__posX-right';
+                $posX = 'quiqqer-floatedNavControl__posX-right';
+                $this->setJavaScriptControlOption('position', 'right');
+
                 break;
         }
 
@@ -109,33 +132,37 @@ class FloatedNav extends QUI\Control
         }
 
         $animation = '';
-        if ($this->getAttribute('animationType')) {
-            switch ($this->getAttribute('animationType')) {
-                case 'showAll':
-                case 'showOneByOne':
-                    $this->setJavaScriptControlOption('position', 'right');
-                    $this->setJavaScriptControlOption('animationtype', $this->getAttribute('animationType'));
-                    $this->setJavaScriptControlOption('animationeasing', $this->getAnimationEasingName());
-                    $this->setJavaScriptControl('package/quiqqer/menu/bin/Controls/FloatedNav');
-                    $animation = 'quiqqer-floatedNav__animation-'.$this->getAttribute('animationType');
-                    break;
-            }
+
+        switch ($this->getAttribute('animationType')) {
+            case 'showAll':
+            case 'showOneByOne':
+                $this->setJavaScriptControlOption('animationtype', $this->getAttribute('animationType'));
+                $this->setJavaScriptControlOption('animationeasing', $this->getAnimationEasingName());
+                $animation = 'quiqqer-floatedNav__animation-'.$this->getAttribute('animationType');
+                break;
         }
+
+        $initAnimation = 'quiqqer-floatedNavControl__noInitAnimation';
+
+        if ($this->getAttribute('initAnimation')) {
+            $this->setJavaScriptControlOption('initanimation', 1);
+            $initAnimation = 'quiqqer-floatedNavControl__initAnimation';
+        }
+
+        $this->addCSSClass($initAnimation);
 
         $this->addCSSClass($size);
         $this->addCSSClass($design);
         $this->addCSSClass($posX);
-        $this->addCSSClass($animation);
 
         $children = $IndependentMenu->getChildren();
 
         $Engine->assign([
             'this'       => $this,
             'children'   => $children,
-            'size'       => $size,
-            'posX'       => $posX,
-            'design'     => $design,
-            'LangSwitch' => $LangSwitch
+            'animation'  => $animation,
+            'LangSwitch' => $LangSwitch,
+            'showOpenButton' => $showOpenButton
         ]);
 
         return $Engine->fetch(dirname(__FILE__).'/FloatedNav.html');
