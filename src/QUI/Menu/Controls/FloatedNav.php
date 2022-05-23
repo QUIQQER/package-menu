@@ -25,9 +25,11 @@ class FloatedNav extends QUI\Control
     {
         // default options
         $this->setAttributes([
-            'menuId' => false,
-            'size'   => 'medium', // small, medium, large
-            'design' => 'iconBar', // iconBar, flat
+            'menuId'         => false,
+            'posX'           => 'right', // right, left
+            'size'           => 'medium', // small, medium, large
+            'design'         => 'iconBar', // iconBar, flat
+            'showLangSwitch' => false
         ]);
 
         parent::__construct($attributes);
@@ -44,40 +46,64 @@ class FloatedNav extends QUI\Control
      */
     public function getBody()
     {
-        $Engine = QUI::getTemplateManager()->getEngine();
-        $size   = 'quiqqer-floatedNav__size-medium';
-        $design = 'quiqqer-floatedNav__iconsBar';
-        $showLangSwitch = false;
-
+        $Engine          = QUI::getTemplateManager()->getEngine();
         $IndependentMenu = Independent\Handler::getMenu($this->getAttribute('menuId'));
+        $LangSwitch      = null;
 
         if (!$IndependentMenu) {
             return '';
         }
 
-        if ($this->getAttribute('size')) {
-            $size = 'quiqqer-floatedNav__size-'.$this->getAttribute('size');
+        switch ($this->getAttribute('design')) {
+            case 'small':
+            case 'medium':
+            case 'large':
+                $size = 'quiqqer-floatedNav__size-'.$this->getAttribute('size');
+                break;
+
+            default:
+                $size = 'quiqqer-floatedNav__size-medium';
         }
 
-        if ($this->getAttribute('design')) {
-            $design = 'quiqqer-floatedNav__'.$this->getAttribute('design');
+        switch ($this->getAttribute('design')) {
+            case 'iconBar':
+            case 'flat':
+                $design = 'quiqqer-floatedNav__'.$this->getAttribute('design');
+                break;
+
+            default:
+                $design = 'quiqqer-floatedNav__iconsBar';
         }
 
+        switch ($this->getAttribute('posX')) {
+            case 'left':
+            case 'right':
+                $posX = 'quiqqer-floatedNav__posX-'.$this->getAttribute('posX');
+                break;
 
-        $showLangSwitch = true;
+            default:
+                $posX = 'quiqqer-floatedNav__posX-right';
+                break;
+        }
 
-        $LangSwitch = new QUI\Bricks\Controls\LanguageSwitches\Flags([
-            'showFlags' => 0
-        ]);
+        if ($this->getAttribute('showLangSwitch')) {
+            try {
+                $LangSwitch = new QUI\Bricks\Controls\LanguageSwitches\Flags([
+                    'showFlags' => 0
+                ]);
+            } catch (QUI\Exception $Exception) {
+                QUI\System\Log::writeException($Exception);
+            }
+        }
 
         $children = $IndependentMenu->getChildren();
 
         $Engine->assign([
-            'this'     => $this,
-            'children' => $children,
-            'size'     => $size,
-            'design'   => $design,
-            'showLangSwitch' => $showLangSwitch,
+            'this'       => $this,
+            'children'   => $children,
+            'size'       => $size,
+            'posX'       => $posX,
+            'design'     => $design,
             'LangSwitch' => $LangSwitch
         ]);
 

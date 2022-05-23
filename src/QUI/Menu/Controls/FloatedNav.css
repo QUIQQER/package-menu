@@ -25,10 +25,21 @@
 .quiqqer-floatedNav {
     background: #fff;
     position: fixed;
-    right: 0;
     top: 50%;
     transform: translateY(-50%);
     z-index: 10;
+}
+
+.quiqqer-floatedNav__posX-right {
+    right: 0;
+}
+
+.quiqqer-floatedNav__posX-left {
+    left: 0;
+}
+
+.quiqqer-floatedNav-entry {
+    transition: 0.2s all ease;
 }
 
 .quiqqer-floatedNav-entry-inner {
@@ -41,18 +52,20 @@
     line-height: var(--quiqqer-floatedNav-size);
     text-align: center;
     width: var(--quiqqer-floatedNav-size);
+    overflow: hidden;
 }
 
 /* lang switch */
 .quiqqer-floatedNav .quiqqer-bricks-languageswitch-flag {
     font-size: calc(0.75 * var(--quiqqer-floatedNav-fontSize));
     width: var(--quiqqer-floatedNav-size);
-    background: var(--qui-color-main, #333);
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .quiqqer-floatedNav .quiqqer-bricks-languageswitch-flag-entry {
+    background: var(--qui-color-main, #333);
     line-height: calc(0.5 * var(--quiqqer-floatedNav-size));
     padding: 0;
     text-align: center;
@@ -61,11 +74,25 @@
     text-transform: uppercase;
 }
 
+.quiqqer-floatedNav .quiqqer-bricks-languageswitch-flag-entry:not(.active) {
+    background-color: var(--qui-color-dark, #333);
+}
+
+.quiqqer-floatedNav .quiqqer-bricks-languageswitch-flag-entry:not(:first-child) {
+    border-top: 2px solid #fff;
+}
+
 .quiqqer-floatedNav .quiqqer-bricks-languageswitch-flag-entry-text {
     line-height: inherit;
     display: block;
 }
 
+
+/* hover */
+.quiqqer-floatedNav-entry:hover,
+.quiqqer-bricks-languageswitch-flag-entry:hover {
+    filter: brightness(90%);
+}
 
 /***********/
 /* Designs */
@@ -90,5 +117,5 @@
 
 /* Design: flat */
 .quiqqer-floatedNav__flat .quiqqer-floatedNav-entry:not(:last-child) {
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
