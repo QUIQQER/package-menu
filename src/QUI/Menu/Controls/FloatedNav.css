@@ -1,0 +1,94 @@
+/*************/
+/* variables */
+/*************/
+.quiqqer-floatedNav__size-medium {
+    --quiqqer-floatedNav-spacing: 0.75rem;
+    --quiqqer-floatedNav-fontSize: 1.75rem;
+    --quiqqer-floatedNav-size: 3rem;
+}
+
+.quiqqer-floatedNav__size-small {
+    --quiqqer-floatedNav-spacing: 0.5rem;
+    --quiqqer-floatedNav-fontSize: 1.25rem;
+    --quiqqer-floatedNav-size: 2rem;
+}
+
+.quiqqer-floatedNav__size-large {
+    --quiqqer-floatedNav-spacing: 1rem;
+    --quiqqer-floatedNav-fontSize: 2rem;
+    --quiqqer-floatedNav-size: 3.5rem;
+}
+
+/***********/
+/* control */
+/***********/
+.quiqqer-floatedNav {
+    background: #fff;
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.quiqqer-floatedNav-entry-inner {
+    background: var(--qui-color-main, #333);
+    border: var(--qui-border-width, 2px) solid var(--qui-color-main, #333);
+    color: var(--qui-color-main-contrast, #fff);
+    cursor: pointer;
+    display: block;
+    font-size: var(--quiqqer-floatedNav-fontSize);
+    line-height: var(--quiqqer-floatedNav-size);
+    text-align: center;
+    width: var(--quiqqer-floatedNav-size);
+}
+
+/* lang switch */
+.quiqqer-floatedNav .quiqqer-bricks-languageswitch-flag {
+    font-size: calc(0.75 * var(--quiqqer-floatedNav-fontSize));
+    width: var(--quiqqer-floatedNav-size);
+    background: var(--qui-color-main, #333);
+    display: flex;
+    flex-direction: column;
+}
+
+.quiqqer-floatedNav .quiqqer-bricks-languageswitch-flag-entry {
+    line-height: calc(0.5 * var(--quiqqer-floatedNav-size));
+    padding: 0;
+    text-align: center;
+    color: var(--qui-color-main-contrast, #fff);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.quiqqer-floatedNav .quiqqer-bricks-languageswitch-flag-entry-text {
+    line-height: inherit;
+    display: block;
+}
+
+
+/***********/
+/* Designs */
+/***********/
+
+/* Design: Bar with icons */
+.quiqqer-floatedNav__iconsBar {
+    border-bottom-left-radius: 0.75rem;
+    border-top-left-radius: 0.75rem;
+    box-shadow: -3px 3px 8px rgb(0 0 0 / 30%);
+    padding: var(--quiqqer-floatedNav-spacing);
+}
+
+.quiqqer-floatedNav__iconsBar .quiqqer-floatedNav-entry-inner,
+.quiqqer-floatedNav__iconsBar .quiqqer-bricks-languageswitch-flag {
+    border-radius: var(--qui-btn-border-radius, 5px);
+}
+
+.quiqqer-floatedNav__iconsBar .quiqqer-floatedNav-entry:not(:last-child) .quiqqer-floatedNav-entry-inner {
+    margin-bottom: var(--quiqqer-floatedNav-spacing);
+}
+
+/* Design: flat */
+.quiqqer-floatedNav__flat .quiqqer-floatedNav-entry:not(:last-child) {
+    margin-bottom: 4px;
+}

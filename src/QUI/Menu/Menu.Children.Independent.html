@@ -13,7 +13,7 @@
            title="{$Child->getTitleAttribute()|escape:'html'}"
            {if $Child->getTarget()}target="{$Child->getTarget()}"{/if}
         >
-            {if $this->getAttribute('showFirstLevelIcons') && $Child->getIcon() && $Child->getIcon()|strpos:'image' !== 'false' }
+            {if $this->getAttribute('showFirstLevelIcons') && $Child->getIcon() && $Child->getIcon()|strpos:'image.php' !== 0 }
                 {image src=$Child->getIcon() onlyicon=1}
             {/if}
             <span class="fa fa-angle-right"></span>

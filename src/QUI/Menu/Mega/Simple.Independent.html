@@ -10,7 +10,7 @@
                title="{$Child->getTitleAttribute()|escape:'html'}"
                {if $Child->getTarget()}target="{$Child->getTarget()}"{/if}
             >
-                {if $Child->getIcon() && $Child->getIcon()|strpos:'image' !== 'false' }
+                {if $Child->getIcon() && $Child->getIcon()|strpos:'image.php' !== 0 }
                     {image src=$Child->getIcon() onlyicon=1}
                 {/if}
 
@@ -20,7 +20,7 @@
             </a>
         {else}
             <span class="qui-menu-siteid-{$Child->getIdentifier()}">
-                {if $Child->getIcon() && $Child->getIcon()|strpos:'image' !== 'false' }
+                {if $Child->getIcon() && $Child->getIcon()|strpos:'image.php' !== 0 }
                     {image src=$Child->getIcon() onlyicon=1}
                 {/if}
 
