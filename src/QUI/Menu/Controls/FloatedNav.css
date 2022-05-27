@@ -1,19 +1,19 @@
 /*************/
 /* variables */
 /*************/
-.quiqqer-floatedNav__size-medium {
+.quiqqer-floatedNavControl__size-medium {
     --quiqqer-floatedNav-spacing: 0.75rem;
     --quiqqer-floatedNav-fontSize: 1.75rem;
     --quiqqer-floatedNav-size: 3rem;
 }
 
-.quiqqer-floatedNav__size-small {
+.quiqqer-floatedNavControl__size-small {
     --quiqqer-floatedNav-spacing: 0.5rem;
     --quiqqer-floatedNav-fontSize: 1.25rem;
     --quiqqer-floatedNav-size: 2rem;
 }
 
-.quiqqer-floatedNav__size-large {
+.quiqqer-floatedNavControl__size-large {
     --quiqqer-floatedNav-spacing: 1rem;
     --quiqqer-floatedNav-fontSize: 2rem;
     --quiqqer-floatedNav-size: 3.5rem;
@@ -22,37 +22,55 @@
 /***********/
 /* control */
 /***********/
-.quiqqer-floatedNav {
-    background: #fff;
+.quiqqer-floatedNavControl {
     position: fixed;
-    right: 0;
     top: 50%;
     transform: translateY(-50%);
     z-index: 10;
 }
 
-.quiqqer-floatedNav-entry-inner {
+.quiqqer-floatedNav {
+    /*position: absolute;*/
+}
+
+.quiqqer-floatedNavControl__posX-right {
+    right: 0;
+}
+
+.quiqqer-floatedNavControl__posX-left {
+    left: 0;
+}
+
+.quiqqer-floatedNav-entry {
+    /*transition: 0.2s all ease;*/
+}
+
+.quiqqer-floatedNav-entry-inner,
+.quiqqer-floatedNav-showMobileBtn {
     background: var(--qui-color-main, #333);
     border: var(--qui-border-width, 2px) solid var(--qui-color-main, #333);
     color: var(--qui-color-main-contrast, #fff);
     cursor: pointer;
     display: block;
     font-size: var(--quiqqer-floatedNav-fontSize);
-    line-height: var(--quiqqer-floatedNav-size);
+    line-height: calc(var(--quiqqer-floatedNav-size) - (2 * var(--qui-border-width, 2px)));
     text-align: center;
     width: var(--quiqqer-floatedNav-size);
+    overflow: hidden;
 }
 
 /* lang switch */
 .quiqqer-floatedNav .quiqqer-bricks-languageswitch-flag {
     font-size: calc(0.75 * var(--quiqqer-floatedNav-fontSize));
     width: var(--quiqqer-floatedNav-size);
-    background: var(--qui-color-main, #333);
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    float: none;
 }
 
 .quiqqer-floatedNav .quiqqer-bricks-languageswitch-flag-entry {
+    background: var(--qui-color-main, #333);
     line-height: calc(0.5 * var(--quiqqer-floatedNav-size));
     padding: 0;
     text-align: center;
@@ -61,34 +79,102 @@
     text-transform: uppercase;
 }
 
+.quiqqer-floatedNav .quiqqer-bricks-languageswitch-flag-entry:not(.active) {
+    background-color: var(--qui-color-dark, #333);
+}
+
+.quiqqer-floatedNav .quiqqer-bricks-languageswitch-flag-entry:not(:first-child) {
+    border-top: 2px solid #fff;
+}
+
 .quiqqer-floatedNav .quiqqer-bricks-languageswitch-flag-entry-text {
     line-height: inherit;
     display: block;
 }
 
 
+/* hover */
+.quiqqer-floatedNav-entry:hover,
+.quiqqer-bricks-languageswitch-flag-entry:hover,
+.quiqqer-floatedNav-showMobileBtn:hover {
+    filter: brightness(90%);
+}
+
+/* mobile */
+.quiqqer-floatedNav-showMobileBtn {
+    text-align: center;
+}
+
+.quiqqer-floatedNav-showMobileBtn .fa {
+    line-height: inherit;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+    .quiqqer-floatedNav-showMobileBtn {
+        display: block;
+    }
+}
+
 /***********/
 /* Designs */
 /***********/
 
 /* Design: Bar with icons */
-.quiqqer-floatedNav__iconsBar {
+.quiqqer-floatedNavControl__design-iconsBar .quiqqer-floatedNav {
+    background: #fff;
     border-bottom-left-radius: 0.75rem;
     border-top-left-radius: 0.75rem;
     box-shadow: -3px 3px 8px rgb(0 0 0 / 30%);
     padding: var(--quiqqer-floatedNav-spacing);
 }
 
-.quiqqer-floatedNav__iconsBar .quiqqer-floatedNav-entry-inner,
-.quiqqer-floatedNav__iconsBar .quiqqer-bricks-languageswitch-flag {
+.quiqqer-floatedNavControl__design-iconsBar .quiqqer-floatedNav-entry-inner,
+.quiqqer-floatedNavControl__design-iconsBar .quiqqer-bricks-languageswitch-flag {
     border-radius: var(--qui-btn-border-radius, 5px);
 }
 
-.quiqqer-floatedNav__iconsBar .quiqqer-floatedNav-entry:not(:last-child) .quiqqer-floatedNav-entry-inner {
+.quiqqer-floatedNavControl__design-iconsBar .quiqqer-floatedNav-entry:not(:last-child) .quiqqer-floatedNav-entry-inner {
     margin-bottom: var(--quiqqer-floatedNav-spacing);
 }
 
 /* Design: flat */
-.quiqqer-floatedNav__flat .quiqqer-floatedNav-entry:not(:last-child) {
-    margin-bottom: 4px;
+.quiqqer-floatedNavControl__design-flat .quiqqer-floatedNav-entry:not(:last-child),
+.quiqqer-floatedNavControl__design-flat .quiqqer-floatedNav-showMobileBtn {
+    margin-bottom: 2px;
+}
+
+/*************/
+/* Animation */
+/*************/
+.quiqqer-floatedNavControl__initAnimation .quiqqer-floatedNav__animation-showAll,
+.quiqqer-floatedNavControl__initAnimation .quiqqer-floatedNav-showMobileBtn,
+.quiqqer-floatedNavControl__initAnimation .quiqqer-floatedNav__animation-showOneByOne .quiqqer-floatedNav-entry {
+    visibility: hidden;
+}
+
+/* no animation */
+@media screen and (max-width: 767px) {
+    .quiqqer-floatedNavControl__noInitAnimation .quiqqer-floatedNav__animation-showOneByOne .quiqqer-floatedNav-entry {
+        transform: translateX(60px);
+    }
+}
+
+@media screen and (min-width: 798px) {
+    .quiqqer-floatedNavControl__noInitAnimation .quiqqer-floatedNav-showMobileBtn .fa {
+        transform: rotate(180deg);
+    }
+}
+
+/************************/
+/* nav init open status */
+/************************/
+
+/******************/
+/* No open button */
+/******************/
+.quiqqer-floatedNavControl__noOpenBtn.quiqqer-floatedNavControl__noInitAnimation .quiqqer-floatedNav__animation-showOneByOne .quiqqer-floatedNav-entry {
+    visibility: initial;
+    transform: translateX(0);
+
 }

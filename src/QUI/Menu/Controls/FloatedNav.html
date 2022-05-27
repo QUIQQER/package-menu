@@ -1,4 +1,10 @@
-<nav class="quiqqer-floatedNav {$design} {$size}">
+{if $showOpenButton}
+<div class="quiqqer-floatedNav-showMobileBtn">
+    <span class="fa fa-angle-double-left"></span>
+</div>
+{/if}
+
+<nav class="quiqqer-floatedNav {$animation}">
     {foreach $children as $Child}
         {assign var=hasUrl value=1}
         {if !$Child->getUrl()}
@@ -22,6 +28,7 @@
             </div>
         {/if}
     {/foreach}
+
     {if $LangSwitch}
         {$LangSwitch->create()}
     {/if}
