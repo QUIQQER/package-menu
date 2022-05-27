@@ -354,7 +354,7 @@ class Menu
         }
 
         if (!isset($item['identifier'])) {
-            $result['identifier'] = QUI\Utils\Uuid::get();;
+            $result['identifier'] = QUI\Utils\Uuid::get();
         }
 
         if (isset($item['data'])) {
