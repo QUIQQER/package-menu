@@ -117,6 +117,10 @@ abstract class AbstractMenuItem
      */
     public function getIdentifier(): string
     {
+        if (isset($this->attributes['identifier'])) {
+            return $this->attributes['identifier'];
+        }
+
         return '';
     }
 

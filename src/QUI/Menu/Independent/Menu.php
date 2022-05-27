@@ -25,6 +25,7 @@ class Menu
     protected ?array $workingTitle = null;
     protected array $data = [];
     protected array $children = [];
+    protected int $currentChildId = 0;
 
     /**
      * @param int|array $menuId - menu id or menu data
@@ -159,6 +160,10 @@ class Menu
             'workingTitle' => $this->getWorkingTitle(),
             'data'         => $this->data
         ];
+    }
+
+    public function getNewItemId()
+    {
     }
 
     /**
@@ -346,6 +351,10 @@ class Menu
 
         if (isset($item['title'])) {
             $result['title'] = $item['title'];
+        }
+
+        if (!isset($item['identifier'])) {
+            $result['identifier'] = QUI\Utils\Uuid::get();;
         }
 
         if (isset($item['data'])) {
