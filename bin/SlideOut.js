@@ -20,8 +20,7 @@ define('package/quiqqer/menu/bin/SlideOut', [
 
     'css!package/quiqqer/menu/bin/SlideOut.css'
 
-], function (QUI, QUIUtilsFunctions, QUIControl, Slideout)
-{
+], function (QUI, QUIUtilsFunctions, QUIControl, Slideout) {
     "use strict";
 
     return new Class({
@@ -47,14 +46,17 @@ define('package/quiqqer/menu/bin/SlideOut', [
             '$onResize'
         ],
 
-        initialize: function (options)
-        {
+        initialize: function (options) {
             var self = this;
-            
+
             this.parent(options);
 
-            this.MenuButton = null;
+            this.MenuButton  = null;
             this.$__hideMenu = false;
+            this.$Url = new URL(location.href);
+
+            // clear hash in url
+            this.$Url.hash = '';
 
             this.clientWidth = QUI.getWindowSize().x;
 
@@ -62,8 +64,7 @@ define('package/quiqqer/menu/bin/SlideOut', [
                 onImport: this.$onImport
             });
 
-            QUI.addEvent('resize', function ()
-            {
+            QUI.addEvent('resize', function () {
                 if (self.clientWidth === QUI.getWindowSize().x) {
                     // do not close the menu when the address bar is shown or hidden
                     // "resize" was triggered while scrolling down or up (e.g. mobile Chrome).
@@ -79,19 +80,34 @@ define('package/quiqqer/menu/bin/SlideOut', [
         /**
          * event : on import
          */
-        $onImport: function ()
-        {
+        $onImport: function () {
             var self = this,
                 Elm  = this.getElm();
 
             Elm = Elm.getParent();
 
+            let links = Elm.querySelectorAll('a');
+
+            links.forEach((Link) => {
+                let TargetElm = this.$getAnchorTarget(Link);
+
+                if (!TargetElm) {
+                    return;
+                }
+
+                Link.addEventListener('click', function (event) {
+                    event.preventDefault();
+
+                    self.Slideout.close();
+                    self.$scrollToElement(TargetElm);
+                })
+            });
+
             // fix for IE - z-index must have the value 0
             if (navigator.appName == 'Microsoft Internet Explorer' ||
                 !!(navigator.userAgent.match(/Trident/) ||
-                navigator.userAgent.match(/rv:11/)) ||
-                (typeof $.browser !== "undefined" && $.browser.msie == 1))
-            {
+                    navigator.userAgent.match(/rv:11/)) ||
+                (typeof $.browser !== "undefined" && $.browser.msie == 1)) {
                 Elm.setStyle('z-index', 1);
             }
 
@@ -102,7 +118,7 @@ define('package/quiqqer/menu/bin/SlideOut', [
             if (!BodyWrapper) {
                 // body childrens
                 var children = document.body.getChildren();
-                BodyWrapper = new Element('div').inject(document.body);
+                BodyWrapper  = new Element('div').inject(document.body);
 
                 children.inject(BodyWrapper);
             }
@@ -117,7 +133,7 @@ define('package/quiqqer/menu/bin/SlideOut', [
             this.MenuButton = new Element('button', {
                 'class': 'page-menu-opener',
                 html   : '<span class="fa fa-list"></span>' +
-                '<span class="page-menu-opener-text">MENU</span>',
+                    '<span class="page-menu-opener-text">MENU</span>',
                 styles : {
                     display : 'none',
                     'float' : 'left',
@@ -240,12 +256,11 @@ define('package/quiqqer/menu/bin/SlideOut', [
                 touch    : this.getAttribute('touch')
             });
 
-            this.Slideout.on('beforeopen', function ()
-            {
+            this.Slideout.on('beforeopen', function () {
                 self.$onResize();
                 Elm.setStyle('display', '');
 
-                self.Slideout._padding = self.getAttribute('menu-width');
+                self.Slideout._padding     = self.getAttribute('menu-width');
                 self.Slideout._translateTo = self.getAttribute('menu-width');
 
                 Elm.setStyle('width', self.getAttribute('menu-width'));
@@ -253,14 +268,12 @@ define('package/quiqqer/menu/bin/SlideOut', [
 
                 BodyWrapper.setStyle('boxShadow', '2px 0 10px 5px rgba(0, 0, 0, 0.3');
 
-                self.hideMenuButton(function ()
-                {
+                self.hideMenuButton(function () {
                     self.MenuButton.setStyle('display', 'none');
                 });
             });
 
-            this.Slideout.on('open', function ()
-            {
+            this.Slideout.on('open', function () {
                 self.fireEvent('open');
 
                 var Closer = new Element('div', {
@@ -293,8 +306,7 @@ define('package/quiqqer/menu/bin/SlideOut', [
 
             });
 
-            this.Slideout.on('close', function ()
-            {
+            this.Slideout.on('close', function () {
                 BodyWrapper.setStyle('boxShadow', null);
 
                 self.MenuButton.setStyle('display', null);
@@ -308,8 +320,7 @@ define('package/quiqqer/menu/bin/SlideOut', [
                     }, {
                         duration: 250,
                         equation: 'cubic-bezier(.42,.4,.46,1.29)',
-                        callback: function ()
-                        {
+                        callback: function () {
                             Closer.destroy();
                         }
                     });
@@ -317,15 +328,13 @@ define('package/quiqqer/menu/bin/SlideOut', [
 
 
                 if (self.$__hideMenu === false) {
-                    self.showMenuButton(function ()
-                    {
+                    self.showMenuButton(function () {
                         self.getElm().setStyle('display', null);
                     });
                 }
             });
 
-            this.showMenuButton(function ()
-            {
+            this.showMenuButton(function () {
                 self.getElm().setStyle('display', null);
             });
 
@@ -335,8 +344,7 @@ define('package/quiqqer/menu/bin/SlideOut', [
         /**
          * event : on resize
          */
-        $onResize: function ()
-        {
+        $onResize: function () {
             if (QUI.getWindowSize().x > 500) {
                 this.setAttribute('menu-width', 500);
                 return;
@@ -348,24 +356,21 @@ define('package/quiqqer/menu/bin/SlideOut', [
         /**
          * Toggle
          */
-        toggle: function ()
-        {
+        toggle: function () {
             this.Slideout.toggle();
         },
 
         /**
          * Dont show menu button
          */
-        disableMenuButton: function ()
-        {
+        disableMenuButton: function () {
             this.$__hideMenu = true;
         },
 
         /**
          * Show menu button
          */
-        enableMenuButton: function ()
-        {
+        enableMenuButton: function () {
             this.$__hideMenu = false;
         },
 
@@ -374,15 +379,13 @@ define('package/quiqqer/menu/bin/SlideOut', [
          *
          * @param callback
          */
-        hideMenuButton: function (callback)
-        {
+        hideMenuButton: function (callback) {
             moofx(this.MenuButton).animate({
                 opacity: 0
             }, {
                 duration: 250,
                 equation: 'cubic-bezier(.42,.4,.46,1.29)',
-                callback: function ()
-                {
+                callback: function () {
                     this.MenuButton.setStyle('display', 'none');
 
                     if (typeof callback === 'function') {
@@ -397,8 +400,7 @@ define('package/quiqqer/menu/bin/SlideOut', [
          *
          * @param callback
          */
-        showMenuButton: function (callback)
-        {
+        showMenuButton: function (callback) {
             if (this.$__hideMenu) {
                 return;
             }
@@ -414,13 +416,69 @@ define('package/quiqqer/menu/bin/SlideOut', [
             }, {
                 duration: 250,
                 equation: 'cubic-bezier(.42,.4,.46,1.29)',
-                callback: function ()
-                {
+                callback: function () {
                     if (typeof callback === 'function') {
                         callback();
                     }
                 }.bind(this)
             });
+        },
+
+        /**
+         * Get anchor target
+         *
+         * @param {HTMLElement} Link - <a> HTML node
+         * @return {boolean|HTMLElement}
+         */
+        $getAnchorTarget: function (Link) {
+            let href = Link.href;
+
+            if (href.indexOf('#') === -1) {
+                return false;
+            }
+
+            if (href.indexOf('#') > 0) {
+                let linkUrl = href.substring(0, href.indexOf('#'));
+
+                if (linkUrl !== this.$Url.href) {
+                    return false;
+                }
+            }
+
+            let targetString = href.substring(href.indexOf('#') + 1);
+
+            if (targetString.length < 1) {
+                return false;
+            }
+
+            let TargetElm = document.getElementById(targetString);
+
+            if (!TargetElm) {
+                return false;
+            }
+
+            return TargetElm;
+        },
+
+        /**
+         * Scroll to given element (Target)
+         *
+         * @param {HTMLElement} Target
+         */
+        $scrollToElement: function (Target) {
+            let offset = Target.get('data-qui-offset');
+
+            if (!offset) {
+                offset = window.SCROLL_OFFSET ? window.SCROLL_OFFSET : 0;
+            }
+
+            setTimeout(() => {
+                new Fx.Scroll(window, {
+                    offset: {
+                        y: -offset
+                    }
+                }).toElement(Target);
+            }, 300);
         }
     });
 
