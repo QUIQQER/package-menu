@@ -18,6 +18,20 @@ use QUI;
 class SlideOut extends QUI\Control
 {
     /**
+     * @param array $attributes
+     */
+    public function __construct($attributes = [])
+    {
+        $this->setAttributes([
+            'showHomeLink'        => true,
+            'menuId'              => false, // if set independent menu template will be used
+            'showFirstLevelIcons' => false // current it works only for independent menu
+        ]);
+
+        parent::__construct($attributes);
+    }
+
+    /**
      * @return string
      * @throws QUI\Exception
      */
@@ -25,15 +39,29 @@ class SlideOut extends QUI\Control
     {
         $Engine = QUI::getTemplateManager()->getEngine();
 
-        $Engine->assign(array(
-            'FileMenu'  => dirname(__FILE__) . '/Menu.Children.html',
-            'this'      => $this,
-            'Site'      => $this->getSite(),
-            'Project'   => $this->getProject(),
-            'jsControl' => 'package/quiqqer/menu/bin/SlideOut'
-        ));
+        $params = [
+            'this'         => $this,
+            'Project'      => $this->getProject(),
+            'jsControl'    => 'package/quiqqer/menu/bin/SlideOut',
+            'showHomeLink' => $this->getAttribute('showHomeLink')
+        ];
 
-        return $Engine->fetch(dirname(__FILE__) . '/Menu.html');
+        if ($this->getAttribute('menuId')) {
+            $IndependentMenu = Independent\Handler::getMenu($this->getAttribute('menuId'));
+
+            $template                      = dirname(__FILE__).'/Menu.Independent.html';
+            $params['FileMenu']            = dirname(__FILE__).'/Menu.Children.Independent.html';
+            $params['IndependentMenu']     = $IndependentMenu;
+            $params['showFirstLevelIcons'] = $this->getAttribute('showFirstLevelIcons');
+        } else {
+            $template           = dirname(__FILE__).'/Menu.html';
+            $params['FileMenu'] = dirname(__FILE__).'/Menu.Children.html';
+            $params['Site']     = $this->getSite();
+        }
+
+        $Engine->assign($params);
+
+        return $Engine->fetch($template);
     }
 
     /**

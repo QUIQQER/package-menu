@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+    <item parent="/extras/"
+          name="menu-management"
+          icon="fa fa-bars"
+          require="package/quiqqer/menu/bin/Controls/Independent/MenuManagement"
+          permission="quiqqer.menu.edit"
+    >
+        <locale group="quiqqer/menu" var="menu.text"/>
+    </item>
+</menu>

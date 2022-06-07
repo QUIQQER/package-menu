@@ -1,0 +1,22 @@
+.quiqqer-menu-menuPanel {
+    display: flex;
+    padding: 0;
+}
+
+.quiqqer-menu-menuPanel-mapContainer {
+    border-right: 1px solid #dedede;
+    flex-shrink: 0;
+    overflow: auto;
+    padding: 20px;
+    width: 300px;
+}
+
+.quiqqer-menu-menuPanel-innerContainer {
+    flex-grow: 1;
+    overflow: auto;
+    padding: 20px;
+}
+
+.quiqqer-menu-menuPanel-innerContainer > div {
+    width: 100%;
+}

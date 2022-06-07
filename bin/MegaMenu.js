@@ -63,26 +63,61 @@ define('package/quiqqer/menu/bin/MegaMenu', [
 
             this.$liSize = this.getElm().getSize().y;
 
+            let self = this;
+
             this.$Nav.getElements('.quiqqer-menu-megaMenu-list-item').addEvents({
+                click   : function (event) {
+                    event.stop();
+
+                    var Target = event.target;
+
+                    if (Target.nodeName !== 'LI') {
+                        Target = Target.getParent('li');
+                    }
+
+                    let Link = Target.getElement('a');
+
+                    if (Link) {
+                        let TargetElm = self.$getAnchorTarget(Link);
+
+                        if (TargetElm) {
+                            self.$scrollToElement(TargetElm);
+                            return;
+                        }
+
+                        window.location = Target.getElement('a').get('href');
+                    }
+                },
                 touchend: function (event) {
                     event.stop();
 
                     var self   = this,
                         Target = event.target;
 
-                    if (Target.nodeName != 'LI') {
+                    if (Target.nodeName !== 'LI') {
                         Target = Target.getParent('li');
                     }
 
+                    let Link = Target.getElement('a');
                     var Menu = Target.getElement('.quiqqer-menu-megaMenu-list-item-menu');
 
                     if (!Menu) {
-                        window.location = Target.getElement('a').get('href');
-                        return;
+                        if (Link) {
+
+                            let TargetElm = self.$getAnchorTarget(Link);
+
+                            if (TargetElm) {
+                                self.$scrollToElement(TargetElm);
+                                return;
+                            }
+
+                            window.location = Target.getElement('a').get('href');
+                            return;
+                        }
                     }
 
                     if (this.$Menu.getStyle('display') === 'flex') {
-                        window.location = Target.getElement('a').get('href');
+                        window.location = Link.get('href');
                         return;
                     }
 
@@ -125,7 +160,7 @@ define('package/quiqqer/menu/bin/MegaMenu', [
             var SlideNode  = document.getElement('[data-qui="package/quiqqer/menu/bin/SlideOut"]'),
                 SlideOut   = QUI.Controls.getById(SlideNode.get('data-quiid')),
                 MobileMenu = this.getElm().getElement('.quiqqer-menu-megaMenu-mobile');
-            
+
             if (!MobileMenu) {
                 return;
             }
@@ -169,11 +204,20 @@ define('package/quiqqer/menu/bin/MegaMenu', [
 
             this.$Menu.getElements('a').addEvent('click', function (event) {
                 var Link = event.target;
-                if (Link.nodeName != 'A') {
+
+                if (Link.nodeName !== 'A') {
                     Link = Link.getParent('a');
                 }
 
                 event.stop();
+
+                let TargetElm = self.$getAnchorTarget(Link);
+
+                if (TargetElm) {
+                    self.$scrollToElement(TargetElm);
+                    return;
+                }
+
                 window.location = Link.get('href');
             });
 
@@ -257,6 +301,53 @@ define('package/quiqqer/menu/bin/MegaMenu', [
                     this.$hide();
                 }
             }).delay(500, this);
+        },
+
+        /**
+         * Get anchor target
+         *
+         * @param {HTMLElement} Link - <a> HTML node
+         * @return {boolean|HTMLElement}
+         */
+        $getAnchorTarget: function (Link) {
+            let href = Link.href;
+
+            if (href.indexOf('#') === -1) {
+                return false;
+            }
+
+            let targetString = href.substring(href.indexOf('#') + 1);
+
+            if (targetString.length < 1) {
+                return false;
+            }
+
+            let TargetElm = document.getElementById(targetString);
+
+            if (!TargetElm) {
+                return false;
+            }
+
+            return TargetElm;
+        },
+
+        /**
+         * Scroll to given element (Target)
+         *
+         * @param {HTMLElement} Target
+         */
+        $scrollToElement: function (Target) {
+            let offset = Target.get('data-qui-offset');
+
+            if (!offset) {
+                offset = window.SCROLL_OFFSET ? window.SCROLL_OFFSET : 0;
+            }
+
+            new Fx.Scroll(window, {
+                offset: {
+                    y: -offset
+                }
+            }).toElement(Target);
         }
     });
 });

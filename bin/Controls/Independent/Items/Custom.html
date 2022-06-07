@@ -1,0 +1,173 @@
+<form>
+
+    <table class="data-table data-table-flexbox site-data">
+        <thead>
+        <tr>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <label class="field-container">
+                    <span class="field-container-item">
+                        {{status}}
+                    </span>
+                    <span class="field-container-field">
+                        <input type="checkbox" name="status"/>
+                        {{statusDescription}}
+                    </span>
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="field-container">
+                    <span class="field-container-item">
+                        {{title}}
+                    </span>
+                    <input class="field-container-field"
+                           type="text"
+                           name="title"
+                           data-qui="controls/lang/InputMultiLang"
+                    />
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="field-container">
+                    <span class="field-container-item">
+                        {{linkTitle}}
+                    </span>
+                    <input class="field-container-field"
+                           type="text"
+                           name="name"
+                           data-qui="controls/lang/InputMultiLang"
+                    />
+                </label>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label class="field-container">
+                    <span class="field-container-item">
+                        {{icon}}
+                    </span>
+                    <input class="field-container-field"
+                           type="text"
+                           name="icon"
+                           data-qui="controls/projects/project/media/Input"
+                           data-qui-options-cssclasses="1"
+                    />
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="field-container">
+                    <span class="field-container-item">
+                        {{url}}
+                    </span>
+                    <input class="field-container-field"
+                           type="text"
+                           name="url"
+                           data-qui="controls/projects/project/site/Input"
+                           data-qui-options-external="1"
+                    />
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="field-container">
+                    <span class="field-container-item">
+                        {{target}}
+                    </span>
+                    <select class="field-container-field" name="target">
+                        <option value="">{{targetNone}}</option>
+                        <option value="_self">{{targetSelf}}</option>
+                        <option value="frame">{{targetFrame}}</option>
+                        <option value="popup">{{targetPopup}}</option>
+                        <option value="_blank">{{targetBlank}}</option>
+                        <option value="_top">{{targetTop}}</option>
+                        <option value="_parent">{{targetParent}}</option>
+                    </select>
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="field-container">
+                    <span class="field-container-item">
+                        {{rel}}
+                    </span>
+                    <select class="field-container-field" name="rel">
+                        <option value=""></option>
+                        <option value="alternate">{{alternate}}</option>
+                        <option value="author">{{author}}</option>
+                        <option value="bookmark">{{bookmark}}</option>
+                        <option value="external">{{external}}</option>
+                        <option value="help">{{help}}</option>
+                        <option value="license">{{license}}</option>
+                        <option value="next">{{next}}</option>
+                        <option value="nofollow">{{nofollow}}</option>
+                        <option value="noopener">{{noopener}}</option>
+                        <option value="noreferrer">{{noreferrer}}</option>
+                        <option value="prev">{{prev}}</option>
+                        <option value="search">{{search}}</option>
+                        <option value="tag">{{tag}}</option>
+                    </select>
+                </label>
+                <div class="field-container-item-desc">
+                    {{relDescription}}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="field-container">
+                    <span class="field-container-item">
+                        {{menuType}}
+                    </span>
+                    <select class="field-container-field" name="menuType">
+                        <option value=""></option>
+                        <option value="Standard">
+                            {{menuTypeStandard}}
+                        </option>
+                        <option value="Icons">
+                            {{menuTypeIcons}}
+                        </option>
+                        <option value="IconsDescription">
+                            {{menuTypeIconsDescription}}
+                        </option>
+                        <option value="Image">
+                            {{menuTypeImage}}
+                        </option>
+                        <option value="Simple">
+                            {{menuTypeSimple}}
+                        </option>
+                        <option value="noMenu">
+                            {{menuTypeNoMenu}}
+                        </option>
+                    </select>
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="field-container">
+                    <span class="field-container-item">
+                        {{click}}
+                    </span>
+                    <input class="field-container-field" type="text" name="click"/>
+                </label>
+                <div class="field-container-item-desc">
+                    {{clickDescription}}
+                </div>
+            </td>
+        </tr>
+    </table>
+</form>
+

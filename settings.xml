@@ -55,4 +55,31 @@
         </settings>
 
     </project>
+
+    <settings>
+        <window name="quiqqer-cache" menu-parent="/settings/quiqqer/">
+            <title>
+                <locale group="quiqqer/quiqqer" var="quiqqer.settings.cache"/>
+            </title>
+
+            <params>
+                <icon>fa fa-sort-amount-desc</icon>
+            </params>
+
+
+            <category name="management" require="controls/cache/Settings">
+
+                <settings title="clearMenuCache" name="clearMenuCache">
+                    <title>
+                        <locale group="quiqqer/quiqqer" var="quiqqer.menu.clearMenuCache.title"/>
+                    </title>
+
+                    <button>boom</button>
+                </settings>
+
+            </category>
+
+        </window>
+    </settings>
+
 </quiqqer>

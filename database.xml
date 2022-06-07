@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <global>
+        <table name="menus">
+            <field type="BIGINT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY">id</field>
+            <field type="TEXT DEFAULT NULL">title</field>
+            <field type="TEXT DEFAULT NULL">workingTitle</field>
+            <field type="TEXT NULL">data</field>
+        </table>
+    </global>
+</database>

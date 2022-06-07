@@ -1,6 +1,7 @@
 .quiqqer-menu-megaMenu-children-simple {
     width: auto;
     display: inline-block;
+    min-width: 200px;
 }
 
 .quiqqer-menu-megaMenu-children-simple-entry {
@@ -18,7 +19,9 @@
     border-bottom: none;
 }
 
-.quiqqer-menu-megaMenu-children-simple-entry a {
+.quiqqer-menu-megaMenu-children-simple-entry a,
+.quiqqer-menu-megaMenu-children-simple-entry__noUrl > span:first-child {
     padding: 10px 25px;
     display: block;
+    cursor: pointer;
 }

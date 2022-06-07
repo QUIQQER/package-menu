@@ -1,0 +1,126 @@
+<form>
+
+    <table class="data-table data-table-flexbox site-data">
+        <thead>
+        <tr>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <label class="field-container">
+                    <span class="field-container-item">
+                        {{status}}
+                    </span>
+                    <span class="field-container-field">
+                        <input type="checkbox" name="status"/>
+                        {{statusDescription}}
+                    </span>
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="field-container">
+                    <span class="field-container-item">
+                        {{title}}
+                    </span>
+                    <input class="field-container-field"
+                           type="text"
+                           name="title"
+                           data-qui="controls/lang/InputMultiLang"
+                    />
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="field-container">
+                    <span class="field-container-item">
+                        {{linkTitle}}
+                    </span>
+                    <input class="field-container-field"
+                           type="text"
+                           name="name"
+                           data-qui="controls/lang/InputMultiLang"
+                    />
+                </label>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label class="field-container">
+                    <span class="field-container-item">
+                        {{icon}}
+                    </span>
+                    <input class="field-container-field"
+                           type="text"
+                           name="icon"
+                           data-qui="controls/projects/project/media/Input"
+                           data-qui-options-cssclasses="1"
+                    />
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="field-container">
+                    <span class="field-container-item">
+                        {{anchor}}
+                    </span>
+                    <input class="field-container-field"
+                           type="text"
+                           name="url"
+                           data-qui="controls/lang/InputMultiLang"
+                    />
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="field-container">
+                    <span class="field-container-item">
+                        {{site}}
+                    </span>
+                    <input class="field-container-field"
+                           type="text"
+                           name="site"
+                           data-qui="controls/projects/project/site/Input"
+                    />
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="field-container">
+                    <span class="field-container-item">
+                        {{menuType}}
+                    </span>
+                    <select class="field-container-field" name="menuType">
+                        <option value=""></option>
+                        <option value="Standard">
+                            {{menuTypeStandard}}
+                        </option>
+                        <option value="Icons">
+                            {{menuTypeIcons}}
+                        </option>
+                        <option value="IconsDescription">
+                            {{menuTypeIconsDescription}}
+                        </option>
+                        <option value="Image">
+                            {{menuTypeImage}}
+                        </option>
+                        <option value="Simple">
+                            {{menuTypeSimple}}
+                        </option>
+                        <option value="noMenu">
+                            {{menuTypeNoMenu}}
+                        </option>
+                    </select>
+                </label>
+            </td>
+        </tr>
+    </table>
+</form>

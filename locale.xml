@@ -121,8 +121,10 @@
             <en><![CDATA[Menu: One Page Navigation (for landingpage)]]></en>
         </locale>
         <locale name="menu.control.OnePageNav.description">
-            <de><![CDATA[Menu für eine One-Pager. Die Menüeinträge scrollen zu den entsprechenden Abschnitten auf der Startseite.]]></de>
-            <en><![CDATA[Navigation for one page. The menu items scroll to the corresponding sections on the home page.]]></en>
+            <de>
+                <![CDATA[Menu für eine One-Pager. Die Menüeinträge scrollen zu den entsprechenden Abschnitten auf der Startseite.]]></de>
+            <en>
+                <![CDATA[Navigation for one page. The menu items scroll to the corresponding sections on the home page.]]></en>
         </locale>
         <locale name="menu.control.OnePageNav.addLink">
             <de><![CDATA[Link hinzufügen]]></de>
@@ -140,14 +142,14 @@
             <de><![CDATA[Link-Typ]]></de>
             <en><![CDATA[Link typ]]></en>
         </locale>
-            <locale name="menu.control.OnePageNav.entries.linkType.anchor">
-                <de><![CDATA[Anker]]></de>
-                <en><![CDATA[Anchor]]></en>
-            </locale>
-            <locale name="menu.control.OnePageNav.entries.linkType.url">
-                <de><![CDATA[Url]]></de>
-                <en><![CDATA[Url]]></en>
-            </locale>
+        <locale name="menu.control.OnePageNav.entries.linkType.anchor">
+            <de><![CDATA[Anker]]></de>
+            <en><![CDATA[Anchor]]></en>
+        </locale>
+        <locale name="menu.control.OnePageNav.entries.linkType.url">
+            <de><![CDATA[Url]]></de>
+            <en><![CDATA[Url]]></en>
+        </locale>
         <locale name="menu.control.OnePageNav.entries.link" html="true">
             <de><![CDATA[Seitenlink oder CSS Selector. <br>
             <strong>Seitenlink:</strong> die URL muss valid sein. <br>
@@ -159,7 +161,7 @@
             E.g. <i>.css-class</i>, <i>#elementId</i>]]>
             </en>
         </locale>
-        
+
         <!-- nav tabs vertical -->
         <locale name="control.navTabsVertical.title">
             <de><![CDATA[Menu: Navigation Tabs (vertical)]]></de>
@@ -225,5 +227,364 @@
             <de><![CDATA[Bild]]></de>
             <en><![CDATA[Image]]></en>
         </locale>
+
+        <locale name="permission.quiqqer.menu._header">
+            <de><![CDATA[QUIQQER Menü]]></de>
+            <en><![CDATA[QUIQQER Menu]]></en>
+        </locale>
+        <locale name="permission.quiqqer.menu.create">
+            <de><![CDATA[Darf Menüs anlegen]]></de>
+            <en><![CDATA[Is allowed to create menus]]></en>
+        </locale>
+        <locale name="permission.quiqqer.menu.delete">
+            <de><![CDATA[Darf Menüs löschen]]></de>
+            <en><![CDATA[Is allowed to delete menus]]></en>
+        </locale>
+        <locale name="permission.quiqqer.menu.edit">
+            <de><![CDATA[Darf Menüs editieren]]></de>
+            <en><![CDATA[Is allowed to edit menus]]></en>
+        </locale>
+    </groups>
+
+    <groups name="quiqqer/menu" datatype="php">
+        <locale name="menu.text">
+            <de><![CDATA[Menü Verwaltung]]></de>
+            <en><![CDATA[Menu management]]></en>
+        </locale>
+
+        <locale name="item.anchor.title">
+            <de><![CDATA[Menu Eintrag: Zu einem Anker]]></de>
+            <en><![CDATA[Menu entry: To an anchor]]></en>
+        </locale>
+        <locale name="item.custom.title">
+            <de><![CDATA[Menu Eintrag: Custom Event]]></de>
+            <en><![CDATA[Menu entry: Custom Event]]></en>
+        </locale>
+        <locale name="item.site.title">
+            <de><![CDATA[Menu Eintrag: Zu einer internen Seite von einem Projekt]]></de>
+            <en><![CDATA[Menu entry: To an internal page from a project]]></en>
+        </locale>
+        <locale name="item.url.title">
+            <de><![CDATA[Menu Eintrag: Zur einer anderen URL]]></de>
+            <en><![CDATA[Menu entry: To another URL]]></en>
+        </locale>
+        <locale name="menu.saved.successfully">
+            <de><![CDATA[Das Menü wurde erfolgreich gespeichert.]]></de>
+            <en><![CDATA[The menu has been saved successfully.]]></en>
+        </locale>
+    </groups>
+
+    <groups name="quiqqer/menu" datatype="js">
+        <locale name="menu.panel.management.title">
+            <de><![CDATA[Menü Verwaltung]]></de>
+            <en><![CDATA[Menu management]]></en>
+        </locale>
+        <locale name="grid.menuId">
+            <de><![CDATA[ID]]></de>
+            <en><![CDATA[ID]]></en>
+        </locale>
+        <locale name="grid.menuTitle">
+            <de><![CDATA[Titel]]></de>
+            <en><![CDATA[Title]]></en>
+        </locale>
+
+        <locale name="creation.window.title">
+            <de><![CDATA[Neues Menü anlegen]]></de>
+            <en><![CDATA[Create new menu]]></en>
+        </locale>
+        <locale name="create.window.headerText">
+            <de><![CDATA[Eigenschaften]]></de>
+            <en><![CDATA[Properties]]></en>
+        </locale>
+        <locale name="create.window.titleText">
+            <de><![CDATA[Titel]]></de>
+            <en><![CDATA[Title]]></en>
+        </locale>
+        <locale name="create.window.workingTitleText">
+            <de><![CDATA[Arbeitstitel]]></de>
+            <en><![CDATA[Working title]]></en>
+        </locale>
+
+        <locale name="deletion.window.title">
+            <de><![CDATA[Menüs löschen]]></de>
+            <en><![CDATA[Delete menus]]></en>
+        </locale>
+        <locale name="deletion.window.text">
+            <de><![CDATA[Möchtest du wirklich die folgenden Menüs löschen?]]></de>
+            <en><![CDATA[Do you really want to delete the following menus?]]></en>
+        </locale>
+        <locale name="deletion.window.information">
+            <de><![CDATA[Die folgenden Menüs werden unwiederruflich gelöscht: [list]]]></de>
+            <en><![CDATA[The following menus are deleted irrevocably: [list]]]></en>
+        </locale>
+        <locale name="quiqqer.menu.independent.addItem.title">
+            <de><![CDATA[Menüeintrag hinzufügen]]></de>
+            <en><![CDATA[Add menu item]]></en>
+        </locale>
+
+        <locale name="context.menu.insertBefore">
+            <de><![CDATA[Davor einfügen]]></de>
+            <en><![CDATA[Insert before]]></en>
+        </locale>
+        <locale name="context.menu.insertAfter">
+            <de><![CDATA[Danach einfügen]]></de>
+            <en><![CDATA[Insert after]]></en>
+        </locale>
+        <locale name="context.menu.insertChild">
+            <de><![CDATA[Kind einfügen]]></de>
+            <en><![CDATA[Insert child]]></en>
+        </locale>
+        <locale name="context.menu.deleteChild">
+            <de><![CDATA[Menueintrag löschen]]></de>
+            <en><![CDATA[Delete menu entry]]></en>
+        </locale>
+        <locale name="tpl.icon">
+            <de><![CDATA[Icon]]></de>
+            <en><![CDATA[Icon]]></en>
+        </locale>
+        <locale name="tpl.anchor">
+            <de><![CDATA[Anker]]></de>
+            <en><![CDATA[Anchor]]></en>
+        </locale>
+        <locale name="tpl.url">
+            <de><![CDATA[URL / Adresse]]></de>
+            <en><![CDATA[URL]]></en>
+        </locale>
+        <locale name="tpl.rel">
+            <de><![CDATA[Rel Link Attribut]]></de>
+            <en><![CDATA[Rel lnk attribute]]></en>
+        </locale>
+        <locale name="tpl.relDescription">
+            <de><![CDATA[
+            Das Attribut rel gibt die Beziehung zwischen dem aktuellen Dokument und dem verlinkten Dokument an.
+            ]]></de>
+            <en><![CDATA[
+            The rel attribute specifies the relationship between the current document and the linked document.
+            ]]></en>
+        </locale>
+        <locale name="tpl.click">
+            <de><![CDATA[Klick Event (JavaScript)]]></de>
+            <en><![CDATA[Click event (JavaScript)]]></en>
+        </locale>
+        <locale name="tpl.clickDescription">
+            <de><![CDATA[
+                Füge hier den Funktionsnamen der JavaScript Funktion ein welche bei Klick aufgerufen werden soll.
+                Möchtest du eine eigene Funktion per Klick ausführen, kannst du hierzu die custom.js deines Projektes verwenden.
+            ]]></de>
+            <en><![CDATA[
+                Add here the function name of the JavaScript function which should be called on click.
+                If you want to execute your own function on click, you can use the custom.js of your project.
+            ]]></en>
+        </locale>
+        <locale name="tpl.Site">
+            <de><![CDATA[Site]]></de>
+            <en><![CDATA[Site]]></en>
+        </locale>
+        <locale name="tpl.linkTitle">
+            <de><![CDATA[Link Titel]]></de>
+            <en><![CDATA[Link title]]></en>
+        </locale>
+
+        <locale name="tpl.rel.alternate">
+            <de><![CDATA[
+            alternate - Enthält einen Link zu einer alternativen Darstellung des Dokuments (z. B. Druckseite, Übersetzung oder Spiegelung)
+            ]]></de>
+            <en><![CDATA[
+            alternate - Provides a link to an alternate representation of the document (i.e. print page, translated or mirror)
+            ]]></en>
+        </locale>
+        <locale name="tpl.rel.author">
+            <de><![CDATA[author - Enthält einen Link zum Autor des Dokuments]]></de>
+            <en><![CDATA[author - Provides a link to the author of the document]]></en>
+        </locale>
+        <locale name="tpl.rel.bookmark">
+            <de><![CDATA[bookmark - Permanente URL zum Setzen von Lesezeichen]]></de>
+            <en><![CDATA[bookmark - Permanent URL used for bookmarking]]></en>
+        </locale>
+        <locale name="tpl.rel.external">
+            <de><![CDATA[
+            external -  Zeigt an, dass das referenzierte Dokument nicht zu derselben Website gehört wie das aktuelle Dokument
+            ]]></de>
+            <en><![CDATA[
+            external - Indicates that the referenced document is not part of the same site as the current document
+            ]]></en>
+        </locale>
+        <locale name="tpl.rel.help">
+            <de><![CDATA[help - Enthält einen Link zu einem Hilfedokument]]></de>
+            <en><![CDATA[help - Provides a link to a help document]]></en>
+        </locale>
+        <locale name="tpl.rel.license">
+            <de><![CDATA[license - Enthält einen Link zu Lizenzinformationen für das Dokument]]></de>
+            <en><![CDATA[license - Provides a link to licensing information for the document]]></en>
+        </locale>
+        <locale name="tpl.rel.next">
+            <de><![CDATA[next - Enthält einen Link zum nächsten Dokument der Serie]]></de>
+            <en><![CDATA[next - Provides a link to the next document in the series]]></en>
+        </locale>
+        <locale name="tpl.rel.nofollow">
+            <de><![CDATA[
+            nofollow - wird von Google verwendet, um anzugeben, dass der Google-Suchspider diesem Link nicht folgen soll
+            ]]></de>
+            <en><![CDATA[
+            nofollow - is used by Google, to specify that the Google search spider should not follow that link
+            ]]></en>
+        </locale>
+        <locale name="tpl.rel.noopener">
+            <de><![CDATA[
+            noopener - Erfordert, dass ein durch Verfolgen des Hyperlinks erstellter Browsing-Kontext keinen offenen Browsing-Kontext haben darf
+            ]]></de>
+            <en><![CDATA[
+            noopener - Requires that any browsing context created by following the hyperlink must not have an opener browsing context
+            ]]></en>
+        </locale>
+        <locale name="tpl.rel.noreferrer">
+            <de><![CDATA[
+            noreferrer - Macht den Verweiser unbekannt. Es wird kein Referer-Header eingefügt, wenn der Benutzer auf den Hyperlink klickt
+            ]]></de>
+            <en><![CDATA[
+            noreferrer - Makes the referrer unknown. No referer header will be included when the user clicks the hyperlink
+            ]]></en>
+        </locale>
+        <locale name="tpl.rel.prev">
+            <de><![CDATA[prev - Das vorherige Dokument in einer Auswahl]]></de>
+            <en><![CDATA[prev - The previous document in a selection]]></en>
+        </locale>
+        <locale name="tpl.rel.search">
+            <de><![CDATA[search - Links zu einer Suchfunktion für das Dokument]]></de>
+            <en><![CDATA[search - Links to a search tool for the document]]></en>
+        </locale>
+        <locale name="tpl.rel.tag">
+            <de><![CDATA[tag - Ein Tag (Schlüsselwort) für das aktuelle Dokument]]></de>
+            <en><![CDATA[tag - A tag (keyword) for the current document]]></en>
+        </locale>
+
+        <locale name="cache.clear.title">
+            <de><![CDATA[Menü Cache]]></de>
+            <en><![CDATA[Menu cache]]></en>
+        </locale>
+        <locale name="cache.clear.button.title">
+            <de><![CDATA[Menü veröffentlichen]]></de>
+            <en><![CDATA[Publish menu]]></en>
+        </locale>
+        <locale name="message.menu.publish.successful">
+            <de><![CDATA[Das Menü wurde erfolgreich veröffentlicht.]]></de>
+            <en><![CDATA[The menu has been successfully published.]]></en>
+        </locale>
+        <locale name="context.menu.changeType">
+            <de><![CDATA[Typ ändern]]></de>
+            <en><![CDATA[Change type]]></en>
+        </locale>
+
+        <locale name="window.deleteItem.title">
+            <de><![CDATA[Eintrag löschen?]]></de>
+            <en><![CDATA[Delete entry?]]></en>
+        </locale>
+        <locale name="window.deleteItem.text">
+            <de><![CDATA[Eintrag wirklich löschen?]]></de>
+            <en><![CDATA[Really delete the entry?]]></en>
+        </locale>
+        <locale name="window.deleteItem.information">
+            <de><![CDATA[
+            Möchtest du wirklich den Menüeintrag <b>[entry]</b> löschen?
+            Dieser Eintrag wird unwiederruflich gelöscht und kann nicht wieder hergestellt werden.
+            ]]></de>
+            <en><![CDATA[
+            Do you really want to delete the menu entry <b>[entry]</b>?
+            This entry will be deleted irrevocably and cannot be restored.
+            ]]></en>
+        </locale>
+
+
+        <locale name="quiqqer.menu.independent.changeItemType.title">
+            <de><![CDATA[Typ ändern]]></de>
+            <en><![CDATA[Change type]]></en>
+        </locale>
+        <locale name="quiqqer.menu.independent.changeItemType.message">
+            <de><![CDATA[
+                Ändere den Typ des Menüeintrages.
+                Beachte, das einige Daten dadurch nicht mehr genutzt bzw verwendet werden können.
+            ]]></de>
+            <en><![CDATA[
+                Change the type of the menu item.
+                Note that some data can no longer be used as a result.
+            ]]></en>
+        </locale>
+
+        <locale name="tpl.statusDescription">
+            <de><![CDATA[
+            Aktiviert (Haken gesetzt) oder deaktiviert (Kein Haken gesetzt) den Eintrag.
+            Bei Deaktivierung wird der Menüeintrag nicht im Menü angezeigt
+            ]]></de>
+            <en><![CDATA[
+            Enables (checked) or disables (unchecked) the item.
+            If deactivated, the menu entry is not displayed in the menu
+            ]]></en>
+        </locale>
+        <locale name="tpl.target">
+            <de><![CDATA[Zielseite (target)]]></de>
+            <en><![CDATA[Target]]></en>
+        </locale>
+        <locale name="tpl.target.none">
+            <de><![CDATA[Standard (Kein target)]]></de>
+            <en><![CDATA[Default (No target)]]></en>
+        </locale>
+        <locale name="tpl.target.self">
+            <de><![CDATA[Gleiches Fenster (_self)]]></de>
+            <en><![CDATA[Same window (_self)]]></en>
+        </locale>
+        <locale name="tpl.target.frame">
+            <de><![CDATA[Frame]]></de>
+            <en><![CDATA[Frame]]></en>
+        </locale>
+        <locale name="tpl.target.popup">
+            <de><![CDATA[Pop-up Fenster]]></de>
+            <en><![CDATA[Popup window)]]></en>
+        </locale>
+        <locale name="tpl.target.blank">
+            <de><![CDATA[Neues Fenster (_blank)]]></de>
+            <en><![CDATA[New window (_blank)]]></en>
+        </locale>
+        <locale name="tpl.target.top">
+            <de><![CDATA[Oberstes Fenster (_top)]]></de>
+            <en><![CDATA[Top window (_top)]]></en>
+        </locale>
+        <locale name="tpl.target.parent">
+            <de><![CDATA[Oberes Fenster (_parent)]]></de>
+            <en><![CDATA[Parent window (_parent)]]></en>
+        </locale>
+
+        <locale name="context.menu.sort">
+            <de><![CDATA[Kinder sortieren]]></de>
+            <en><![CDATA[Sort children]]></en>
+        </locale>
+        <locale name="quiqqer.menu.independent.sort.title">
+            <de><![CDATA[Kinder sortieren]]></de>
+            <en><![CDATA[Sort children]]></en>
+        </locale>
+
+        <locale name="create.window.text">
+            <de><![CDATA[
+            Bitte gebe den Typ (Art des Eintrages) an, welcher der neuen Eintrag erhalten soll.
+            Der Typ kann jederzeit geändert werden.
+            ]]></de>
+            <en><![CDATA[
+            Please specify the type (type of entry), which the new entry should get.
+            The type can be changed at any time.
+            ]]></en>
+        </locale>
+
+        <locale name="quiqqer.menu.select.win.title">
+            <de><![CDATA[Menü zuweisen]]></de>
+            <en><![CDATA[Assign a menu]]></en>
+        </locale>
+        <locale name="quiqqer.menu.select.win.content">
+            <de><![CDATA[Bitte wähle ein Menü aus welches du zuweisen möchtest.]]></de>
+            <en><![CDATA[Please select a menu you want to assign.]]></en>
+        </locale>
+        <locale name="quiqqer.menu.select.win.button">
+            <de><![CDATA[Menü Auswahl]]></de>
+            <en><![CDATA[Select menu]]></en>
+        </locale>
+
     </groups>
 </locales>
