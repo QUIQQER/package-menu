@@ -187,7 +187,8 @@ define('package/quiqqer/menu/bin/MegaMenu', [
         showMenuFor: function (liElement) {
             var Menu         = liElement.getElement('.quiqqer-menu-megaMenu-list-item-menu'),
                 isSimpleMenu = false,
-                leftOffset   = 0;
+                leftOffset   = 0,
+                self         = this;
 
             if (!Menu) {
                 return this.$hide();
