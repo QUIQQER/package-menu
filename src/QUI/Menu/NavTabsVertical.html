@@ -31,7 +31,7 @@
             <ul class="quiqqer-menu-navTabsVertical-tabs-nav quiqqer-tab-nav">
                 {foreach from=$entries item=entry key=key}
                 <li class="quiqqer-tab-nav-item {if $key == 0}active{/if}" data-entry-nav-pos="{$key}">
-                    <a href="#{$entry.title|escape:'url'}">
+                    <a href="#{QUI\Utils\Security\Orthos::urlEncodeString($entry.title)}">
                         {if isset($entry.titleIcon) && $entry.titleIcon}
                             {image src=$entry.titleIcon width="80" height="80"}
                         {/if}
@@ -51,7 +51,7 @@
             {foreach from=$entries item=entry key=key}
 
             <li class="quiqqer-tab-content-item {if $key == 0}active{/if}" {if $key !== 0}style="display: none;"{/if}
-                    data-entry-content-pos="{$key}" id="{$entry.title|escape:'url'}">
+                    data-entry-content-pos="{$key}" id="{QUI\Utils\Security\Orthos::urlEncodeString($entry.title)}">
 
                 {if isset($entry.image) && $entry.image && $imagePos == 'top'}
                 <div class="quiqqer-menu-navTabsVertical-content-image

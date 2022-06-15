@@ -68,7 +68,20 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
             this.ActiveNavTab  = Elm.getElement('.quiqqer-tab-nav-item.active');
             this.ActiveContent = Elm.getElement('.quiqqer-tab-content-item.active');
 
-            this.navTabsItems.addEvent('click', function (event) {
+            let queryString = window.location.hash;
+
+            if (queryString) {
+                queryString      = decodeURI(queryString);
+                const NavTabItem = this.navTab.querySelector('[href="' + queryString + '"]');
+                const target     = queryString.substr(1);
+
+                if (NavTabItem) {
+                    self.$setNavItemPos(NavTabItem.parentElement);
+                    self.toggle(NavTabItem.parentElement, target);
+                }
+            }
+
+            let clickEvent = function (event) {
                 event.stop();
 
                 if (self.clicked) {
@@ -77,13 +90,13 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
 
                 self.clicked = true;
 
-                var NavTabItem = event.target;
+                let NavTabItem = event.target;
 
                 if (NavTabItem.nodeName !== 'LI') {
                     NavTabItem = NavTabItem.getParent('li');
                 }
 
-                var target = NavTabItem.getElement('a').getAttribute("href");
+                let target = NavTabItem.getElement('a').getAttribute("href");
 
                 if (target.indexOf('#') === 0) {
                     target = target.substring(1)
@@ -95,10 +108,10 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
                 }
 
                 self.$setNavItemPos(NavTabItem);
-
-
                 self.toggle(NavTabItem, target);
-            });
+            }
+
+            this.navTabsItems.addEvent('click', clickEvent);
         },
 
         /**
@@ -287,7 +300,7 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
 
             let paddingLeft = window.getComputedStyle(this.navTab, null).getPropertyValue('padding-left'),
                 marginLeft  = window.getComputedStyle(Item, null).getPropertyValue('padding-left');
-            
+
             new Fx.Scroll(this.navTab).start(Item.offsetLeft - parseInt(paddingLeft) - parseInt(marginLeft), 0);
         }
     });
