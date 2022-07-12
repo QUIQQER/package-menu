@@ -4,7 +4,7 @@
 QUIQQER Menu
 ========
 
-The Plugin menu provides various menu controls.  
+The Plugin menu provides various menu controls.
 
 Package name:
 
@@ -41,9 +41,9 @@ Contribution
 Support
 -------
 
-Falls Sie Fehler gefunden, Wünsche oder Verbesserungsvorschläge haben, 
+Falls Sie Fehler gefunden, Wünsche oder Verbesserungsvorschläge haben,
 können Sie uns gern per Mail an support@pcsg.de darüber informieren.  
-Wir werden versuchen auf Ihre Wünsche einzugehen bzw. diese an die zuständigen Entwickler 
+Wir werden versuchen auf Ihre Wünsche einzugehen bzw. diese an die zuständigen Entwickler
 des Projektes weiterleiten.
 
 
@@ -117,8 +117,8 @@ $Menu->appendHTML(
 **NavTabs and NavTabsVertical - auto open and scroll to element**
 
 Every nav tab content has an url conform ID (title, it comes from brick entries).
-You can use it to target this element. Simply place `#open_` before your title in the url.  
-The page will be scrolled to the element if it is not in viewport. 
+You can use it to target and auto open this element. Simply place `#open_` before your title in the url.
+The page will be scrolled to the element if it is not in viewport.
 
 ```html
 <a href="www.example.com/subpage#open_myTarget">Open "myTarget" element</a>

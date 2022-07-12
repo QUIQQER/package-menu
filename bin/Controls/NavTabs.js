@@ -2,7 +2,7 @@
  * Navigation tabs control
  *
  * Every nav tab content has an url conform ID (title, it comes from brick entries).
- * You can use it to target this element. Simply place `#open_` before your title in the url.
+ * You can use it to target and auto open this element. Simply place `#open_` before your title in the url.
  * The page will be scrolled to the element if it is not in viewport.
  *
  * Example: <a href="www.example.com/subpage#open_myTarget">Open "myTarget" element</a>
