@@ -1,6 +1,12 @@
 /**
  * Navigation tabs control
  *
+ * Every nav tab content has an url conform ID (title, it comes from brick entries).
+ * You can use it to target this element. Simply place `#open_` before your title in the url.
+ * The page will be scrolled to the element if it is not in viewport.
+ *
+ * Example: <a href="www.example.com/subpage#open_myTarget">Open "myTarget" element</a>
+ *
  * @module package/quiqqer/menu/bin/Controls/NavTabs
  * @author www.pcsg.de (Michael Danielczok)
  */
@@ -70,12 +76,17 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
 
             let queryString = window.location.hash;
 
-            if (queryString) {
-                queryString      = decodeURI(queryString);
-                const NavTabItem = this.navTab.querySelector('[href="' + queryString + '"]');
-                const target     = queryString.substr(1);
+            if (queryString && queryString.substr(0, 6) === '#open_') {
+                const target     = decodeURI(queryString.substr(6));
+                const NavTabItem = this.navTab.querySelector('[href="#' + target + '"]');
 
                 if (NavTabItem) {
+                    if (!this.$isInViewport(Elm)) {
+                        new Fx.Scroll(window, {
+                            duration: 500
+                        }).toElement(Elm);
+                    }
+
                     self.$setNavItemPos(NavTabItem.parentElement);
                     self.toggle(NavTabItem.parentElement, target);
                 }
@@ -302,6 +313,21 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
                 marginLeft  = window.getComputedStyle(Item, null).getPropertyValue('padding-left');
 
             new Fx.Scroll(this.navTab).start(Item.offsetLeft - parseInt(paddingLeft) - parseInt(marginLeft), 0);
+        },
+
+        /**
+         * Check if element is in viewport
+         * @param element
+         * @return {boolean}
+         */
+        $isInViewport: function (element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
         }
     });
 });
