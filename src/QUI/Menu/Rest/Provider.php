@@ -71,7 +71,13 @@ class Provider implements ProviderInterface
                 return Handler::getGenericErrorResponse('Field "'.$field.'" is missing.');
             }
 
-            $menu[$field] = Orthos::clear($params[$field]);
+            if (\is_array($params[$field])) {
+                $value = Orthos::clearArray($params[$field]);
+            } else {
+                $value = Orthos::clear($params[$field]);
+            }
+
+            $menu[$field] = $value;
         }
 
         $optionalFields = [
@@ -85,10 +91,18 @@ class Provider implements ProviderInterface
                 continue;
             }
 
-            if (\is_array($params[$field])) {
-                $value = Orthos::clearArray($params[$field]);
-            } else {
-                $value = Orthos::clear($params[$field]);
+            $value = $params[$field];
+
+            switch ($field) {
+                case 'data':
+                    break;
+
+                default:
+                    if (\is_array($params[$field])) {
+                        $value = Orthos::clearArray($params[$field]);
+                    } else {
+                        $value = Orthos::clear($params[$field]);
+                    }
             }
 
             $menu[$field] = $value;
@@ -104,13 +118,13 @@ class Provider implements ProviderInterface
                 $menuId = (int)$menu['id'];
 
                 try {
-                    $menu = MenuHandler::getMenu($menuId);
+                    $Menu = MenuHandler::getMenu($menuId);
                 } catch (\Exception $Exception) {
                     QUI\System\Log::writeDebugException($Exception);
-                    $menu = false;
+                    $Menu = false;
                 }
 
-                if ($menu) {
+                if ($Menu) {
                     throw new QUI\Exception(
                         'Menu with specific id #'.$menuId.' cannot be created, since a menu with this id already'
                         .' exists.'
@@ -230,10 +244,18 @@ class Provider implements ProviderInterface
                 continue;
             }
 
-            if (\is_array($params[$field])) {
-                $value = Orthos::clearArray($params[$field]);
-            } else {
-                $value = Orthos::clear($params[$field]);
+            $value = $params[$field];
+
+            switch ($field) {
+                case 'data':
+                    break;
+
+                default:
+                    if (\is_array($params[$field])) {
+                        $value = Orthos::clearArray($params[$field]);
+                    } else {
+                        $value = Orthos::clear($params[$field]);
+                    }
             }
 
             $menu[$field] = $value;
