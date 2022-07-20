@@ -31,7 +31,8 @@
             <ul class="quiqqer-menu-navTabsVertical-tabs-nav quiqqer-tab-nav">
                 {foreach from=$entries item=entry key=key}
                 <li class="quiqqer-tab-nav-item {if $key == 0}active{/if}" data-entry-nav-pos="{$key}">
-                    <a href="#{QUI\Utils\Security\Orthos::urlEncodeString($entry.title)}">
+                    <a href="#{QUI\Utils\Security\Orthos::urlEncodeString($entry.title)}"
+                       data-qui-disableTemplateScroll="1">
                         {if isset($entry.titleIcon) && $entry.titleIcon}
                             {image src=$entry.titleIcon width="80" height="80"}
                         {/if}
