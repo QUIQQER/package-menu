@@ -244,6 +244,11 @@
             <de><![CDATA[Darf Menüs editieren]]></de>
             <en><![CDATA[Is allowed to edit menus]]></en>
         </locale>
+
+        <locale name="provider.Rest.title">
+            <de><![CDATA[QUIQQER Menüs REST API]]></de>
+            <en><![CDATA[QUIQQER Menus REST API]]></en>
+        </locale>
     </groups>
 
     <groups name="quiqqer/menu" datatype="php">
