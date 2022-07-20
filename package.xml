@@ -23,5 +23,9 @@
             <license><![CDATA[PCSG QL-1.0]]></license>
             <license><![CDATA[GPL-3.0+]]></license>
         </copyright>
+
+        <provider>
+            <rest src="\QUI\Menu\Rest\Provider"/>
+        </provider>
     </package>
 </quiqqer>
