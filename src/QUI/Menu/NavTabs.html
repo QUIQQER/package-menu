@@ -1,7 +1,7 @@
 <ul class="quiqqer-menu-navTabs-tabs quiqqer-tab-nav" role="tablist">
     {foreach from=$entries item=entry key=key}
         <li class="quiqqer-menu-navTabs-tabs-item quiqqer-tab-nav-item {if $key == $active - 1}active{/if}">
-            <a href="#{$entry.title|escape:'url'}">{$entry.title}</a>
+            <a href="#{$entry.title|escape:'url'}" data-qui-disableTemplateScroll="1">{$entry.title}</a>
         </li>
     {/foreach}
 </ul>
