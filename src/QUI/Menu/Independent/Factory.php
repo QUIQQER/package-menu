@@ -41,5 +41,11 @@ class Factory
         QUI::getDataBase()->delete(Handler::table(), [
             'id' => $menuId
         ]);
+
+        try {
+            QUI::getEvents()->fireEvent('quiqqerMenuIndependentDelete', [$menuId]);
+        } catch (\Exception $Exception) {
+            QUI\System\Log::writeException($Exception);
+        }
     }
 }
