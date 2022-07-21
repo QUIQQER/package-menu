@@ -120,6 +120,11 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
 
                 self.$setNavItemPos(NavTabItem);
                 self.toggle(NavTabItem, target);
+
+                const url = window.location.href;
+                const newUrl = url.split('#')[0] + '#open_' + target;
+
+                history.pushState(null, null, newUrl);
             }
 
             this.navTabsItems.addEvent('click', clickEvent);
