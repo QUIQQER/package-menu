@@ -31,13 +31,20 @@
             <ul class="quiqqer-menu-navTabsVertical-tabs-nav quiqqer-tab-nav">
                 {foreach from=$entries item=entry key=key}
                 <li class="quiqqer-tab-nav-item {if $key == 0}active{/if}" data-entry-nav-pos="{$key}">
-                    <a href="#{QUI\Utils\Security\Orthos::urlEncodeString($entry.title)}"
+                    {assign var=entryTitle value=''}
+                    {if isset($entry['title']) && $entry['title']}
+                        {assign var=entryTitle value=$entry['title']}
+                    {elseif isset($entry['entryTitle']) && $entry['entryTitle']}
+                        {assign var=entryTitle value=$entry['entryTitle']}
+                    {/if}
+
+                    <a href="#{QUI\Utils\Security\Orthos::urlEncodeString($entryTitle)}"
                        data-qui-disableTemplateScroll="1">
                         {if isset($entry.titleIcon) && $entry.titleIcon}
                             {image src=$entry.titleIcon width="80" height="80"}
                         {/if}
 
-                        <span class="verticalTabSwitcher-nav-entry-label">{$entry.title}</span>
+                        <span class="verticalTabSwitcher-nav-entry-label">{$entryTitle}</span>
                     </a>
                 </li>
                 {assign var=modKey value=$key+1}
@@ -51,27 +58,46 @@
         <ul class="quiqqer-tab-content">
             {foreach from=$entries item=entry key=key}
 
-            <li class="quiqqer-tab-content-item {if $key == 0}active{/if}" {if $key !== 0}style="display: none;"{/if}
-                    data-entry-content-pos="{$key}" id="{QUI\Utils\Security\Orthos::urlEncodeString($entry.title)}">
-
-                {if isset($entry.image) && $entry.image && $imagePos == 'top'}
-                <div class="quiqqer-menu-navTabsVertical-content-image
-                            quiqqer-menu-navTabsVertical-content-image__top">
-                    {image src=$entry.image width="600" height="600"}
-                </div>
+                {assign var=entryTitle value=''}
+                {if isset($entry['title']) && $entry['title']}
+                    {assign var=entryTitle value=$entry['title']}
+                {elseif isset($entry['entryTitle']) && $entry['entryTitle']}
+                    {assign var=entryTitle value=$entry['entryTitle']}
                 {/if}
 
-                {if isset($entry.content) && $entry.content}
-                    {$entry.content}
+                {assign var=entryContent value=''}
+                {if isset($entry['content']) && $entry['content']}
+                    {assign var=entryContent value=$entry['content']}
+                {elseif isset($entry['entryContent']) && $entry['entryContent']}
+                    {assign var=entryContent value=$entry['entryContent']}
                 {/if}
 
-                {if isset($entry.image) && $entry.image && $imagePos == 'bottom'}
-                <div class="quiqqer-menu-navTabsVertical-content-image
-                            quiqqer-menu-navTabsVertical-content-image__bottom">
-                    {image src=$entry.image width="600" height="600"}
-                </div>
+                {assign var=entryImage value=''}
+                {if isset($entry['image']) && $entry['image']}
+                    {assign var=entryImage value=$entry['image']}
+                {elseif isset($entry['entryImage']) && $entry['entryImage']}
+                    {assign var=entryImage value=$entry['entryImage']}
                 {/if}
-            </li>
+
+                <li class="quiqqer-tab-content-item {if $key == 0}active{/if}" {if $key !== 0}style="display: none;"{/if}
+                        data-entry-content-pos="{$key}" id="{QUI\Utils\Security\Orthos::urlEncodeString($entryTitle)}">
+
+                    {if $entryImage && $imagePos == 'top'}
+                        <div class="quiqqer-menu-navTabsVertical-content-image
+                                    quiqqer-menu-navTabsVertical-content-image__top">
+                            {image src=$entryImage width="600" height="600"}
+                        </div>
+                    {/if}
+
+                    {$entryContent}
+
+                    {if $entryImage && $imagePos == 'bottom'}
+                        <div class="quiqqer-menu-navTabsVertical-content-image
+                                    quiqqer-menu-navTabsVertical-content-image__bottom">
+                            {image src=$entryImage width="600" height="600"}
+                        </div>
+                    {/if}
+                </li>
             {assign var=modKey value=$key+1}
             {/foreach}
         </ul>

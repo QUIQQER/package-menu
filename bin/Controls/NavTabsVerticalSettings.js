@@ -53,6 +53,45 @@ define('package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings', [
         },
 
         /**
+         * @event on import
+         *
+         * https://dev.quiqqer.com/quiqqer/package-bricks/issues/97
+         */
+        $onImport: function () {
+            // look if some value exist
+            var value = this.getElm().value;
+
+            if (value === '') {
+                this.parent();
+                return;
+            }
+
+            value = JSON.decode(value);
+
+            if (typeOf(value) !== 'array') {
+                this.parent();
+                return;
+            }
+
+            for (var i = 0, len = value.length; i < len; i++) {
+                if (typeof value[i].content !== 'undefined') {
+                    value[i]['entryContent'] = value[i].content;
+                }
+
+                if (typeof value[i].title !== 'undefined') {
+                    value[i]['entryTitle'] = value[i].title;
+                }
+
+                if (typeof value[i].image !== 'undefined') {
+                    value[i]['entryImage'] = value[i].title;
+                }
+            }
+
+            this.getElm().value = JSON.encode(value);
+            this.parent();
+        },
+
+        /**
          * set the project to the control
          *
          * @param Project
