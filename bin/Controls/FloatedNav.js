@@ -21,19 +21,22 @@ define('package/quiqqer/menu/bin/Controls/FloatedNav', [
 
         Binds: [
             '$onImport',
-            '$setMobileBtnStatusToOpen',
-            '$setMobileBtnStatusToClose',
+            '$setToggleBtnStatusToOpen',
+            '$setToggleBtnStatusToClose',
             '$toggleNav',
             '$resize'
         ],
 
         options: {
-            pos              : 'right', // right, left
-            initanimation    : false,
-            animationtype    : 'showAll', // showAll (show entire control), showOneByOne (show each entry one by one)
-            animationeasing  : 'easeOutExpo', // see easing names on https://easings.net/
-            animationduration: 500, // number
-            showopenbutton   : 'mobile' // always / mobile / hide
+            pos                : 'right', // right, left
+            initanimation      : false,
+            animationtype      : 'showAll', // showAll (show entire control), showOneByOne (show each entry one by one)
+            animationeasing    : 'easeOutExpo', // see easing names on https://easings.net/
+            animationduration  : 500, // number
+            showtogglebutton   : 'mobile', // always / mobile / hide
+            forceverticalcenter: false // if true, container will be centered per JS.
+                                       // Pure css way (top: 50%; transform: translateY: (-50%);)
+                                       // causes jumping effect on mobile, when url bar disappears
         },
 
         initialize: function (options) {
@@ -43,16 +46,18 @@ define('package/quiqqer/menu/bin/Controls/FloatedNav', [
                 onImport: this.$onImport
             });
 
-            this.$Control         = null;
-            this.$Nav             = null;
-            this.$MobileBtn       = null;
-            this.showOpenBtn      = 'mobile';
-            this.isBtnOpen        = false;
-            this.$entries         = null;
-            this.$pos             = 'right';
-            this.$animationType   = 'showAll';
-            this.$animationEasing = 'easeOutExpo';
-            this.isMobile         = QUI.getWindowSize().x < 768;
+            this.$Control            = null;
+            this.$Nav                = null;
+            this.$ToggleBtn          = null;
+            this.showToggleBtn       = 'mobile';
+            this.isBtnOpen           = false;
+            this.$entries            = null;
+            this.$pos                = 'right';
+            this.$animationType      = 'showAll';
+            this.$animationEasing    = 'easeOutExpo';
+            this.isMobile            = QUI.getWindowSize().x < 768;
+            this.forceVerticalCenter = false;
+            this.winHeight           = window.innerHeight;
 
             QUI.addEvent('resize', this.$resize);
         },
@@ -64,13 +69,13 @@ define('package/quiqqer/menu/bin/Controls/FloatedNav', [
             this.$Control         = this.getElm();
             this.$Nav             = this.getElm().querySelector('nav');
             this.$entries         = this.$Nav.querySelectorAll('.quiqqer-floatedNav-entry');
-            this.showOpenBtn      = this.getAttribute('showopenbutton');
+            this.showToggleBtn    = this.getAttribute('showtogglebutton');
             this.$initAnimation   = this.getAttribute('initanimation');
             this.$animationType   = this.getAttribute('animationtype');
             this.$animationEasing = this.getAttribute('animationeasing');
 
-            if (this.$Control.get('data-qui-options-showopenbutton')) {
-                this.showOpenBtn = this.$Control.get('data-qui-options-showopenbutton');
+            if (this.$Control.get('data-qui-options-showtogglebutton')) {
+                this.showToggleBtn = this.$Control.get('data-qui-options-showtogglebutton');
             }
 
             if (this.$Control.get('data-qui-options-initanimation')) {
@@ -85,7 +90,12 @@ define('package/quiqqer/menu/bin/Controls/FloatedNav', [
                 this.$animationEasing = this.$getEasingName(this.$Control.get('data-qui-options-animationeasing'));
             }
 
-            this.$initMobileBtn();
+            if (this.$Control.get('data-qui-options-forceverticalcenter')) {
+                this.forceVerticalCenter = true;
+                this.$centerVertical();
+            }
+
+            this.$initToggleBtn();
 
             if (this.$initAnimation) {
                 this.$initStartAnimation();
@@ -94,11 +104,12 @@ define('package/quiqqer/menu/bin/Controls/FloatedNav', [
             }
         },
 
-        $initMobileBtn: function () {
-            this.$MobileBtn = this.$Control.querySelector('.quiqqer-floatedNav-showMobileBtn');
+        $initToggleBtn: function () {
+            this.$ToggleBtn = this.$Control.querySelector('.quiqqer-floatedNav-toggleBtn');
 
-            if (this.$MobileBtn) {
-                this.$MobileBtn.addEventListener('click', this.$toggleNav)
+            if (this.$ToggleBtn) {
+                this.$Nav.set('data-qui-open', 0);
+                this.$ToggleBtn.addEventListener('click', this.$toggleNav)
             }
         },
 
@@ -122,8 +133,8 @@ define('package/quiqqer/menu/bin/Controls/FloatedNav', [
                         });
                     })
 
-                    if (this.$MobileBtn) {
-                        this.$MobileBtn.setStyles({
+                    if (this.$ToggleBtn) {
+                        this.$ToggleBtn.setStyles({
                             visibility: 'visible',
                             transform : 'translateX(60px)'
                         });
@@ -132,8 +143,8 @@ define('package/quiqqer/menu/bin/Controls/FloatedNav', [
             }
 
             if (this.isMobile) {
-                if (this.$MobileBtn) {
-                    this.$showOneByOne(this.$MobileBtn, 750);
+                if (this.$ToggleBtn) {
+                    this.$showOneByOne(this.$ToggleBtn, 750);
                     this.$Nav.set('data-qui-open', 0);
                 } else {
                     this.$showOneByOne(this.$entries, 750);
@@ -149,9 +160,9 @@ define('package/quiqqer/menu/bin/Controls/FloatedNav', [
                     case 'showOneByOne':
                         let entries = Array.from(this.$entries);
 
-                        if (this.$MobileBtn && this.showOpenBtn === 'always') {
-                            this.$setMobileBtnStatusToClose();
-                            entries.unshift(this.$MobileBtn);
+                        if (this.$ToggleBtn && this.showOpenBtn === 'always') {
+                            this.$setToggleBtnStatusToClose();
+                            entries.unshift(this.$ToggleBtn);
                         }
 
                         this.$showOneByOne(entries, 750);
@@ -162,17 +173,20 @@ define('package/quiqqer/menu/bin/Controls/FloatedNav', [
         },
 
         $initWithoutStartAnimation: function () {
-            if (!this.$MobileBtn) {
+            return;
+
+            if (!this.$ToggleBtn) {
                 return;
             }
 
             if (this.isMobile) {
                 switch (this.$animationType) {
                     case 'showAll':
-                        this.$Nav.setStyles({
+                        /*this.$Nav.setStyles({
                             visibility: 'visible',
                             right     : -this.$Nav.getSize().x - 50
-                        })
+                        })*/
+
                         break;
 
                     case 'showOneByOne':
@@ -184,24 +198,26 @@ define('package/quiqqer/menu/bin/Controls/FloatedNav', [
                         })
 
                         this.$Nav.set('data-qui-open', 0);
-                        this.$setMobileBtnStatusToOpen();
+                        this.$setToggleBtnStatusToOpen();
                         break;
                 }
 
             } else {
                 this.$Nav.set('data-qui-open', 1);
-                this.$setMobileBtnStatusToClose();
+                this.$setToggleBtnStatusToClose();
             }
         },
 
         $toggleNav: function () {
-            if (!this.$MobileBtn) {
+            if (!this.$ToggleBtn) {
                 return;
             }
 
+
             if (this.$Nav.get('data-qui-open') === '1') {
+
                 this.$Nav.set('data-qui-open', 0);
-                this.$animateMobileBtnToClose();
+                this.$animateToggleBtnToClose();
 
                 switch (this.$animationType) {
                     case 'showAll':
@@ -216,8 +232,9 @@ define('package/quiqqer/menu/bin/Controls/FloatedNav', [
                 return;
             }
 
+
             this.$Nav.set('data-qui-open', 1);
-            this.$animateMobileBtnToOpen();
+            this.$animateToggleBtnToOpen();
 
             switch (this.$animationType) {
                 case 'showAll':
@@ -272,12 +289,13 @@ define('package/quiqqer/menu/bin/Controls/FloatedNav', [
          * @param delay {number}
          */
         $show: function (Elm, delay = 0) {
+            Elm.style.transform = 'translateX(100px)';
             anime({
-                targets : Elm,
+                targets   : Elm,
                 translateX: 0,
-                delay   : delay,
-                duration: 500,
-                easing  : this.$animationEasing
+                delay     : delay,
+                duration  : 500,
+                easing    : this.$animationEasing
             });
         },
 
@@ -289,55 +307,55 @@ define('package/quiqqer/menu/bin/Controls/FloatedNav', [
          */
         $hide: function (Elm, delay = 0) {
             anime({
-                targets : Elm,
+                targets   : Elm,
                 translateX: 100,
-                delay   : delay,
-                duration: 500,
-                easing  : this.$animationEasing
+                delay     : delay,
+                duration  : 500,
+                easing    : this.$animationEasing
             });
         },
 
-        $setMobileBtnStatusToOpen: function () {
-            if (!this.$MobileBtn) {
+        $setToggleBtnStatusToOpen: function () {
+            if (!this.$ToggleBtn) {
                 return;
             }
 
-            this.$MobileBtn.querySelector('.fa').setStyle('transform', 'rotate(0)');
+            this.$ToggleBtn.querySelector('.fa').setStyle('transform', 'rotate(0)');
         },
 
-        $setMobileBtnStatusToClose: function () {
-            if (!this.$MobileBtn) {
+        $setToggleBtnStatusToClose: function () {
+            if (!this.$ToggleBtn) {
                 return;
             }
 
-            this.$MobileBtn.querySelector('.fa').setStyle('transform', 'rotate(180deg)');
+            this.$ToggleBtn.querySelector('.fa').setStyle('transform', 'rotate(180deg)');
         },
 
-        $animateMobileBtnToOpen: function () {
-            if (!this.$MobileBtn) {
+        $animateToggleBtnToOpen: function () {
+            if (!this.$ToggleBtn) {
                 return;
             }
 
             this.isBtnOpen = true;
 
             anime({
-                targets: this.$MobileBtn.querySelector('.fa'),
+                targets: this.$ToggleBtn.querySelector('.fa'),
                 rotate : 180,
             })
         },
 
-        $animateMobileBtnToClose: function () {
-            if (!this.$MobileBtn) {
+        $animateToggleBtnToClose: function () {
+            if (!this.$ToggleBtn) {
                 return;
             }
 
             this.isBtnOpen = false;
 
             anime({
-                targets : this.$MobileBtn.querySelector('.fa'),
+                targets : this.$ToggleBtn.querySelector('.fa'),
                 rotate  : 360,
                 complete: () => {
-                    this.$MobileBtn.querySelector('.fa').setStyle('transform', 'rotate(0)');
+                    this.$ToggleBtn.querySelector('.fa').setStyle('transform', 'rotate(0)');
                 }
             })
         },
@@ -350,7 +368,7 @@ define('package/quiqqer/menu/bin/Controls/FloatedNav', [
                 }
 
                 if (!this.isBtnOpen && this.showOpenBtn === 'mobile') {
-                    this.$showOneByOne(this.$MobileBtn);
+                    this.$showOneByOne(this.$ToggleBtn);
                 }
 
                 return;
@@ -362,9 +380,23 @@ define('package/quiqqer/menu/bin/Controls/FloatedNav', [
                 }
 
                 if (this.isBtnOpen && this.showOpenBtn === 'mobile') {
-                    this.$hideOneByOne(this.$MobileBtn);
+                    this.$hideOneByOne(this.$ToggleBtn);
                 }
             }
+
+            // recalculate vertical position
+            if (this.forceVerticalCenter && this.winHeight !== window.innerHeight) {
+                this.winHeight = window.innerHeight;
+                this.$centerVertical();
+            }
+        },
+
+        /**
+         * Calculate vertical position of the control
+         */
+        $centerVertical: function () {
+            this.$Control.style.top       = (window.innerHeight / 2) - (this.$Control.offsetHeight / 2) + 'px';
+            this.$Control.style.transform = 'initial';
         },
 
         /**
