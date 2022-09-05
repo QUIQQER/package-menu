@@ -2,21 +2,21 @@
 /* variables */
 /*************/
 .quiqqer-floatedNavControl__size-medium {
-    --quiqqer-floatedNav-spacing: 0.75rem;
     --quiqqer-floatedNav-fontSize: 1.75rem;
     --quiqqer-floatedNav-size: 3rem;
+    --quiqqer-floatedNav-spacing: 0.75rem;
 }
 
 .quiqqer-floatedNavControl__size-small {
-    --quiqqer-floatedNav-spacing: 0.5rem;
     --quiqqer-floatedNav-fontSize: 1.25rem;
     --quiqqer-floatedNav-size: 2rem;
+    --quiqqer-floatedNav-spacing: 0.5rem;
 }
 
 .quiqqer-floatedNavControl__size-large {
-    --quiqqer-floatedNav-spacing: 1rem;
     --quiqqer-floatedNav-fontSize: 2rem;
     --quiqqer-floatedNav-size: 3.5rem;
+    --quiqqer-floatedNav-spacing: 1rem;
 }
 
 /***********/
@@ -29,10 +29,6 @@
     z-index: 10;
 }
 
-.quiqqer-floatedNav {
-    /*position: absolute;*/
-}
-
 .quiqqer-floatedNavControl__posX-right {
     right: 0;
 }
@@ -41,12 +37,18 @@
     left: 0;
 }
 
+@media screen and (max-width: 767px) {
+    .quiqqer-floatedNavControl__toggleButton-mobile.quiqqer-floatedNavControl__posX-right .quiqqer-floatedNav {
+        transform: translateX(100px);
+    }
+}
+
 .quiqqer-floatedNav-entry {
     /*transition: 0.2s all ease;*/
 }
 
 .quiqqer-floatedNav-entry-inner,
-.quiqqer-floatedNav-showMobileBtn {
+.quiqqer-floatedNav-toggleBtn {
     background: var(--qui-color-main, #333);
     border: var(--qui-border-width, 2px) solid var(--qui-color-main, #333);
     color: var(--qui-color-main-contrast, #fff);
@@ -54,28 +56,28 @@
     display: block;
     font-size: var(--quiqqer-floatedNav-fontSize);
     line-height: calc(var(--quiqqer-floatedNav-size) - (2 * var(--qui-border-width, 2px)));
+    overflow: hidden;
     text-align: center;
     width: var(--quiqqer-floatedNav-size);
-    overflow: hidden;
 }
 
 /* lang switch */
 .quiqqer-floatedNav .quiqqer-bricks-languageswitch-flag {
-    font-size: calc(0.75 * var(--quiqqer-floatedNav-fontSize));
-    width: var(--quiqqer-floatedNav-size);
     display: flex;
     flex-direction: column;
-    overflow: hidden;
     float: none;
+    font-size: calc(0.75 * var(--quiqqer-floatedNav-fontSize));
+    overflow: hidden;
+    width: var(--quiqqer-floatedNav-size);
 }
 
 .quiqqer-floatedNav .quiqqer-bricks-languageswitch-flag-entry {
     background: var(--qui-color-main, #333);
+    color: var(--qui-color-main-contrast, #fff);
+    font-weight: bold;
     line-height: calc(0.5 * var(--quiqqer-floatedNav-size));
     padding: 0;
     text-align: center;
-    color: var(--qui-color-main-contrast, #fff);
-    font-weight: bold;
     text-transform: uppercase;
 }
 
@@ -88,30 +90,31 @@
 }
 
 .quiqqer-floatedNav .quiqqer-bricks-languageswitch-flag-entry-text {
-    line-height: inherit;
     display: block;
+    line-height: inherit;
 }
 
 
 /* hover */
 .quiqqer-floatedNav-entry:hover,
 .quiqqer-bricks-languageswitch-flag-entry:hover,
-.quiqqer-floatedNav-showMobileBtn:hover {
+.quiqqer-floatedNav-toggleBtn:hover {
     filter: brightness(90%);
 }
 
-/* mobile */
-.quiqqer-floatedNav-showMobileBtn {
+/* Toggle btn */
+.quiqqer-floatedNav-toggleBtn {
+    display: none;
     text-align: center;
 }
 
-.quiqqer-floatedNav-showMobileBtn .fa {
-    line-height: inherit;
+.quiqqer-floatedNav-toggleBtn .fa {
     cursor: pointer;
+    line-height: inherit;
 }
 
 @media screen and (max-width: 767px) {
-    .quiqqer-floatedNav-showMobileBtn {
+    .quiqqer-floatedNav-toggleBtn {
         display: block;
     }
 }
@@ -129,6 +132,19 @@
     padding: var(--quiqqer-floatedNav-spacing);
 }
 
+.quiqqer-floatedNavControl__design-iconsBar .quiqqer-floatedNav-toggleBtn {
+    font-size: calc(var(--quiqqer-floatedNav-fontSize) / 1.5);
+    line-height: calc((var(--quiqqer-floatedNav-size) - (2 * var(--qui-border-width, 2px))) / 1.5);
+    margin-bottom: var(--quiqqer-floatedNav-spacing);
+    width: calc(var(--quiqqer-floatedNav-size) / 1.5);
+}
+
+/* nav on the right */
+.quiqqer-floatedNavControl__posX-right.quiqqer-floatedNavControl__design-iconsBar .quiqqer-floatedNav-toggleBtn {
+    margin-left: auto;
+}
+
+.quiqqer-floatedNavControl__design-iconsBar .quiqqer-floatedNav-toggleBtn,
 .quiqqer-floatedNavControl__design-iconsBar .quiqqer-floatedNav-entry-inner,
 .quiqqer-floatedNavControl__design-iconsBar .quiqqer-bricks-languageswitch-flag {
     border-radius: var(--qui-btn-border-radius, 5px);
@@ -140,7 +156,7 @@
 
 /* Design: flat */
 .quiqqer-floatedNavControl__design-flat .quiqqer-floatedNav-entry:not(:last-child),
-.quiqqer-floatedNavControl__design-flat .quiqqer-floatedNav-showMobileBtn {
+.quiqqer-floatedNavControl__design-flat .quiqqer-floatedNav-toggleBtn {
     margin-bottom: 2px;
 }
 
@@ -148,7 +164,7 @@
 /* Animation */
 /*************/
 .quiqqer-floatedNavControl__initAnimation .quiqqer-floatedNav__animation-showAll,
-.quiqqer-floatedNavControl__initAnimation .quiqqer-floatedNav-showMobileBtn,
+.quiqqer-floatedNavControl__initAnimation .quiqqer-floatedNav-toggleBtn,
 .quiqqer-floatedNavControl__initAnimation .quiqqer-floatedNav__animation-showOneByOne .quiqqer-floatedNav-entry {
     visibility: hidden;
 }
@@ -161,7 +177,7 @@
 }
 
 @media screen and (min-width: 798px) {
-    .quiqqer-floatedNavControl__noInitAnimation .quiqqer-floatedNav-showMobileBtn .fa {
+    .quiqqer-floatedNavControl__noInitAnimation .quiqqer-floatedNav-toggleBtn .fa {
         transform: rotate(180deg);
     }
 }
@@ -170,11 +186,3 @@
 /* nav init open status */
 /************************/
 
-/******************/
-/* No open button */
-/******************/
-.quiqqer-floatedNavControl__noOpenBtn.quiqqer-floatedNavControl__noInitAnimation .quiqqer-floatedNav__animation-showOneByOne .quiqqer-floatedNav-entry {
-    visibility: initial;
-    transform: translateX(0);
-
-}

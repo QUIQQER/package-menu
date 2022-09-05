@@ -25,17 +25,18 @@ class FloatedNav extends QUI\Control
     {
         // default options
         $this->setAttributes([
-            'class'           => 'quiqqer-floatedNavControl',
-            'menuId'          => false,
-            'posX'            => 'right', // right, left
-            'size'            => 'medium', // small, medium, large
-            'design'          => 'iconBar', // iconBar, flat
-            'animationType'   => false, // false, showAll (show entire control), showOneByOne (show each entry one by one)
-            'initAnimation'   => false,
-            'animationEasing' => 'easeOutExpo', // see easing names on https://easings.net/
+            'class'               => 'quiqqer-floatedNavControl',
+            'menuId'              => false,
+            'posX'                => 'right', // right, left
+            'forceVerticalCenter' => true, // if true, container will be centered per JS. pure css way (top: 50%; transform: translateY: (-50%);) causes jumping effect on mobile, when url bar disappears
+            'size'                => 'medium', // small, medium, large
+            'design'              => 'iconBar', // iconBar, flat
+            'animationType'       => false, // false, showAll (show entire control), showOneByOne (show each entry one by one)
+            'initAnimation'       => false,
+            'animationEasing'     => 'easeOutExpo', // see easing names on https://easings.net/
 //            'navInitOpen'     => 'always', // always, desktop, never
-            'showOpenButton' => 'mobile', // always, mobile, hide,
-            'showLangSwitch'  => false,
+            'showToggleButton'    => 'mobile', // always, mobile, hide,
+            'showLangSwitch'      => false,
         ]);
 
         parent::__construct($attributes);
@@ -69,19 +70,20 @@ class FloatedNav extends QUI\Control
             return '';
         }
 
-        $showOpenButton = true;
-        switch ($this->getAttribute('showOpenButton')) {
+        $showToggleButton = true;
+        switch ($this->getAttribute('showToggleButton')) {
             case 'always':
-                $this->setJavaScriptControlOption('showopenbutton', 'always');
+                $this->setJavaScriptControlOption('showtogglebutton', 'always');
+                $this->addCSSClass('quiqqer-floatedNavControl__toggleButton-always');
                 break;
 
             case 'mobile':
-                $this->setJavaScriptControlOption('showopenbutton', 'mobile');
+                $this->setJavaScriptControlOption('showtogglebutton', 'mobile');
+                $this->addCSSClass('quiqqer-floatedNavControl__toggleButton-mobile');
                 break;
 
             case 'hide':
-                $this->addCSSClass('quiqqer-floatedNavControl__noOpenBtn');
-                $showOpenButton = false;
+                $showToggleButton = false;
                 break;
         }
 
@@ -149,6 +151,10 @@ class FloatedNav extends QUI\Control
             $initAnimation = 'quiqqer-floatedNavControl__initAnimation';
         }
 
+        if ($this->getAttribute('forceVerticalCenter')) {
+            $this->setJavaScriptControlOption('forceverticalcenter', 1);
+        }
+
         $this->addCSSClass($initAnimation);
 
         $this->addCSSClass($size);
@@ -158,11 +164,11 @@ class FloatedNav extends QUI\Control
         $children = $IndependentMenu->getChildren();
 
         $Engine->assign([
-            'this'       => $this,
-            'children'   => $children,
-            'animation'  => $animation,
-            'LangSwitch' => $LangSwitch,
-            'showOpenButton' => $showOpenButton
+            'this'             => $this,
+            'children'         => $children,
+            'animation'        => $animation,
+            'LangSwitch'       => $LangSwitch,
+            'showToggleButton' => $showToggleButton
         ]);
 
         return $Engine->fetch(dirname(__FILE__).'/FloatedNav.html');
