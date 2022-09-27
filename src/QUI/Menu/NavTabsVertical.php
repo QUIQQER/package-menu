@@ -57,7 +57,7 @@ class NavTabsVertical extends QUI\Control
         }
 
         foreach ($entries as $entry) {
-            if ($entry['isDisabled'] === 1) {
+            if (isset($entry['isDisabled']) && $entry['isDisabled'] === 1) {
                 continue;
             }
 

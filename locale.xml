@@ -224,8 +224,8 @@
             <en><![CDATA[Add entry]]></en>
         </locale>
         <locale name="control.navTabsVertical.entries.isDisable">
-            <de><![CDATA[Eintrag deaktivieren]]></de>
-            <en><![CDATA[Disable entry]]></en>
+            <de><![CDATA[Deaktiviert]]></de>
+            <en><![CDATA[Disabled]]></en>
         </locale>
         <locale name="control.navTabsVertical.entries.entryTitle">
             <de><![CDATA[Titel]]></de>

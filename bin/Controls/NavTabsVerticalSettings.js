@@ -291,9 +291,17 @@ define('package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings', [
                 if ("titleIcon" in entry && entry.titleIcon !== '') {
                     insert.titleIcon = entry.titleIcon;
 
-                    insert.titleIconPreview = new Element('img', {
-                        src: URL_DIR + insert.entryImage + '&maxwidth=50&maxheight=50'
-                    });
+                    if (entry.titleIcon.includes('fa ')) {
+                        insert.titleIconPreview = new Element('span', {
+                            'class': insert.titleIcon
+                        });
+                    } else {
+                        insert.titleIconPreview = new Element('img', {
+                            src   : URL_DIR + insert.titleIcon + '&maxwidth=50&maxheight=50',
+                            width : 50,
+                            height: 50
+                        });
+                    }
                 }
 
                 if ("entryTitle" in entry) {
@@ -304,7 +312,9 @@ define('package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings', [
                     insert.entryImage = entry.entryImage;
 
                     insert.entryImagePreview = new Element('img', {
-                        src: URL_DIR + insert.entryImage + '&maxwidth=50&maxheight=50'
+                        src   : URL_DIR + insert.entryImage + '&maxwidth=50&maxheight=50',
+                        width : 50,
+                        height: 50
                     });
                 }
 
