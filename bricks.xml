@@ -139,11 +139,6 @@
                     <locale group="quiqqer/menu" var="control.navTabsVertical.entries"/>
                 </setting>
 
-<!--                <setting name="entries"-->
-<!--                         data-qui="package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings">-->
-<!--                    <locale group="quiqqer/menu"-->
-<!--                            var="control.navTabsVertical.entries"/>-->
-<!--                </setting>-->
             </settings>
         </brick>
 

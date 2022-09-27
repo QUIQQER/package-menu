@@ -50,14 +50,23 @@ class NavTabsVertical extends QUI\Control
     {
         $Engine  = QUI::getTemplateManager()->getEngine();
         $entries = $this->getAttribute('entries');
+        $enabledEntries = [];
 
         if (is_string($entries)) {
             $entries = json_decode($entries, true);
         }
 
+        foreach ($entries as $entry) {
+            if ($entry['isDisabled'] === 1) {
+                continue;
+            }
+
+            array_push($enabledEntries, $entry);
+        }
+
         $Engine->assign([
             'this'       => $this,
-            'entries'    => $entries,
+            'entries'    => $enabledEntries,
             'navTitle'   => $this->getAttribute('navTitle'),
             'navContent' => $this->getAttribute('navContent'),
             'imagePos'   => $this->getAttribute('imagePos')
