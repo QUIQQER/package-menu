@@ -18,16 +18,17 @@ define('package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings', [
     'text!package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings.html',
     'css!package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings.css'
 
-], function (QUI,
-             QUIControl,
-             QUIConfirm,
-             QUIButton,
-             QUISwitch,
-             QUILocale,
-             Mustache,
-             Grid,
-             ControlsUtils,
-             templateEntry
+], function (
+    QUI,
+    QUIControl,
+    QUIConfirm,
+    QUIButton,
+    QUISwitch,
+    QUILocale,
+    Mustache,
+    Grid,
+    ControlsUtils,
+    templateEntry
 ) {
     "use strict";
 
@@ -36,7 +37,7 @@ define('package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings', [
     return new Class({
 
         Extends: QUIControl,
-        Type: 'package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings',
+        Type   : 'package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings',
 
         Binds: [
             '$onImport',
@@ -51,7 +52,7 @@ define('package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings', [
             this.parent(options);
 
             this.$Input = null;
-            this.$Grid = null;
+            this.$Grid  = null;
 
             this.$data = [];
 
@@ -68,14 +69,14 @@ define('package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings', [
 
             this.$Elm = new Element('div', {
                 'class': 'quiqqer-menu-navTabsVertival-settings',
-                styles: {
-                    clear: 'both',
-                    'float': 'left',
-                    height: 400,
+                styles : {
+                    clear   : 'both',
+                    'float' : 'left',
+                    height  : 400,
                     overflow: 'hidden',
                     position: 'relative',
-                    margin: '10px 0 0 0',
-                    width: '100%'
+                    margin  : '10px 0 0 0',
+                    width   : '100%'
                 }
             }).wraps(this.$Input);
 
@@ -89,24 +90,24 @@ define('package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings', [
             }).inject(this.$Elm);
 
             this.$Grid = new Grid(Desktop, {
-                height: 400,
-                width: size.x,
-                buttons: [
+                height     : 400,
+                width      : size.x,
+                buttons    : [
                     {
-                        name: 'up',
-                        icon: 'fa fa-angle-up',
+                        name    : 'up',
+                        icon    : 'fa fa-angle-up',
                         disabled: true,
-                        events: {
+                        events  : {
                             onClick: function () {
                                 this.$Grid.moveup();
                                 this.$refreshSorting();
                             }.bind(this)
                         }
                     }, {
-                        name: 'down',
-                        icon: 'fa fa-angle-down',
+                        name    : 'down',
+                        icon    : 'fa fa-angle-down',
                         disabled: true,
-                        events: {
+                        events  : {
                             onClick: function () {
                                 this.$Grid.movedown();
                                 this.$refreshSorting();
@@ -115,72 +116,72 @@ define('package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings', [
                     }, {
                         type: 'separator'
                     }, {
-                        name: 'add',
+                        name     : 'add',
                         textimage: 'fa fa-plus',
-                        text: QUILocale.get('quiqqer/quiqqer', 'add'),
-                        events: {
+                        text     : QUILocale.get('quiqqer/quiqqer', 'add'),
+                        events   : {
                             onClick: this.$openAddDialog
                         }
                     }, {
                         type: 'separator'
                     }, {
-                        name: 'edit',
+                        name     : 'edit',
                         textimage: 'fa fa-edit',
-                        text: QUILocale.get('quiqqer/quiqqer', 'edit'),
-                        disabled: true,
-                        events: {
+                        text     : QUILocale.get('quiqqer/quiqqer', 'edit'),
+                        disabled : true,
+                        events   : {
                             onClick: this.$openEditDialog
                         }
                     }, {
-                        name: 'delete',
+                        name     : 'delete',
                         textimage: 'fa fa-trash',
-                        text: QUILocale.get('quiqqer/quiqqer', 'delete'),
-                        disabled: true,
-                        events: {
+                        text     : QUILocale.get('quiqqer/quiqqer', 'delete'),
+                        disabled : true,
+                        events   : {
                             onClick: this.$openDeleteDialog
                         }
                     }
                 ],
                 columnModel: [
                     {
-                        header: QUILocale.get(lg, 'control.navTabsVertical.entries.isDisable'),
+                        header   : QUILocale.get(lg, 'control.navTabsVertical.entries.isDisable'),
                         dataIndex: 'isDisabledDisplay',
-                        dataType: 'QUI',
-                        width: 80
+                        dataType : 'QUI',
+                        width    : 80
                     }, {
                         dataIndex: 'isDisabled',
-                        hidden: true
+                        hidden   : true
                     }, {
-                        header: QUILocale.get(lg, 'control.navTabsVertical.entries.entryTitleIcon'),
+                        header   : QUILocale.get(lg, 'control.navTabsVertical.entries.entryTitleIcon'),
                         dataIndex: 'titleIconPreview',
-                        dataType: 'node',
-                        width: 120
+                        dataType : 'node',
+                        width    : 120
                     },
                     {
-                        header: QUILocale.get(lg, 'control.navTabsVertical.entries.entryTitle'),
+                        header   : QUILocale.get(lg, 'control.navTabsVertical.entries.entryTitle'),
                         dataIndex: 'entryTitle',
-                        dataType: 'code',
-                        width: 120
+                        dataType : 'code',
+                        width    : 120
                     },
                     {
-                        header: QUILocale.get(lg, 'control.navTabsVertical.entries.entryImage'),
+                        header   : QUILocale.get(lg, 'control.navTabsVertical.entries.entryImage'),
                         dataIndex: 'entryImagePreview',
-                        dataType: 'node',
-                        width: 60
+                        dataType : 'node',
+                        width    : 60
                     },
                     {
-                        header: QUILocale.get(lg, 'control.navTabsVertical.entries.entryContent'),
+                        header   : QUILocale.get(lg, 'control.navTabsVertical.entries.entryContent'),
                         dataIndex: 'entryContent',
-                        dataType: 'code',
-                        width: 250
+                        dataType : 'code',
+                        width    : 250
                     },
                     {
                         dataIndex: 'newTab',
-                        hidden: true
+                        hidden   : true
                     }, {
                         dataIndex: 'image',
-                        dataType: 'string',
-                        hidden: true
+                        dataType : 'string',
+                        hidden   : true
                     }
                 ]
             });
@@ -189,19 +190,19 @@ define('package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings', [
                 onClick: function () {
                     var buttons = this.$Grid.getButtons(),
 
-                        Edit = buttons.filter(function (Btn) {
+                        Edit    = buttons.filter(function (Btn) {
                             return Btn.getAttribute('name') === 'edit';
                         })[0],
 
-                        Up = buttons.filter(function (Btn) {
+                        Up      = buttons.filter(function (Btn) {
                             return Btn.getAttribute('name') === 'up';
                         })[0],
 
-                        Down = buttons.filter(function (Btn) {
+                        Down    = buttons.filter(function (Btn) {
                             return Btn.getAttribute('name') === 'down';
                         })[0],
 
-                        Delete = buttons.filter(function (Btn) {
+                        Delete  = buttons.filter(function (Btn) {
                             return Btn.getAttribute('name') === 'delete';
                         })[0];
 
@@ -269,11 +270,11 @@ define('package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings', [
             var data = [];
 
             for (i = 0, len = this.$data.length; i < len; i++) {
-                entry = this.$data[i];
+                entry  = this.$data[i];
                 insert = {
-                    titleIcon: '',
-                    entryImage: '',
-                    titleIconPreview: new Element('span', {html: '&nbsp;'}),
+                    titleIcon        : '',
+                    entryImage       : '',
+                    titleIconPreview : new Element('span', {html: '&nbsp;'}),
                     entryImagePreview: new Element('span', {html: '&nbsp;'})
                 };
 
@@ -281,8 +282,8 @@ define('package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings', [
 
                 insert.isDisabledDisplay = new QUISwitch({
                     status: entry.isDisabled,
-                    name: i,
-                    uid: i,
+                    name  : i,
+                    uid   : i,
                     events: {
                         onChange: this.$toggleSlideStatus
                     }
@@ -331,19 +332,19 @@ define('package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings', [
 
             var buttons = this.$Grid.getButtons(),
 
-                Edit = buttons.filter(function (Btn) {
+                Edit    = buttons.filter(function (Btn) {
                     return Btn.getAttribute('name') === 'edit';
                 })[0],
 
-                Up = buttons.filter(function (Btn) {
+                Up      = buttons.filter(function (Btn) {
                     return Btn.getAttribute('name') === 'up';
                 })[0],
 
-                Down = buttons.filter(function (Btn) {
+                Down    = buttons.filter(function (Btn) {
                     return Btn.getAttribute('name') === 'down';
                 })[0],
 
-                Delete = buttons.filter(function (Btn) {
+                Delete  = buttons.filter(function (Btn) {
                     return Btn.getAttribute('name') === 'delete';
                 })[0];
 
@@ -367,11 +368,11 @@ define('package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings', [
          */
         add: function (params) {
             var entry = {
-                titleIcon: '',
-                entryTitle: '',
-                entryImage: '',
+                titleIcon   : '',
+                entryTitle  : '',
+                entryImage  : '',
                 entryContent: '',
-                isDisabled: 0
+                isDisabled  : 0
             };
 
             if ("isDisabled" in params) {
@@ -412,11 +413,11 @@ define('package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings', [
             }
 
             var entry = {
-                titleIcon: '',
-                entryTitle: '',
-                entryImage: '',
+                titleIcon   : '',
+                entryTitle  : '',
+                entryImage  : '',
                 entryContent: '',
-                isDisabled: 0
+                isDisabled  : 0
             };
 
             if ("isDisabled" in params) {
@@ -492,14 +493,14 @@ define('package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings', [
          */
         $refreshSorting: function () {
             var gridData = this.$Grid.getData(),
-                data = [];
+                data     = [];
 
             for (var i = 0, len = gridData.length; i < len; i++) {
                 data.push({
-                    isDisabled: parseInt(gridData[i].isDisabled),
-                    titleIcon: gridData[i].titleIcon,
-                    entryTitle: gridData[i].entryTitle,
-                    entryImage: gridData[i].entryImage,
+                    isDisabled  : parseInt(gridData[i].isDisabled),
+                    titleIcon   : gridData[i].titleIcon,
+                    entryTitle  : gridData[i].entryTitle,
+                    entryImage  : gridData[i].entryImage,
                     entryContent: gridData[i].entryContent
                 });
             }
@@ -519,17 +520,17 @@ define('package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings', [
          */
         $openDeleteDialog: function () {
             new QUIConfirm({
-                icon: 'fa fa-icon',
-                text: QUILocale.get(lg, 'control.navTabsVertical.entries.delete.title'),
+                icon       : 'fa fa-icon',
+                text       : QUILocale.get(lg, 'control.navTabsVertical.entries.delete.title'),
                 information: QUILocale.get(lg, 'control.navTabsVertical.entries.delete.information'),
-                texticon: false,
-                maxWidth: 600,
-                maxHeight: 400,
-                ok_button: {
-                    text: QUILocale.get('quiqqer/quiqqer', 'delete'),
+                texticon   : false,
+                maxWidth   : 600,
+                maxHeight  : 400,
+                ok_button  : {
+                    text     : QUILocale.get('quiqqer/quiqqer', 'delete'),
                     textimage: 'fa fa-trash'
                 },
-                events: {
+                events     : {
                     onSubmit: function () {
                         var selected = this.$Grid.getSelectedIndices();
 
@@ -547,15 +548,15 @@ define('package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings', [
          * @retrun {Promise}
          */
         $openEditDialog: function () {
-            var self = this,
-                data = this.$Grid.getSelectedData(),
+            var self  = this,
+                data  = this.$Grid.getSelectedData(),
                 index = this.$Grid.getSelectedIndices();
 
             if (!data.length) {
                 return Promise.resolve();
             }
 
-            data = data[0];
+            data  = data[0];
             index = index[0];
 
             return this.$createDialog().then(function (Dialog) {
@@ -564,19 +565,19 @@ define('package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings', [
                     Dialog.Loader.show();
 
                     var Content = Dialog.getContent();
-                    var Form = Content.getElement('form');
+                    var Form    = Content.getElement('form');
 
-                    var Image = Form.elements.titleIcon;
-                    var entryTitle = Form.elements.entryTitle;
-                    var entryImage = Form.elements.entryImage;
+                    var Image        = Form.elements.titleIcon;
+                    var entryTitle   = Form.elements.entryTitle;
+                    var entryImage   = Form.elements.entryImage;
                     var entryContent = Form.elements.entryContent;
 
                     self.edit(index, {
-                        titleIcon: Image.value,
-                        entryTitle: entryTitle.value,
-                        entryImage: entryImage.value,
+                        titleIcon   : Image.value,
+                        entryTitle  : entryTitle.value,
+                        entryImage  : entryImage.value,
                         entryContent: entryContent.value,
-                        isDisabled: Dialog.IsDisabledSwitch.getStatus()
+                        isDisabled  : Dialog.IsDisabledSwitch.getStatus()
                     });
 
                     Dialog.close();
@@ -586,11 +587,11 @@ define('package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings', [
                 Dialog.addEvent('onOpenAfterCreate', function () {
 
                     var Content = Dialog.getContent();
-                    var Form = Content.getElement('form');
+                    var Form    = Content.getElement('form');
 
-                    var Image = Form.elements.titleIcon;
-                    var entryTitle = Form.elements.entryTitle;
-                    var entryImage = Form.elements.entryImage;
+                    var Image        = Form.elements.titleIcon;
+                    var entryTitle   = Form.elements.entryTitle;
+                    var entryImage   = Form.elements.entryImage;
                     var entryContent = Form.elements.entryContent;
 
                     if (data.isDisabled) {
@@ -599,9 +600,9 @@ define('package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings', [
                         Dialog.IsDisabledSwitch.off();
                     }
 
-                    Image.value = data.titleIcon;
-                    entryTitle.value = data.entryTitle;
-                    entryImage.value = data.entryImage;
+                    Image.value        = data.titleIcon;
+                    entryTitle.value   = data.entryTitle;
+                    entryImage.value   = data.entryImage;
                     entryContent.value = data.entryContent;
 
                     if (data.newTab && data.newTab.getAttribute('data-enabled') === "1") {
@@ -634,19 +635,19 @@ define('package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings', [
                     Dialog.Loader.show();
 
                     var Content = Dialog.getContent();
-                    var Form = Content.getElement('form');
+                    var Form    = Content.getElement('form');
 
-                    var Image = Form.elements.titleIcon;
-                    var entryTitle = Form.elements.entryTitle;
-                    var entryImage = Form.elements.entryImage;
+                    var Image        = Form.elements.titleIcon;
+                    var entryTitle   = Form.elements.entryTitle;
+                    var entryImage   = Form.elements.entryImage;
                     var entryContent = Form.elements.entryContent;
 
                     self.add({
-                        titleIcon: Image.value,
-                        entryTitle: entryTitle.value,
-                        entryImage: entryImage.value,
+                        titleIcon   : Image.value,
+                        entryTitle  : entryTitle.value,
+                        entryImage  : entryImage.value,
                         entryContent: entryContent.value,
-                        isDisabled: Dialog.IsDisabledSwitch.getStatus()
+                        isDisabled  : Dialog.IsDisabledSwitch.getStatus()
                     });
 
                     Dialog.close();
@@ -666,26 +667,26 @@ define('package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings', [
 
             return new Promise(function (resolve) {
                 var Dialog = new QUIConfirm({
-                    title: QUILocale.get(lg, 'control.navTabsVertical.entries.add.title'),
-                    icon: 'fa fa-edit',
-                    maxWidth: 800,
-                    maxHeight: 600,
-                    autoclose: false,
+                    title           : QUILocale.get(lg, 'control.navTabsVertical.entries.add.title'),
+                    icon            : 'fa fa-edit',
+                    maxWidth        : 800,
+                    maxHeight       : 600,
+                    autoclose       : false,
                     IsDisabledSwitch: false,
-                    NewTabSwitch: false,
-                    events: {
+                    NewTabSwitch    : false,
+                    events          : {
                         onOpen: function (Win) {
                             Win.Loader.show();
                             Win.getContent().set('html', '');
 
 
-                            var prefix = 'control.navTabsVertical.entries.',
+                            var prefix    = 'control.navTabsVertical.entries.',
                                 Container = new Element('div', {
-                                    html: Mustache.render(templateEntry, {
-                                        fieldIsDisabled: QUILocale.get(lg, prefix + 'isDisable'),
-                                        fieldTitleIcon: QUILocale.get(lg, prefix + 'entryTitleIcon'),
-                                        fieldEntryTitle: QUILocale.get(lg, prefix + 'entryTitle'),
-                                        fieldEntryImage: QUILocale.get(lg, prefix + 'entryImage'),
+                                    html   : Mustache.render(templateEntry, {
+                                        fieldIsDisabled  : QUILocale.get(lg, prefix + 'isDisable'),
+                                        fieldTitleIcon   : QUILocale.get(lg, prefix + 'entryTitleIcon'),
+                                        fieldEntryTitle  : QUILocale.get(lg, prefix + 'entryTitle'),
+                                        fieldEntryImage  : QUILocale.get(lg, prefix + 'entryImage'),
                                         fieldEntryContent: QUILocale.get(lg, prefix + 'entryContent')
                                     }),
                                     'class': 'quiqqer-menu-navTabsVertival-settings'
@@ -698,7 +699,7 @@ define('package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings', [
                             });
 
                             Win.IsDisabledSwitch = new QUISwitch({
-                                name: 'isDisabled',
+                                name  : 'isDisabled',
                                 status: false
                             }).inject(Container.getElement('#isDisabledWrapper'));
 
@@ -711,7 +712,7 @@ define('package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings', [
                                 return ControlsUtils.parse(Container);
                             }).then(function () {
                                 var controls = QUI.Controls.getControlsInElement(Container),
-                                    project = self.getAttribute('project');
+                                    project  = self.getAttribute('project');
 
                                 controls.each(function (Control) {
                                     if (Control === self) {
@@ -727,7 +728,7 @@ define('package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings', [
 
                                 moofx(Container).animate({
                                     opacity: 1,
-                                    top: 0
+                                    top    : 0
                                 }, {
                                     duration: 250,
                                     callback: function () {
