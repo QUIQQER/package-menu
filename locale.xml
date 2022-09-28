@@ -203,9 +203,29 @@
             <de><![CDATA[Tabs]]></de>
             <en><![CDATA[Tabs]]></en>
         </locale>
+        <locale name="control.navTabsVertical.entries.add.title">
+            <de><![CDATA[Eintrag hinzufügen]]></de>
+            <en><![CDATA[Add Entry]]></en>
+        </locale>
+        <locale name="control.navTabsVertical.entries.edit.title">
+            <de><![CDATA[Eintrag bearbeiten]]></de>
+            <en><![CDATA[Edit Entry]]></en>
+        </locale>
+        <locale name="control.navTabsVertical.entries.delete.title">
+            <de><![CDATA[Möchten Sie diesen Eintrag wirklich entfernen?]]></de>
+            <en><![CDATA[Do you really want to remove this entry?]]></en>
+        </locale>
+        <locale name="control.navTabsVertical.entries.delete.information">
+            <de><![CDATA[Der Eintrag kann nicht wiederhergestellt werden]]></de>
+            <en><![CDATA[The entries can not be restored]]></en>
+        </locale>
         <locale name="control.navTabsVertical.entries.addButton">
             <de><![CDATA[Eintrag hinzufügen]]></de>
             <en><![CDATA[Add entry]]></en>
+        </locale>
+        <locale name="control.navTabsVertical.entries.isDisable">
+            <de><![CDATA[Deaktiviert]]></de>
+            <en><![CDATA[Disabled]]></en>
         </locale>
         <locale name="control.navTabsVertical.entries.entryTitle">
             <de><![CDATA[Titel]]></de>

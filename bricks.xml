@@ -135,11 +135,10 @@
                             var="control.navTabsVertical.navContent"/>
                 </setting>
 
-                <setting name="entries"
-                         data-qui="package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings">
-                    <locale group="quiqqer/menu"
-                            var="control.navTabsVertical.entries"/>
+                <setting name="entries" type="hidden" data-qui="package/quiqqer/menu/bin/Controls/NavTabsVerticalSettings">
+                    <locale group="quiqqer/menu" var="control.navTabsVertical.entries"/>
                 </setting>
+
             </settings>
         </brick>
 
