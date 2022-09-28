@@ -5,7 +5,7 @@
 {/if}
 
 {if $this->getAttribute('content') != ""}
-<div class="control-body">
+<div class="control-body default-content">
     {$this->getAttribute('content')}
 </div>
 {/if}
@@ -89,7 +89,11 @@
                         </div>
                     {/if}
 
-                    {$entryContent}
+                    {if $entryContent}
+                    <div class="default-content">
+                        {$entryContent}
+                    </div>
+                    {/if}
 
                     {if $entryImage && $imagePos == 'bottom'}
                         <div class="quiqqer-menu-navTabsVertical-content-image
