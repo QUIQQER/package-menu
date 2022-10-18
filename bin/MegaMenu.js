@@ -23,7 +23,8 @@ define('package/quiqqer/menu/bin/MegaMenu', [
         ],
 
         options: {
-            enablemobile: true
+            enablemobile : true,
+            showmenuafter: 250 // show menu after 250ms mouseenter, 0 = show menu immediately
         },
 
         initialize: function (options) {
@@ -33,9 +34,10 @@ define('package/quiqqer/menu/bin/MegaMenu', [
                 onImport: this.$onImport
             });
 
-            this.$liSize = 0;
-            this.$enter  = false;
-            this.$Nav    = null;
+            this.$liSize       = 0;
+            this.$enter        = false;
+            this.$Nav          = null;
+            this.showMenuDelay = 250;
         },
 
         /**
@@ -43,6 +45,10 @@ define('package/quiqqer/menu/bin/MegaMenu', [
          */
         $onImport: function () {
             this.$Nav = this.getElm().getElement('nav');
+
+            if (parseInt(this.getAttribute('showmenuafter')) >= 0) {
+                this.showMenuDelay = parseInt(this.getAttribute('showmenuafter'));
+            }
 
             this.$Menu = new Element('div', {
                 'class': 'quiqqer-menu-megaMenu-list-item-menu control-background',
@@ -63,7 +69,8 @@ define('package/quiqqer/menu/bin/MegaMenu', [
 
             this.$liSize = this.getElm().getSize().y;
 
-            let self = this;
+            let self    = this,
+                timeout = null;
 
             this.$Nav.getElements('.quiqqer-menu-megaMenu-list-item').addEvents({
                 click   : function (event) {
@@ -137,17 +144,29 @@ define('package/quiqqer/menu/bin/MegaMenu', [
                 }.bind(this),
 
                 mouseenter: function (event) {
-                    var Target = event.target;
-
-                    if (Target.nodeName != 'LI') {
-                        Target = Target.getParent('li');
+                    if (timeout !== null) {
+                        clearTimeout(timeout);
                     }
 
-                    this.$enter = true;
-                    this.showMenuFor(Target);
+                    timeout = setTimeout(() => {
+                        var Target = event.target;
+
+                        if (Target.nodeName != 'LI') {
+                            Target = Target.getParent('li');
+                        }
+
+                        this.$enter = true;
+                        this.showMenuFor(Target);
+                    }, this.showMenuDelay);
                 }.bind(this),
 
                 mouseleave: function () {
+                    if (timeout != null) {
+                        clearTimeout(timeout);
+
+                        timeout = null;
+                    }
+
                     this.$enter = false;
                     this.$hideCheck();
                 }.bind(this)

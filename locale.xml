@@ -18,6 +18,14 @@
             <de><![CDATA[Menü]]></de>
             <en><![CDATA[Menu]]></en>
         </locale>
+        <locale name="menu.settings.showMenuDelay">
+            <de><![CDATA[Untermenü Verzögerung]]></de>
+            <en><![CDATA[Submenu delay]]></en>
+        </locale>
+        <locale name="menu.settings.showMenuDelay.desc">
+            <de><![CDATA[Dieser Wert ist in Millisekunden anzugeben. 250 bedeutet, dass das Untermenü erst dann erscheint, wenn man länger als 1/4 Sekunden mit der Maus wartet. Setzt man 0, wird das Untermenü sofort angezeigt.]]></de>
+            <en><![CDATA[This value must be specified in milliseconds. 250 means that the submenu will only appear if you wait longer than 1/4 seconds with the mouse. If you set 0, the submenu will be displayed immediately.]]></en>
+        </locale>
         <locale name="menu.settings.type">
             <de><![CDATA[Menü Art]]></de>
             <en><![CDATA[Menu type]]></en>
