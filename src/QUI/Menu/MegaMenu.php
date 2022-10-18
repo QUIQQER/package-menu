@@ -38,7 +38,8 @@ class MegaMenu extends AbstractMenu
             'display'             => 'Standard',
             'enableMobile'        => true,
             'menuId'              => false,
-            'showFirstLevelIcons' => false // current it works only for independent menu
+            'showFirstLevelIcons' => false, // current it works only for independent menu
+            'showMenuDelay'       => false
         ]);
 
         if ($this->getProject()->getConfig('menu.settings.type')) {
@@ -97,6 +98,17 @@ class MegaMenu extends AbstractMenu
 
         $childControl = $this->getMenuControl($this->getAttribute('display'));
 
+        $showMenuDelay = 0;
+
+        if (intval($this->getProject()->getConfig('menu.settings.showMenuDelay')) >= 0) {
+            $showMenuDelay = intval($this->getProject()->getConfig('menu.settings.showMenuDelay'));
+        }
+
+        if ($this->getAttribute('showMenuDelay') !== '' &&
+            $this->getAttribute('showMenuDelay') !== false &&
+            intval($this->getAttribute('showMenuDelay')) >= 0) {
+            $showMenuDelay = intval($this->getAttribute('showMenuDelay'));
+        }
 
         try {
             $cacheResult = QUI\Cache\Manager::get($cache);
@@ -133,6 +145,7 @@ class MegaMenu extends AbstractMenu
         }
 
         $this->setAttribute('data-qui-options-enablemobile', $this->getAttribute('enableMobile') ? 1 : 0);
+        $this->setAttribute('data-qui-options-showmenuafter', $showMenuDelay);
 
 
         if ($this->getAttribute('menuId')) {
@@ -150,8 +163,8 @@ class MegaMenu extends AbstractMenu
                 'showMenu'     => true
             ]);
 
-            $result         = [];
-            $result['html'] = $Engine->fetch(dirname(__FILE__).'/MegaMenu.Independent.html');
+            $result             = [];
+            $result['html']     = $Engine->fetch(dirname(__FILE__).'/MegaMenu.Independent.html');
             $result['subMenus'] = \array_unique($this->subMenus);
         } else {
             $Engine->assign([

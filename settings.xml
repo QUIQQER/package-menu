@@ -5,12 +5,15 @@
         <settings>
             <config>
                 <section name="menu.settings">
+                    <conf name="showMenuDelay">
+                        <type><![CDATA[number]]></type>
+                        <defaultvalue>250</defaultvalue>
+                    </conf>
                     <conf name="type">
                         <type><![CDATA[string]]></type>
                     </conf>
                 </section>
             </config>
-
 
             <window>
                 <categories>
@@ -24,6 +27,16 @@
                             <title>
                                 <locale group="quiqqer/menu" var="menu.settings.title"/>
                             </title>
+
+                            <input conf="menu.settings.showMenuDelay" type="number" min="0" max="5000">
+                                <text>
+                                    <locale group="quiqqer/menu" var="menu.settings.showMenuDelay"/>
+                                </text>
+                                <description>
+                                    <locale group="quiqqer/menu" var="menu.settings.showMenuDelay.desc"/>
+                                </description>
+                            </input>
+
                             <select conf="menu.settings.type">
                                 <text>
                                     <locale group="quiqqer/menu" var="menu.settings.type"/>
