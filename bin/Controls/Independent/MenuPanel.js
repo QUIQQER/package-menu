@@ -232,7 +232,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                             if (text === '' || text === '###') {
                                 text = '?';
                             }
-
+                            
                             Item = new QUIMapItem({
                                 text     : text,
                                 icon     : data.typeIcon,

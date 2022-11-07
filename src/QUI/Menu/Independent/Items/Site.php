@@ -114,6 +114,14 @@ class Site extends AbstractMenuItem
             return $Site->getAttribute('title');
         }
 
+        try {
+            $data    = $this->getCustomData();
+            $siteUrl = $data['site'];
+            $Site    = QUI\Projects\Site\Utils::getSiteByLink($siteUrl);
+            return $Site->getAttribute('title');
+        } catch (QUI\Exception $Exception) {
+        }
+
         return '';
     }
 
