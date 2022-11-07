@@ -220,6 +220,19 @@ class Menu
         return '';
     }
 
+    /**
+     * @return array
+     */
+    public function getData(): array
+    {
+        return [
+            'id'           => $this->id,
+            'title'        => $this->title,
+            'workingTitle' => $this->workingTitle,
+            'data'         => $this->data
+        ];
+    }
+
     //endregion
 
     //region setter
