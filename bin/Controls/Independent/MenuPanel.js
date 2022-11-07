@@ -12,17 +12,19 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
     'qui/controls/contextmenu/Menu',
     'qui/controls/contextmenu/Item',
     'qui/controls/contextmenu/Separator',
+    'controls/lang/InputMultiLang',
     'Ajax',
     'Locale',
     'package/quiqqer/menu/bin/classes/IndependentHandler',
 
     'Mustache',
     'text!package/quiqqer/menu/bin/Controls/Independent/MenuPanel.Create.html',
+    'text!package/quiqqer/menu/bin/Controls/Independent/MenuPanel.Settings.html',
     'css!package/quiqqer/menu/bin/Controls/Independent/MenuPanel.css'
 
 ], function (QUI, QUIPanel, QUIMap, QUIMapItem, QUIConfirm,
-             QUIContextMenu, QUIContextMenuItem, QUIContextSeparator,
-             QUIAjax, QUILocale, IndependentHandler, Mustache, templateCreate) {
+             QUIContextMenu, QUIContextMenuItem, QUIContextSeparator, InputMultiLang,
+             QUIAjax, QUILocale, IndependentHandler, Mustache, templateCreate, templateSettings) {
     "use strict";
 
     const lg = 'quiqqer/menu';
@@ -38,6 +40,8 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
             '$onInject',
             '$openItem',
             '$onContextMenu',
+            '$startDeSelect',
+            '$openMenuSettings',
             'addItem',
             'save',
         ],
@@ -52,7 +56,12 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
             this.$ActiveItem = null;
             this.$ActiveMapItem = null;
 
+            this.$title = null;
+            this.$workingTitle = null;
+            this.$data = null;
+
             this.$Map = null;
+            this.setAttribute('#id', this.getAttribute('menuId'));
 
             this.addEvents({
                 onShow  : this.$onShow,
@@ -139,15 +148,29 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
         $onInject: function () {
             this.Loader.show();
 
-            IndependentHandler.getMenu(this.getAttribute('menuId')).then((menuData) => {
+            Promise.all([
+                IndependentHandler.getMenu(this.getAttribute('menuId')),
+                this.$getMenuData()
+            ]).then((result) => {
+                const menuData = result[0];
+                const data = result[1];
+
+                this.$data = menuData;
+                this.$title = data.title;
+                this.$workingTitle = data.workingTitle;
+
                 this.setAttribute('title', menuData.title);
                 this.setAttribute('icon', 'fa fa-bars');
                 this.refresh();
 
                 const Start = new QUIMapItem({
+                    value : 'start',
                     icon  : 'fa fa-home',
                     text  : menuData.title,
                     events: {
+                        click   : this.$openMenuSettings,
+                        deSelect: this.$startDeSelect,
+
                         contextMenu: (Item, event) => {
                             event.stop();
 
@@ -191,6 +214,8 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                         }
                     }
                 }).inject(this.$Map);
+
+                Start.click();
 
                 // build sitemap
                 if (menuData.data !== null &&
@@ -279,14 +304,12 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
             };
 
             let result = toArray(this.$Map.firstChild());
-            let title = null;
-            let workingTitle = null;
 
             return this.$refreshItemDisplay().then(() => {
                 return IndependentHandler.saveMenu(
                     this.getAttribute('menuId'),
-                    title,
-                    workingTitle,
+                    JSON.encode(this.$title),
+                    JSON.encode(this.$workingTitle),
                     result
                 );
             }).then(() => {
@@ -549,6 +572,55 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
             });
         },
 
+        $openMenuSettings: function () {
+            this.Loader.show();
+            this.$unloadCurrentItem();
+
+            return this.$refreshItemDisplay().then(() => {
+                this.$ActiveItem = null;
+                this.$ActiveMapItem = null;
+                this.$InnerContainer.set('html', Mustache.render(templateSettings, {
+                    settingsTitle: QUILocale.get('quiqqer/quiqqer', 'settings'),
+                    title        : QUILocale.get('quiqqer/quiqqer', 'title')
+                }));
+
+                this.$InnerContainer.getElement('[name="title"]').set('value', JSON.stringify(this.$title));
+                this.$InnerContainer.getElement('[name="workingTitle"]').set('value', JSON.stringify(this.$workingTitle));
+            }).then(() => {
+                return QUI.parse(this.$InnerContainer);
+            }).then(() => {
+                // set values
+
+                this.Loader.hide();
+            });
+        },
+
+        $startDeSelect: function () {
+            const Title = this.$InnerContainer.getElement('[name="title"]');
+            const WorkingTitle = this.$InnerContainer.getElement('[name="workingTitle"]');
+
+            if (!Title) {
+                return;
+            }
+
+            // save first item
+            const selected = this.$Map.getSelectedChildren();
+
+            if (selected.length === 1 && selected[0].getAttribute('value') === 'start' && Title) {
+                selected[0].setAttribute('itemTitle', Title.value);
+
+                this.$title = JSON.decode(Title.value);
+                this.$workingTitle = JSON.decode(WorkingTitle.value);
+
+                let current = QUILocale.getCurrent();
+
+                if (current in this.$title) {
+                    selected[0].setAttribute('text', this.$title[current]);
+                    selected[0].setAttribute('title', this.$title[current]);
+                }
+            }
+        },
+
         /**
          * Unloads the current sitemap item
          * The save method of the current active control is executed
@@ -740,6 +812,16 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
             Menu.setTitle(Item.getAttribute('text'));
             Menu.show();
             Menu.focus();
+        },
+
+        $getMenuData: function () {
+            return new Promise((resolve, reject) => {
+                QUIAjax.get('package_quiqqer_menu_ajax_backend_independent_getData', resolve, {
+                    'package': 'quiqqer/menu',
+                    id       : this.getAttribute('menuId'),
+                    onError  : reject
+                });
+            });
         }
     });
 });
