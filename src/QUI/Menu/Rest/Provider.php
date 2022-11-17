@@ -22,16 +22,6 @@ use QUI\Menu\Independent\Factory as MenuFactory;
 class Provider implements ProviderInterface
 {
     /**
-     * Provider constructor.
-     */
-    public function __construct()
-    {
-        if (!\defined('SYSTEM_INTERN')) {
-            \define('SYSTEM_INTERN', 1); // Session user = System User
-        }
-    }
-
-    /**
      * Registered some REST Api Calls
      *
      * @param Server $Server
