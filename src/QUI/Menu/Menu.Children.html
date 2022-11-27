@@ -8,27 +8,57 @@
 {/if}
 
 {if count($children)}
-<ul class="page-navigation-level-{$level}">
-    {foreach from=$children item=Child}
-    <li>
-        <a href="{url site=$Child}" class="left-menu-a">
-            {if $ActiveSite->getId() == $Child->getId()}
-            <span class="fa fa-chevron-right"></span>
-            {else}
-            <span class="fa fa-angle-right"></span>
-            {/if}
 
-            <span class="left-menu-text">
-                {$Child->getAttribute('title')}
-            </span>
-        </a>
+{assign hideSubmenu 'true'}
 
-        {include file="`$FileMenu`"
+{if $level > 1}
+<div class="quiqqer-sub-nav-div {if $CollapseMobileSubmenu == 1}quiqqer-menu-close{/if}">
+{/if}
+
+    <ul class="page-navigation-level-{$level}">
+        {foreach from=$children item=Child}
+        <li>
+            <div class="quiqqer-navigation-entry">
+                <a href="{url site=$Child}" class="left-menu-a {if $ActiveSite->getId() == $Child->getId()}quiqqer-menu-active-level{/if}">
+
+                    {if count($Child->getNavigation())}
+                    {* With children *}
+
+                        {if $ActiveSite->getId() == $Child->getId()}
+                        <span class="fa fa-angle-double-right quiqqer-menu-levels
+                        {if $CollapseMobileSubmenu == 0}quiqqer-menu-levels-rotate{/if}"></span>
+                        {else}
+                        <span class="fa fa-angle-double-right quiqqer-menu-levels
+                        {if $CollapseMobileSubmenu == 0}quiqqer-menu-levels-rotate{/if}"></span>
+                        {/if}
+
+                    {else}
+                    {* Without children *}
+
+                        {if $ActiveSite->getId() == $Child->getId()}
+                        <span class="fa fa-angle-right"></span>
+                        {else}
+                        <span class="fa fa-angle-right"></span>
+                        {/if}
+
+                    {/if}
+
+                    <span class="left-menu-text">
+                    {$Child->getAttribute('title')}
+                    </span>
+                </a>
+            </div>
+
+
+            {include file="`$FileMenu`"
             Site=$Child
             ActiveSite=$ActiveSite
             level=$level
-        }
-    </li>
-    {/foreach}
-</ul>
+            }
+        </li>
+        {/foreach}
+    </ul>
+    {if $level > 1}
+    </div>
+    {/if}
 {/if}

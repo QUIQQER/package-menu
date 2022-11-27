@@ -9,6 +9,9 @@
                         <type><![CDATA[number]]></type>
                         <defaultvalue>250</defaultvalue>
                     </conf>
+                    <conf name="collapseMobileSubmenu">
+                        <type><![CDATA[bool]]></type>
+                    </conf>
                     <conf name="type">
                         <type><![CDATA[string]]></type>
                     </conf>
@@ -35,6 +38,12 @@
                                 <description>
                                     <locale group="quiqqer/menu" var="menu.settings.showMenuDelay.desc"/>
                                 </description>
+                            </input>
+
+                            <input conf="menu.settings.collapseMobileSubmenu" type="checkbox">
+                                <text>
+                                    <locale group="quiqqer/menu" var="menu.settings.collapseMobileSubmenu"/>
+                                </text>
                             </input>
 
                             <select conf="menu.settings.type">

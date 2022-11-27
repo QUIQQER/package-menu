@@ -31,15 +31,16 @@ class MegaMenu extends AbstractMenu
     public function __construct($attributes = [])
     {
         $this->setAttributes([
-            'showStart'           => false,
-            'Start'               => false,
-            'startText'           => '', // optional: displayed text
-            'data-qui'            => 'package/quiqqer/menu/bin/MegaMenu',
-            'display'             => 'Standard',
-            'enableMobile'        => true,
-            'menuId'              => false,
-            'showFirstLevelIcons' => false, // current it works only for independent menu
-            'showMenuDelay'       => false
+            'showStart'             => false,
+            'Start'                 => false,
+            'startText'             => '', // optional: displayed text
+            'data-qui'              => 'package/quiqqer/menu/bin/MegaMenu',
+            'display'               => 'Standard',
+            'enableMobile'          => true,
+            'menuId'                => false,
+            'showFirstLevelIcons'   => false, // current it works only for independent menu
+            'showMenuDelay'         => false,
+            'collapseMobileSubmenu' => false
         ]);
 
         if ($this->getProject()->getConfig('menu.settings.type')) {
@@ -49,7 +50,7 @@ class MegaMenu extends AbstractMenu
         parent::__construct($attributes);
 
         $this->addCSSClass('quiqqer-menu-megaMenu');
-        $this->addCSSFile(dirname(__FILE__).'/MegaMenu.css');
+        $this->addCSSFile(dirname(__FILE__) . '/MegaMenu.css');
 
         if (!$this->getAttribute('enableMobile')) {
             return;
@@ -76,6 +77,14 @@ class MegaMenu extends AbstractMenu
         $this->Mobile->setAttribute('data-qui-options-menu-button', 0);
         $this->Mobile->setAttribute('data-qui-options-touch', 0);
         $this->Mobile->setAttribute('data-qui-options-buttonids', 'mobileMenu');
+
+        $collapseMobileSubmenu = $this->getAttribute('collapseMobileSubmenu');
+
+        if ($this->getProject()->getConfig('menu.settings.collapseMobileSubmenu') !== '') {
+            $collapseMobileSubmenu = $this->getProject()->getConfig('menu.settings.collapseMobileSubmenu');
+        }
+
+        $this->Mobile->setAttribute('collapseMobileSubmenu', $collapseMobileSubmenu);
     }
 
     /**
@@ -84,7 +93,7 @@ class MegaMenu extends AbstractMenu
      */
     public function getBody()
     {
-        $cache = EventHandler::menuCacheName().'/megaMenu/';
+        $cache = EventHandler::menuCacheName() . '/megaMenu/';
 
         $attributes = $this->getAttributes();
         $attributes = \array_filter($attributes, function ($entry) {
@@ -92,7 +101,7 @@ class MegaMenu extends AbstractMenu
         });
 
         $cache .= \md5(
-            $this->getSite()->getCachePath().
+            $this->getSite()->getCachePath() .
             \serialize($attributes)
         );
 
@@ -164,7 +173,7 @@ class MegaMenu extends AbstractMenu
             ]);
 
             $result             = [];
-            $result['html']     = $Engine->fetch(dirname(__FILE__).'/MegaMenu.Independent.html');
+            $result['html']     = $Engine->fetch(dirname(__FILE__) . '/MegaMenu.Independent.html');
             $result['subMenus'] = \array_unique($this->subMenus);
         } else {
             $Engine->assign([
@@ -187,7 +196,7 @@ class MegaMenu extends AbstractMenu
             }
 
             $result             = [];
-            $result['html']     = $Engine->fetch(dirname(__FILE__).'/MegaMenu.html');
+            $result['html']     = $Engine->fetch(dirname(__FILE__) . '/MegaMenu.html');
             $result['subMenus'] = \array_unique($this->subMenus);
         }
 
