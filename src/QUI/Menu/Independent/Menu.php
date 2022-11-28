@@ -20,12 +20,12 @@ use function json_encode;
  */
 class Menu
 {
-    protected int $id;
-    protected ?array $title = null;
-    protected ?array $workingTitle = null;
-    protected array $data = [];
-    protected array $children = [];
-    protected int $currentChildId = 0;
+    protected int    $id;
+    protected ?array $title          = null;
+    protected ?array $workingTitle   = null;
+    protected array  $data           = [];
+    protected array  $children       = [];
+    protected int    $currentChildId = 0;
 
     /**
      * @param int|array $menuId - menu id or menu data
@@ -254,6 +254,12 @@ class Menu
         ], [
             'id' => $this->getId()
         ]);
+
+        try {
+            QUI::getEvents()->fireEvent('quiqqerMenuIndependentSave', [$this]);
+        } catch (\Exception $Exception) {
+            QUI\System\Log::writeException($Exception);
+        }
     }
 
     /**
