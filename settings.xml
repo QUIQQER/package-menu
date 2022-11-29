@@ -12,6 +12,10 @@
                     <conf name="collapseMobileSubmenu">
                         <type><![CDATA[bool]]></type>
                     </conf>
+                    <conf name="showLevel">
+                        <type><![CDATA[number]]></type>
+                        <defaultvalue>1</defaultvalue>
+                    </conf>
                     <conf name="type">
                         <type><![CDATA[string]]></type>
                     </conf>
@@ -44,6 +48,15 @@
                                 <text>
                                     <locale group="quiqqer/menu" var="menu.settings.collapseMobileSubmenu"/>
                                 </text>
+                            </input>
+
+                            <input conf="menu.settings.showLevel" type="number" min="1" max="50">
+                                <text>
+                                    <locale group="quiqqer/menu" var="menu.settings.showLevel"/>
+                                </text>
+                                <description>
+                                    <locale group="quiqqer/menu" var="menu.settings.showLevel.desc"/>
+                                </description>
                             </input>
 
                             <select conf="menu.settings.type">

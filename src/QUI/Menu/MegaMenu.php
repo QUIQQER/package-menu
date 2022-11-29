@@ -40,7 +40,8 @@ class MegaMenu extends AbstractMenu
             'menuId'                => false,
             'showFirstLevelIcons'   => false, // current it works only for independent menu
             'showMenuDelay'         => false,
-            'collapseMobileSubmenu' => false
+            'collapseMobileSubmenu' => false,
+            'showLevel'             => 1
         ]);
 
         if ($this->getProject()->getConfig('menu.settings.type')) {
@@ -79,12 +80,22 @@ class MegaMenu extends AbstractMenu
         $this->Mobile->setAttribute('data-qui-options-buttonids', 'mobileMenu');
 
         $collapseMobileSubmenu = $this->getAttribute('collapseMobileSubmenu');
+        $showLevel             = $this->getAttribute('showLevel');
 
         if ($this->getProject()->getConfig('menu.settings.collapseMobileSubmenu') !== '') {
             $collapseMobileSubmenu = $this->getProject()->getConfig('menu.settings.collapseMobileSubmenu');
         }
 
+        if ($this->getProject()->getConfig('menu.settings.showLevel') !== '') {
+            $showLevel = $this->getProject()->getConfig('menu.settings.showLevel');
+        }
+
+        if ($showLevel < 1) {
+            $showLevel = 1;
+        }
+
         $this->Mobile->setAttribute('collapseMobileSubmenu', $collapseMobileSubmenu);
+        $this->Mobile->setAttribute('showLevel', $showLevel);
     }
 
     /**

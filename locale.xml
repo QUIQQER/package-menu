@@ -30,6 +30,14 @@
             <de><![CDATA[Collpase-Untermenü in der mobilen Version]]></de>
             <en><![CDATA[Collpase submenu in mobile version]]></en>
         </locale>
+        <locale name="menu.settings.showLevel">
+            <de><![CDATA[Ebene anzeigen]]></de>
+            <en><![CDATA[Show level]]></en>
+        </locale>
+        <locale name="menu.settings.showLevel.desc">
+            <de><![CDATA[Wie viele Ebenen des mobilen Menüs sollen angezeigt werden?]]></de>
+            <en><![CDATA[How many levels of mobile menu should be shown?]]></en>
+        </locale>
         <locale name="menu.settings.type">
             <de><![CDATA[Menü Art]]></de>
             <en><![CDATA[Menu type]]></en>

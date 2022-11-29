@@ -40,6 +40,7 @@ class SlideOut extends QUI\Control
         $Engine = QUI::getTemplateManager()->getEngine();
 
         $collapseMobileSubmenu = $this->getAttribute('collapseMobileSubmenu');
+        $showLevel = $this->getAttribute('showLevel');
 
         $params = [
             'this'         => $this,
@@ -58,6 +59,7 @@ class SlideOut extends QUI\Control
         } else {
             $template           = dirname(__FILE__).'/Menu.html';
             $params['collapseMobileSubmenu'] = $collapseMobileSubmenu;
+            $params['showLevel'] = $showLevel;
             $params['FileMenu'] = dirname(__FILE__).'/Menu.Children.html';
             $params['Site']     = $this->getSite();
         }
