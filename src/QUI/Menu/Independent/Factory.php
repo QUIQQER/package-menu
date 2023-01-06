@@ -25,7 +25,15 @@ class Factory
 
         $lastId = QUI::getPDO()->lastInsertId();
 
-        return Handler::getMenu($lastId);
+        $Menu = Handler::getMenu($lastId);
+
+        try {
+            QUI::getEvents()->fireEvent('quiqqerMenuIndependentCreate', [$Menu]);
+        } catch (\Exception $Exception) {
+            QUI\System\Log::writeException($Exception);
+        }
+
+        return $Menu;
     }
 
     /**
