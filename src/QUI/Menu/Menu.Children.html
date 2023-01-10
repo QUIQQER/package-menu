@@ -10,7 +10,7 @@
 {if count($children)}
 
 {if $level > 1}
-<div class="quiqqer-sub-nav-div {if $CollapseMobileSubmenu == 1 and $ShowLevel < $level}quiqqer-menu-close{/if}">
+<div class="quiqqer-sub-nav-div {if $collapseMobileSubmenu == 1 and $showLevel < $level}quiqqer-menu-close{/if}">
 {/if}
 
     <ul class="page-navigation-level-{$level}">
@@ -24,12 +24,12 @@
 
                         {if $ActiveSite->getId() == $Child->getId()}
                         <span class="fa fa-angle-double-right quiqqer-menu-levels
-                        {if $CollapseMobileSubmenu == 0}quiqqer-menu-levels-rotate{/if}
-                        {if $ShowLevel > $level}quiqqer-menu-levels-rotate{/if}"></span>
+                        {if $collapseMobileSubmenu == 0}quiqqer-menu-levels-rotate{/if}
+                        {if $showLevel > $level}quiqqer-menu-levels-rotate{/if}"></span>
                         {else}
                         <span class="fa fa-angle-double-right quiqqer-menu-levels
-                        {if $CollapseMobileSubmenu == 0}quiqqer-menu-levels-rotate{/if}
-                        {if $ShowLevel > $level}quiqqer-menu-levels-rotate{/if}"></span>
+                        {if $collapseMobileSubmenu == 0}quiqqer-menu-levels-rotate{/if}
+                        {if $showLevel > $level}quiqqer-menu-levels-rotate{/if}"></span>
                         {/if}
 
                     {else}
