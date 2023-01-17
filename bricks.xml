@@ -33,6 +33,15 @@
                             var="menu.control.sidebarDropDownMenu.setting.startId"/>
                 </setting>
 
+                <setting name="menuId" data-qui="package/quiqqer/menu/bin/Controls/Independent/Input" type="text">
+                    <locale group="quiqqer/menu"
+                            var="menu.control.sidebarDropDownMenu.setting.menuId"/>
+                    <description>
+                        <locale group="quiqqer/menu"
+                                var="menu.control.sidebarDropDownMenu.setting.menuId.desc"/>
+                    </description>
+                </setting>
+
                 <setting name="parentLink" type="checkbox">
                     <locale group="quiqqer/menu"
                             var="menu.control.sidebarDropDownMenu.setting.parentLink"/>
