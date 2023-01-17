@@ -1,6 +1,7 @@
 {
   "name": "quiqqer\/menu",
   "type": "quiqqer-module",
+  "version": "2.3.0",
   "description": "The Plugin menu provides various menu controls.",
   "license": [
     "GPL-3.0+",
