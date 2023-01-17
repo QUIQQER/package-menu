@@ -40,7 +40,7 @@ class SlideOut extends QUI\Control
         $Engine = QUI::getTemplateManager()->getEngine();
 
         $collapseMobileSubmenu = $this->getAttribute('collapseMobileSubmenu');
-        $showLevel = $this->getAttribute('showLevel');
+        $showLevel             = $this->getAttribute('showLevel');
 
         $params = [
             'this'         => $this,
@@ -52,16 +52,19 @@ class SlideOut extends QUI\Control
         if ($this->getAttribute('menuId')) {
             $IndependentMenu = Independent\Handler::getMenu($this->getAttribute('menuId'));
 
-            $template                      = dirname(__FILE__).'/Menu.Independent.html';
-            $params['FileMenu']            = dirname(__FILE__).'/Menu.Children.Independent.html';
-            $params['IndependentMenu']     = $IndependentMenu;
-            $params['showFirstLevelIcons'] = $this->getAttribute('showFirstLevelIcons');
-        } else {
-            $template           = dirname(__FILE__).'/Menu.html';
+            $template                        = dirname(__FILE__) . '/Menu.Independent.html';
+            $params['FileMenu']              = dirname(__FILE__) . '/Menu.Children.Independent.html';
+            $params['IndependentMenu']       = $IndependentMenu;
+            $params['Site']                  = $this->getSite();
             $params['collapseMobileSubmenu'] = $collapseMobileSubmenu;
-            $params['showLevel'] = $showLevel;
-            $params['FileMenu'] = dirname(__FILE__).'/Menu.Children.html';
-            $params['Site']     = $this->getSite();
+            $params['showLevel']             = $showLevel;
+            $params['showFirstLevelIcons']   = $this->getAttribute('showFirstLevelIcons');
+        } else {
+            $template                        = dirname(__FILE__) . '/Menu.html';
+            $params['collapseMobileSubmenu'] = $collapseMobileSubmenu;
+            $params['showLevel']             = $showLevel;
+            $params['FileMenu']              = dirname(__FILE__) . '/Menu.Children.html';
+            $params['Site']                  = $this->getSite();
         }
 
         $Engine->assign($params);

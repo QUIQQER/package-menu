@@ -1,4 +1,5 @@
 <nav class="page-menu" data-qui="{$jsControl}" style="display: none;">
+
     <div class="page-navigation {if !$showHomeLink}page-navigation__noHomeLink{/if}">
         {if $showHomeLink}
         <a href="{url site=$Project->firstChild()}" class="page-navigation-home">
@@ -8,7 +9,10 @@
         {/if}
 
         {include file="`$FileMenu`"
-            children=$IndependentMenu->getChildren()
+        children=$IndependentMenu->getChildren()
+        ActiveSite=$Site
+        collapseMobileSubmenu=$collapseMobileSubmenu
+        showLevel=$showLevel
         }
     </div>
 </nav>
