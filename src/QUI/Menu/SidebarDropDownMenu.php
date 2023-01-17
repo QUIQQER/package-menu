@@ -128,7 +128,6 @@ class SidebarDropDownMenu extends QUI\Control
                 'levelIcon'           => $this->getAttribute('levelIcon'),
                 'onlyFirstLevelIcons' => $this->getAttribute('onlyFirstLevelIcons')
             ]);
-
         } else {
             switch ($this->getAttribute('display')) {
                 default:
