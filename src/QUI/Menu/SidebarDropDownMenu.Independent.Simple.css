@@ -31,6 +31,7 @@
 
 .quiqqer-sub-nav-div {
     overflow: hidden;
+    height: 0;
 }
 
 .quiqqer-fa-levels-icon {
