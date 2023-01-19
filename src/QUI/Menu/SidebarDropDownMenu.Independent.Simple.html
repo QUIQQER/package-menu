@@ -115,6 +115,12 @@
         if (window.location.href.includes(Item.href)) {
             const LiElm = Item.closest('.quiqqer-navigation-li');
             LiElm.classList.add('quiqqer-navigation-active');
+
+            const Icon = LiElm.querySelector('.quiqqer-fa-list-icon');
+            if (Icon) {
+                Icon.classList.add('fa-nav-levels-rotate');
+            }
+            
             setPath(LiElm);
         }
     });
