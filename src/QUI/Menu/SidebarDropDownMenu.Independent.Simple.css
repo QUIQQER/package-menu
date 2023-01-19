@@ -33,7 +33,7 @@
     overflow: hidden;
 }
 
-.quiqqer-navigation-li:not(.quiqqer-navigation-active) .quiqqer-sub-nav-div {
+.quiqqer-navigation-li:not(.quiqqer-navigation-active) > .quiqqer-sub-nav-div {
     height: 0;
 }
 
