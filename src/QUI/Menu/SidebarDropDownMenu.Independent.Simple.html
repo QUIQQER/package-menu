@@ -1,0 +1,128 @@
+{if !isset($level)}
+    {assign var=level value=1}
+{else}
+    {assign var=level value=$level+1}
+{/if}
+
+{if $level == 1}
+    {if $this->getAttribute('showTitle') && $this->getAttribute('frontendTitle')}
+        <header class="control-header">
+            <h1>{$this->getAttribute('frontendTitle')}</h1>
+        </header>
+    {/if}
+
+    {if $this->getAttribute('content') != ""}
+        <div class="control-content">
+            {$this->getAttribute('content')}
+        </div>
+    {/if}
+{/if}
+
+{strip}
+
+    {if count( $children )}
+        <ul class="quiqqer-navigation-level-{$level}">
+            {*if $parentLink}
+                {if $level == 1}
+                <li class="quiqqer-navigation-li">
+                    <div class="quiqqer-navigation-entry">
+                        {if $parentIcon}
+                            <i class="fa quiqqer-fa-list-icon fa-fw {$parentIcon}"></i>
+                        {/if}
+                        <a href="{url site=$FirstPage}" class="quiqqer-navigation-firstpage quiqqer-navigation-link">
+                            {$FirstPage->getAttribute('title')}
+                        </a>
+                    </div>
+                </li>
+                {/if}
+            {/if*}
+            {foreach from=$children item=Child}
+                {assign var=siteObj value=0}
+                {if $Child|get_class === 'QUI\Menu\Independent\Items\Site'}
+                    {assign var=siteObj value=1}
+                {/if}
+                <li class="quiqqer-navigation-li">
+                    {assign var=subnavigation value=$Child->getChildren()}
+                    <div class="quiqqer-navigation-entry">
+                        {if count ( $subnavigation ) && ($level < $levels || $levels == 0)}
+                            {if $levelIcon}
+                                <span class="fa quiqqer-fa-list-icon fa-fw {$levelIcon} quiqqer-fa-levels-icon"></span>
+                            {/if}
+                        {else}
+                            {if $listIcon}
+                                <i class="fa quiqqer-fa-list-icon fa-fw {$listIcon}"></i>
+                            {/if}
+                        {/if}
+
+                        {if $Child->getUrl()}
+                            <a href="{$Child->getUrl()}" class="quiqqer-navigation-link
+                   {if !count($subnavigation)} quiqqer-navigation-link-no-icon{/if}"
+                               title="{$Child->getTitleAttribute()|escape:'html'}"
+                               {if $Child->getTarget()}target="{$Child->getTarget()}"{/if}>
+                                {$Child->getTitle()}
+                            </a>
+                        {else}
+                            <span class="quiqqer-navigation-link {if !count($subnavigation)} quiqqer-navigation-link-no-icon{/if}"
+                                  title="{$Child->getTitleAttribute()|escape:'html'}">
+                                {$Child->getTitle()}
+                            </span>
+                        {/if}
+                    </div>
+
+                    {if $levels === false || $levels-1 >= $level}
+                        <div class="quiqqer-sub-nav-div">
+                            {include file=$navTemplate
+                            children=$Child->getChildren()
+                            level=$level
+                            levels=$levels
+                            }
+                        </div>
+                    {/if}
+                </li>
+            {/foreach}
+        </ul>
+    {/if}
+{/strip}
+
+{if $level == 1}
+<script>
+    let QuiIndependentMenu = document.getElement('.quiqqer-sidebar-dropdown-navigation');
+    let quiIndependentUrls = QuiIndependentMenu.getElements('.quiqqer-navigation-link');
+    const setPath          = function (Elm) {
+        const Parent = Elm.getParent('.quiqqer-sub-nav-div');
+
+        if (!Parent) {
+            return false;
+        }
+
+        Parent.style.height = 'initial';
+
+        const ParentLi = Parent.getParent('.quiqqer-navigation-li');
+
+        if (ParentLi) {
+            ParentLi.classList.add('open');
+            const Icon = ParentLi.querySelector('.quiqqer-fa-list-icon');
+
+            if (Icon) {
+                Icon.classList.add('fa-nav-levels-rotate');
+            }
+        }
+
+        setPath(Parent);
+    }
+
+    quiIndependentUrls.forEach((Item) => {
+        if (window.location.href.includes(Item.href)) {
+            const LiElm = Item.closest('.quiqqer-navigation-li');
+            LiElm.classList.add('quiqqer-navigation-active');
+
+            const Icon = LiElm.querySelector('.quiqqer-fa-list-icon');
+            if (Icon) {
+                Icon.classList.add('fa-nav-levels-rotate');
+            }
+            
+            setPath(LiElm);
+        }
+    });
+</script>
+{/if}

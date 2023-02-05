@@ -29,8 +29,12 @@
     /*width: 100%;*/
 }
 
-.quiqqer-sub-nav-div {
+.quiqqer-navigation-li .quiqqer-sub-nav-div {
     overflow: hidden;
+}
+
+.quiqqer-navigation-li:not(.quiqqer-navigation-active) > .quiqqer-sub-nav-div {
+    height: 0;
 }
 
 .quiqqer-fa-levels-icon {
@@ -47,6 +51,11 @@
 .quiqqer-fa-list-icon {
     margin-left: 6px;
     margin-right: 6px;
+}
+
+/* active */
+.quiqqer-sidebar-dropdown-navigation .quiqqer-navigation-active > .quiqqer-navigation-entry {
+    font-weight: bold;
 }
 
 /* site icon */

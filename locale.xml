@@ -96,9 +96,17 @@
             <pl><![CDATA[Zaawansowany]]></pl>
         </locale>
         <locale name="menu.control.sidebarDropDownMenu.setting.startId">
-            <de><![CDATA[Start-ID]]></de>
+            <de><![CDATA[Start-ID uu]]></de>
             <en><![CDATA[Start ID]]></en>
             <pl><![CDATA[Pierwsza strona]]></pl>
+        </locale>
+        <locale name="menu.control.sidebarDropDownMenu.setting.menuId">
+            <de><![CDATA[Menu auswählen]]></de>
+            <en><![CDATA[Select the menu]]></en>
+        </locale>
+        <locale name="menu.control.sidebarDropDownMenu.setting.menuId.desc">
+            <de><![CDATA[Diese Option ermöglicht, eigenes Menü auszuwählen. <strong>Wichtig!</strong> Diese Option hat Vorrang. Wird ein eigenes Menü ausgewählt, hat die Option "Start-ID" keine Auswirkung mehr.]]></de>
+            <en><![CDATA[This option allows you to choose your own menu. <strong>Important!</strong> This option takes precedence. If a custom menu is selected, the "Start ID" option has no effect anymore.]]></en>
         </locale>
         <locale name="menu.control.sidebarDropDownMenu.setting.parentLink">
             <de><![CDATA[Eltern-Seite Link anzeigen]]></de>
