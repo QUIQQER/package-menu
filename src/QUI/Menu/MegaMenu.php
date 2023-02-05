@@ -51,7 +51,7 @@ class MegaMenu extends AbstractMenu
         parent::__construct($attributes);
 
         $this->addCSSClass('quiqqer-menu-megaMenu');
-        $this->addCSSFile(dirname(__FILE__) . '/MegaMenu.css');
+        $this->addCSSFile(dirname(__FILE__).'/MegaMenu.css');
 
         if (!$this->getAttribute('enableMobile')) {
             return;
@@ -80,18 +80,18 @@ class MegaMenu extends AbstractMenu
         $this->Mobile->setAttribute('data-qui-options-buttonids', 'mobileMenu');
 
         $collapseMobileSubmenu = $this->getAttribute('collapseMobileSubmenu');
-        $showLevel             = $this->getAttribute('showLevel');
 
         if ($this->getProject()->getConfig('menu.settings.collapseMobileSubmenu') !== '') {
             $collapseMobileSubmenu = $this->getProject()->getConfig('mobileMenu.settings.collapseMobileSubmenu');
         }
 
-        if ($this->getProject()->getConfig('menu.settings.showLevel') !== '') {
-            $showLevel = $this->getProject()->getConfig('mobileMenu.settings.showLevel');
+        $showLevel = 1;
+        if (intval($this->getProject()->getConfig('menu.settings.showLevel')) > 0) {
+            $showLevel = intval($this->getProject()->getConfig('mobileMenu.settings.showLevel'));
         }
 
-        if ($showLevel < 1) {
-            $showLevel = 1;
+        if (intval($this->getAttribute('showLevel')) > 0) {
+            $showLevel = intval($this->getAttribute('showLevel'));
         }
 
         $this->Mobile->setAttribute('collapseMobileSubmenu', $collapseMobileSubmenu);
@@ -104,7 +104,7 @@ class MegaMenu extends AbstractMenu
      */
     public function getBody()
     {
-        $cache = EventHandler::menuCacheName() . '/megaMenu/';
+        $cache = EventHandler::menuCacheName().'/megaMenu/';
 
         $attributes = $this->getAttributes();
         $attributes = \array_filter($attributes, function ($entry) {
@@ -112,7 +112,7 @@ class MegaMenu extends AbstractMenu
         });
 
         $cache .= \md5(
-            $this->getSite()->getCachePath() .
+            $this->getSite()->getCachePath().
             \serialize($attributes)
         );
 
@@ -184,7 +184,7 @@ class MegaMenu extends AbstractMenu
             ]);
 
             $result             = [];
-            $result['html']     = $Engine->fetch(dirname(__FILE__) . '/MegaMenu.Independent.html');
+            $result['html']     = $Engine->fetch(dirname(__FILE__).'/MegaMenu.Independent.html');
             $result['subMenus'] = \array_unique($this->subMenus);
         } else {
             $Engine->assign([
@@ -207,7 +207,7 @@ class MegaMenu extends AbstractMenu
             }
 
             $result             = [];
-            $result['html']     = $Engine->fetch(dirname(__FILE__) . '/MegaMenu.html');
+            $result['html']     = $Engine->fetch(dirname(__FILE__).'/MegaMenu.html');
             $result['subMenus'] = \array_unique($this->subMenus);
         }
 

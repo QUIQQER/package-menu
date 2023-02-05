@@ -61,12 +61,12 @@
             <en><![CDATA[Mobile Menu]]></en>
         </locale>
         <locale name="mobileMenu.settings.collapseMobileSubmenu">
-            <de><![CDATA[Collpase-Untermenü in der mobilen Version]]></de>
-            <en><![CDATA[Collpase submenu in mobile version]]></en>
+            <de><![CDATA[Untermenüs zuklappen]]></de>
+            <en><![CDATA[Collpase submenu]]></en>
         </locale>
         <locale name="mobileMenu.settings.showLevel">
-            <de><![CDATA[Ebene anzeigen]]></de>
-            <en><![CDATA[Show level]]></en>
+            <de><![CDATA[Ebenen anzeigen]]></de>
+            <en><![CDATA[Show levels]]></en>
         </locale>
         <locale name="mobileMenu.settings.showLevel.desc">
             <de><![CDATA[Wie viele Ebenen des mobilen Menüs sollen angezeigt werden?]]></de>
