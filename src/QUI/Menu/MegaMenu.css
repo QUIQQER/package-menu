@@ -53,3 +53,30 @@
     line-height: 60px;
     padding: 0 10px;
 }
+
+.quiqqer-menu-close {
+    display: none;
+}
+
+.quiqqer-menu-levels {
+    transition: all 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+.quiqqer-menu-levels-rotate {
+    transform: rotate(90deg);
+}
+
+.quiqqer-navigation-entry .quiqqer-menu-active-level {
+    background: rgba(255, 255, 255, 0.10);
+    font-weight: 500;
+}
+
+.page-navigation li {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.page-navigation .page-navigation-level-1 a {
+    border: none;
+}

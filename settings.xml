@@ -13,6 +13,15 @@
                         <type><![CDATA[string]]></type>
                     </conf>
                 </section>
+                <section name="mobileMenu.settings">
+                    <conf name="collapseMobileSubmenu">
+                        <type><![CDATA[bool]]></type>
+                    </conf>
+                    <conf name="showLevel">
+                        <type><![CDATA[number]]></type>
+                        <defaultvalue>1</defaultvalue>
+                    </conf>
+                </section>
             </config>
 
             <window>
@@ -60,6 +69,27 @@
                                     <locale group="quiqqer/menu" var="menu.settings.noMenu"/>
                                 </option>
                             </select>
+                        </settings>
+
+                        <settings title="mobileMenu.settings" name="mobileMenu.settings">
+                            <title>
+                                <locale group="quiqqer/menu" var="mobileMenu.settings.title"/>
+                            </title>
+
+                            <input conf="mobileMenu.settings.collapseMobileSubmenu" type="checkbox">
+                                <text>
+                                    <locale group="quiqqer/menu" var="mobileMenu.settings.collapseMobileSubmenu"/>
+                                </text>
+                            </input>
+
+                            <input conf="mobileMenu.settings.showLevel" type="number" min="1" max="50">
+                                <text>
+                                    <locale group="quiqqer/menu" var="mobileMenu.settings.showLevel"/>
+                                </text>
+                                <description>
+                                    <locale group="quiqqer/menu" var="mobileMenu.settings.showLevel.desc"/>
+                                </description>
+                            </input>
                         </settings>
                     </category>
                 </categories>

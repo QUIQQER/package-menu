@@ -37,7 +37,8 @@ define('package/quiqqer/menu/bin/SlideOut', [
             'menu-width'                 : 256,
             'menu-button'                : true,
             'touch'                      : false,
-            'buttonids'                  : false
+            'buttonids'                  : false,
+            collapsemobilemenu : false
         },
 
         Binds: [
@@ -101,6 +102,37 @@ define('package/quiqqer/menu/bin/SlideOut', [
                     self.Slideout.close();
                     self.$scrollToElement(TargetElm);
                 })
+            });
+
+            var Parent = this.getElm(),
+            ToggleButton = Parent.getElements(".quiqqer-menu-levels");
+
+            var runs = false;
+
+            ToggleButton.addEvent("click", function (e)
+            {
+                e.preventDefault();
+
+                if (runs) {
+                    return;
+                }
+
+                runs = true;
+
+                var LiLeft = this.getParent('li');
+                var NavSubLeft = LiLeft.getElement("div.quiqqer-sub-nav-div");
+                var Prom;
+
+                if (!NavSubLeft.getSize().y.toInt()) {
+                    Prom = self.openMenu(NavSubLeft);
+                } else {
+                    Prom = self.closeMenu(NavSubLeft);
+                }
+
+                Prom.then(function ()
+                {
+                    runs = false;
+                });
             });
 
             // fix for IE - z-index must have the value 0
@@ -479,6 +511,77 @@ define('package/quiqqer/menu/bin/SlideOut', [
                     }
                 }).toElement(Target);
             }, 300);
+        },
+
+        /**
+         * open the next level of sub menu
+         *
+         * @param {HTMLLIElement} NavSubLeft
+         *
+         * @return Promise
+         */
+        openMenu: function (NavSubLeft)
+        {
+            return new Promise(function (resolve)
+            {
+                NavSubLeft.setStyles({
+                    height  : 0,
+                    opacity : 0,
+                    overflow: "hidden",
+                    display : "block"
+                });
+
+                moofx(NavSubLeft).animate({
+                    height : NavSubLeft.getElement("ul").getSize().y.toInt(),
+                    opacity: 1
+                }, {
+                    duration: 200,
+                    callback: function ()
+                    {
+                        NavSubLeft.setStyle('height', '100%');
+
+                        var Prev = NavSubLeft.getPrevious('.quiqqer-navigation-entry'),
+                            Icon = Prev.querySelector('.quiqqer-menu-levels');
+
+                        if (Icon.hasClass('quiqqer-menu-levels')) {
+                            Icon.addClass("quiqqer-menu-levels-rotate");
+                        }
+
+                        resolve();
+                    }
+                });
+            });
+        },
+
+        /**
+         * close the next level of sub menu
+         *
+         * @param {HTMLLIElement} NavSubLeft
+         *
+         * @return Promise
+         */
+        closeMenu: function (NavSubLeft)
+        {
+            return new Promise(function (resolve)
+            {
+                NavSubLeft.setStyle("overflow", "hidden");
+                NavSubLeft.setStyle("height", NavSubLeft.getSize().y);
+
+                moofx(NavSubLeft).animate({
+                    height : 0,
+                    opacity: 0
+                }, {
+                    duration: 200,
+                    callback: function ()
+                    {
+                        var Prev = NavSubLeft.getPrevious('.quiqqer-navigation-entry'),
+                            Icon = Prev.querySelector('.quiqqer-menu-levels');
+
+                        Icon.removeClass("quiqqer-menu-levels-rotate");
+                        resolve();
+                    }``
+                });
+            });
         }
     });
 

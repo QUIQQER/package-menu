@@ -1,33 +1,69 @@
 {if !isset($level)}
-    {assign var=level value=1}
+{assign var=level value=1}
 {else}
-    {assign var=level value=$level+1}
+{assign var=level value=$level+1}
 {/if}
 
 {if count($children)}
-<ul class="page-navigation-level-{$level}">
-    {foreach from=$children item=Child}
-    <li>
-        <a href="{$Child->getUrl()}"
-           class="qui-menu-siteid-{$Child->getIdentifier()} left-menu-a"
-           title="{$Child->getTitleAttribute()|escape:'html'}"
-           {if $Child->getTarget()}target="{$Child->getTarget()}"{/if}
-        >
-            {if $this->getAttribute('showFirstLevelIcons') && $Child->getIcon() && $Child->getIcon()|strpos:'image.php' !== 0 }
-                {image src=$Child->getIcon() onlyicon=1}
-            {/if}
-            <span class="fa fa-angle-right"></span>
 
-            <span class="left-menu-text">
-            {$Child->getTitle()}
-            </span>
-        </a>
 
-        {include file="`$FileMenu`"
+{if $level > 1}
+<div class="quiqqer-sub-nav-div {if $collapseMobileSubmenu == 1 and $showLevel < $level}quiqqer-menu-close{/if}">
+    {/if}
+
+    <ul class="page-navigation-level-{$level}">
+        {foreach from=$children item=Child}
+        <li>
+            <div class="quiqqer-navigation-entry">
+                <a href="{$Child->getUrl()}"
+                   class="qui-menu-siteid-{$Child->getIdentifier()} left-menu-a"
+                   title="{$Child->getTitleAttribute()|escape:'html'}"
+                   {if $Child->getTarget()}target="{$Child->getTarget()}"{/if}
+                    >
+
+                    {if count($Child->getChildren())}
+                    {* With children *}
+
+                    {if $Child|get_class == 'QUI\Menu\Independent\Items\Anchor' or $Child|get_class == 'QUI\Menu\Independent\Items\Site'}
+                    {if $ActiveSite->getId() == $Child->getSite()->getId()}
+                    <span class="fa fa-angle-double-right quiqqer-menu-levels
+                                    {if $collapseMobileSubmenu == 0}quiqqer-menu-levels-rotate{/if}
+                                    {if $showLevel > $level}quiqqer-menu-levels-rotate{/if}"></span>
+                    {else}
+                    <span class="fa fa-angle-double-right quiqqer-menu-levels
+                                    {if $collapseMobileSubmenu == 0}quiqqer-menu-levels-rotate{/if}
+                                    {if $showLevel > $level}quiqqer-menu-levels-rotate{/if}"></span>
+                    {/if}
+                    {else}
+                    <span class="fa fa-angle-double-right quiqqer-menu-levels
+                                    {if $collapseMobileSubmenu == 0}quiqqer-menu-levels-rotate{/if}
+                                    {if $showLevel > $level}quiqqer-menu-levels-rotate{/if}"></span>
+                    {/if}
+
+                    {else}
+                    {* Without children *}
+
+                    <span class="fa fa-angle-right"></span>
+                    {/if}
+
+                    {if $this->getAttribute('showFirstLevelIcons') && $Child->getIcon() && $Child->getIcon()|strpos:'image.php' !== 0 }
+                    {image src=$Child->getIcon() onlyicon=1}
+                    {/if}
+
+                    <span class="left-menu-text">
+                {$Child->getTitle()}
+                </span>
+                </a>
+            </div>
+            {include file="`$FileMenu`"
             children=$Child->getChildren()
             level=$level
-        }
-    </li>
-    {/foreach}
-</ul>
+            }
+        </li>
+        {/foreach}
+    </ul>
+
+    {if $level > 1}
+</div>
+{/if}
 {/if}

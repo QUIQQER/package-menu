@@ -55,6 +55,23 @@
             <en><![CDATA[MegaMenu - No DropDown Menu]]></en>
         </locale>
 
+        <!-- mobile menu -->
+        <locale name="mobileMenu.settings.title">
+            <de><![CDATA[Mobiles Menü]]></de>
+            <en><![CDATA[Mobile Menu]]></en>
+        </locale>
+        <locale name="mobileMenu.settings.collapseMobileSubmenu">
+            <de><![CDATA[Untermenüs zuklappen]]></de>
+            <en><![CDATA[Collpase submenu]]></en>
+        </locale>
+        <locale name="mobileMenu.settings.showLevel">
+            <de><![CDATA[Ebenen anzeigen]]></de>
+            <en><![CDATA[Show levels]]></en>
+        </locale>
+        <locale name="mobileMenu.settings.showLevel.desc">
+            <de><![CDATA[Wie viele Ebenen des mobilen Menüs sollen angezeigt werden?]]></de>
+            <en><![CDATA[How many levels of mobile menu should be shown?]]></en>
+        </locale>
 
         <!-- sidebar menu -->
         <locale name="menu.control.sidebarDropDownMenu.title">
