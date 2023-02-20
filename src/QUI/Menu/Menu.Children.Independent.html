@@ -25,7 +25,7 @@
                     {* With children *}
 
                     {if $Child|get_class == 'QUI\Menu\Independent\Items\Anchor' or $Child|get_class == 'QUI\Menu\Independent\Items\Site'}
-                    {if $ActiveSite->getId() == $Child->getSite()->getId()}
+                    {if $Child->getSite() && $ActiveSite->getId() == $Child->getSite()->getId()}
                     <span class="fa fa-angle-double-right quiqqer-menu-levels
                                     {if $collapseMobileSubmenu == 0}quiqqer-menu-levels-rotate{/if}
                                     {if $showLevel > $level}quiqqer-menu-levels-rotate{/if}"></span>
