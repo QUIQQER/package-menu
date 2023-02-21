@@ -97,7 +97,58 @@
                 </setting>
             </settings>
         </brick>
-        
+
+        <!-- tabs (horizontal) -->
+        <brick control="\QUI\Menu\Controls\Tabs">
+            <title>
+                <locale group="quiqqer/menu"
+                        var="control.tabs.title"/>
+            </title>
+            <description>
+                <locale group="quiqqer/menu"
+                        var="control.tabs.description"/>
+            </description>
+
+            <settings>
+                <setting name="tabsStyle" type="select">
+                    <locale group="quiqqer/menu"
+                            var="control.tabs.tabsStyle"/>
+
+                    <option value="smallImgLeft">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.tabsStyle.smallImgLeft"/>
+                    </option>
+                </setting>
+
+                <setting name="tabsImgPos" type="select">
+                    <locale group="quiqqer/menu"
+                            var="control.tabs.imagePos"/>
+
+                    <option value="left">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.tabsImgPos.left"/>
+                    </option>
+                    <option value="top">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.tabsImgPos.top"/>
+                    </option>
+                    <option value="right">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.tabsImgPos.right"/>
+                    </option>
+                    <option value="bottom">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.tabsImgPos.bottom"/>
+                    </option>
+                </setting>
+
+                <setting name="entries" type="hidden" data-qui="package/quiqqer/menu/bin/Controls/Tabs.Settings">
+                    <locale group="quiqqer/menu" var="control.tabs.entries"/>
+                </setting>
+
+            </settings>
+        </brick>
+
         <!-- nav tabs vertical -->
         <brick control="\QUI\Menu\NavTabsVertical">
             <title>

@@ -151,6 +151,8 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
 
             var self = this;
 
+            this.NavContentContainer.setStyle('height', this.NavContentContainer.offsetHeight);
+
             Promise.all([
                 this.disableNavItem(this.ActiveNavTab),
                 this.hideContent(this.ActiveContent)
@@ -239,7 +241,7 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
         },
 
         /**
-         * Set heigt of tab content container
+         * Set height of tab content container
          *
          * @param height integer
          * @return Promise
@@ -264,8 +266,6 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
          * @return Promise
          */
         $slideFadeOut: function (Item) {
-            this.NavContentContainer.setStyle('height', Item.offsetHeight)
-
             return new Promise(function (resolve) {
                 moofx(Item).animate({
                     transform: 'translateX(-10px)',

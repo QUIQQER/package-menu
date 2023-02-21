@@ -644,5 +644,56 @@
             <en><![CDATA[Select menu]]></en>
         </locale>
 
+        <!-- Tabs: settings -->
+        <locale name="control.tabs.entries.isDisabled">
+            <de><![CDATA[Deaktiviert]]></de>
+            <en><![CDATA[Disabled]]></en>
+        </locale>
+
+        <!-- Tabs: qui window settings -->
+        <locale name="control.tabs.entries.isDisabled">
+            <de><![CDATA[Deaktiviert]]></de>
+            <en><![CDATA[Disabled]]></en>
+        </locale>
+        <locale name="control.tabs.entries.tabIcon">
+            <de><![CDATA[Tab Icon]]></de>
+            <en><![CDATA[Tab icon]]></en>
+        </locale>
+        <locale name="control.tabs.entries.tabTitle">
+            <de><![CDATA[Tab Titel]]></de>
+            <en><![CDATA[Tab title]]></en>
+        </locale>
+        <locale name="control.tabs.entries.entryImage">
+            <de><![CDATA[Bild]]></de>
+            <en><![CDATA[Image]]></en>
+        </locale>
+        <locale name="control.tabs.entries.entryImagePos">
+            <de><![CDATA[Bildposition]]></de>
+            <en><![CDATA[Image position]]></en>
+        </locale>
+        <locale name="control.tabs.entries.entryImagePos.left">
+            <de><![CDATA[Links]]></de>
+            <en><![CDATA[Left]]></en>
+        </locale>
+        <locale name="control.tabs.entries.entryImagePos.right">
+            <de><![CDATA[Rechts]]></de>
+            <en><![CDATA[Right]]></en>
+        </locale>
+        <locale name="control.tabs.entries.entryImagePos.top">
+            <de><![CDATA[Oben]]></de>
+            <en><![CDATA[Top]]></en>
+        </locale>
+        <locale name="control.tabs.entries.entryImagePos.bottom">
+            <de><![CDATA[Unten]]></de>
+            <en><![CDATA[Bottom]]></en>
+        </locale>
+        <locale name="control.tabs.entries.entryTitle">
+            <de><![CDATA[Titel]]></de>
+            <en><![CDATA[Title]]></en>
+        </locale>
+        <locale name="control.tabs.entries.entryContent">
+            <de><![CDATA[Inhalt]]></de>
+            <en><![CDATA[Content]]></en>
+        </locale>
     </groups>
 </locales>
