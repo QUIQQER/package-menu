@@ -11,10 +11,10 @@
 {/if}
 
 <div class="control-template quiqqer-tabsAdvanced-control" style="
-        --quiqqer-tabsAdvanced-navImgHeight: {$navImgHeight}px;
-        --quiqqer-tabsAdvanced-contentTextWidth: {$contentTextWidth}px;
-        --quiqqer-tabsAdvanced-contentImgMaxWidth: {$contentImgMaxWidth}px;
-        --quiqqer-tabsAdvanced-contentImgMaxHeight: {$contentImgMaxHeight}px;
+        {if $tabImgHeight}--quiqqer-tabsAdvanced-tabImgHeight: {$tabImgHeight}px;{/if}
+        {if $contentTextWidth}--quiqqer-tabsAdvanced-contentTextWidth: {$contentTextWidth}px;{/if}
+        {if $contentImgMaxWidth}--quiqqer-tabsAdvanced-contentImgMaxWidth: {$contentImgMaxWidth}px;{/if}
+        {if $contentImgMaxHeight}--quiqqer-tabsAdvanced-contentImgMaxHeight: {$contentImgMaxHeight}px;{/if}
 ">
     <div class="quiqqer-tabsAdvanced-nav">
         <ul class="quiqqer-tabsAdvanced-nav-inner quiqqer-tab-nav">

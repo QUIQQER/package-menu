@@ -28,9 +28,10 @@
 }
 
 .quiqqer-tabsAdvanced-nav-link img {
-    height: var(--quiqqer-tabsAdvanced-navImgHeight, 24px);
+    height: var(--quiqqer-tabsAdvanced-tabImgHeight, 24px);
     vertical-align: middle;
     display: block;
+    width: auto;
 }
 
 .active > .quiqqer-tabsAdvanced-nav-link {
@@ -102,13 +103,13 @@
 
 
 /* test */
-.quiqqer-tabsAdvanced-content{
-    border: 2px solid;
-    border-radius: 1rem;
-}
-.quiqqer-tabsAdvanced-content-item {
-    padding: 2rem;
-}
+/*.quiqqer-tabsAdvanced-content{*/
+/*    border: 2px solid;*/
+/*    border-radius: 1rem;*/
+/*}*/
+/*.quiqqer-tabsAdvanced-content-item {*/
+/*    padding: 2rem;*/
+/*}*/
 
 
 

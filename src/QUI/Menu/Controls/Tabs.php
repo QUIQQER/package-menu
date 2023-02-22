@@ -25,16 +25,16 @@ class Tabs extends QUI\Control
     {
         // default options
         $this->setAttributes([
-            'class'          => 'quiqqer-tabs',
-            'qui-class'      => 'package/quiqqer/menu/bin/Controls/NavTabs',
-            'navImgHeight'       => 24,
+            'class'               => 'quiqqer-tabs',
+            'qui-class'           => 'package/quiqqer/menu/bin/Controls/NavTabs',
+            'tabImgHeight'        => 24,
             'contentImgMaxWidth'  => 300,
-            'contentImgMaxHeight'  => 500,
-            'contentTextWidth' => 600,
-            'activeEntry' => 2, // number
-            'imageMaxHeight' => false,
-            'entries'        => [],
-            'template'       => 'simple',
+            'contentImgMaxHeight' => 500,
+            'contentTextWidth'    => 700,
+            'activeEntry'         => 1, // number
+            'imageMaxHeight'      => false,
+            'entries'             => [],
+            'template'            => 'simple',
         ]);
 
         parent::__construct($attributes);
@@ -72,12 +72,12 @@ class Tabs extends QUI\Control
         }
 
         $Engine->assign([
-            'this'     => $this,
-            'entries'  => $enabledEntries,
-            'active'  => $active,
-            'navImgHeight' => $this->getAttribute('navImgHeight'),
-            'contentTextWidth' => $this->getAttribute('contentTextWidth'),
-            'contentImgMaxWidth' => $this->getAttribute('contentImgMaxWidth'),
+            'this'                => $this,
+            'entries'             => $enabledEntries,
+            'active'              => $active,
+            'tabImgHeight'        => $this->getAttribute('tabImgHeight'),
+            'contentTextWidth'    => $this->getAttribute('contentTextWidth'),
+            'contentImgMaxWidth'  => $this->getAttribute('contentImgMaxWidth'),
             'contentImgMaxHeight' => $this->getAttribute('contentImgMaxHeight')
         ]);
 

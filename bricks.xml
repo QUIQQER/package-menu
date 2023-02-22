@@ -110,14 +110,24 @@
             </description>
 
             <settings>
-                <setting name="tabsStyle" type="select">
+                <setting name="template" type="select">
                     <locale group="quiqqer/menu"
-                            var="control.tabs.tabsStyle"/>
+                            var="control.tabs.default"/>
 
                     <option value="smallImgLeft">
                         <locale group="quiqqer/menu"
                                 var="control.tabs.tabsStyle.smallImgLeft"/>
                     </option>
+                </setting>
+
+                <setting name="tabImgHeight" type="number">
+                    <locale group="quiqqer/menu"
+                            var="control.tabs.tabImgHeight"/>
+
+                    <description>
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.tabImgHeight.desc"/>
+                    </description>
                 </setting>
 
                 <setting name="tabsImgPos" type="select">
