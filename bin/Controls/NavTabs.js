@@ -13,9 +13,10 @@
 define('package/quiqqer/menu/bin/Controls/NavTabs', [
 
     'qui/QUI',
-    'qui/controls/Control'
+    'qui/controls/Control',
+    URL_OPT_DIR + 'bin/quiqqer-asset/animejs/animejs/lib/anime.min.js',
 
-], function (QUI, QUIControl) {
+], function (QUI, QUIControl, animejs) {
     "use strict";
 
     return new Class({
@@ -110,7 +111,7 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
                 let target = NavTabItem.getElement('a').getAttribute("href");
 
                 if (target.indexOf('#') === 0) {
-                    target = target.substring(1)
+                    target = target.substring(1);
                 }
 
                 if (!target) {
@@ -121,7 +122,7 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
                 self.$setNavItemPos(NavTabItem);
                 self.toggle(NavTabItem, target);
 
-                const url = window.location.href;
+                const url    = window.location.href;
                 const newUrl = url.split('#')[0] + '#open_' + target;
 
                 history.pushState(null, null, newUrl);
@@ -231,8 +232,9 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
 
             return new Promise(function (resolve) {
                 self.$slideFadeIn(Item).then(function () {
+                    Item.style.display = null;
+                    Item.style.opacity = null;
                     Item.addClass('active');
-                    Item.setStyle('display', null);
                     self.ActiveContent = Item;
 
                     resolve();
@@ -247,15 +249,8 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
          * @return Promise
          */
         $setHeight: function (height) {
-            var self = this;
-
-            return new Promise(function (resolve) {
-                moofx(self.NavContentContainer).animate({
-                    height: height
-                }, {
-                    duration: 250,
-                    callback: resolve
-                });
+            return this.$animate(this.NavContentContainer, {
+                height: height
             });
         },
 
@@ -266,14 +261,10 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
          * @return Promise
          */
         $slideFadeOut: function (Item) {
-            return new Promise(function (resolve) {
-                moofx(Item).animate({
-                    transform: 'translateX(-10px)',
-                    opacity  : 0
-                }, {
-                    duration: 250,
-                    callback: resolve
-                });
+            return this.$animate(Item, {
+                opacity  : 0,
+                translateX: -5,
+
             });
         },
 
@@ -285,18 +276,13 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
          */
         $slideFadeIn: function (Item) {
             Item.setStyles({
-                transform: 'translateX(-10px)',
+                transform: 'translateX(-5px)',
                 opacity  : 0
             });
 
-            return new Promise(function (resolve) {
-                moofx(Item).animate({
-                    transform: 'translateX(0)',
-                    opacity  : 1
-                }, {
-                    duration: 250,
-                    callback: resolve
-                });
+            return this.$animate(Item, {
+                translateX: 0,
+                opacity  : 1
             });
         },
 
@@ -333,6 +319,19 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
                 rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
                 rect.right <= (window.innerWidth || document.documentElement.clientWidth)
             );
+        },
+
+        $animate: function (Target, options) {
+            console.log(options)
+            return new Promise(function (resolve) {
+                options          = options || {};
+                options.targets  = Target;
+                options.complete = resolve;
+                options.duration = options.duration || 250;
+                options.easing   = options.easing || 'easeInQuad';
+
+                animejs(options);
+            });
         }
     });
 });
