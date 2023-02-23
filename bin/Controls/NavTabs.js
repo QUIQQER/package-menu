@@ -322,7 +322,6 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
         },
 
         $animate: function (Target, options) {
-            console.log(options)
             return new Promise(function (resolve) {
                 options          = options || {};
                 options.targets  = Target;

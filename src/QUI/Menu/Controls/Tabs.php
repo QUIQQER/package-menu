@@ -27,14 +27,21 @@ class Tabs extends QUI\Control
         $this->setAttributes([
             'class'               => 'quiqqer-tabs',
             'qui-class'           => 'package/quiqqer/menu/bin/Controls/NavTabs',
-            'tabImgHeight'        => 24,
-            'contentImgMaxWidth'  => 300,
-            'contentImgMaxHeight' => 500,
-            'contentTextWidth'    => 700,
             'activeEntry'         => 1, // number
-            'imageMaxHeight'      => false,
             'entries'             => [],
             'template'            => 'simple',
+
+            // tabs nav
+            'navImgHeight'        => 20, // number
+            'navStyle'            => 'imgLeft', // imgLeft, imgTop, onlyImg
+            'navCenter'           => false,
+
+            // tabs content
+            'contentImgMaxWidth'  => 600, // number
+            'contentImgMaxHeight' => 300, // number
+            'contentTextWidth'    => 600, // number
+
+
         ]);
 
         parent::__construct($attributes);
@@ -65,17 +72,50 @@ class Tabs extends QUI\Control
             array_push($enabledEntries, $entry);
         }
 
+//        foreach ($entries as $entry) {
+//            array_push($enabledEntries, $entry);
+//        }
+//
+//        foreach ($entries as $entry) {
+//            array_push($enabledEntries, $entry);
+//        }
+
         $active = 1;
 
         if ($this->getAttribute('activeEntry') && $this->getAttribute('activeEntry') > 0) {
             $active = $this->getAttribute('activeEntry');
         }
 
+        /* template */
+        $template = 'simple';
+
+        /* nav */
+        $showNavText    = true;
+        $navTabStyleCss = 'navTabStyle__imgLeft';
+        $navAlignment   = 'quiqqer-tabsAdvanced-nav-inner__left';
+
+        switch ($this->getAttribute('navStyle')) {
+            case 'imgTop':
+                $navTabStyleCss = 'navTabStyle__imgTop';
+                break;
+            case 'onlyImg':
+                $navTabStyleCss = 'navTabStyle__onlyImg';
+                $showNavText    = false;
+        }
+
+        if ($this->getAttribute('navCenter')) {
+            $navAlignment = 'quiqqer-tabsAdvanced-nav-inner__center';
+        }
+
         $Engine->assign([
             'this'                => $this,
             'entries'             => $enabledEntries,
             'active'              => $active,
-            'tabImgHeight'        => $this->getAttribute('tabImgHeight'),
+            'navImgHeight'        => $this->getAttribute('navImgHeight'),
+            'navStyle'            => $this->getAttribute('navStyle'),
+            'navTabStyleCss'      => $navTabStyleCss,
+            'showNavText'         => $showNavText,
+            'navAlignment'        => $navAlignment,
             'contentTextWidth'    => $this->getAttribute('contentTextWidth'),
             'contentImgMaxWidth'  => $this->getAttribute('contentImgMaxWidth'),
             'contentImgMaxHeight' => $this->getAttribute('contentImgMaxHeight')

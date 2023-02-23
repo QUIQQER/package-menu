@@ -112,45 +112,48 @@
             <settings>
                 <setting name="template" type="select">
                     <locale group="quiqqer/menu"
-                            var="control.tabs.default"/>
+                            var="control.tabs.template"/>
 
-                    <option value="smallImgLeft">
+                    <option value="simple">
                         <locale group="quiqqer/menu"
-                                var="control.tabs.tabsStyle.smallImgLeft"/>
+                                var="control.tabs.template.simple"/>
                     </option>
                 </setting>
 
-                <setting name="tabImgHeight" type="number">
+                <setting name="navImgHeight" type="number">
                     <locale group="quiqqer/menu"
-                            var="control.tabs.tabImgHeight"/>
+                            var="control.tabs.navImgHeight"/>
 
                     <description>
                         <locale group="quiqqer/menu"
-                                var="control.tabs.tabImgHeight.desc"/>
+                                var="control.tabs.navImgHeight.desc"/>
                     </description>
                 </setting>
 
-                <setting name="tabsImgPos" type="select">
+                <!-- nav style -->
+                <setting name="navStyle" type="select">
                     <locale group="quiqqer/menu"
-                            var="control.tabs.imagePos"/>
+                            var="control.tabs.navStyle"/>
 
-                    <option value="left">
+                    <option value="imgLeft">
                         <locale group="quiqqer/menu"
-                                var="control.tabs.tabsImgPos.left"/>
+                                var="control.tabs.navStyle.imgLeft"/>
                     </option>
-                    <option value="top">
+                    <option value="imgTop">
                         <locale group="quiqqer/menu"
-                                var="control.tabs.tabsImgPos.top"/>
+                                var="control.tabs.navStyle.imgTop"/>
                     </option>
-                    <option value="right">
+                    <option value="onlyImg">
                         <locale group="quiqqer/menu"
-                                var="control.tabs.tabsImgPos.right"/>
-                    </option>
-                    <option value="bottom">
-                        <locale group="quiqqer/menu"
-                                var="control.tabs.tabsImgPos.bottom"/>
+                                var="control.tabs.navStyle.onlyImg"/>
                     </option>
                 </setting>
+
+                <setting name="navCenter" type="checkbox">
+                    <locale group="quiqqer/menu"
+                            var="control.tabs.navCenter"/>
+                </setting>
+
 
                 <setting name="entries" type="hidden" data-qui="package/quiqqer/menu/bin/Controls/Tabs.Settings">
                     <locale group="quiqqer/menu" var="control.tabs.entries"/>

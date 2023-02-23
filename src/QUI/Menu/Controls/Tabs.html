@@ -1,35 +1,39 @@
 {if $this->getAttribute('showTitle') && $this->getAttribute('frontendTitle')}
-<header class="control-header">
-    <h1>{$this->getAttribute('frontendTitle')}</h1>
-</header>
+    <header class="control-header">
+        <h1>{$this->getAttribute('frontendTitle')}</h1>
+    </header>
 {/if}
 
 {if $this->getAttribute('content') != ""}
-<div class="control-body default-content">
-    {$this->getAttribute('content')}
-</div>
+    <div class="control-body default-content">
+        {$this->getAttribute('content')}
+    </div>
 {/if}
 
 <div class="control-template quiqqer-tabsAdvanced-control" style="
-        {if $tabImgHeight}--quiqqer-tabsAdvanced-tabImgHeight: {$tabImgHeight}px;{/if}
-        {if $contentTextWidth}--quiqqer-tabsAdvanced-contentTextWidth: {$contentTextWidth}px;{/if}
-        {if $contentImgMaxWidth}--quiqqer-tabsAdvanced-contentImgMaxWidth: {$contentImgMaxWidth}px;{/if}
-        {if $contentImgMaxHeight}--quiqqer-tabsAdvanced-contentImgMaxHeight: {$contentImgMaxHeight}px;{/if}
-">
+{if $navImgHeight}--quiqqer-tabsAdvanced-navImgHeight: {$navImgHeight}px;{/if}
+{if $contentTextWidth}--quiqqer-tabsAdvanced-contentTextWidth: {$contentTextWidth}px;{/if}
+{if $contentImgMaxWidth}--quiqqer-tabsAdvanced-contentImgMaxWidth: {$contentImgMaxWidth}px;{/if}
+{if $contentImgMaxHeight}--quiqqer-tabsAdvanced-contentImgMaxHeight: {$contentImgMaxHeight}px;{/if}
+        ">
     <div class="quiqqer-tabsAdvanced-nav">
-        <ul class="quiqqer-tabsAdvanced-nav-inner quiqqer-tab-nav">
+        <ul class="quiqqer-tabsAdvanced-nav-inner {$navAlignment} quiqqer-tab-nav">
             {foreach from=$entries item=entry key=key}
-            <li class="quiqqer-tabsAdvanced-nav-item quiqqer-tab-nav-item {if $key == $active - 1}active{/if}" data-entry-nav-pos="{$key}">
-                <a href="#{QUI\Utils\Security\Orthos::urlEncodeString($entry.tabTitle)}"
-                   data-qui-disableTemplateScroll="1"
-                    class="quiqqer-tabsAdvanced-nav-link">
-                    {if isset($entry.tabIcon) && $entry.tabIcon}
-                        {image src=$entry.tabIcon width="80" height="80"}
-                    {/if}
+                <li class="quiqqer-tabsAdvanced-nav-item {$navTabStyleCss}
+                 quiqqer-tab-nav-item {if $key == $active - 1}active{/if}"
+                    data-entry-nav-pos="{$key}">
+                    <a href="#{QUI\Utils\Security\Orthos::urlEncodeString($entry.tabTitle)}"
+                       data-qui-disableTemplateScroll="1"
+                       class="quiqqer-tabsAdvanced-nav-link {$navTabStyleCss}">
+                        {if isset($entry.tabIcon) && $entry.tabIcon}
+                            {image src=$entry.tabIcon width="80" height="80"}
+                        {/if}
 
-                    <span class="quiqqer-tabsAdvanced-nav-linkLabel">{$entry.tabTitle}</span>
-                </a>
-            </li>
+                        {if $showNavText}
+                            <span class="quiqqer-tabsAdvanced-nav-linkLabel {$navTabStyleCss}">{$entry.tabTitle}</span>
+                        {/if}
+                    </a>
+                </li>
             {/foreach}
         </ul>
     </div>
@@ -54,7 +58,6 @@
                 {if (isset($entry.entryTitle) && $entry.entryTitle) || (isset($entry.entryContent) && $entry.entryContent)}
                     {assign var=content value=true}
                 {/if}
-
                 <li class="quiqqer-tabsAdvanced-content-item quiqqer-tab-content-item {$imgPos}
                     {if !$imgSrc}no-image{/if}
                     {if !$content}no-content{/if}
@@ -65,24 +68,28 @@
 
                     {if $imgSrc}
                         <div class="quiqqer-tabsAdvanced-content-image">
+                            <div class="quiqqer-tabsAdvanced-content-image-inner">
                             {image src=$imgSrc width="600" height="600"}
+                            </div>
                         </div>
                     {/if}
 
                     {if $content}
-                    <div class="quiqqer-tabsAdvanced-content-body">
-                        {if isset($entry.entryTitle) && $entry.entryTitle}
-                            <h2 class="quiqqer-tabsAdvanced-content-title">
-                                {$entry.entryTitle}
-                            </h2>
-                        {/if}
+                        <div class="quiqqer-tabsAdvanced-content-body">
+                        <div class="quiqqer-tabsAdvanced-content-body-inner">
+                            {if isset($entry.entryTitle) && $entry.entryTitle}
+                                <h2 class="quiqqer-tabsAdvanced-content-title">
+                                    {$entry.entryTitle}
+                                </h2>
+                            {/if}
 
-                        {if isset($entry.entryContent) && $entry.entryContent}
-                            <div class="quiqqer-tabsAdvanced-content-text default-content">
-                                {$entry.entryContent}
-                            </div>
-                        {/if}
-                    </div>
+                            {if isset($entry.entryContent) && $entry.entryContent}
+                                <div class="quiqqer-tabsAdvanced-content-text default-content">
+                                    {$entry.entryContent}
+                                </div>
+                            {/if}
+                        </div>
+                        </div>
                     {/if}
                 </li>
             {/foreach}
