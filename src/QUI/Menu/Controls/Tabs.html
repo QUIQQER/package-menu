@@ -14,12 +14,12 @@
 {if $navImgHeight}--quiqqer-tabsAdvanced-navImgHeight: {$navImgHeight}px;{/if}
 {if $contentTextWidth}--quiqqer-tabsAdvanced-contentTextWidth: {$contentTextWidth}px;{/if}
 {if $contentImgMaxWidth}--quiqqer-tabsAdvanced-contentImgMaxWidth: {$contentImgMaxWidth}px;{/if}
-{if $contentImgMaxHeight}--quiqqer-tabsAdvanced-contentImgMaxHeight: {$contentImgMaxHeight}px;{/if}
+{if $contentImgMinWidth}--quiqqer-tabsAdvanced-contentImgMinWidth: {$contentImgMinWidth}px;{/if}
         ">
     <div class="quiqqer-tabsAdvanced-nav">
         <ul class="quiqqer-tabsAdvanced-nav-inner {$navAlignment} quiqqer-tab-nav">
             {foreach from=$entries item=entry key=key}
-                <li class="quiqqer-tabsAdvanced-nav-item {$navTabStyleCss}
+                <li class="quiqqer-tabsAdvanced-nav-item {$navTabStyleCss} {$navFillSpace}
                  quiqqer-tab-nav-item {if $key == $active - 1}active{/if}"
                     data-entry-nav-pos="{$key}">
                     <a href="#{QUI\Utils\Security\Orthos::urlEncodeString($entry.tabTitle)}"
@@ -30,7 +30,9 @@
                         {/if}
 
                         {if $showNavText}
-                            <span class="quiqqer-tabsAdvanced-nav-linkLabel {$navTabStyleCss}">{$entry.tabTitle}</span>
+                            <span class="quiqqer-tabsAdvanced-nav-linkLabel {$navTabStyleCss} {$navWrapText}">
+                                {$entry.tabTitle}
+                            </span>
                         {/if}
                     </a>
                 </li>

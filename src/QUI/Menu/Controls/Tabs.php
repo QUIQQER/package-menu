@@ -25,23 +25,23 @@ class Tabs extends QUI\Control
     {
         // default options
         $this->setAttributes([
-            'class'               => 'quiqqer-tabs',
-            'qui-class'           => 'package/quiqqer/menu/bin/Controls/NavTabs',
-            'activeEntry'         => 1, // number
-            'entries'             => [],
-            'template'            => 'simple',
+            'class'              => 'quiqqer-tabs',
+            'qui-class'          => 'package/quiqqer/menu/bin/Controls/NavTabs',
+            'activeEntry'        => 1, // number
+            'entries'            => [],
+            'template'           => 'simple',
 
             // tabs nav
-            'navImgHeight'        => 20, // number
-            'navStyle'            => 'imgLeft', // imgLeft, imgTop, onlyImg
-            'navCenter'           => false,
+            'navImgHeight'       => 20, // number
+            'navStyle'           => 'imgLeft', // imgLeft, imgTop, onlyImg
+            'navWrapText'       => 'wrap', // wrap / noWrap; allow breaking text on space. 'noWrap' set "white-space: nowrap;" CSS property on nav text
+            'navFillSpace'       => false, // it feels the available space
+            'navCenter'          => false,
 
             // tabs content
-            'contentImgMaxWidth'  => 600, // number
-            'contentImgMaxHeight' => 300, // number
-            'contentTextWidth'    => 600, // number
-
-
+            'contentImgMinWidth' => 200, // number; do not use large values, recommended is between 100 and 600
+            'contentImgMaxWidth' => 400, // number; do not use large values, recommended is between 200 and 600
+            'contentTextWidth'   => 600, // number
         ]);
 
         parent::__construct($attributes);
@@ -91,8 +91,10 @@ class Tabs extends QUI\Control
 
         /* nav */
         $showNavText    = true;
+        $navWrapText   = 'navText__wrap';
         $navTabStyleCss = 'navTabStyle__imgLeft';
-        $navAlignment   = 'quiqqer-tabsAdvanced-nav-inner__left';
+        $navAlignment   = '';
+        $navFillSpace   = '';
 
         switch ($this->getAttribute('navStyle')) {
             case 'imgTop':
@@ -103,22 +105,33 @@ class Tabs extends QUI\Control
                 $showNavText    = false;
         }
 
-        if ($this->getAttribute('navCenter')) {
-            $navAlignment = 'quiqqer-tabsAdvanced-nav-inner__center';
+        if (!$this->getAttribute('navFillSpace') && $this->getAttribute('navCenter')) {
+            // centre nav tabs only if "navFillSpace" options is not enabled
+            $navAlignment = 'navTab__center';
+        }
+
+        if ($this->getAttribute('navFillSpace')) {
+            $navFillSpace = 'navFillSpace';
+        }
+
+        if ($this->getAttribute('navWrapText') === 'noBreak') {
+            $navWrapText = 'navText__noWrap';
         }
 
         $Engine->assign([
-            'this'                => $this,
-            'entries'             => $enabledEntries,
-            'active'              => $active,
-            'navImgHeight'        => $this->getAttribute('navImgHeight'),
-            'navStyle'            => $this->getAttribute('navStyle'),
-            'navTabStyleCss'      => $navTabStyleCss,
-            'showNavText'         => $showNavText,
-            'navAlignment'        => $navAlignment,
-            'contentTextWidth'    => $this->getAttribute('contentTextWidth'),
-            'contentImgMaxWidth'  => $this->getAttribute('contentImgMaxWidth'),
-            'contentImgMaxHeight' => $this->getAttribute('contentImgMaxHeight')
+            'this'               => $this,
+            'entries'            => $enabledEntries,
+            'active'             => $active,
+            'navImgHeight'       => $this->getAttribute('navImgHeight'),
+            'navStyle'           => $this->getAttribute('navStyle'),
+            'navWrapText'       => $navWrapText,
+            'navTabStyleCss'     => $navTabStyleCss,
+            'showNavText'        => $showNavText,
+            'navAlignment'       => $navAlignment,
+            'navFillSpace'       => $navFillSpace,
+            'contentTextWidth'   => $this->getAttribute('contentTextWidth'),
+            'contentImgMaxWidth' => $this->getAttribute('contentImgMaxWidth'),
+            'contentImgMinWidth' => $this->getAttribute('contentImgMinWidth'),
         ]);
 
         return $Engine->fetch(dirname(__FILE__).'/Tabs.html');

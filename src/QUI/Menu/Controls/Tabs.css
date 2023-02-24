@@ -21,21 +21,26 @@
 
 @media screen and (max-width: 767px) {
     .quiqqer-tabsAdvanced-nav-inner {
-        overflow: auto;
+        overflow: scroll;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* Internet Explorer 10+ */
+    }
+
+    .quiqqer-tabsAdvanced-nav-inner::-webkit-scrollbar { /* WebKit */
+        width: 0;
+        height: 0;
     }
 }
 
-.quiqqer-tabsAdvanced-nav-item {
-    /*flex: 1;*/
-    min-width: 200px;
+.quiqqer-tabsAdvanced-nav-item.navFillSpace {
+    flex: 1;
 }
 
 @media screen and (min-width: 768px) {
-    .quiqqer-tabsAdvanced-nav-inner__center {
+    .quiqqer-tabsAdvanced-nav-inner.navTab__center {
         justify-content: center;
     }
 }
-
 
 .quiqqer-tabsAdvanced-nav-link {
     padding: 1rem;
@@ -57,6 +62,10 @@
     font-size: var(--quiqqer-tabsAdvanced-navImgHeight, 20px);
 }
 
+.quiqqer-tabsAdvanced-nav-linkLabel.navText__noWrap {
+    white-space: nowrap;
+}
+
 .active > .quiqqer-tabsAdvanced-nav-link {
     color: var(--qui-color-primary);
 }
@@ -76,10 +85,22 @@
     min-width: max-content;
 }
 
+/* img left and fill space*/
+.quiqqer-tabsAdvanced-nav-item.navFillSpace > .navTabStyle__imgLeft.quiqqer-tabsAdvanced-nav-link {
+    justify-content: center;
+}
+
 /* img top */
 .navTabStyle__imgTop.quiqqer-tabsAdvanced-nav-link {
     display: block;
     text-align: center;
+}
+
+.navTabStyle__imgTop.quiqqer-tabsAdvanced-nav-link > picture {
+    display: block;
+    width: max-content;
+    min-width: max-content;
+    margin-inline: auto;
 }
 
 .navTabStyle__imgTop.quiqqer-tabsAdvanced-nav-linkLabel {
@@ -90,6 +111,7 @@
 /* only img */
 .navTabStyle__onlyImg.quiqqer-tabsAdvanced-nav-link {
     display: block;
+    text-align: center;
 }
 
 /***********/
@@ -156,8 +178,8 @@
 }
 
 .quiqqer-tabsAdvanced-content-image-inner {
-    max-width: var(--quiqqer-tabsAdvanced-contentImgMaxWidth, 700px);
-    min-width: 200px;
+    min-width: var(--quiqqer-tabsAdvanced-contentImgMinWidth, 200px);
+    max-width: var(--quiqqer-tabsAdvanced-contentImgMaxWidth, 400px);
 }
 
 .quiqqer-tabsAdvanced-content-image img {
@@ -170,7 +192,7 @@
 }
 
 .quiqqer-tabsAdvanced-content-body-inner {
-    max-width: var(--quiqqer-tabsAdvanced-contentTextWidth, 700px);
+    max-width: var(--quiqqer-tabsAdvanced-contentTextWidth, 600px);
     margin-inline: auto;
 }
 
