@@ -72,14 +72,6 @@ class Tabs extends QUI\Control
             array_push($enabledEntries, $entry);
         }
 
-//        foreach ($entries as $entry) {
-//            array_push($enabledEntries, $entry);
-//        }
-//
-//        foreach ($entries as $entry) {
-//            array_push($enabledEntries, $entry);
-//        }
-
         $active = 1;
 
         if ($this->getAttribute('activeEntry') && $this->getAttribute('activeEntry') > 0) {
@@ -114,7 +106,7 @@ class Tabs extends QUI\Control
             $navFillSpace = 'navFillSpace';
         }
 
-        if ($this->getAttribute('navWrapText') === 'noBreak') {
+        if ($this->getAttribute('navWrapText') === 'noWrap') {
             $navWrapText = 'navText__noWrap';
         }
 

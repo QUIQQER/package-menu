@@ -352,8 +352,8 @@
             <en><![CDATA[Break nav title]]></en>
         </locale>
         <locale name="control.tabs.navWrapText.wrap">
-            <de><![CDATA[Standard: der Titel wird umgebrochen, wenn er zu lang wird.]]></de>
-            <en><![CDATA[Default: the title will wrap if it becomes too long.]]></en>
+            <de><![CDATA[Standard: der Titel umbrechen]]></de>
+            <en><![CDATA[Default: wrap the title]]></en>
         </locale>
         <locale name="control.tabs.navWrapText.noWrap">
             <de><![CDATA[Der Titel wird nicht umgebrochen]]></de>
