@@ -9,11 +9,22 @@
                         <type><![CDATA[number]]></type>
                         <defaultvalue>250</defaultvalue>
                     </conf>
+                    <conf name="collapseMobileSubmenu">
+                        <type><![CDATA[bool]]></type>
+                    </conf>
+                    <conf name="showLevel">
+                        <type><![CDATA[number]]></type>
+                        <defaultvalue>1</defaultvalue>
+                    </conf>
                     <conf name="type">
                         <type><![CDATA[string]]></type>
                     </conf>
                 </section>
                 <section name="mobileMenu.settings">
+                    <conf name="template">
+                        <type><![CDATA[string]]></type>
+                        <defaultvalue>standard</defaultvalue>
+                    </conf>
                     <conf name="collapseMobileSubmenu">
                         <type><![CDATA[bool]]></type>
                     </conf>
@@ -75,6 +86,18 @@
                             <title>
                                 <locale group="quiqqer/menu" var="mobileMenu.settings.title"/>
                             </title>
+
+                            <select conf="mobileMenu.settings.template">
+                                <text>
+                                    <locale group="quiqqer/menu" var="mobileMenu.settings.template"/>
+                                </text>
+                                <option value="standard">
+                                    <locale group="quiqqer/menu" var="mobileMenu.settings.template.standard"/>
+                                </option>
+                                <option value="advanced">
+                                    <locale group="quiqqer/menu" var="mobileMenu.settings.template.advanced"/>
+                                </option>
+                            </select>
 
                             <input conf="mobileMenu.settings.collapseMobileSubmenu" type="checkbox">
                                 <text>

@@ -176,7 +176,7 @@ define('package/quiqqer/menu/bin/MegaMenu', [
                 return;
             }
 
-            var SlideNode  = document.getElement('[data-qui="package/quiqqer/menu/bin/SlideOut"]'),
+            var SlideNode  = document.getElement('[data-slideOut="mobileMenu-SlideOut"]'),
                 SlideOut   = QUI.Controls.getById(SlideNode.get('data-quiid')),
                 MobileMenu = this.getElm().getElement('.quiqqer-menu-megaMenu-mobile');
 

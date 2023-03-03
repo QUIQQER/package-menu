@@ -65,7 +65,12 @@ class MegaMenu extends AbstractMenu
             $slideOutParam['menuId'] = $this->getAttribute('menuId');
         }
 
-        $this->Mobile = new QUI\Menu\SlideOut($slideOutParam);
+        if ($this->getProject()->getConfig('mobileMenu.settings.template') == 'advanced') {
+             $this->Mobile = new QUI\Menu\MenuAdvanced($slideOutParam);
+
+        } else {
+            $this->Mobile = new QUI\Menu\SlideOut($slideOutParam);
+        }
 
         // defaults
         $this->Mobile->setAttribute('Project', $this->getProject());
