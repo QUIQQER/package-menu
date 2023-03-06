@@ -97,7 +97,129 @@
                 </setting>
             </settings>
         </brick>
-        
+
+        <!-- tabs (horizontal) -->
+        <brick control="\QUI\Menu\Controls\Tabs">
+            <title>
+                <locale group="quiqqer/menu"
+                        var="control.tabs.title"/>
+            </title>
+            <description>
+                <locale group="quiqqer/menu"
+                        var="control.tabs.description"/>
+            </description>
+
+            <settings>
+                <setting name="template" type="select">
+                    <locale group="quiqqer/menu"
+                            var="control.tabs.template"/>
+
+                    <option value="simple">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.template.simple"/>
+                    </option>
+                </setting>
+
+                <!-- nav -->
+                <setting name="navImgHeight" type="number">
+                    <locale group="quiqqer/menu"
+                            var="control.tabs.navImgHeight"/>
+
+                    <description>
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.navImgHeight.desc"/>
+                    </description>
+                </setting>
+
+                <setting name="navStyle" type="select">
+                    <locale group="quiqqer/menu"
+                            var="control.tabs.navStyle"/>
+
+                    <option value="imgLeft">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.navStyle.imgLeft"/>
+                    </option>
+                    <option value="imgTop">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.navStyle.imgTop"/>
+                    </option>
+                    <option value="onlyImg">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.navStyle.onlyImg"/>
+                    </option>
+                </setting>
+
+                <setting name="navWrapText" type="select">
+                    <locale group="quiqqer/menu"
+                            var="control.tabs.navWrapText"/>
+
+                    <option value="wrap">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.navWrapText.wrap"/>
+                    </option>
+                    <option value="noWrap">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.navWrapText.noWrap"/>
+                    </option>
+                </setting>
+
+                <setting name="navFillSpace" type="checkbox">
+                    <locale group="quiqqer/menu"
+                            var="control.tabs.navFillSpace"/>
+
+                    <description>
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.navFillSpace.desc"/>
+                    </description>
+                </setting>
+
+                <setting name="navCenter" type="checkbox">
+                    <locale group="quiqqer/menu"
+                            var="control.tabs.navCenter"/>
+                    <description>
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.navFillSpace.desc"/>
+                    </description>
+                </setting>
+
+                <!-- content -->
+                <!-- content: img width -->
+                <setting name="contentImgMinWidth" type="number">
+                    <locale group="quiqqer/menu"
+                            var="control.tabs.contentImgMinWidth"/>
+
+                    <description>
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.contentImgMinWidth.desc"/>
+                    </description>
+                </setting>
+                <setting name="contentImgMaxWidth" type="number">
+                    <locale group="quiqqer/menu"
+                            var="control.tabs.contentImgMaxWidth"/>
+
+                    <description>
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.contentImgMaxWidth.desc"/>
+                    </description>
+                </setting>
+                <!-- content: text width -->
+                <setting name="contentTextWidth" type="number">
+                    <locale group="quiqqer/menu"
+                            var="control.tabs.contentTextWidth"/>
+
+                    <description>
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.contentTextWidth.desc"/>
+                    </description>
+                </setting>
+
+                <setting name="entries" type="hidden" data-qui="package/quiqqer/menu/bin/Controls/Tabs.Settings">
+                    <locale group="quiqqer/menu" var="control.tabs.entries"/>
+                </setting>
+
+            </settings>
+        </brick>
+
         <!-- nav tabs vertical -->
         <brick control="\QUI\Menu\NavTabsVertical">
             <title>
