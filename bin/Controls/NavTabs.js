@@ -26,11 +26,16 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
 
         Binds: [
             '$onImport',
-            'toggle'
+            '$resize',
+            'toggle',
+            '$mouseMoveHandler',
+            '$mouseDownHandler',
+            '$mouseUpHandler'
         ],
 
         options: {
-            animation: 'slide'
+            animation         : 'slide',
+            enabledragtoscroll: false // if enabled allows users to drag to scroll nav elements
         },
 
         initialize: function (options) {
@@ -45,9 +50,15 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
             this.clicked             = false;
             this.animation           = 'slide';
 
+            // drag to scroll
+            this.enableDragToScroll = false;
+            this.navPos             = {left: 0, x: 0};
+
             this.addEvents({
                 onImport: this.$onImport
             });
+
+            QUI.addEvent('resize', this.$resize);
         },
 
         $onImport: function () {
@@ -61,6 +72,12 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
 
             if (!this.navTabsItems || !this.navContents) {
                 return;
+            }
+
+            this.enableDragToScroll = parseInt(this.getAttribute('enabledragtoscroll'));
+
+            if (this.enableDragToScroll === 1) {
+                this.$initDragToScroll();
             }
 
             // animation effect
@@ -126,9 +143,22 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
                 const newUrl = url.split('#')[0] + '#open_' + target;
 
                 history.pushState(null, null, newUrl);
-            }
+            };
 
             this.navTabsItems.addEvent('click', clickEvent);
+            this.$resize();
+        },
+
+        $resize: function () {
+            if (this.enableDragToScroll !== 1) {
+                return;
+            }
+
+            if (this.navTab.scrollWidth > this.navTab.clientWidth) {
+                this.navTab.addEventListener('mousedown', this.$mouseDownHandler);
+            } else {
+                this.navTab.removeEventListener('mousedown', this.$mouseDownHandler);
+            }
         },
 
         /**
@@ -262,7 +292,7 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
          */
         $slideFadeOut: function (Item) {
             return this.$animate(Item, {
-                opacity  : 0,
+                opacity   : 0,
                 translateX: -5,
 
             });
@@ -282,7 +312,7 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
 
             return this.$animate(Item, {
                 translateX: 0,
-                opacity  : 1
+                opacity   : 1
             });
         },
 
@@ -331,6 +361,69 @@ define('package/quiqqer/menu/bin/Controls/NavTabs', [
 
                 animejs(options);
             });
+        },
+
+        // region drag to scroll
+
+        /**
+         * Init drag to scroll
+         */
+        $initDragToScroll: function () {
+            if (this.navTab.scrollWidth <= this.navTab.clientWidth) {
+                return;
+            }
+
+            this.navTab.addEventListener('mousedown', this.$mouseDownHandler);
+        },
+
+        /**
+         * Move handler
+         *
+         * @param e
+         */
+        $mouseMoveHandler: function (e) {
+            // How far the mouse has been moved
+            const dx = e.clientX - this.navPos.x;
+
+            if (this.navPos.x !== dx) {
+                this.clicked = true;
+            }
+
+            // Scroll the element
+            this.navTab.scrollLeft = this.navPos.left - dx;
+        },
+
+        /**
+         * Mouse down handler
+         *
+         * @param e
+         */
+        $mouseDownHandler: function (e) {
+            this.navTab.style.userSelect = 'none';
+
+            this.navPos = {
+                left: this.navTab.scrollLeft, // The current scroll
+                x   : e.clientX, // Get the current mouse position
+            };
+
+            document.addEventListener('mousemove', this.$mouseMoveHandler);
+            document.addEventListener('mouseup', this.$mouseUpHandler);
+        },
+
+        /**
+         * Mouse up handler
+         */
+        $mouseUpHandler: function () {
+            document.removeEventListener('mousemove', this.$mouseMoveHandler);
+            document.removeEventListener('mouseup', this.$mouseUpHandler);
+
+            this.navTab.style.removeProperty('user-select');
+
+            setTimeout(() => {
+                this.clicked = false;
+            }, 50);
         }
+
+        // end region
     });
 });

@@ -16,15 +16,15 @@
 {if $contentImgMaxWidth}--quiqqer-tabsAdvanced-contentImgMaxWidth: {$contentImgMaxWidth}px;{/if}
 {if $contentImgMinWidth}--quiqqer-tabsAdvanced-contentImgMinWidth: {$contentImgMinWidth}px;{/if}
         ">
-    <div class="quiqqer-tabsAdvanced-nav">
-        <ul class="quiqqer-tabsAdvanced-nav-inner {$navAlignment} quiqqer-tab-nav">
+    <div class="quiqqer-tabsAdvanced-nav {$navAlignment}">
+        <ul class="quiqqer-tabsAdvanced-nav-inner  quiqqer-tab-nav">
             {foreach from=$entries item=entry key=key}
                 <li class="quiqqer-tabsAdvanced-nav-item {$navTabStyleCss} {$navFillSpace}
                  quiqqer-tab-nav-item {if $key == $active - 1}active{/if}"
                     data-entry-nav-pos="{$key}">
                     <a href="#{QUI\Utils\Security\Orthos::urlEncodeString($entry.tabTitle)}"
                        data-qui-disableTemplateScroll="1"
-                       class="quiqqer-tabsAdvanced-nav-link {$navTabStyleCss}">
+                       class="quiqqer-tabsAdvanced-nav-link {$navTabStyleCss}" draggable="false">
                         {if isset($entry.tabIcon) && $entry.tabIcon}
                             {image src=$entry.tabIcon width="80" height="80"}
                         {/if}
