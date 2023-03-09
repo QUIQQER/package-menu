@@ -60,6 +60,7 @@ class Site extends AbstractMenuItem
                 $Project     = $Site->getProject();
                 $langId      = $Site->getId($current);
                 $LangProject = QUI::getProject($Project->getName(), $current);
+
                 return $LangProject->get($langId);
             } catch (QUI\Exception $exception) {
                 return null;
@@ -115,9 +116,15 @@ class Site extends AbstractMenuItem
         }
 
         try {
-            $data    = $this->getCustomData();
+            $data = $this->getCustomData();
+
+            if ($data || isset($data['site'])) {
+                return '';
+            }
+
             $siteUrl = $data['site'];
             $Site    = QUI\Projects\Site\Utils::getSiteByLink($siteUrl);
+
             return $Site->getAttribute('title');
         } catch (QUI\Exception $Exception) {
         }
