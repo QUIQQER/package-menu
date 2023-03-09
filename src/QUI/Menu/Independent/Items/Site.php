@@ -118,7 +118,7 @@ class Site extends AbstractMenuItem
         try {
             $data = $this->getCustomData();
 
-            if ($data || isset($data['site'])) {
+            if (!$data || !isset($data['site'])) {
                 return '';
             }
 
