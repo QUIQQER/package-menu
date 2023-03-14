@@ -62,8 +62,8 @@ class MenuAdvanced extends QUI\Control
         if ($this->getAttribute('menuId')) {
             $IndependentMenu = Independent\Handler::getMenu($this->getAttribute('menuId'));
 
-            $template                        = dirname(__FILE__) . '/Menu.Independent.html';
-            $params['FileMenu']              = dirname(__FILE__) . '/Menu.Children.Independent.html';
+            $template                        = dirname(__FILE__) . '/MenuAdvanced.Independent.html';
+            $params['FileMenu']              = dirname(__FILE__) . '/MenuAdvanced.Children.Independent.html';
             $params['IndependentMenu']       = $IndependentMenu;
             $params['Site']                  = $this->getSite();
             $params['collapseMobileSubmenu'] = $collapseMobileSubmenu;

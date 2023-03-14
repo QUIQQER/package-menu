@@ -106,9 +106,6 @@ define('package/quiqqer/menu/bin/MenuAdvanced', [
                 })
             });
 
-
-            let test = Elm.querySelector('.quiqqer-advanced-page-navigation-level-1');
-
             this.NavUlContainer = Elm.querySelector('.quiqqer-advanced-page-navigation-level-1');
             var Parent = this.getElm(), // caly nav
             NextButton = this.NavUlContainer.getElements(".quiqqer-advanced-menu-icon-next"),

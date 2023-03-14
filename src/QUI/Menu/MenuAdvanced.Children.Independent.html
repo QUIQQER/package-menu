@@ -1,0 +1,60 @@
+{if !isset($level)}
+{assign var=level value=1}
+{else}
+{assign var=level value=$level+1}
+{/if}
+
+{if count($children)}
+
+
+{if $level > 1}
+<div class="quiqqer-sub-nav-div">
+    {/if}
+
+    <ul class="quiqqer-advanced quiqqer-advanced-page-navigation-level-{$level}">
+        {foreach from=$children key=k item=Child}
+
+        {if $level > 1 and $k == 0}
+
+        <li class="quiqqer-advanced-menu-li-back">
+            <div class="quiqqer-advanced-navigation-entry">
+                <span class="fa fa-angle-left categories-menu-list-entry-next quiqqer-advanced-menu-icon quiqqer-advanced-menu-icon-back"></span>
+
+                <span class="left-menu-text quiqqer-advanced-backBtn">
+                        {$BackBtn}
+                </span>
+
+            </div>
+        </li>
+        {/if}
+
+        <li>
+            <div class="quiqqer-advanced-navigation-entry">
+                <a href="{$Child->getUrl()}"
+                   class="qui-menu-siteid-{$Child->getIdentifier()} left-menu-a"
+                   title="{$Child->getTitleAttribute()|escape:'html'}"
+                   {if $Child->getTarget()}target="{$Child->getTarget()}"{/if}
+                    >
+
+                    <span class="left-menu-text">
+                        {$Child->getTitle()}
+                    </span>
+
+                </a>
+
+                {if count($Child->getChildren())}
+                <span class="fa fa-angle-right categories-menu-list-entry-next quiqqer-advanced-menu-icon quiqqer-advanced-menu-icon-next"></span></span>
+                {/if}
+            </div>
+            {include file="`$FileMenu`"
+            children=$Child->getChildren()
+            level=$level
+            }
+        </li>
+        {/foreach}
+    </ul>
+
+    {if $level > 1}
+</div>
+{/if}
+{/if}
