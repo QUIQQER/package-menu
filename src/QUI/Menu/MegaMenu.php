@@ -87,7 +87,7 @@ class MegaMenu extends AbstractMenu
         $collapseMobileSubmenu = $this->getAttribute('collapseMobileSubmenu');
 
         if ($this->getProject()->getConfig('menu.settings.collapseMobileSubmenu') !== '') {
-            $collapseMobileSubmenu = $this->getProject()->getConfig('mobileMenu.settings.collapseMobileSubmenu');
+            $collapseMobileSubmenu = $this->getProject()->getConfig('mobileMenu.standard.settings.collapseMobileSubmenu');
         }
 
         $showLevel = 1;

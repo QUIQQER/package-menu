@@ -1,5 +1,8 @@
 :root {
+    --qui-menuAdvanced-bg: #eaeaea;
     --qui-menuAdvanced-color: #eaeaea;
+    --qui-menuAdvanced-color-hover: #eaeaea;
+    --qui-menuAdvanced-color-text: #eaeaea;
 }
 
 .page-navigation .quiqqer-menu-advanced {

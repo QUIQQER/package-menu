@@ -25,6 +25,8 @@
                         <type><![CDATA[string]]></type>
                         <defaultvalue>standard</defaultvalue>
                     </conf>
+                </section>
+                <section name="mobileMenu.standard.settings">
                     <conf name="collapseMobileSubmenu">
                         <type><![CDATA[bool]]></type>
                     </conf>
@@ -98,19 +100,25 @@
                                     <locale group="quiqqer/menu" var="mobileMenu.settings.template.advanced"/>
                                 </option>
                             </select>
+                        </settings>
 
-                            <input conf="mobileMenu.settings.collapseMobileSubmenu" type="checkbox">
+                        <settings title="mobileMenu.standard.settings" name="mobileMenu.standard.settings">
+                            <title>
+                                <locale group="quiqqer/menu" var="mobileMenu.standard.settings.title"/>
+                            </title>
+
+                            <input conf="mobileMenu.standard.settings.collapseMobileSubmenu" type="checkbox">
                                 <text>
-                                    <locale group="quiqqer/menu" var="mobileMenu.settings.collapseMobileSubmenu"/>
+                                    <locale group="quiqqer/menu" var="mobileMenu.standard.settings.collapseMobileSubmenu"/>
                                 </text>
                             </input>
 
-                            <input conf="mobileMenu.settings.showLevel" type="number" min="1" max="50">
+                            <input conf="mobileMenu.standard.settings.showLevel" type="number" min="1" max="50">
                                 <text>
-                                    <locale group="quiqqer/menu" var="mobileMenu.settings.showLevel"/>
+                                    <locale group="quiqqer/menu" var="mobileMenu.standard.settings.showLevel"/>
                                 </text>
                                 <description>
-                                    <locale group="quiqqer/menu" var="mobileMenu.settings.showLevel.desc"/>
+                                    <locale group="quiqqer/menu" var="mobileMenu.standard.settings.showLevel.desc"/>
                                 </description>
                             </input>
                         </settings>
