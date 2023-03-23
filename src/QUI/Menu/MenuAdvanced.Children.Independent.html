@@ -6,12 +6,11 @@
 
 {if count($children)}
 
-
 {if $level > 1}
-<div class="quiqqer-sub-nav-div">
-    {/if}
+    <div class="quiqqer-sub-nav-div">
+{/if}
 
-    <ul class="quiqqer-advanced quiqqer-advanced-page-navigation-level-{$level}">
+    <ul class="quiqqer-advanced quiqqer-advanced-page-navigation-level-{$level} {if $showHomeLink == 0}menuAdvanced-hideHomeLink{/if}">
         {foreach from=$children key=k item=Child}
 
         {if $level > 1 and $k == 0}
@@ -36,10 +35,9 @@
                    {if $Child->getTarget()}target="{$Child->getTarget()}"{/if}
                     >
 
-                    <span class="left-menu-text">
+                    <span class="left-menu-text menu-title">
                         {$Child->getTitle()}
                     </span>
-
                 </a>
 
                 {if count($Child->getChildren())}

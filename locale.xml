@@ -73,7 +73,7 @@
             <en><![CDATA[Advanced]]></en>
         </locale>
 
-        <!-- mobile menu standart -->
+        <!-- mobile menu standard -->
         <locale name="mobileMenu.standard.settings.title">
             <de><![CDATA[Mobiles Menü - Standard]]></de>
             <en><![CDATA[Mobile Menu - Standard]]></en>
@@ -93,6 +93,24 @@
         <locale name="mobileMenu.standard.advanced.backBtn.text">
             <de><![CDATA[Zurück]]></de>
             <en><![CDATA[Back]]></en>
+        </locale>
+
+        <!-- mobile menu advanced -->
+        <locale name="mobileMenu.advanced.settings.title">
+            <de><![CDATA[Mobiles Menü - Erweitert]]></de>
+            <en><![CDATA[Mobile menu - Advanced]]></en>
+        </locale>
+        <locale name="mobileMenu.advanced.settings.homeLink">
+            <de><![CDATA[Home-Link-Symbol anzeigen]]></de>
+            <en><![CDATA[Show home link icon]]></en>
+        </locale>
+        <locale name="mobileMenu.advanced.settings.shortDesc">
+            <de><![CDATA[Kurzbeschreibung anzeigen]]></de>
+            <en><![CDATA[Show short description]]></en>
+        </locale>
+        <locale name="mobileMenu.advanced.settings.shortDesc.desc">
+            <de><![CDATA[Nicht verfügbar für unabhängiges Menü]]></de>
+            <en><![CDATA[Not available for independent menu]]></en>
         </locale>
 
         <!-- sidebar menu -->

@@ -1,6 +1,6 @@
 <nav class="page-menu" data-qui="{$jsControl}" data-slideOut="mobileMenu-SlideOut" style="display: none;">
 
-    <div class="page-navigation {if !$showHomeLink}page-navigation__noHomeLink{/if}">
+    <div class="page-navigation quiqqer-menu-advanced {if !$showHomeLink}page-navigation__noHomeLink{/if}">
         {if $showHomeLink}
         <a href="{url site=$Project->firstChild()}" class="page-navigation-home">
             <span class="fa fa-home"></span>
@@ -11,8 +11,8 @@
         {include file="`$FileMenu`"
             children=$IndependentMenu->getChildren()
             ActiveSite=$Site
-            collapseMobileSubmenu=$collapseMobileSubmenu
-            showLevel=$showLevel
+            showShortDesc=$showShortDesc
+            showHomeLink=$showHomeLink
             BackBtn=$backBtn
         }
     </div>

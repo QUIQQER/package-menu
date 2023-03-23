@@ -9,13 +9,6 @@
                         <type><![CDATA[number]]></type>
                         <defaultvalue>250</defaultvalue>
                     </conf>
-                    <conf name="collapseMobileSubmenu">
-                        <type><![CDATA[bool]]></type>
-                    </conf>
-                    <conf name="showLevel">
-                        <type><![CDATA[number]]></type>
-                        <defaultvalue>1</defaultvalue>
-                    </conf>
                     <conf name="type">
                         <type><![CDATA[string]]></type>
                     </conf>
@@ -31,6 +24,15 @@
                         <type><![CDATA[bool]]></type>
                     </conf>
                     <conf name="showLevel">
+                        <type><![CDATA[number]]></type>
+                        <defaultvalue>1</defaultvalue>
+                    </conf>
+                </section>
+                <section name="mobileMenu.advanced.settings">
+                    <conf name="homeLink">
+                        <type><![CDATA[bool]]></type>
+                    </conf>
+                    <conf name="shortDesc">
                         <type><![CDATA[number]]></type>
                         <defaultvalue>1</defaultvalue>
                     </conf>
@@ -102,6 +104,7 @@
                             </select>
                         </settings>
 
+                        <!-- mobile menu standard -->
                         <settings title="mobileMenu.standard.settings" name="mobileMenu.standard.settings">
                             <title>
                                 <locale group="quiqqer/menu" var="mobileMenu.standard.settings.title"/>
@@ -119,6 +122,28 @@
                                 </text>
                                 <description>
                                     <locale group="quiqqer/menu" var="mobileMenu.standard.settings.showLevel.desc"/>
+                                </description>
+                            </input>
+                        </settings>
+
+                        <!-- mobile menu advanced -->
+                        <settings title="mobileMenu.advanced.settings" name="mobileMenu.advanced.settings">
+                            <title>
+                                <locale group="quiqqer/menu" var="mobileMenu.advanced.settings.title"/>
+                            </title>
+
+                            <input conf="mobileMenu.advanced.settings.homeLink" type="checkbox">
+                                <text>
+                                    <locale group="quiqqer/menu" var="mobileMenu.advanced.settings.homeLink"/>
+                                </text>
+                            </input>
+
+                            <input conf="mobileMenu.advanced.settings.shortDesc" type="checkbox">
+                                <text>
+                                    <locale group="quiqqer/menu" var="mobileMenu.advanced.settings.shortDesc"/>
+                                </text>
+                                <description>
+                                    <locale group="quiqqer/menu" var="mobileMenu.advanced.settings.shortDesc.desc"/>
                                 </description>
                             </input>
                         </settings>

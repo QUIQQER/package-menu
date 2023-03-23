@@ -1,10 +1,3 @@
-:root {
-    --qui-menuAdvanced-bg: #eaeaea;
-    --qui-menuAdvanced-color: #eaeaea;
-    --qui-menuAdvanced-color-hover: #eaeaea;
-    --qui-menuAdvanced-color-text: #eaeaea;
-}
-
 .page-navigation .quiqqer-menu-advanced {
     margin-left: 0;
     position: relative;
@@ -71,8 +64,21 @@ ul.quiqqer-advanced {
 
 .quiqqer-advanced-backBtn {
     font-size: 1.125rem;
-    color: var(--qui-menuAdvanced-color);
+    color: #eaeaea;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.left-menu-a {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-shortDesc {
+    font-size: 0.875rem;
+}
+
+.menuAdvanced-hideHomeLink {
+    padding-top: 50px;
 }

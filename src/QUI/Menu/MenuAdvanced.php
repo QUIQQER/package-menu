@@ -24,7 +24,9 @@ class MenuAdvanced extends QUI\Control
         $this->setAttributes([
             'showHomeLink'        => true,
             'menuId'              => false, // if set independent menu template will be used
-            'showFirstLevelIcons' => false // current it works only for independent menu
+            'showFirstLevelIcons' => false, // current it works only for independent menu
+            'showHomeIcon'        => true,
+            'showShortDesc'       => true,
         ]);
 
         parent::__construct($attributes);
@@ -39,8 +41,8 @@ class MenuAdvanced extends QUI\Control
 
         $Engine = QUI::getTemplateManager()->getEngine();
 
-        $collapseMobileSubmenu = $this->getAttribute('collapseMobileSubmenu');
-        $showLevel             = $this->getAttribute('showLevel');
+        $showHomeIcon  = $this->getAttribute('showHomeIcon');
+        $showShortDesc = $this->getAttribute('showShortDesc');
 
         $backBtnText = QUI::getLocale()->get(
             'quiqqer/menu',
@@ -52,29 +54,26 @@ class MenuAdvanced extends QUI\Control
         );
 
         $params = [
-            'this'         => $this,
-            'Project'      => $this->getProject(),
-            'jsControl'    => 'package/quiqqer/menu/bin/MenuAdvanced',
-            'showHomeLink' => $this->getAttribute('showHomeLink'),
-            'backBtn'      => $backBtnText
+            'this'           => $this,
+            'Project'        => $this->getProject(),
+            'jsControl'      => 'package/quiqqer/menu/bin/MenuAdvanced',
+            'showHomeLink'   => $this->getAttribute('showHomeIcon'),
+            'showShortDesc' => $this->getAttribute('showShortDesc'),
+            'backBtn'        => $backBtnText
         ];
 
         if ($this->getAttribute('menuId')) {
             $IndependentMenu = Independent\Handler::getMenu($this->getAttribute('menuId'));
 
-            $template                        = dirname(__FILE__) . '/MenuAdvanced.Independent.html';
-            $params['FileMenu']              = dirname(__FILE__) . '/MenuAdvanced.Children.Independent.html';
-            $params['IndependentMenu']       = $IndependentMenu;
-            $params['Site']                  = $this->getSite();
-            $params['collapseMobileSubmenu'] = $collapseMobileSubmenu;
-            $params['showLevel']             = $showLevel;
-            $params['showFirstLevelIcons']   = $this->getAttribute('showFirstLevelIcons');
+            $template                      = dirname(__FILE__) . '/MenuAdvanced.Independent.html';
+            $params['FileMenu']            = dirname(__FILE__) . '/MenuAdvanced.Children.Independent.html';
+            $params['IndependentMenu']     = $IndependentMenu;
+            $params['Site']                = $this->getSite();
+            $params['showFirstLevelIcons'] = $this->getAttribute('showFirstLevelIcons');
         } else {
-            $template                        = dirname(__FILE__) . '/MenuAdvanced.html';
-            $params['collapseMobileSubmenu'] = $collapseMobileSubmenu;
-            $params['showLevel']             = $showLevel;
-            $params['FileMenu']              = dirname(__FILE__) . '/MenuAdvanced.Children.html';
-            $params['Site']                  = $this->getSite();
+            $template           = dirname(__FILE__) . '/MenuAdvanced.html';
+            $params['FileMenu'] = dirname(__FILE__) . '/MenuAdvanced.Children.html';
+            $params['Site']     = $this->getSite();
         }
 
         $Engine->assign($params);

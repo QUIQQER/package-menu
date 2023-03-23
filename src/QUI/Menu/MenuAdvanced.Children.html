@@ -1,4 +1,3 @@
-
 {assign var=children value=$Site->getNavigation()}
 
 {if !isset($level)}
@@ -9,7 +8,7 @@
 
 {if count($children)}
 
-<ul class="quiqqer-advanced quiqqer-advanced-page-navigation-level-{$level}">
+<ul class="quiqqer-advanced quiqqer-advanced-page-navigation-level-{$level} {if $showHomeLink == 0}menuAdvanced-hideHomeLink{/if}">
     {foreach from=$children key=k item=Child}
 
     {if $level > 1 and $k == 0}
@@ -18,9 +17,8 @@
             <span class="fa fa-angle-left categories-menu-list-entry-next quiqqer-advanced-menu-icon quiqqer-advanced-menu-icon-back"></span>
 
             <span class="left-menu-text quiqqer-advanced-backBtn">
-                        {$BackBtn}
-                        </span>
-
+                {$BackBtn}
+            </span>
         </div>
     </li>
     {/if}
@@ -29,10 +27,15 @@
         <div class="quiqqer-advanced-navigation-entry">
             <a href="{url site=$Child}" class="left-menu-a">
 
-                    <span class="left-menu-text">
+                    <span class="left-menu-text menu-title">
                     {$Child->getAttribute('title')}
                     </span>
 
+                    {if $Child->getAttribute('short') && $showShortDesc == true}
+                    <span class="menu-shortDesc">
+                        {$Child->getAttribute('short')}
+                    </span>
+                    {/if}
             </a>
 
             {if count($Child->getNavigation())}
