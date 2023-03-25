@@ -67,38 +67,7 @@ class MegaMenu extends AbstractMenu
             $slideOutParam['menuId'] = $this->getAttribute('menuId');
         }
 
-        if ($this->getProject()->getConfig('mobileMenu.settings.template') == 'advanced') {
-            $this->Mobile = new QUI\Menu\MenuAdvanced($slideOutParam);
-
-            $showHomeIcon = $this->getAttribute('showHomeIcon');
-            if ($this->getProject()->getConfig('mobileMenu.advanced.settings.homeLink') !== '') {
-                $showHomeIcon = $this->getProject()->getConfig('mobileMenu.advanced.settings.homeLink');
-            }
-
-            $showShortDesc = $this->getAttribute('showShortDesc');
-            if ($this->getProject()->getConfig('mobileMenu.advanced.settings.shortDesc') !== '') {
-                $showShortDesc = $this->getProject()->getConfig('mobileMenu.advanced.settings.shortDesc');
-            }
-
-            $this->Mobile->setAttribute('showHomeIcon', $showHomeIcon);
-            $this->Mobile->setAttribute('showShortDesc', $showShortDesc);
-
-        } else {
-            $this->Mobile = new QUI\Menu\SlideOut($slideOutParam);
-
-            $collapseMobileSubmenu = $this->getAttribute('collapseMobileSubmenu');
-            if ($this->getProject()->getConfig('mobileMenu.standard.settings.collapseMobileSubmenu') !== '') {
-                $collapseMobileSubmenu = $this->getProject()->getConfig('mobileMenu.standard.settings.collapseMobileSubmenu');
-            }
-
-            $showLevel = $this->getAttribute('showLevel');
-            if (intval($this->getProject()->getConfig('mobileMenu.standard.settings.showLevel')) > 0) {
-                $showLevel = intval($this->getProject()->getConfig('mobileMenu.standard.settings.showLevel'));
-            }
-
-            $this->Mobile->setAttribute('collapseMobileSubmenu', $collapseMobileSubmenu);
-            $this->Mobile->setAttribute('showLevel', $showLevel);
-        }
+        $this->Mobile = $this->getMobileMenu($slideOutParam);
 
         // defaults
         $this->Mobile->setAttribute('Project', $this->getProject());
@@ -326,5 +295,50 @@ class MegaMenu extends AbstractMenu
         }
 
         return QUI::getRewrite()->getSite();
+    }
+
+    /**
+     * Get mobile menu (slideout or slideoutAdvanced) depend on project setting
+     *
+     * @param $slideOutParam
+     * @return SlideOutAdvanced|SlideOut
+     * @throws QUI\Exception
+     */
+    protected function getMobileMenu($slideOutParam) {
+        if ($this->getProject()->getConfig('mobileMenu.settings.template') == 'advanced') {
+            $Menu = new QUI\Menu\SlideOutAdvanced($slideOutParam);
+
+            $showHomeIcon = $this->getAttribute('showHomeIcon');
+            if ($this->getProject()->getConfig('mobileMenu.advanced.settings.homeLink') !== '') {
+                $showHomeIcon = $this->getProject()->getConfig('mobileMenu.advanced.settings.homeLink');
+            }
+
+            $showShortDesc = $this->getAttribute('showShortDesc');
+            if ($this->getProject()->getConfig('mobileMenu.advanced.settings.shortDesc') !== '') {
+                $showShortDesc = $this->getProject()->getConfig('mobileMenu.advanced.settings.shortDesc');
+            }
+
+            $Menu->setAttribute('showHomeIcon', $showHomeIcon);
+            $Menu->setAttribute('showShortDesc', $showShortDesc);
+
+            return $Menu;
+        }
+
+        $Menu = new QUI\Menu\SlideOut($slideOutParam);
+
+        $collapseMobileSubmenu = $this->getAttribute('collapseMobileSubmenu');
+        if ($this->getProject()->getConfig('mobileMenu.standard.settings.collapseMobileSubmenu') !== '') {
+            $collapseMobileSubmenu = $this->getProject()->getConfig('mobileMenu.standard.settings.collapseMobileSubmenu');
+        }
+
+        $showLevel = $this->getAttribute('showLevel');
+        if (intval($this->getProject()->getConfig('mobileMenu.standard.settings.showLevel')) > 0) {
+            $showLevel = intval($this->getProject()->getConfig('mobileMenu.standard.settings.showLevel'));
+        }
+
+        $Menu->setAttribute('collapseMobileSubmenu', $collapseMobileSubmenu);
+        $Menu->setAttribute('showLevel', $showLevel);
+
+        return $Menu;
     }
 }

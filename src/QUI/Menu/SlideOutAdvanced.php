@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file contains \QUI\Menu\MenuAdvanced
+ * This file contains \QUI\Menu\SlideOutAdvanced
  */
 
 namespace QUI\Menu;
@@ -14,7 +14,7 @@ use QUI;
  *
  * @package QUI\Menu
  */
-class MenuAdvanced extends QUI\Control
+class SlideOutAdvanced extends QUI\Control
 {
     /**
      * @param array $attributes
@@ -50,13 +50,13 @@ class MenuAdvanced extends QUI\Control
         );
 
         $this->addCSSFile(
-            \dirname(__FILE__) . '/MenuAdvanced.css'
+            \dirname(__FILE__) . '/SlideOutAdvanced.css'
         );
 
         $params = [
             'this'           => $this,
             'Project'        => $this->getProject(),
-            'jsControl'      => 'package/quiqqer/menu/bin/MenuAdvanced',
+            'jsControl'      => 'package/quiqqer/menu/bin/SlideOutAdvanced',
             'showHomeLink'   => $this->getAttribute('showHomeIcon'),
             'showShortDesc' => $this->getAttribute('showShortDesc'),
             'backBtn'        => $backBtnText
@@ -65,14 +65,14 @@ class MenuAdvanced extends QUI\Control
         if ($this->getAttribute('menuId')) {
             $IndependentMenu = Independent\Handler::getMenu($this->getAttribute('menuId'));
 
-            $template                      = dirname(__FILE__) . '/MenuAdvanced.Independent.html';
-            $params['FileMenu']            = dirname(__FILE__) . '/MenuAdvanced.Children.Independent.html';
+            $template                      = dirname(__FILE__) . '/SlideOutAdvanced.Independent.html';
+            $params['FileMenu']            = dirname(__FILE__) . '/SlideOutAdvanced.Children.Independent.html';
             $params['IndependentMenu']     = $IndependentMenu;
             $params['Site']                = $this->getSite();
             $params['showFirstLevelIcons'] = $this->getAttribute('showFirstLevelIcons');
         } else {
-            $template           = dirname(__FILE__) . '/MenuAdvanced.html';
-            $params['FileMenu'] = dirname(__FILE__) . '/MenuAdvanced.Children.html';
+            $template           = dirname(__FILE__) . '/SlideOutAdvanced.html';
+            $params['FileMenu'] = dirname(__FILE__) . '/SlideOutAdvanced.Children.html';
             $params['Site']     = $this->getSite();
         }
 

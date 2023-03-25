@@ -10,7 +10,7 @@
  * @require URL_OPT_DIR +quiqqer/menu/bin/slideout.min.js
  * @require css!package/quiqqer/menu/bin/SlideOut.css
  */
-define('package/quiqqer/menu/bin/MenuAdvanced', [
+define('package/quiqqer/menu/bin/SlideOutAdvanced', [
 
     'qui/QUI',
     'qui/utils/Functions',
