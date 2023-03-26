@@ -14,7 +14,7 @@
                     </conf>
                 </section>
                 <section name="mobileMenu.settings">
-                    <conf name="template">
+                    <conf name="type">
                         <type><![CDATA[string]]></type>
                         <defaultvalue>standard</defaultvalue>
                     </conf>
@@ -91,15 +91,15 @@
                                 <locale group="quiqqer/menu" var="mobileMenu.settings.title"/>
                             </title>
 
-                            <select conf="mobileMenu.settings.template">
+                            <select conf="mobileMenu.settings.type">
                                 <text>
-                                    <locale group="quiqqer/menu" var="mobileMenu.settings.template"/>
+                                    <locale group="quiqqer/menu" var="mobileMenu.settings.type"/>
                                 </text>
-                                <option value="standard">
-                                    <locale group="quiqqer/menu" var="mobileMenu.settings.template.standard"/>
+                                <option value="slideOut">
+                                    <locale group="quiqqer/menu" var="mobileMenu.settings.template.slideOut.standard"/>
                                 </option>
-                                <option value="advanced">
-                                    <locale group="quiqqer/menu" var="mobileMenu.settings.template.advanced"/>
+                                <option value="slideOut.advanced">
+                                    <locale group="quiqqer/menu" var="mobileMenu.settings.template.slideOut.advanced"/>
                                 </option>
                             </select>
                         </settings>

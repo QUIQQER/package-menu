@@ -60,23 +60,23 @@
             <de><![CDATA[Mobiles Menü]]></de>
             <en><![CDATA[Mobile Menu]]></en>
         </locale>
-        <locale name="mobileMenu.settings.template">
+        <locale name="mobileMenu.settings.type">
             <de><![CDATA[Mobiler Menütyp]]></de>
             <en><![CDATA[Mobile Menu Type]]></en>
         </locale>
-        <locale name="mobileMenu.settings.template.standard">
-            <de><![CDATA[Standard]]></de>
-            <en><![CDATA[Standard]]></en>
+        <locale name="mobileMenu.settings.template.slideOut.standard">
+            <de><![CDATA[SlideOut (Standard)]]></de>
+            <en><![CDATA[SlideOut (Standard)]]></en>
         </locale>
-        <locale name="mobileMenu.settings.template.advanced">
-            <de><![CDATA[Fortgeschrittene]]></de>
-            <en><![CDATA[Advanced]]></en>
+        <locale name="mobileMenu.settings.template.slideOut.advanced">
+            <de><![CDATA[SlideOut (Erweitert)]]></de>
+            <en><![CDATA[SlideOut (Advanced)]]></en>
         </locale>
 
         <!-- mobile menu standard -->
         <locale name="mobileMenu.standard.settings.title">
-            <de><![CDATA[Mobiles Menü - Standard]]></de>
-            <en><![CDATA[Mobile Menu - Standard]]></en>
+            <de><![CDATA[SlideOut (Standard)]]></de>
+            <en><![CDATA[SlideOut (Standard)]]></en>
         </locale>
         <locale name="mobileMenu.standard.settings.collapseMobileSubmenu">
             <de><![CDATA[Collpase-Untermenü in der mobilen Version]]></de>
@@ -97,8 +97,8 @@
 
         <!-- mobile menu advanced -->
         <locale name="mobileMenu.advanced.settings.title">
-            <de><![CDATA[Mobiles Menü - Erweitert]]></de>
-            <en><![CDATA[Mobile menu - Advanced]]></en>
+            <de><![CDATA[SlideOut (Erweitert)]]></de>
+            <en><![CDATA[SlideOut (Advanced)]]></en>
         </locale>
         <locale name="mobileMenu.advanced.settings.homeLink">
             <de><![CDATA[Home-Link-Symbol anzeigen]]></de>

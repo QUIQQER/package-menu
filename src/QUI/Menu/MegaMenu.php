@@ -305,7 +305,8 @@ class MegaMenu extends AbstractMenu
      * @throws QUI\Exception
      */
     protected function getMobileMenu($slideOutParam) {
-        if ($this->getProject()->getConfig('mobileMenu.settings.template') == 'advanced') {
+
+        if ($this->getProject()->getConfig('mobileMenu.settings.type') == 'slideOut.advanced') {
             $Menu = new QUI\Menu\SlideOutAdvanced($slideOutParam);
 
             $showHomeIcon = $this->getAttribute('showHomeIcon');
