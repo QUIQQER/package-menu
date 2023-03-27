@@ -8,38 +8,38 @@
 
 {if count($children)}
 
-<ul class="quiqqer-advanced quiqqer-advanced-page-navigation-level-{$level} {if $showHomeLink == 0}menuAdvanced-hideHomeLink{/if}">
+<ul class="quiqqer-slideOutAdvanced-nav quiqqer-slideOutAdvanced-page-navigation-level-{$level} {if $showHomeLink == 0}quiqqer-slideOutAdvanced-nav-hideHomeLink{/if}">
     {foreach from=$children key=k item=Child}
 
     {if $level > 1 and $k == 0}
-    <li class="quiqqer-advanced-menu-li-back">
-        <div class="quiqqer-advanced-navigation-entry">
-            <span class="fa fa-angle-left categories-menu-list-entry-next quiqqer-advanced-menu-icon quiqqer-advanced-menu-icon-back"></span>
+    <li class="quiqqer-slideOutAdvanced-nav-element quiqqer-slideOutAdvanced-backBtn">
+        <div class="quiqqer-slideOutAdvanced-nav-entry">
+            <span class="fa fa-angle-left categories-menu-list-entry-next quiqqer-slideOutAdvanced-icon quiqqer-slideOutAdvanced-icon-back"></span>
 
-            <span class="left-menu-text quiqqer-advanced-backBtn">
+            <span class="left-menu-text quiqqer-slideOutAdvanced-backBtn-text">
                 {$BackBtn}
             </span>
         </div>
     </li>
     {/if}
 
-    <li>
-        <div class="quiqqer-advanced-navigation-entry">
+    <li class="quiqqer-slideOutAdvanced-nav-element">
+        <div class="quiqqer-slideOutAdvanced-nav-entry">
             <a href="{url site=$Child}" class="left-menu-a">
 
-                    <span class="left-menu-text menu-title">
+                    <span class="left-menu-text quiqqer-slideOutAdvanced-nav-title">
                     {$Child->getAttribute('title')}
                     </span>
 
                     {if $Child->getAttribute('short') && $showShortDesc == true}
-                    <span class="menu-shortDesc">
+                    <span class="quiqqer-slideOutAdvanced-nav-desc">
                         {$Child->getAttribute('short')}
                     </span>
                     {/if}
             </a>
 
             {if count($Child->getNavigation())}
-            <span class="fa fa-angle-right categories-menu-list-entry-next quiqqer-advanced-menu-icon quiqqer-advanced-menu-icon-next"></span>
+            <span class="fa fa-angle-right categories-menu-list-entry-next quiqqer-slideOutAdvanced-icon quiqqer-slideOutAdvanced-icon-next"></span>
             {/if}
         </div>
 

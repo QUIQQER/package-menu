@@ -1,51 +1,42 @@
-.page-navigation .quiqqer-menu-advanced {
-    margin-left: 0;
-    position: relative;
-    overflow: hidden;
-}
-
-.page-menu ul.quiqqer-advanced-page-navigation-level-1 {
+.page-menu .quiqqer-slideOutAdvanced-page-navigation-level-1 {
     position: initial;
     display: block;
     transform: translateX(0);
 }
 
-ul.quiqqer-advanced {
+.quiqqer-slideOutAdvanced-nav {
     display: none;
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     transform: translateX(100%);
-}
-
-.page-navigation ul.quiqqer-advanced {
     margin-left: 0;
 }
 
-.page-navigation.quiqqer-menu-advanced {
+.quiqqer-slideOutAdvanced {
     padding: 0;
     overflow: hidden;
 }
 
-.page-navigation .quiqqer-advanced li {
+.quiqqer-slideOutAdvanced-nav-element {
     font-size: 1.125rem;
     border-top: 1px solid #636363;
 }
 
-.page-navigation .quiqqer-advanced li:last-child {
+.quiqqer-slideOutAdvanced-nav-element:last-child {
     border-bottom: 1px solid #636363;
 }
 
-.quiqqer-advanced-navigation-entry {
+.quiqqer-slideOutAdvanced-nav-entry {
     display: flex;
 }
 
-.page-navigation .quiqqer-advanced a {
+.quiqqer-slideOutAdvanced-nav a {
     padding: 10px 20px;
 }
 
-.page-navigation .quiqqer-advanced .quiqqer-advanced-menu-icon {
+.quiqqer-slideOutAdvanced-icon {
     color: white;
     font-size: 1.5rem;
     display: flex;
@@ -56,13 +47,13 @@ ul.quiqqer-advanced {
     border-left: 1px solid #636363;
 }
 
-.page-navigation .quiqqer-advanced .quiqqer-advanced-menu-icon-back {
+.quiqqer-slideOutAdvanced-icon-back {
     border-left: none;
     border-right: 1px solid #636363;
     margin-right: 1rem;
 }
 
-.quiqqer-advanced-backBtn {
+.quiqqer-slideOutAdvanced-backBtn-text {
     font-size: 1.125rem;
     color: #eaeaea;
     display: flex;
@@ -75,10 +66,10 @@ ul.quiqqer-advanced {
     flex-direction: column;
 }
 
-.menu-shortDesc {
+.quiqqer-slideOutAdvanced-nav-desc {
     font-size: 0.875rem;
 }
 
-.menuAdvanced-hideHomeLink {
+.quiqqer-slideOutAdvanced-nav-hideHomeLink {
     padding-top: 50px;
 }

@@ -106,9 +106,9 @@ define('package/quiqqer/menu/bin/SlideOutAdvanced', [
                 });
             });
 
-            this.NavUlContainer = Elm.querySelector('.quiqqer-advanced-page-navigation-level-1');
-            var NextButton = this.NavUlContainer.getElements(".quiqqer-advanced-menu-icon-next"),
-            BackButton = this.NavUlContainer.getElements(".quiqqer-advanced-menu-li-back");
+            this.NavUlContainer = Elm.querySelector('.quiqqer-slideOutAdvanced-page-navigation-level-1');
+            var NextButton = this.NavUlContainer.getElements(".quiqqer-slideOutAdvanced-icon-next"),
+            BackButton = this.NavUlContainer.getElements(".quiqqer-slideOutAdvanced-backBtn");
 
             var runs = false;
 
@@ -124,7 +124,7 @@ define('package/quiqqer/menu/bin/SlideOutAdvanced', [
 
                 var LiLeft = this.getParent('li');
 
-                var NavSubLeft = LiLeft.getElement("ul.quiqqer-advanced");
+                var NavSubLeft = LiLeft.getElement("ul.quiqqer-slideOutAdvanced-nav");
                 var Prom;
 
                 Prom = self.openMenu(NavSubLeft);
@@ -145,7 +145,7 @@ define('package/quiqqer/menu/bin/SlideOutAdvanced', [
 
                 runs = true;
 
-                var NavSubLeft = e.target.getParent("ul.quiqqer-advanced");
+                var NavSubLeft = e.target.getParent("ul.quiqqer-slideOutAdvanced-nav");
                 var Prom;
 
                 Prom = self.closeMenu(NavSubLeft);
@@ -602,12 +602,12 @@ define('package/quiqqer/menu/bin/SlideOutAdvanced', [
         resetMenu: function () {
             this.menuDepth = 0;
 
-            var UlElements = this.Parent.getElements('.quiqqer-advanced');
+            var UlElements = this.Parent.getElements('.quiqqer-slideOutAdvanced-nav');
 
             UlElements.forEach((UlElement) => {
                 var ulClass = UlElement.classList;
 
-                if (ulClass != "quiqqer-advanced quiqqer-advanced-page-navigation-level-1") {
+                if (ulClass != "quiqqer-slideOutAdvanced-nav quiqqer-slideOutAdvanced-page-navigation-level-1") {
                     UlElement.setStyles({
                         display : "none"
                     });
