@@ -25,22 +25,22 @@ define('package/quiqqer/menu/bin/SlideOutAdvanced', [
 
     return new Class({
 
-        Extends: QUIControl,
-        Type   : 'package/quiqqer/menu/bin/MenuAdvanced',
-        menuDepth      : 0,
+        Extends   : QUIControl,
+        Type      : 'package/quiqqer/menu/bin/MenuAdvanced',
+        menuDepth : 0,
 
 
         options: {
-            top                          : 10,
-            left                         : 10,
-            bottom                       : false,
-            right                        : false,
-            'data-show-button-on-desktop': true,
-            'menu-width'                 : 256,
-            'menu-button'                : true,
-            'touch'                      : false,
-            'buttonids'                  : false,
-            collapsemobilemenu : false
+            top                           : 10,
+            left                          : 10,
+            bottom                        : false,
+            right                         : false,
+            'data-show-button-on-desktop' : true,
+            'menu-width'                  : 256,
+            'menu-button'                 : true,
+            'touch'                       : false,
+            'buttonids'                   : false,
+            collapsemobilemenu            : false
         },
 
         Binds: [
@@ -155,10 +155,6 @@ define('package/quiqqer/menu/bin/SlideOutAdvanced', [
                     runs = false;
                 });
             });
-            // var Slideout = this.getAttribute('Slideout');
-            // Slideout.on('close', () => {
-            //     this.resetMenu();
-            // });
 
             // fix for IE - z-index must have the value 0
             if (navigator.appName == 'Microsoft Internet Explorer' ||
@@ -311,6 +307,12 @@ define('package/quiqqer/menu/bin/SlideOutAdvanced', [
                 padding  : this.getAttribute('menu-width'),
                 tolerance: 70,
                 touch    : this.getAttribute('touch')
+            });
+
+            // this.Slideout.on('close', this.resetMenu);
+
+            this.Slideout.on('close', () => {
+                this.resetMenu();
             });
 
             this.Slideout.on('beforeopen', function () {
@@ -601,13 +603,12 @@ define('package/quiqqer/menu/bin/SlideOutAdvanced', [
          */
         resetMenu: function () {
             this.menuDepth = 0;
-
-            var UlElements = this.Parent.getElements('.quiqqer-slideOutAdvanced-nav');
+            var UlElements = document.querySelectorAll('.quiqqer-slideOutAdvanced-nav');
 
             UlElements.forEach((UlElement) => {
-                var ulClass = UlElement.classList;
+                var ulClass = UlElement.classList[1];
 
-                if (ulClass != "quiqqer-slideOutAdvanced-nav quiqqer-slideOutAdvanced-page-navigation-level-1") {
+                if (ulClass != "quiqqer-slideOutAdvanced-page-navigation-level-1") {
                     UlElement.setStyles({
                         display : "none"
                     });
