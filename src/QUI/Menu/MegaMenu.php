@@ -304,7 +304,8 @@ class MegaMenu extends AbstractMenu
      * @return SlideOutAdvanced|SlideOut
      * @throws QUI\Exception
      */
-    protected function getMobileMenu($slideOutParam) {
+    protected function getMobileMenu($slideOutParam)
+    {
 
         if ($this->getProject()->getConfig('mobileMenu.settings.type') == 'slideOut.advanced') {
             $Menu = new QUI\Menu\SlideOutAdvanced($slideOutParam);
