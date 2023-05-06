@@ -54,12 +54,6 @@ class UrlList extends QUI\Control
      */
     public function getBody()
     {
-        $Engine = QUI::getTemplateManager()->getEngine();
-
-        if (!$this->getAttribute('menuId') && !$this->getAttribute('startId')) {
-            return '';
-        }
-
         if ($this->getAttribute('menuId')) {
             // independent menu
             $children = $this->getChildrenForIndependentMenu();
@@ -69,13 +63,19 @@ class UrlList extends QUI\Control
             $children = $this->getChildrenForQUISite();
             $template = dirname(__FILE__).'/UrlList.Default.html';
         } else {
-            $children = [];
+            return '';
         }
 
-        $icon = '';
+        $Engine           = QUI::getTemplateManager()->getEngine();
+        $icon             = '';
+        $restLinkColorCss = '';
 
         if ($this->getAttribute('icon') && strpos($this->getAttribute('icon'), 'fa ') === 0) {
             $icon = $this->getAttribute('icon');
+        }
+
+        if ($this->getAttribute('resetLinkColor')) {
+            $restLinkColorCss = 'quiqqer-urlList-entry-link__resetLinkColor';
         }
 
         switch ($this->getAttribute('display')) {
@@ -83,12 +83,6 @@ class UrlList extends QUI\Control
             case 'default':
                 $this->addCSSClass('quiqqer-urlList__default');
                 break;
-        }
-
-        $restLinkColorCss = '';
-        if ($this->getAttribute('resetLinkColor')) {
-            $restLinkColorCss = 'quiqqer-urlList-entry-link__resetLinkColor';
-
         }
 
         $Engine->assign([
