@@ -148,6 +148,60 @@
             <en><![CDATA[Also show pages that do not have the property Show in navigation.]]></en>
         </locale>
 
+        <!-- url list -->
+        <locale name="menu.control.urlList.title">
+            <de><![CDATA[Menu: Url Liste]]></de>
+            <en><![CDATA[Menu: Url list]]></en>
+        </locale>
+        <locale name="menu.control.urlList.description">
+            <de><![CDATA[Einfache Seitenliste, die man perfekt im Footer verwenden kann. Der Baustein wird nur die erste Ebene der Unterseiten aufbauen.]]></de>
+            <en><![CDATA[Simple page list that you can use perfectly in the footer. This control will build only the first level of the subpages.]]></en>
+        </locale>
+        <locale name="menu.control.urlList.setting.display">
+            <de><![CDATA[Layout]]></de>
+            <en><![CDATA[Layout]]></en>
+        </locale>
+        <locale name="menu.control.urlList.setting.display.default">
+            <de><![CDATA[Standard]]></de>
+            <en><![CDATA[Default]]></en>
+        </locale>
+        <locale name="menu.control.urlList.setting.headerText">
+            <de><![CDATA[Titel über der Seitenliste]]></de>
+            <en><![CDATA[Titel above the url list]]></en>
+        </locale>
+        <locale name="menu.control.urlList.setting.menuId">
+            <de><![CDATA[Menu ID]]></de>
+            <en><![CDATA[Menu ID]]></en>
+        </locale>
+        <locale name="menu.control.urlList.setting.menuId.desc">
+            <de><![CDATA[Menu ID auswählen.]]></de>
+            <en><![CDATA[Select your menu]]></en>
+        </locale>
+        <locale name="menu.control.urlList.setting.startId">
+            <de><![CDATA[Elternseite]]></de>
+            <en><![CDATA[Parent site]]></en>
+        </locale>
+        <locale name="menu.control.urlList.setting.startId.desc">
+            <de><![CDATA[Bitte die Elternseite auswählen. <strong>Achtung!</strong> Wenn "Menu ID" ausgewählt ist, hat diese Option keine Auswirkung.]]></de>
+            <en><![CDATA[Select the parent site. <strong>Notice:</strong> if "Menu ID" is selected, this option has no effect.]]></en>
+        </locale>
+        <locale name="menu.control.urlList.setting.icon">
+            <de><![CDATA[Icon]]></de>
+            <en><![CDATA[Icon]]></en>
+        </locale>
+        <locale name="menu.control.urlList.setting.icon.desc">
+            <de><![CDATA[Wenn ein Icon ausgewählt ist, wird sie vor dem Link eingeblendet. Es werden nur FontAwesome Icons unterstützt. <strong>Tipp!</strong> Im Auswahl-Fenster kann man nach <code>right</code> filtern, falls man ein Icon in Pfeil-Stil benutzen möchte.]]></de>
+            <en><![CDATA[When an icon is selected, it is displayed in front of the link. Only FontAwesome icons are supported. In the selection window you can filter by <code>right</code> if you want to use an arrow-style icon.]]></en>
+        </locale>
+        <locale name="menu.control.urlList.setting.resetLinkColor">
+            <de><![CDATA[Link Farbe zurücksetzen]]></de>
+            <en><![CDATA[Reset link color]]></en>
+        </locale>
+        <locale name="menu.control.urlList.setting.resetLinkColor.desc">
+            <de><![CDATA[Wenn die Option aktiv ist, ist der Link in der gleichen Farbe, wie Seiteninhalt. Die Option beeinflusst den Mouse-Over effekt nicht. <strong>Achtung!</strong> Das benutzte Template kann die Einstellung überschreiben.]]></de>
+            <en><![CDATA[If the option is active, the link has the same color as the page content. This option does not affect the mouse-over effect. <strong>Caution!</strong> The template, you are using, can overwrite this setting.]]></en>
+        </locale>
+
         <!-- one page nav -->
         <locale name="menu.control.OnePageNav.title">
             <de><![CDATA[Menu: One Page Menü (für Landingpage)]]></de>
