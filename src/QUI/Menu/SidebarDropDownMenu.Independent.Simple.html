@@ -86,6 +86,7 @@
 
 {if $level == 1}
 <script>
+    (function() {
     let QuiIndependentMenu = document.getElement('.quiqqer-sidebar-dropdown-navigation');
     let quiIndependentUrls = QuiIndependentMenu.getElements('.quiqqer-navigation-link');
     const setPath          = function (Elm) {
@@ -124,5 +125,6 @@
             setPath(LiElm);
         }
     });
+    })();
 </script>
 {/if}
