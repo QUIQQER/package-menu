@@ -64,31 +64,39 @@
             <de><![CDATA[Mobiler Menütyp]]></de>
             <en><![CDATA[Mobile Menu Type]]></en>
         </locale>
-        <locale name="mobileMenu.settings.template.slideOut.standard">
-            <de><![CDATA[SlideOut (Standard)]]></de>
-            <en><![CDATA[SlideOut (Standard)]]></en>
+        <locale name="mobileMenu.settings.template.slideout">
+            <de><![CDATA[Slideout (Standard)]]></de>
+            <en><![CDATA[Slideout (Standard)]]></en>
         </locale>
-        <locale name="mobileMenu.settings.template.slideOut.advanced">
-            <de><![CDATA[SlideOut (Erweitert)]]></de>
-            <en><![CDATA[SlideOut (Advanced)]]></en>
+        <locale name="mobileMenu.settings.template.slideoutAdvanced">
+            <de><![CDATA[Slideout (Erweitert)]]></de>
+            <en><![CDATA[Slideout (Advanced)]]></en>
         </locale>
 
         <!-- mobile menu standard -->
         <locale name="mobileMenu.standard.settings.title">
-            <de><![CDATA[SlideOut (Standard)]]></de>
-            <en><![CDATA[SlideOut (Standard)]]></en>
+            <de><![CDATA[Slideout (Standard)]]></de>
+            <en><![CDATA[Slideout (Standard)]]></en>
         </locale>
-        <locale name="mobileMenu.standard.settings.collapseMobileSubmenu">
-            <de><![CDATA[Collpase-Untermenü in der mobilen Version]]></de>
-            <en><![CDATA[Collpase submenu in mobile version]]></en>
+        <locale name="mobileMenu.standard.settings.desc">
+            <de><![CDATA[Standard Mobile Menü für QUIQQER.]]></de>
+            <en><![CDATA[Default mobile menu for QUIQQER.]]></en>
+        </locale>
+        <locale name="mobileMenu.standard.settings.collapseSubmenu">
+            <de><![CDATA[Navigationspunkte einklappen]]></de>
+            <en><![CDATA[Collapse navigation items]]></en>
+        </locale>
+        <locale name="mobileMenu.standard.settings.collapseSubmenu.desc">
+            <de><![CDATA[Bei großen Menüs empfiehlt sich die Option zu aktivieren. Dadurch wird nur die angegebene Tiefe der Navigation sichtbar (bei Einstellung "1" nur die erste Ebene der Navigation). Die Unter-Menüs kann man durch Tippen auf den Pfeil aufmachen.]]></de>
+            <en><![CDATA[For large menus it is recommended to activate the option. This way only the specified depth of the navigation will be visible (with setting "1" only the first level of the navigation). You can open the submenu items by tapping on the arrow.]]></en>
         </locale>
         <locale name="mobileMenu.standard.settings.showLevel">
             <de><![CDATA[Ebene anzeigen]]></de>
             <en><![CDATA[Show level]]></en>
         </locale>
         <locale name="mobileMenu.standard.settings.showLevel.desc">
-            <de><![CDATA[Wie viele Ebenen des mobilen Menüs sollen angezeigt werden?]]></de>
-            <en><![CDATA[How many levels of mobile menu should be shown?]]></en>
+            <de><![CDATA[Die Option besagt, wie viele Ebenen der Navigation initial sichtbar werden. Bei ausgewählter Option "1" wird nur die erste Ebene sichtbar, der Rest wird eingeklappt.]]></de>
+            <en><![CDATA[The option specifies how many levels of the navigation will be visible initially. If the option "1" is selected, only the first level will be visible, the rest will be collapsed.]]></en>
         </locale>
         <locale name="mobileMenu.standard.advanced.backBtn.text">
             <de><![CDATA[Zurück]]></de>
@@ -96,21 +104,25 @@
         </locale>
 
         <!-- mobile menu advanced -->
-        <locale name="mobileMenu.advanced.settings.title">
-            <de><![CDATA[SlideOut (Erweitert)]]></de>
-            <en><![CDATA[SlideOut (Advanced)]]></en>
+        <locale name="mobileMenu.slideoutAdvanced.settings.title">
+            <de><![CDATA[Erweitertes Slideout Menü]]></de>
+            <en><![CDATA[Advanced Slideout Menu]]></en>
         </locale>
-        <locale name="mobileMenu.advanced.settings.homeLink">
-            <de><![CDATA[Home-Link-Symbol anzeigen]]></de>
-            <en><![CDATA[Show home link icon]]></en>
+        <locale name="mobileMenu.slideoutAdvanced.settings.desc">
+            <de><![CDATA[Dieses Menü zeigt immer nur eine Menü-Ebene auf einmal. Man kann hin und her zwischen den Ebenen navigieren, indem man auf die Pfeile tippt. Zusätzlich kann die Beschreibung der Seiten angezeigt werden (wenn verfügbar).]]></de>
+            <en><![CDATA[This menu shows only one menu level at a time. You can navigate back and forth between the levels by tapping the arrows. Additionally, the description of the pages can be displayed (if available).]]></en>
         </locale>
-        <locale name="mobileMenu.advanced.settings.shortDesc">
+        <locale name="mobileMenu.slideoutAdvanced.settings.homeLink">
+            <de><![CDATA[Home-Link anzeigen]]></de>
+            <en><![CDATA[Show home link]]></en>
+        </locale>
+        <locale name="mobileMenu.slideoutAdvanced.settings.shortDesc">
             <de><![CDATA[Kurzbeschreibung anzeigen]]></de>
             <en><![CDATA[Show short description]]></en>
         </locale>
-        <locale name="mobileMenu.advanced.settings.shortDesc.desc">
-            <de><![CDATA[Nicht verfügbar für unabhängiges Menü]]></de>
-            <en><![CDATA[Not available for independent menu]]></en>
+        <locale name="mobileMenu.slideoutAdvanced.settings.shortDesc.desc">
+            <de><![CDATA[Diese Option hat keinen Einfluss, wenn man das individuelle Menü (sog. <i>"Independent Menu"</i>) verwendet.]]></de>
+            <en><![CDATA[This option has no influence when using the individual menu (so called <i>"Independent Menu"</i>).]]></en>
         </locale>
 
         <!-- sidebar menu -->
