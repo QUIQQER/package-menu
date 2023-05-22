@@ -60,7 +60,7 @@
             <de><![CDATA[Mobiles Menü]]></de>
             <en><![CDATA[Mobile Menu]]></en>
         </locale>
-        <locale name="mobileMenu.settings.type">
+        <locale name="mobileMenu.settings.type">f
             <de><![CDATA[Mobiler Menütyp]]></de>
             <en><![CDATA[Mobile Menu Type]]></en>
         </locale>
@@ -69,8 +69,8 @@
             <en><![CDATA[Slideout (Standard)]]></en>
         </locale>
         <locale name="mobileMenu.settings.template.slideoutAdvanced">
-            <de><![CDATA[Slideout (Erweitert)]]></de>
-            <en><![CDATA[Slideout (Advanced)]]></en>
+            <de><![CDATA[Erweitertes Slideout Menü]]></de>
+            <en><![CDATA[Advanced Slideout Menu]]></en>
         </locale>
 
         <!-- mobile menu standard -->
@@ -98,10 +98,6 @@
             <de><![CDATA[Die Option besagt, wie viele Ebenen der Navigation initial sichtbar werden. Bei ausgewählter Option "1" wird nur die erste Ebene sichtbar, der Rest wird eingeklappt.]]></de>
             <en><![CDATA[The option specifies how many levels of the navigation will be visible initially. If the option "1" is selected, only the first level will be visible, the rest will be collapsed.]]></en>
         </locale>
-        <locale name="mobileMenu.standard.advanced.backBtn.text">
-            <de><![CDATA[Zurück]]></de>
-            <en><![CDATA[Back]]></en>
-        </locale>
 
         <!-- mobile menu advanced -->
         <locale name="mobileMenu.slideoutAdvanced.settings.title">
@@ -123,6 +119,10 @@
         <locale name="mobileMenu.slideoutAdvanced.settings.shortDesc.desc">
             <de><![CDATA[Diese Option hat keinen Einfluss, wenn man das individuelle Menü (sog. <i>"Independent Menu"</i>) verwendet.]]></de>
             <en><![CDATA[This option has no influence when using the individual menu (so called <i>"Independent Menu"</i>).]]></en>
+        </locale>
+        <locale name="mobileMenu.slideoutAdvanced.btn.back">
+            <de><![CDATA[Zurück]]></de>
+            <en><![CDATA[Go back]]></en>
         </locale>
 
         <!-- sidebar menu -->

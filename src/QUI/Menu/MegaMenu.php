@@ -31,19 +31,19 @@ class MegaMenu extends AbstractMenu
     public function __construct($attributes = [])
     {
         $this->setAttributes([
-            'showStart'             => false,
-            'Start'                 => false,
-            'startText'             => '', // optional: displayed text
-            'data-qui'              => 'package/quiqqer/menu/bin/MegaMenu',
-            'display'               => 'Standard',
-            'enableMobile'          => true,
-            'menuId'                => false,
-            'showFirstLevelIcons'   => false, // current it works only for independent menu
-            'showMenuDelay'         => false,
-            'collapseMobileSubmenu' => false,
-            'showLevel'             => 1,
-            'showHomeIcon'          => false,
-            'showShortDesc'         => false,
+            'showStart'           => false,
+            'Start'               => false,
+            'startText'           => '', // optional: displayed text
+            'data-qui'            => 'package/quiqqer/menu/bin/MegaMenu',
+            'display'             => 'Standard',
+            'enableMobile'        => true,
+            'menuId'              => false,
+            'showFirstLevelIcons' => false, // current it works only for independent menu
+            'showMenuDelay'       => false,
+            'collapseSubmenu'     => false,
+            'showLevel'           => 1,
+            'showHomeLink'        => false,
+            'showShortDesc'       => false,
         ]);
 
         if ($this->getProject()->getConfig('menu.settings.type')) {
@@ -53,7 +53,7 @@ class MegaMenu extends AbstractMenu
         parent::__construct($attributes);
 
         $this->addCSSClass('quiqqer-menu-megaMenu');
-        $this->addCSSFile(dirname(__FILE__) . '/MegaMenu.css');
+        $this->addCSSFile(dirname(__FILE__).'/MegaMenu.css');
 
         if (!$this->getAttribute('enableMobile')) {
             return;
@@ -88,7 +88,7 @@ class MegaMenu extends AbstractMenu
      */
     public function getBody()
     {
-        $cache = EventHandler::menuCacheName() . '/megaMenu/';
+        $cache = EventHandler::menuCacheName().'/megaMenu/';
 
         $attributes = $this->getAttributes();
         $attributes = \array_filter($attributes, function ($entry) {
@@ -96,7 +96,7 @@ class MegaMenu extends AbstractMenu
         });
 
         $cache .= \md5(
-            $this->getSite()->getCachePath() .
+            $this->getSite()->getCachePath().
             \serialize($attributes)
         );
 
@@ -168,7 +168,7 @@ class MegaMenu extends AbstractMenu
             ]);
 
             $result             = [];
-            $result['html']     = $Engine->fetch(dirname(__FILE__) . '/MegaMenu.Independent.html');
+            $result['html']     = $Engine->fetch(dirname(__FILE__).'/MegaMenu.Independent.html');
             $result['subMenus'] = \array_unique($this->subMenus);
         } else {
             $Engine->assign([
@@ -191,7 +191,7 @@ class MegaMenu extends AbstractMenu
             }
 
             $result             = [];
-            $result['html']     = $Engine->fetch(dirname(__FILE__) . '/MegaMenu.html');
+            $result['html']     = $Engine->fetch(dirname(__FILE__).'/MegaMenu.html');
             $result['subMenus'] = \array_unique($this->subMenus);
         }
 
@@ -306,21 +306,20 @@ class MegaMenu extends AbstractMenu
      */
     protected function getMobileMenu($slideOutParam)
     {
-
-        if ($this->getProject()->getConfig('mobileMenu.settings.type') == 'slideOut.advanced') {
+        if ($this->getProject()->getConfig('mobileMenu.settings.type') == 'slideoutAdvanced') {
             $Menu = new QUI\Menu\SlideOutAdvanced($slideOutParam);
 
-            $showHomeIcon = $this->getAttribute('showHomeIcon');
-            if ($this->getProject()->getConfig('mobileMenu.advanced.settings.homeLink') !== '') {
-                $showHomeIcon = $this->getProject()->getConfig('mobileMenu.advanced.settings.homeLink');
+            $showHomeLink = $this->getAttribute('showHomeLink');
+            if ($this->getProject()->getConfig('mobileMenu.slideoutAdvanced.settings.homeLink') !== '') {
+                $showHomeLink = $this->getProject()->getConfig('mobileMenu.slideoutAdvanced.settings.homeLink');
             }
 
             $showShortDesc = $this->getAttribute('showShortDesc');
-            if ($this->getProject()->getConfig('mobileMenu.advanced.settings.shortDesc') !== '') {
-                $showShortDesc = $this->getProject()->getConfig('mobileMenu.advanced.settings.shortDesc');
+            if ($this->getProject()->getConfig('mobileMenu.slideoutAdvanced.settings.shortDesc') !== '') {
+                $showShortDesc = $this->getProject()->getConfig('mobileMenu.slideoutAdvanced.settings.shortDesc');
             }
 
-            $Menu->setAttribute('showHomeIcon', $showHomeIcon);
+            $Menu->setAttribute('showHomeLink', $showHomeLink);
             $Menu->setAttribute('showShortDesc', $showShortDesc);
 
             return $Menu;
@@ -328,9 +327,10 @@ class MegaMenu extends AbstractMenu
 
         $Menu = new QUI\Menu\SlideOut($slideOutParam);
 
-        $collapseMobileSubmenu = $this->getAttribute('collapseMobileSubmenu');
-        if ($this->getProject()->getConfig('mobileMenu.standard.settings.collapseMobileSubmenu') !== '') {
-            $collapseMobileSubmenu = $this->getProject()->getConfig('mobileMenu.standard.settings.collapseMobileSubmenu');
+        $collapseMobileSubmenu = $this->getAttribute('collapseSubmenu');
+
+        if ($this->getProject()->getConfig('mobileMenu.standard.settings.collapseSubmenu') !== '') {
+            $collapseMobileSubmenu = $this->getProject()->getConfig('mobileMenu.standard.settings.collapseSubmenu');
         }
 
         $showLevel = $this->getAttribute('showLevel');

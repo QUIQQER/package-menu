@@ -1,46 +1,42 @@
 /**
- * Slideout menu control
+ * SlideoutAdvanced menu control
  *
- * @module package/quiqqer/menu/bin/js/MenuAdvanced
- * @author www.pcsg.de (Henning Leutz)
+ * @module package/quiqqer/menu/bin/js/SlideoutAdvanced
+ * @author www.pcsg.de (Dominik Chrzanowski)
  *
  * @require qui/QUI
  * @require qui/utils/Functions
  * @require qui/controls/Control
  * @require URL_OPT_DIR +quiqqer/menu/bin/slideout.min.js
- * @require css!package/quiqqer/menu/bin/SlideOut.css
  */
-define('package/quiqqer/menu/bin/SlideOutAdvanced', [
+define('package/quiqqer/menu/bin/SlideoutAdvanced', [
 
     'qui/QUI',
     'qui/utils/Functions',
     'qui/controls/Control',
 
-    URL_OPT_DIR + 'quiqqer/menu/bin/slideout.min.js',
-
-    'css!package/quiqqer/menu/bin/MenuAdvanced.css'
-
+    URL_OPT_DIR + 'quiqqer/menu/bin/slideout.min.js'
 ], function (QUI, QUIUtilsFunctions, QUIControl, Slideout) {
     "use strict";
 
     return new Class({
 
-        Extends   : QUIControl,
-        Type      : 'package/quiqqer/menu/bin/MenuAdvanced',
-        menuDepth : 0,
+        Extends  : QUIControl,
+        Type     : 'package/quiqqer/menu/bin/SlideoutAdvanced',
+        menuDepth: 0,
 
 
         options: {
-            top                           : 10,
-            left                          : 10,
-            bottom                        : false,
-            right                         : false,
-            'data-show-button-on-desktop' : true,
-            'menu-width'                  : 256,
-            'menu-button'                 : true,
-            'touch'                       : false,
-            'buttonids'                   : false,
-            collapsemobilemenu            : false
+            top                          : 10,
+            left                         : 10,
+            bottom                       : false,
+            right                        : false,
+            'data-show-button-on-desktop': true,
+            'menu-width'                 : 256,
+            'menu-button'                : true,
+            'touch'                      : false,
+            'buttonids'                  : false,
+            collapsemobilemenu           : false
         },
 
         Binds: [
@@ -56,7 +52,8 @@ define('package/quiqqer/menu/bin/SlideOutAdvanced', [
 
             this.MenuButton  = null;
             this.$__hideMenu = false;
-            this.$Url = new URL(location.href);
+            this.$Url        = new URL(location.href);
+            this.FirstLevel  = null;
 
             // clear hash in url
             this.$Url.hash = '';
@@ -106,14 +103,13 @@ define('package/quiqqer/menu/bin/SlideOutAdvanced', [
                 });
             });
 
-            this.NavUlContainer = Elm.querySelector('.quiqqer-slideOutAdvanced-page-navigation-level-1');
-            var NextButton = this.NavUlContainer.getElements(".quiqqer-slideOutAdvanced-icon-next"),
-            BackButton = this.NavUlContainer.getElements(".quiqqer-slideOutAdvanced-backBtn");
+            this.NavUlContainer = Elm.querySelector('.quiqqer-slideoutAdvanced-page-navigation-level-1');
+            var nextButtons      = this.NavUlContainer.getElements(".quiqqer-slideoutAdvanced-icon-next"),
+                backButtons      = this.NavUlContainer.getElements(".quiqqer-slideoutAdvanced-backBtn");
 
             var runs = false;
 
-            NextButton.addEvent("click", function (e)
-            {
+            nextButtons.addEvent("click", function (e) {
                 e.preventDefault();
 
                 if (runs) {
@@ -124,19 +120,17 @@ define('package/quiqqer/menu/bin/SlideOutAdvanced', [
 
                 var LiLeft = this.getParent('li');
 
-                var NavSubLeft = LiLeft.getElement("ul.quiqqer-slideOutAdvanced-nav");
+                var NavSubLeft = LiLeft.getElement("ul.quiqqer-slideoutAdvanced-nav");
                 var Prom;
 
                 Prom = self.openMenu(NavSubLeft);
 
-                Prom.then(function ()
-                {
+                Prom.then(function () {
                     runs = false;
                 });
             });
 
-            BackButton.addEvent("click", function (e)
-            {
+            backButtons.addEvent("click", function (e) {
                 e.preventDefault();
 
                 if (runs) {
@@ -145,13 +139,12 @@ define('package/quiqqer/menu/bin/SlideOutAdvanced', [
 
                 runs = true;
 
-                var NavSubLeft = e.target.getParent("ul.quiqqer-slideOutAdvanced-nav");
+                var NavSubLeft = e.target.getParent("ul.quiqqer-slideoutAdvanced-nav");
                 var Prom;
 
                 Prom = self.closeMenu(NavSubLeft);
 
-                Prom.then(function ()
-                {
+                Prom.then(function () {
                     runs = false;
                 });
             });
@@ -540,26 +533,38 @@ define('package/quiqqer/menu/bin/SlideOutAdvanced', [
             }, 300);
         },
 
-        openMenu: function (NavSubLeft)
-        {
-            var self = this;
+        /**
+         * Open next level
+         *
+         * @param NavSubLeft HTMLNode - next level element
+         * @returns {*}
+         */
+        openMenu: function (NavSubLeft) {
+            var self = this,
+            Elm = this.getElm();
 
-            return new Promise(function (resolve)
-            {
-                self.menuDepth = self.menuDepth + 1;
+            return new Promise(function (resolve) {
+                self.menuDepth     = self.menuDepth + 1;
                 var translateValue = (100 * self.menuDepth) * (-1);
 
                 NavSubLeft.setStyles({
-                    display : "block"
+                    display: "block"
                 });
+
+                let Parent = Elm.getParent();
+
+                // scroll menu to top if needed
+                if (Elm.getPosition(Parent) !== 0) {
+                    new Fx.Scroll(Parent).toTop();
+                }
 
                 moofx(self.NavUlContainer).animate({
                     transform: "translateX(" + translateValue + "%)",
+                    height: NavSubLeft.getSize().y // animate the scroll bar
                 }, {
                     duration: 500,
                     equation: 'cubic-bezier(0.77, 0, 0.175, 1)',
-                    callback: function ()
-                    {
+                    callback: function () {
                         resolve();
                     }
                 });
@@ -573,24 +578,35 @@ define('package/quiqqer/menu/bin/SlideOutAdvanced', [
          *
          * @return Promise
          */
-        closeMenu: function (NavSubLeft)
-        {
+        closeMenu: function (NavSubLeft) {
             var self = this;
 
-            return new Promise(function (resolve)
-            {
-                self.menuDepth = self.menuDepth - 1;
-                var translateValue = (100 * self.menuDepth) * (-1);
+            return new Promise(function (resolve) {
+                self.menuDepth     = self.menuDepth - 1;
+                var translateValue = (100 * self.menuDepth) * (-1),
+                    ParentLevel = NavSubLeft.getParent('ul');
+
+                // Workaround to get the original height of parent level menu
+                //
+                // cache current height of (invisible) parent menu
+                var currentHeight = ParentLevel.getSize().y;
+                // remove height...
+                ParentLevel.setStyle('height', '');
+                // ...to get height, that the parent menu need
+                var originalHeight = ParentLevel.getSize().y;
+                // restore the current height
+                ParentLevel.setStyle('height', currentHeight);
+                // end workaround
 
                 moofx(self.NavUlContainer).animate({
                     transform: "translateX(" + translateValue + "%)",
+                    height: originalHeight // animate the scroll bar
                 }, {
                     duration: 500,
                     equation: 'cubic-bezier(0.77, 0, 0.175, 1)',
-                    callback: function ()
-                    {
+                    callback: function () {
                         NavSubLeft.setStyles({
-                            display : "none"
+                            display: "none"
                         });
                         resolve();
                     }
@@ -603,14 +619,14 @@ define('package/quiqqer/menu/bin/SlideOutAdvanced', [
          */
         resetMenu: function () {
             this.menuDepth = 0;
-            var UlElements = document.querySelectorAll('.quiqqer-slideOutAdvanced-nav');
+            var UlElements = document.querySelectorAll('.quiqqer-slideoutAdvanced-nav');
 
             UlElements.forEach((UlElement) => {
                 var ulClass = UlElement.classList[1];
 
-                if (ulClass != "quiqqer-slideOutAdvanced-page-navigation-level-1") {
+                if (ulClass !== "quiqqer-slideoutAdvanced-page-navigation-level-1") {
                     UlElement.setStyles({
-                        display : "none"
+                        display: "none"
                     });
                 }
             });

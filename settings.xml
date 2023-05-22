@@ -31,6 +31,7 @@
                 <section name="mobileMenu.slideoutAdvanced.settings">
                     <conf name="homeLink">
                         <type><![CDATA[bool]]></type>
+                        <defaultvalue>true</defaultvalue>
                     </conf>
                     <conf name="shortDesc">
                         <type><![CDATA[number]]></type>

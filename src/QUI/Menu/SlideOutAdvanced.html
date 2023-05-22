@@ -1,10 +1,16 @@
-<nav class="page-menu" data-qui="{$jsControl}" data-slideOut="mobileMenu-SlideOut" style="display: none;">
-    <div class="page-navigation quiqqer-slideOutAdvanced {if !$showHomeLink}page-navigation__noHomeLink{/if}">
+<nav class="page-menu" data-qui="{$jsControl}" data-slideOut="mobileMenu-SlideOut"
+     style="
+     display: none;
+     --quiqqer-slideOutAdvanced-border-color: rgba(255,255,255,0.15);
+     --quiqqer-slideOutAdvanced-padding-block: 1rem;
+     --quiqqer-slideOutAdvanced-padding-inline: 2rem;
+">
+    <div class="page-navigation quiqqer-slideoutAdvanced {if !$showHomeLink}page-navigation__noHomeLink{/if}">
         {if $showHomeLink}
-        <a href="{url site=$Project->firstChild()}" class="page-navigation-home">
-            <span class="fa fa-home"></span>
-            {$Project->firstChild()->getAttribute('title')}
-        </a>
+            <a href="{url site=$Project->firstChild()}" class="page-navigation-home quiqqer-slideoutAdvanced-nav-entry-link">
+                <span class="fa fa-home"></span>
+                {$Project->firstChild()->getAttribute('title')}
+            </a>
         {/if}
 
         {include file="`$FileMenu`"
@@ -12,7 +18,6 @@
             ActiveSite=$Site
             showShortDesc=$showShortDesc
             showHomeLink=$showHomeLink
-            BackBtn=$backBtn
         }
     </div>
 </nav>
