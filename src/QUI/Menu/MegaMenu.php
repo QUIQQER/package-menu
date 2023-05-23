@@ -31,17 +31,19 @@ class MegaMenu extends AbstractMenu
     public function __construct($attributes = [])
     {
         $this->setAttributes([
-            'showStart'             => false,
-            'Start'                 => false,
-            'startText'             => '', // optional: displayed text
-            'data-qui'              => 'package/quiqqer/menu/bin/MegaMenu',
-            'display'               => 'Standard',
-            'enableMobile'          => true,
-            'menuId'                => false,
-            'showFirstLevelIcons'   => false, // current it works only for independent menu
-            'showMenuDelay'         => false,
-            'collapseMobileSubmenu' => false,
-            'showLevel'             => 1
+            'showStart'           => false,
+            'Start'               => false,
+            'startText'           => '', // optional: displayed text
+            'data-qui'            => 'package/quiqqer/menu/bin/MegaMenu',
+            'display'             => 'Standard',
+            'enableMobile'        => true,
+            'menuId'              => false,
+            'showFirstLevelIcons' => false, // current it works only for independent menu
+            'showMenuDelay'       => false,
+            'collapseSubmenu'     => false,
+            'showLevel'           => 1,
+            'showHomeLink'        => false,
+            'showShortDesc'       => false,
         ]);
 
         if ($this->getProject()->getConfig('menu.settings.type')) {
@@ -65,7 +67,7 @@ class MegaMenu extends AbstractMenu
             $slideOutParam['menuId'] = $this->getAttribute('menuId');
         }
 
-        $this->Mobile = new QUI\Menu\SlideOut($slideOutParam);
+        $this->Mobile = $this->getMobileMenu($slideOutParam);
 
         // defaults
         $this->Mobile->setAttribute('Project', $this->getProject());
@@ -78,24 +80,6 @@ class MegaMenu extends AbstractMenu
         $this->Mobile->setAttribute('data-qui-options-menu-button', 0);
         $this->Mobile->setAttribute('data-qui-options-touch', 0);
         $this->Mobile->setAttribute('data-qui-options-buttonids', 'mobileMenu');
-
-        $collapseMobileSubmenu = $this->getAttribute('collapseMobileSubmenu');
-
-        if ($this->getProject()->getConfig('menu.settings.collapseMobileSubmenu') !== '') {
-            $collapseMobileSubmenu = $this->getProject()->getConfig('mobileMenu.settings.collapseMobileSubmenu');
-        }
-
-        $showLevel = 1;
-        if (intval($this->getProject()->getConfig('menu.settings.showLevel')) > 0) {
-            $showLevel = intval($this->getProject()->getConfig('mobileMenu.settings.showLevel'));
-        }
-
-        if (intval($this->getAttribute('showLevel')) > 0) {
-            $showLevel = intval($this->getAttribute('showLevel'));
-        }
-
-        $this->Mobile->setAttribute('collapseMobileSubmenu', $collapseMobileSubmenu);
-        $this->Mobile->setAttribute('showLevel', $showLevel);
     }
 
     /**
@@ -311,5 +295,52 @@ class MegaMenu extends AbstractMenu
         }
 
         return QUI::getRewrite()->getSite();
+    }
+
+    /**
+     * Get mobile menu (slideout or slideoutAdvanced) depend on project setting
+     *
+     * @param $slideOutParam
+     * @return SlideOutAdvanced|SlideOut
+     * @throws QUI\Exception
+     */
+    protected function getMobileMenu($slideOutParam)
+    {
+        if ($this->getProject()->getConfig('mobileMenu.settings.type') == 'slideoutAdvanced') {
+            $Menu = new QUI\Menu\SlideOutAdvanced($slideOutParam);
+
+            $showHomeLink = $this->getAttribute('showHomeLink');
+            if ($this->getProject()->getConfig('mobileMenu.slideoutAdvanced.settings.homeLink') !== '') {
+                $showHomeLink = $this->getProject()->getConfig('mobileMenu.slideoutAdvanced.settings.homeLink');
+            }
+
+            $showShortDesc = $this->getAttribute('showShortDesc');
+            if ($this->getProject()->getConfig('mobileMenu.slideoutAdvanced.settings.shortDesc') !== '') {
+                $showShortDesc = $this->getProject()->getConfig('mobileMenu.slideoutAdvanced.settings.shortDesc');
+            }
+
+            $Menu->setAttribute('showHomeLink', $showHomeLink);
+            $Menu->setAttribute('showShortDesc', $showShortDesc);
+
+            return $Menu;
+        }
+
+        $Menu = new QUI\Menu\SlideOut($slideOutParam);
+
+        $collapseMobileSubmenu = $this->getAttribute('collapseSubmenu');
+
+        if ($this->getProject()->getConfig('mobileMenu.standard.settings.collapseSubmenu') !== '') {
+            $collapseMobileSubmenu = $this->getProject()->getConfig('mobileMenu.standard.settings.collapseSubmenu');
+        }
+
+        $showLevel = $this->getAttribute('showLevel');
+        if (intval($this->getProject()->getConfig('mobileMenu.standard.settings.showLevel')) > 0) {
+            $showLevel = intval($this->getProject()->getConfig('mobileMenu.standard.settings.showLevel'));
+        }
+
+        $Menu->setAttribute('collapseMobileSubmenu', $collapseMobileSubmenu);
+        $Menu->setAttribute('showLevel', $showLevel);
+
+        return $Menu;
     }
 }

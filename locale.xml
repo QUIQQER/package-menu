@@ -60,17 +60,69 @@
             <de><![CDATA[Mobiles Menü]]></de>
             <en><![CDATA[Mobile Menu]]></en>
         </locale>
-        <locale name="mobileMenu.settings.collapseMobileSubmenu">
-            <de><![CDATA[Untermenüs zuklappen]]></de>
-            <en><![CDATA[Collpase submenu]]></en>
+        <locale name="mobileMenu.settings.type">f
+            <de><![CDATA[Mobiler Menütyp]]></de>
+            <en><![CDATA[Mobile Menu Type]]></en>
         </locale>
-        <locale name="mobileMenu.settings.showLevel">
-            <de><![CDATA[Ebenen anzeigen]]></de>
-            <en><![CDATA[Show levels]]></en>
+        <locale name="mobileMenu.settings.template.slideout">
+            <de><![CDATA[Slideout (Standard)]]></de>
+            <en><![CDATA[Slideout (Standard)]]></en>
         </locale>
-        <locale name="mobileMenu.settings.showLevel.desc">
-            <de><![CDATA[Wie viele Ebenen des mobilen Menüs sollen angezeigt werden?]]></de>
-            <en><![CDATA[How many levels of mobile menu should be shown?]]></en>
+        <locale name="mobileMenu.settings.template.slideoutAdvanced">
+            <de><![CDATA[Erweitertes Slideout Menü]]></de>
+            <en><![CDATA[Advanced Slideout Menu]]></en>
+        </locale>
+
+        <!-- mobile menu standard -->
+        <locale name="mobileMenu.standard.settings.title">
+            <de><![CDATA[Slideout (Standard)]]></de>
+            <en><![CDATA[Slideout (Standard)]]></en>
+        </locale>
+        <locale name="mobileMenu.standard.settings.desc">
+            <de><![CDATA[Standard Mobile Menü für QUIQQER.]]></de>
+            <en><![CDATA[Default mobile menu for QUIQQER.]]></en>
+        </locale>
+        <locale name="mobileMenu.standard.settings.collapseSubmenu">
+            <de><![CDATA[Navigationspunkte einklappen]]></de>
+            <en><![CDATA[Collapse navigation items]]></en>
+        </locale>
+        <locale name="mobileMenu.standard.settings.collapseSubmenu.desc">
+            <de><![CDATA[Bei großen Menüs empfiehlt sich die Option zu aktivieren. Dadurch wird nur die angegebene Tiefe der Navigation sichtbar (bei Einstellung "1" nur die erste Ebene der Navigation). Die Unter-Menüs kann man durch Tippen auf den Pfeil aufmachen.]]></de>
+            <en><![CDATA[For large menus it is recommended to activate the option. This way only the specified depth of the navigation will be visible (with setting "1" only the first level of the navigation). You can open the submenu items by tapping on the arrow.]]></en>
+        </locale>
+        <locale name="mobileMenu.standard.settings.showLevel">
+            <de><![CDATA[Ebene anzeigen]]></de>
+            <en><![CDATA[Show level]]></en>
+        </locale>
+        <locale name="mobileMenu.standard.settings.showLevel.desc">
+            <de><![CDATA[Die Option besagt, wie viele Ebenen der Navigation initial sichtbar werden. Bei ausgewählter Option "1" wird nur die erste Ebene sichtbar, der Rest wird eingeklappt.]]></de>
+            <en><![CDATA[The option specifies how many levels of the navigation will be visible initially. If the option "1" is selected, only the first level will be visible, the rest will be collapsed.]]></en>
+        </locale>
+
+        <!-- mobile menu advanced -->
+        <locale name="mobileMenu.slideoutAdvanced.settings.title">
+            <de><![CDATA[Erweitertes Slideout Menü]]></de>
+            <en><![CDATA[Advanced Slideout Menu]]></en>
+        </locale>
+        <locale name="mobileMenu.slideoutAdvanced.settings.desc">
+            <de><![CDATA[Dieses Menü zeigt immer nur eine Menü-Ebene auf einmal. Man kann hin und her zwischen den Ebenen navigieren, indem man auf die Pfeile tippt. Zusätzlich kann die Beschreibung der Seiten angezeigt werden (wenn verfügbar).]]></de>
+            <en><![CDATA[This menu shows only one menu level at a time. You can navigate back and forth between the levels by tapping the arrows. Additionally, the description of the pages can be displayed (if available).]]></en>
+        </locale>
+        <locale name="mobileMenu.slideoutAdvanced.settings.homeLink">
+            <de><![CDATA[Home-Link anzeigen]]></de>
+            <en><![CDATA[Show home link]]></en>
+        </locale>
+        <locale name="mobileMenu.slideoutAdvanced.settings.shortDesc">
+            <de><![CDATA[Kurzbeschreibung anzeigen]]></de>
+            <en><![CDATA[Show short description]]></en>
+        </locale>
+        <locale name="mobileMenu.slideoutAdvanced.settings.shortDesc.desc">
+            <de><![CDATA[Diese Option hat keinen Einfluss, wenn man das individuelle Menü (sog. <i>"Independent Menu"</i>) verwendet.]]></de>
+            <en><![CDATA[This option has no influence when using the individual menu (so called <i>"Independent Menu"</i>).]]></en>
+        </locale>
+        <locale name="mobileMenu.slideoutAdvanced.btn.back">
+            <de><![CDATA[Zurück]]></de>
+            <en><![CDATA[Go back]]></en>
         </locale>
 
         <!-- sidebar menu -->
@@ -96,17 +148,9 @@
             <pl><![CDATA[Zaawansowany]]></pl>
         </locale>
         <locale name="menu.control.sidebarDropDownMenu.setting.startId">
-            <de><![CDATA[Start-ID uu]]></de>
+            <de><![CDATA[Start-ID]]></de>
             <en><![CDATA[Start ID]]></en>
             <pl><![CDATA[Pierwsza strona]]></pl>
-        </locale>
-        <locale name="menu.control.sidebarDropDownMenu.setting.menuId">
-            <de><![CDATA[Menu auswählen]]></de>
-            <en><![CDATA[Select the menu]]></en>
-        </locale>
-        <locale name="menu.control.sidebarDropDownMenu.setting.menuId.desc">
-            <de><![CDATA[Diese Option ermöglicht, eigenes Menü auszuwählen. <strong>Wichtig!</strong> Diese Option hat Vorrang. Wird ein eigenes Menü ausgewählt, hat die Option "Start-ID" keine Auswirkung mehr.]]></de>
-            <en><![CDATA[This option allows you to choose your own menu. <strong>Important!</strong> This option takes precedence. If a custom menu is selected, the "Start ID" option has no effect anymore.]]></en>
         </locale>
         <locale name="menu.control.sidebarDropDownMenu.setting.parentLink">
             <de><![CDATA[Eltern-Seite Link anzeigen]]></de>
@@ -356,113 +400,6 @@
             <de><![CDATA[QUIQQER Menüs REST API]]></de>
             <en><![CDATA[QUIQQER Menus REST API]]></en>
         </locale>
-
-        <!-- Control: Tabs -->
-        <locale name="control.tabs.title">
-            <de><![CDATA[Menü: Erweiterte Tabs (Registrierkarten)]]></de>
-            <en><![CDATA[Menu: Advanced Tabs]]></en>
-        </locale>
-        <locale name="control.tabs.description">
-            <de><![CDATA[Erstelle Tabs mit verschiedenen Inhalten. Wähle für die Tabs eigene Icons und die Anordnung aus. Platziere im Inhalt nicht nur Texte, sondern auch Bilder.]]></de>
-            <en><![CDATA[This brick allows you to generate a tabbed interface with different content. Choose your own icons and layout for the tabs. Place not only texts but also images in the content.]]></en>
-        </locale>
-        <locale name="control.tabs.template">
-            <de><![CDATA[Design]]></de>
-            <en><![CDATA[Design]]></en>
-        </locale>
-        <locale name="control.tabs.template.simple">
-            <de><![CDATA[Einfach]]></de>
-            <en><![CDATA[Simple]]></en>
-        </locale>
-        <!-- Control: Tabs: nav img height -->
-        <locale name="control.tabs.navImgHeight">
-            <de><![CDATA[Höhe der Navigation-Icons]]></de>
-            <en><![CDATA[Nav icons height]]></en>
-        </locale>
-        <locale name="control.tabs.navImgHeight.desc">
-            <de><![CDATA[Dieser Wert bestimmt, wie groß die Icons in der Tab-Navigation sein werden (in Pixel). Standardwert ist 20.]]></de>
-            <en><![CDATA[This value determines how big the icons will be in the tab navigation (in pixel). Default value ist 20.]]></en>
-        </locale>
-        <!-- Control: Tabs: nav img style (position) -->
-        <locale name="control.tabs.navStyle">
-            <de><![CDATA[Navigation-Icons Style]]></de>
-            <en><![CDATA[Nav icons style]]></en>
-        </locale>
-        <locale name="control.tabs.navStyle.imgLeft">
-            <de><![CDATA[Icon links]]></de>
-            <en><![CDATA[Icon on the left]]></en>
-        </locale>
-        <locale name="control.tabs.navStyle.imgTop">
-            <de><![CDATA[Icon oben]]></de>
-            <en><![CDATA[Icon on the top]]></en>
-        </locale>
-        <locale name="control.tabs.navStyle.onlyImg">
-            <de><![CDATA[Nur das Icon. Titel wird ausgeblendet.]]></de>
-            <en><![CDATA[Only the icon. Titel is hidden.]]></en>
-        </locale>
-        <!-- Control: Tabs: nav break text -->
-        <locale name="control.tabs.navWrapText">
-            <de><![CDATA[Navigations-Titel umbrechen]]></de>
-            <en><![CDATA[Break nav title]]></en>
-        </locale>
-        <locale name="control.tabs.navWrapText.wrap">
-            <de><![CDATA[Standard: der Titel umbrechen]]></de>
-            <en><![CDATA[Default: wrap the title]]></en>
-        </locale>
-        <locale name="control.tabs.navWrapText.noWrap">
-            <de><![CDATA[Der Titel wird nicht umgebrochen]]></de>
-            <en><![CDATA[The title will not be wrapped]]></en>
-        </locale>
-        <!-- Control: Tabs: nav fill -->
-        <locale name="control.tabs.navFillSpace">
-            <de><![CDATA[Navigation-Tabs: volle Breite nutzen]]></de>
-            <en><![CDATA[Nav tabs: use full width]]></en>
-        </locale>
-        <locale name="control.tabs.navFillSpace.desc">
-            <de><![CDATA[Wenn eingeschaltet, die Navigationspunkte werden gestreckt, sodass die gesamte verfügbare Fläche benutzt wird.]]></de>
-            <en><![CDATA[If enabled, the navigation entries are stretched so that the entire available area is used.]]></en>
-        </locale>
-        <!-- Control: Tabs: nav center -->
-        <locale name="control.tabs.navCenter">
-            <de><![CDATA[Navigation-Tabs zentrieren]]></de>
-            <en><![CDATA[Center nav tabs]]></en>
-        </locale>
-        <locale name="control.tabs.navCenter.desc">
-            <de><![CDATA[Wenn eingeschaltet, werden die Navigationspunkte zentriert. Wenn die Option "Volle Breite nutzen" aktiv ist, hat diese Einstellung keine Auswirkung.]]></de>
-            <en><![CDATA[If enabled, the navigation entries are centered. If the "Use full width" option is active, this setting has no effect.]]></en>
-        </locale>
-        <!-- Control: content: img min width -->
-        <locale name="control.tabs.contentImgMinWidth">
-            <de><![CDATA[Inhalts-Bild: minimale Breit]]></de>
-            <en><![CDATA[Content image: min width]]></en>
-        </locale>
-        <locale name="control.tabs.contentImgMinWidth.desc">
-            <de><![CDATA[Minimale Bildbreite in Pixel. Bitte keine großen Werte verwenden. Empfohlen ist 100px bis 600px. Standardwert ist 200px.]]></de>
-            <en><![CDATA[Minimum image width in pixels. Please do not use large values. Recommended is 100px to 600px. Default value is 200px.]]></en>
-        </locale>
-        <!-- Control: content: img max width -->
-        <locale name="control.tabs.contentImgMaxWidth">
-            <de><![CDATA[Inhalts-Bild: maximale Breit]]></de>
-            <en><![CDATA[Content image: max width]]></en>
-        </locale>
-        <locale name="control.tabs.contentImgMaxWidth.desc">
-            <de><![CDATA[Maximale Bildbreite in Pixel. Bitte keine großen Werte verwenden. Empfohlen ist 200px bis 600px. Standardwert ist 400px.]]></de>
-            <en><![CDATA[Maximum image width in pixels. Please do not use large values. Recommended is 200px to 600px. Default value is 400px.]]></en>
-        </locale>
-        <!-- Control: content: text max width -->
-        <locale name="control.tabs.contentTextWidth">
-            <de><![CDATA[Maximale Textbreite]]></de>
-            <en><![CDATA[Text max width]]></en>
-        </locale>
-        <locale name="control.tabs.contentTextWidth.desc">
-            <de><![CDATA[Maximale Textbreite in Pixel. Bitte keine großen Werte verwenden. Empfohlen ist 200px bis 1000px. Standardwert ist 600px.]]></de>
-            <en><![CDATA[Maximum text width in pixels. Please do not use large values. Recommended is 200px to 1000px. Default value is 600px.]]></en>
-        </locale>
-        <!-- Control: content: entries -->
-        <locale name="control.tabs.entries">
-            <de><![CDATA[Tab Einträge]]></de>
-            <en><![CDATA[Tab entries]]></en>
-        </locale>
     </groups>
 
     <groups name="quiqqer/menu" datatype="php">
@@ -484,7 +421,7 @@
             <en><![CDATA[Menu entry: To an internal page from a project]]></en>
         </locale>
         <locale name="item.url.title">
-            <de><![CDATA[Menu Eintrag: Zu einer anderen URL]]></de>
+            <de><![CDATA[Menu Eintrag: Zur einer anderen URL]]></de>
             <en><![CDATA[Menu entry: To another URL]]></en>
         </locale>
         <locale name="menu.saved.successfully">
@@ -797,7 +734,7 @@
             <en><![CDATA[Assign a menu]]></en>
         </locale>
         <locale name="quiqqer.menu.select.win.content">
-            <de><![CDATA[Bitte wähle ein Menü aus, welches du zuweisen möchtest.]]></de>
+            <de><![CDATA[Bitte wähle ein Menü aus welches du zuweisen möchtest.]]></de>
             <en><![CDATA[Please select a menu you want to assign.]]></en>
         </locale>
         <locale name="quiqqer.menu.select.win.button">
@@ -805,56 +742,5 @@
             <en><![CDATA[Select menu]]></en>
         </locale>
 
-        <!-- Tabs: settings -->
-        <locale name="control.tabs.entries.isDisabled">
-            <de><![CDATA[Deaktiviert]]></de>
-            <en><![CDATA[Disabled]]></en>
-        </locale>
-
-        <!-- Tabs: qui window settings -->
-        <locale name="control.tabs.entries.isDisabled">
-            <de><![CDATA[Deaktiviert]]></de>
-            <en><![CDATA[Disabled]]></en>
-        </locale>
-        <locale name="control.tabs.entries.tabIcon">
-            <de><![CDATA[Tab Icon]]></de>
-            <en><![CDATA[Tab icon]]></en>
-        </locale>
-        <locale name="control.tabs.entries.tabTitle">
-            <de><![CDATA[Tab Titel]]></de>
-            <en><![CDATA[Tab title]]></en>
-        </locale>
-        <locale name="control.tabs.entries.entryImage">
-            <de><![CDATA[Bild]]></de>
-            <en><![CDATA[Image]]></en>
-        </locale>
-        <locale name="control.tabs.entries.entryImagePos">
-            <de><![CDATA[Bildposition]]></de>
-            <en><![CDATA[Image position]]></en>
-        </locale>
-        <locale name="control.tabs.entries.entryImagePos.left">
-            <de><![CDATA[Links]]></de>
-            <en><![CDATA[Left]]></en>
-        </locale>
-        <locale name="control.tabs.entries.entryImagePos.right">
-            <de><![CDATA[Rechts]]></de>
-            <en><![CDATA[Right]]></en>
-        </locale>
-        <locale name="control.tabs.entries.entryImagePos.top">
-            <de><![CDATA[Oben]]></de>
-            <en><![CDATA[Top]]></en>
-        </locale>
-        <locale name="control.tabs.entries.entryImagePos.bottom">
-            <de><![CDATA[Unten]]></de>
-            <en><![CDATA[Bottom]]></en>
-        </locale>
-        <locale name="control.tabs.entries.entryTitle">
-            <de><![CDATA[Titel]]></de>
-            <en><![CDATA[Title]]></en>
-        </locale>
-        <locale name="control.tabs.entries.entryContent">
-            <de><![CDATA[Inhalt]]></de>
-            <en><![CDATA[Content]]></en>
-        </locale>
     </groups>
 </locales>

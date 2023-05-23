@@ -14,10 +14,26 @@
                     </conf>
                 </section>
                 <section name="mobileMenu.settings">
-                    <conf name="collapseMobileSubmenu">
+                    <conf name="type">
+                        <type><![CDATA[string]]></type>
+                        <defaultvalue>standard</defaultvalue>
+                    </conf>
+                </section>
+                <section name="mobileMenu.standard.settings">
+                    <conf name="collapseSubmenu">
                         <type><![CDATA[bool]]></type>
                     </conf>
                     <conf name="showLevel">
+                        <type><![CDATA[string]]></type>
+                        <defaultvalue>1</defaultvalue>
+                    </conf>
+                </section>
+                <section name="mobileMenu.slideoutAdvanced.settings">
+                    <conf name="homeLink">
+                        <type><![CDATA[bool]]></type>
+                        <defaultvalue>true</defaultvalue>
+                    </conf>
+                    <conf name="shortDesc">
                         <type><![CDATA[number]]></type>
                         <defaultvalue>1</defaultvalue>
                     </conf>
@@ -76,18 +92,76 @@
                                 <locale group="quiqqer/menu" var="mobileMenu.settings.title"/>
                             </title>
 
-                            <input conf="mobileMenu.settings.collapseMobileSubmenu" type="checkbox">
+                            <select conf="mobileMenu.settings.type">
                                 <text>
-                                    <locale group="quiqqer/menu" var="mobileMenu.settings.collapseMobileSubmenu"/>
+                                    <locale group="quiqqer/menu" var="mobileMenu.settings.type"/>
+                                </text>
+                                <option value="slideout">
+                                    <locale group="quiqqer/menu" var="mobileMenu.settings.template.slideout"/>
+                                </option>
+                                <option value="slideoutAdvanced">
+                                    <locale group="quiqqer/menu" var="mobileMenu.settings.template.slideoutAdvanced"/>
+                                </option>
+                            </select>
+                        </settings>
+
+                        <!-- mobile menu standard -->
+                        <settings title="mobileMenu.standard.settings" name="mobileMenu.standard.settings">
+                            <title>
+                                <locale group="quiqqer/menu" var="mobileMenu.standard.settings.title"/>
+                            </title>
+
+                            <text>
+                                <locale group="quiqqer/menu" var="mobileMenu.standard.settings.desc"/>
+                            </text>
+
+                            <input conf="mobileMenu.standard.settings.collapseSubmenu" type="checkbox">
+                                <text>
+                                    <locale group="quiqqer/menu" var="mobileMenu.standard.settings.collapseSubmenu"/>
+                                </text>
+                                <description>
+                                    <locale group="quiqqer/menu" var="mobileMenu.standard.settings.collapseSubmenu.desc"/>
+                                </description>
+                            </input>
+
+                            <select conf="mobileMenu.standard.settings.showLevel">
+                                <text>
+                                    <locale group="quiqqer/menu" var="mobileMenu.standard.settings.showLevel"/>
+                                </text>
+                                <description>
+                                    <locale group="quiqqer/menu" var="mobileMenu.standard.settings.showLevel.desc"/>
+                                </description>
+                                <option value="1" selected="selected">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                        </settings>
+
+                        <!-- mobile menu advanced -->
+                        <settings title="mobileMenu.slideoutAdvanced.settings" name="mobileMenu.slideoutAdvanced.settings">
+                            <title>
+                                <locale group="quiqqer/menu" var="mobileMenu.slideoutAdvanced.settings.title"/>
+                            </title>
+
+                            <text>
+                                <locale group="quiqqer/menu" var="mobileMenu.slideoutAdvanced.settings.desc"/>
+                            </text>
+
+                            <input conf="mobileMenu.slideoutAdvanced.settings.homeLink" type="checkbox">
+                                <text>
+                                    <locale group="quiqqer/menu" var="mobileMenu.slideoutAdvanced.settings.homeLink"/>
                                 </text>
                             </input>
 
-                            <input conf="mobileMenu.settings.showLevel" type="number" min="1" max="50">
+                            <input conf="mobileMenu.slideoutAdvanced.settings.shortDesc" type="checkbox">
                                 <text>
-                                    <locale group="quiqqer/menu" var="mobileMenu.settings.showLevel"/>
+                                    <locale group="quiqqer/menu" var="mobileMenu.slideoutAdvanced.settings.shortDesc"/>
                                 </text>
                                 <description>
-                                    <locale group="quiqqer/menu" var="mobileMenu.settings.showLevel.desc"/>
+                                    <locale group="quiqqer/menu" var="mobileMenu.slideoutAdvanced.settings.shortDesc.desc"/>
                                 </description>
                             </input>
                         </settings>

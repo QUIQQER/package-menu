@@ -1,0 +1,46 @@
+{if !isset($level)}
+{assign var=level value=1}
+{else}
+{assign var=level value=$level+1}
+{/if}
+
+{if count($children)}
+    <ul class="quiqqer-slideoutAdvanced-nav quiqqer-slideoutAdvanced-page-navigation-level-{$level} {if $showHomeLink == 0}quiqqer-slideoutAdvanced-nav-hideHomeLink{/if}">
+        {foreach from=$children key=k item=Child}
+            {if $level > 1 and $k == 0}
+
+            <li class="quiqqer-slideoutAdvanced-nav-element quiqqer-slideoutAdvanced-backBtn">
+                <div class="quiqqer-slideoutAdvanced-nav-entry">
+                    <span class="fa fa-angle-left quiqqer-slideoutAdvanced-icon quiqqer-slideoutAdvanced-icon-back"></span>
+
+                    <span class="quiqqer-slideoutAdvanced-backBtn-text">
+                        {locale group='quiqqer/menu' var='mobileMenu.slideoutAdvanced.btn.back'}
+                    </span>
+                </div>
+            </li>
+            {/if}
+
+            <li class="quiqqer-slideoutAdvanced-nav-element">
+                <div class="quiqqer-slideoutAdvanced-nav-entry">
+                    <a href="{$Child->getUrl()}"
+                       class="qui-menu-siteid-{$Child->getIdentifier()} quiqqer-slideoutAdvanced-nav-entry-link"
+                       title="{$Child->getTitleAttribute()|escape:'html'}"
+                       {if $Child->getTarget()}target="{$Child->getTarget()}"{/if}
+                        >
+                        <span class="quiqqer-slideoutAdvanced-nav-entry-title">
+                            {$Child->getTitle()}
+                        </span>
+                    </a>
+
+                    {if count($Child->getChildren())}
+                        <span class="fa fa-angle-right quiqqer-slideoutAdvanced-icon quiqqer-slideoutAdvanced-icon-next"></span>
+                    {/if}
+                </div>
+                {include file="`$FileMenu`"
+                children=$Child->getChildren()
+                level=$level
+                }
+            </li>
+        {/foreach}
+    </ul>
+{/if}
