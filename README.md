@@ -23,6 +23,9 @@ Features
         - Mega Menu - Grosse Seitenbilder
 - Elastic Menu (mobile-fähig)
 - SlideOut Menu (mobile-fähig)
+- 2 Arten von Mobile-Menü:
+  1. Slideout - standard mobiles Menü
+  2. Slideout Advanced - Erweitertes Slideout Menü.
 
 
 Installation
@@ -123,3 +126,35 @@ The page will be scrolled to the element if it is not in viewport.
 ```html
 <a href="www.example.com/subpage#open_myTarget">Open "myTarget" element</a>
 ```
+
+# Menu project settings
+
+You can choose between 2 mobile navigation: **Slideout** and **Slideout Advanced**.
+
+![Choose mobile menu type](bin/images/readme/settings-slideout-1.png)
+
+## Slideout
+
+This ist our basic mobile navigation. This menu shows per default all menu entries at once. 
+If your navigation contains many sub-menu the mobile navigation may be large. User mey have to scroll this.
+
+To solve this you can activate the option _"Collapse navigation items"_ and set _"Show level"_ to 1 
+(or any other number you like).
+
+![Slideout settings](bin/images/readme/settings-slideout-2.png)
+
+If it activated you can open and close the sub-menus by clicking on the double arrow.
+
+![Slideout settings](bin/images/readme/slideout-live-example-1.png)
+
+## Slideout advanced
+
+This menu bases on Slideout but show the sub-menus differently. It shows only one menu level at once.
+You can navigate back and forth between the levels by tapping the arrows. 
+Additionally, you can activate the page description (if available).
+
+![Slideout settings](bin/images/readme/settings-slideout-advanced-1.png)
+
+Here you can see the menu in action:
+
+![Slideout settings](bin/images/readme/slideout-advanced-live-example.gif)
