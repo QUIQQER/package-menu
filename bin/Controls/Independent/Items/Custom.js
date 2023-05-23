@@ -111,6 +111,10 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Custom', [
                 data.name = '';
             }
 
+            if (typeof data.target !== 'undefined') {
+                this.getElm().getElement('[name="target"]').set('value', data.target);
+            }
+
             if (typeof data.status === 'undefined' || data.status) {
                 this.getElm().getElement('[name="status"]').set('checked', true);
             }

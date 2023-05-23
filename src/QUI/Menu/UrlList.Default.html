@@ -1,0 +1,33 @@
+{if $this->getAttribute('showTitle') && $this->getAttribute('frontendTitle')}
+    <header class="control-header">
+        <h2>{$this->getAttribute('frontendTitle')}</h2>
+    </header>
+{/if}
+
+{if $this->getAttribute('content') != ""}
+    <div class="control-content">
+        {$this->getAttribute('content')}
+    </div>
+{/if}
+
+{if $headerText}
+    <h5 class="quiqqer-urlList-title">
+        {$headerText}
+    </h5>
+{/if}
+{strip}
+    {if count($children)}
+        <ul class="quiqqer-urlList-entries list-unstyled">
+            {foreach from=$children item=Child}
+                <li class="quiqqer-urlList-entry">
+                    <a href="{url site=$Child}" class="quiqqer-urlList-entry-link {$restLinkColorCss}">
+                        {if $icon}
+                            <span class="{$icon} fa-fw quiqqer-urlList-entry-link-icon"></span>
+                        {/if}
+                        <span class="quiqqer-urlList-entry-link-text">{$Child->getAttribute('title')}</span>
+                    </a>
+                </li>
+            {/foreach}
+        </ul>
+    {/if}
+{/strip}

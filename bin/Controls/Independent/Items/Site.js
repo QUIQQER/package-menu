@@ -93,6 +93,10 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Site', [
                 this.getElm().getElement('[name="site"]').set('value', data.site);
             }
 
+            if (typeof data.target !== 'undefined') {
+                this.getElm().getElement('[name="target"]').set('value', data.target);
+            }
+
             if (typeof data.rel !== 'undefined') {
                 this.getElm().getElement('[name="rel"]').set('value', data.rel);
             }

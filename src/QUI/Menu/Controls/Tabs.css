@@ -37,11 +37,14 @@
     flex: 1;
 }
 
-@media screen and (min-width: 768px) {
-    .quiqqer-tabsAdvanced-nav-inner.navTab__center {
+/*@media screen and (min-width: 768px) {*/
+    .quiqqer-tabsAdvanced-nav {
+        display: flex;
+    }
+    .quiqqer-tabsAdvanced-nav.navTab__center {
         justify-content: center;
     }
-}
+/*}*/
 
 .quiqqer-tabsAdvanced-nav-link {
     padding: 1rem;
@@ -119,7 +122,7 @@
 /* content */
 /***********/
 .quiqqer-tabsAdvanced-content {
-    margin-top: var(--qui-spacing-xl, 2rem);
+    margin-top: var(--qui-spacing-2xl, 3rem);
 }
 
 .quiqqer-tabsAdvanced-content-item {

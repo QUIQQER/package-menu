@@ -34,9 +34,10 @@ class Tabs extends QUI\Control
             // tabs nav
             'navImgHeight'       => 20, // number
             'navStyle'           => 'imgLeft', // imgLeft, imgTop, onlyImg
-            'navWrapText'       => 'wrap', // wrap / noWrap; allow breaking text on space. 'noWrap' set "white-space: nowrap;" CSS property on nav text
+            'navWrapText'        => 'wrap', // wrap / noWrap; allow breaking text on space. 'noWrap' set "white-space: nowrap;" CSS property on nav text
             'navFillSpace'       => false, // it feels the available space
             'navCenter'          => false,
+            'enableDragToScroll' => true,
 
             // tabs content
             'contentImgMinWidth' => 200, // number; do not use large values, recommended is between 100 and 600
@@ -74,6 +75,8 @@ class Tabs extends QUI\Control
 
         $active = 1;
 
+        $this->setJavaScriptControlOption('enabledragtoscroll', $this->getAttribute('enableDragToScroll'));
+
         if ($this->getAttribute('activeEntry') && $this->getAttribute('activeEntry') > 0) {
             $active = $this->getAttribute('activeEntry');
         }
@@ -83,7 +86,7 @@ class Tabs extends QUI\Control
 
         /* nav */
         $showNavText    = true;
-        $navWrapText   = 'navText__wrap';
+        $navWrapText    = 'navText__wrap';
         $navTabStyleCss = 'navTabStyle__imgLeft';
         $navAlignment   = '';
         $navFillSpace   = '';
@@ -116,7 +119,7 @@ class Tabs extends QUI\Control
             'active'             => $active,
             'navImgHeight'       => $this->getAttribute('navImgHeight'),
             'navStyle'           => $this->getAttribute('navStyle'),
-            'navWrapText'       => $navWrapText,
+            'navWrapText'        => $navWrapText,
             'navTabStyleCss'     => $navTabStyleCss,
             'showNavText'        => $showNavText,
             'navAlignment'       => $navAlignment,

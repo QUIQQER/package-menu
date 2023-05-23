@@ -1,0 +1,25 @@
+.quiqqer-urlList-entries {
+    padding-left: 0;
+    margin: 0 0 1em 0;
+}
+
+.quiqqer-urlList-entry {
+    padding-left: 0;
+    margin: 0 0 0.5em 0;
+}
+
+.quiqqer-urlList-entry-link__resetLinkColor {
+    display: inline-flex;
+}
+
+/* icon */
+.quiqqer-urlList-entry-link-icon {
+    margin-right: 0.5em;
+    flex-shrink: 0;
+    line-height: inherit;
+}
+
+/* reset link */
+.quiqqer-urlList-entry-link__resetLinkColor:not(:hover, :focus) {
+    color: inherit;
+}

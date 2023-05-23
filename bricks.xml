@@ -82,6 +82,72 @@
             </settings>
         </brick>
 
+        <!-- Url list -->
+        <brick control="\QUI\Menu\UrlList">
+            <title>
+                <locale group="quiqqer/menu"
+                        var="menu.control.urlList.title"/>
+            </title>
+            <description>
+                <locale group="quiqqer/menu"
+                        var="menu.control.urlList.description"/>
+            </description>
+
+            <settings>
+                <setting name="display" type="select">
+                    <locale group="quiqqer/menu"
+                            var="menu.control.urlList.setting.display"/>
+
+                    <option value="default">
+                        <locale group="quiqqer/menu"
+                                var="menu.control.urlList.setting.display.default"/>
+                    </option>
+                </setting>
+
+                <setting name="headerText">
+                    <locale group="quiqqer/menu"
+                            var="menu.control.urlList.setting.headerText"/>
+                </setting>
+
+                <setting name="menuId" data-qui="package/quiqqer/menu/bin/Controls/Independent/Input" type="text">
+                    <locale group="quiqqer/menu"
+                            var="menu.control.urlList.setting.menuId"/>
+                    <description>
+                        <locale group="quiqqer/menu"
+                                var="menu.control.urlList.setting.menuId.desc"/>
+                    </description>
+                </setting>
+
+                <setting name="startId" class="project-site">
+                    <locale group="quiqqer/menu"
+                            var="menu.control.urlList.setting.startId"/>
+                    <description>
+                        <locale group="quiqqer/menu"
+                                var="menu.control.urlList.setting.startId.desc"/>
+                    </description>
+                </setting>
+
+                <setting name="icon" type="text" class="media-image" data-qui-options-cssclasses="1">
+                    <locale group="quiqqer/menu"
+                            var="menu.control.urlList.setting.icon"/>
+                    <description>
+                        <locale group="quiqqer/menu"
+                                var="menu.control.urlList.setting.icon.desc"/>
+                    </description>
+                </setting>
+
+                <setting name="resetLinkColor" type="checkbox">
+                    <locale group="quiqqer/menu"
+                            var="menu.control.urlList.setting.resetLinkColor"/>
+                    <description>
+                        <locale group="quiqqer/menu"
+                                var="menu.control.urlList.setting.resetLinkColor.desc"/>
+                    </description>
+                </setting>
+
+            </settings>
+        </brick>
+
         <!-- one page nav -->
         <brick control="\QUI\Menu\OnePageNav">
             <title>
