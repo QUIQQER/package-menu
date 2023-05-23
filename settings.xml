@@ -16,7 +16,7 @@
                 <section name="mobileMenu.settings">
                     <conf name="type">
                         <type><![CDATA[string]]></type>
-                        <defaultvalue>standard</defaultvalue>
+                        <defaultvalue>slideout</defaultvalue>
                     </conf>
                 </section>
                 <section name="mobileMenu.standard.settings">
@@ -24,7 +24,7 @@
                         <type><![CDATA[bool]]></type>
                     </conf>
                     <conf name="showLevel">
-                        <type><![CDATA[string]]></type>
+                        <type><![CDATA[number]]></type>
                         <defaultvalue>1</defaultvalue>
                     </conf>
                 </section>
@@ -34,8 +34,8 @@
                         <defaultvalue>true</defaultvalue>
                     </conf>
                     <conf name="shortDesc">
-                        <type><![CDATA[number]]></type>
-                        <defaultvalue>1</defaultvalue>
+                        <type><![CDATA[bool]]></type>
+                        <defaultvalue>true</defaultvalue>
                     </conf>
                 </section>
             </config>
@@ -96,7 +96,7 @@
                                 <text>
                                     <locale group="quiqqer/menu" var="mobileMenu.settings.type"/>
                                 </text>
-                                <option value="slideout">
+                                <option value="slideout" selected="selected">
                                     <locale group="quiqqer/menu" var="mobileMenu.settings.template.slideout"/>
                                 </option>
                                 <option value="slideoutAdvanced">
