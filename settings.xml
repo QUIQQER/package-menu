@@ -30,12 +30,11 @@
                 </section>
                 <section name="mobileMenu.slideoutAdvanced.settings">
                     <conf name="homeLink">
-                        <type><![CDATA[bool]]></type>
-                        <defaultvalue>true</defaultvalue>
+                        <type><![CDATA[number]]></type>
+                        <defaultvalue>1</defaultvalue>
                     </conf>
                     <conf name="shortDesc">
-                        <type><![CDATA[bool]]></type>
-                        <defaultvalue>true</defaultvalue>
+                        <type><![CDATA[number]]></type>
                     </conf>
                 </section>
             </config>
