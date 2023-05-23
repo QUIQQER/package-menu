@@ -31,6 +31,16 @@ class EventHandler
     }
 
     /**
+     * Clear system cache on project save
+     *
+     * @return void
+     */
+    public static function onProjectConfigSave()
+    {
+        QUI\Cache\Manager::clear(self::menuCacheName());
+    }
+
+    /**
      * Event : on smarty init
      * add new brickarea function
      *

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <events>
     <event on="onSiteSave" fire="\QUI\Menu\EventHandler::onSiteSave"/>
+    <event on="onProjectConfigSave" fire="\QUI\Menu\EventHandler::onProjectConfigSave"/>
     <event on="onSmartyInit" fire="\QUI\Menu\EventHandler::onSmartyInit"/>
     <event on="onAdminLoadFooter" fire="\QUI\Menu\EventHandler::onAdminLoadFooter"/>
     <event on="onQuiqqerMenuIndependentClear" fire="\QUI\Menu\EventHandler::onQuiqqerMenuIndependentClear"/>
