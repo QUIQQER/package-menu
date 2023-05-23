@@ -23,9 +23,11 @@ class SlideOut extends QUI\Control
     public function __construct($attributes = [])
     {
         $this->setAttributes([
-            'showHomeLink'        => true,
-            'menuId'              => false, // if set independent menu template will be used
-            'showFirstLevelIcons' => false // current it works only for independent menu
+            'showHomeLink'          => true,
+            'menuId'                => false, // if set independent menu template will be used
+            'showFirstLevelIcons'   => false, // current it works only for independent menu
+            'collapseMobileSubmenu' => false,
+            'showLevel'             => 1
         ]);
 
         parent::__construct($attributes);
@@ -52,18 +54,18 @@ class SlideOut extends QUI\Control
         if ($this->getAttribute('menuId')) {
             $IndependentMenu = Independent\Handler::getMenu($this->getAttribute('menuId'));
 
-            $template                        = dirname(__FILE__) . '/Menu.Independent.html';
-            $params['FileMenu']              = dirname(__FILE__) . '/Menu.Children.Independent.html';
+            $template                        = dirname(__FILE__).'/Menu.Independent.html';
+            $params['FileMenu']              = dirname(__FILE__).'/Menu.Children.Independent.html';
             $params['IndependentMenu']       = $IndependentMenu;
             $params['Site']                  = $this->getSite();
             $params['collapseMobileSubmenu'] = $collapseMobileSubmenu;
             $params['showLevel']             = $showLevel;
             $params['showFirstLevelIcons']   = $this->getAttribute('showFirstLevelIcons');
         } else {
-            $template                        = dirname(__FILE__) . '/Menu.html';
+            $template                        = dirname(__FILE__).'/Menu.html';
             $params['collapseMobileSubmenu'] = $collapseMobileSubmenu;
             $params['showLevel']             = $showLevel;
-            $params['FileMenu']              = dirname(__FILE__) . '/Menu.Children.html';
+            $params['FileMenu']              = dirname(__FILE__).'/Menu.Children.html';
             $params['Site']                  = $this->getSite();
         }
 
