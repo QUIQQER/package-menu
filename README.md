@@ -39,6 +39,7 @@ Contribution
 
 - Issue Tracker: https://dev.quiqqer.com/quiqqer/package-menu/issues
 - Source Code: https://dev.quiqqer.com/quiqqer/package-menu
+- Wiki: https://dev.quiqqer.com/quiqqer/package-menu/-/wikis/home
 
 
 Support
