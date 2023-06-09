@@ -633,6 +633,7 @@ define('package/quiqqer/menu/bin/SlideoutAdvanced', [
 
             this.NavUlContainer.setStyles({
                 transform: 'translateX(0)',
+                height: 'auto'
             });
         }
     });
