@@ -29,6 +29,10 @@ class SlideOutAdvanced extends QUI\Control
         ]);
 
         parent::__construct($attributes);
+
+        $this->addCSSFile(
+            \dirname(__FILE__).'/SlideOutAdvanced.css'
+        );
     }
 
     /**
@@ -38,10 +42,6 @@ class SlideOutAdvanced extends QUI\Control
     public function getBody()
     {
         $Engine = QUI::getTemplateManager()->getEngine();
-
-        $this->addCSSFile(
-            \dirname(__FILE__).'/SlideOutAdvanced.css'
-        );
 
         $params = [
             'this'          => $this,
