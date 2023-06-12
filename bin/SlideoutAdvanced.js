@@ -123,7 +123,7 @@ define('package/quiqqer/menu/bin/SlideoutAdvanced', [
                 var NavSubLeft = LiLeft.getElement("ul.quiqqer-slideoutAdvanced-nav");
                 var Prom;
 
-                Prom = self.openMenu(NavSubLeft);
+                Prom = self.$openNextLevel(NavSubLeft);
 
                 Prom.then(function () {
                     runs = false;
@@ -142,7 +142,7 @@ define('package/quiqqer/menu/bin/SlideoutAdvanced', [
                 var NavSubLeft = e.target.getParent("ul.quiqqer-slideoutAdvanced-nav");
                 var Prom;
 
-                Prom = self.closeMenu(NavSubLeft);
+                Prom = self.$closeCurrentLevel(NavSubLeft);
 
                 Prom.then(function () {
                     runs = false;
@@ -539,7 +539,7 @@ define('package/quiqqer/menu/bin/SlideoutAdvanced', [
          * @param NavSubLeft HTMLNode - next level element
          * @returns {*}
          */
-        openMenu: function (NavSubLeft) {
+        $openNextLevel: function (NavSubLeft) {
             var self = this,
             Elm = this.getElm();
 
@@ -572,13 +572,13 @@ define('package/quiqqer/menu/bin/SlideoutAdvanced', [
         },
 
         /**
-         * close the next level of sub menu
+         * close the current level of sub menu
          *
          * @param {HTMLLIElement} NavSubLeft
          *
          * @return Promise
          */
-        closeMenu: function (NavSubLeft) {
+        $closeCurrentLevel: function (NavSubLeft) {
             var self = this;
 
             return new Promise(function (resolve) {
@@ -619,9 +619,9 @@ define('package/quiqqer/menu/bin/SlideoutAdvanced', [
          */
         resetMenu: function () {
             this.menuDepth = 0;
-            var UlElements = document.querySelectorAll('.quiqqer-slideoutAdvanced-nav');
+            var ulElements = document.querySelectorAll('.quiqqer-slideoutAdvanced-nav');
 
-            UlElements.forEach((UlElement) => {
+            ulElements.forEach((UlElement) => {
                 var ulClass = UlElement.classList[1];
 
                 if (ulClass !== "quiqqer-slideoutAdvanced-page-navigation-level-1") {
