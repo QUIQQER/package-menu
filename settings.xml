@@ -18,6 +18,10 @@
                         <type><![CDATA[string]]></type>
                         <defaultvalue>slideout</defaultvalue>
                     </conf>
+                    <conf name="mediaQuery">
+                        <type><![CDATA[number]]></type>
+                        <defaultvalue>768</defaultvalue>
+                    </conf>
                 </section>
                 <section name="mobileMenu.standard.settings">
                     <conf name="collapseSubmenu">
@@ -27,7 +31,7 @@
                         <type><![CDATA[number]]></type>
                         <defaultvalue>1</defaultvalue>
                     </conf>
-                </section>
+                </section>`
                 <section name="mobileMenu.slideoutAdvanced.settings">
                     <conf name="homeLink">
                         <type><![CDATA[number]]></type>
@@ -102,6 +106,14 @@
                                     <locale group="quiqqer/menu" var="mobileMenu.settings.template.slideoutAdvanced"/>
                                 </option>
                             </select>
+                            <input conf="mobileMenu.settings.mediaQuery" type="number" min="0" max="5000">
+                                <text>
+                                    <locale group="quiqqer/menu" var="mobileMenu.settings.mediaQuery"/>
+                                </text>
+                                <description>
+                                    <locale group="quiqqer/menu" var="mobileMenu.settings.mediaQuery.desc"/>
+                                </description>
+                            </input>
                         </settings>
 
                         <!-- mobile menu standard -->

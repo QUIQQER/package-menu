@@ -72,6 +72,14 @@
             <de><![CDATA[Erweitertes Slideout Menü]]></de>
             <en><![CDATA[Advanced Slideout Menu]]></en>
         </locale>
+        <locale name="mobileMenu.settings.mediaQuery">
+            <de><![CDATA[Menü Haltepunkt]]></de>
+            <en><![CDATA[Menu Breakpoint]]></en>
+        </locale>
+        <locale name="mobileMenu.settings.mediaQuery.desc">
+            <de><![CDATA[Wert, bei dessen Überschreitung das Menü in die mobile Version wechselt (Standardwert ist 768)]]></de>
+            <en><![CDATA[Value at which the menu will switch to the mobile version (default value is 768)]]></en>
+        </locale>
 
         <!-- mobile menu standard -->
         <locale name="mobileMenu.standard.settings.title">
