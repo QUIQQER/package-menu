@@ -44,6 +44,7 @@ class MegaMenu extends AbstractMenu
             'showLevel'           => 1,
             'showHomeLink'        => false,
             'showShortDesc'       => false,
+            'breakPoint'          => 768
         ]);
 
         if ($this->getProject()->getConfig('menu.settings.type')) {
@@ -53,7 +54,7 @@ class MegaMenu extends AbstractMenu
         parent::__construct($attributes);
 
         $this->addCSSClass('quiqqer-menu-megaMenu');
-        $this->addCSSFile(dirname(__FILE__).'/MegaMenu.css');
+        $this->addCSSFile(dirname(__FILE__) . '/MegaMenu.css');
 
         if (!$this->getAttribute('enableMobile')) {
             return;
@@ -88,7 +89,7 @@ class MegaMenu extends AbstractMenu
      */
     public function getBody()
     {
-        $cache = EventHandler::menuCacheName().'/megaMenu/';
+        $cache = EventHandler::menuCacheName() . '/megaMenu/';
 
         $attributes = $this->getAttributes();
         $attributes = \array_filter($attributes, function ($entry) {
@@ -96,7 +97,7 @@ class MegaMenu extends AbstractMenu
         });
 
         $cache .= \md5(
-            $this->getSite()->getCachePath().
+            $this->getSite()->getCachePath() .
             \serialize($attributes)
         );
 
@@ -151,6 +152,14 @@ class MegaMenu extends AbstractMenu
         $this->setAttribute('data-qui-options-enablemobile', $this->getAttribute('enableMobile') ? 1 : 0);
         $this->setAttribute('data-qui-options-showmenuafter', $showMenuDelay);
 
+        $breakPoint = $this->getProject()->getConfig('mobileMenu.settings.mediaQuery');
+
+        if ($breakPoint == null) {
+            $breakPoint = $this->getAttribute('breakPoint');
+        }
+
+        $hideOnDesktop = $breakPoint . 'px';
+        $hideOnMobile  = ($breakPoint - 1) . 'px';
 
         if ($this->getAttribute('menuId')) {
             $IndependentMenu = Independent\Handler::getMenu($this->getAttribute('menuId'));
@@ -158,32 +167,36 @@ class MegaMenu extends AbstractMenu
             $children = $IndependentMenu->getChildren();
 
             $Engine->assign([
-                'this'         => $this,
-                'Mobile'       => $this->Mobile,
-                'children'     => $children,
-                'prepend'      => $this->prepend,
-                'append'       => $this->append,
-                'childControl' => $childControl,
-                'showMenu'     => true
+                'this'          => $this,
+                'Mobile'        => $this->Mobile,
+                'children'      => $children,
+                'prepend'       => $this->prepend,
+                'append'        => $this->append,
+                'childControl'  => $childControl,
+                'showMenu'      => true,
+                'hideOnDesktop' => $hideOnDesktop,
+                'hideOnMobile'  => $hideOnMobile
             ]);
 
             $result             = [];
-            $result['html']     = $Engine->fetch(dirname(__FILE__).'/MegaMenu.Independent.html');
+            $result['html']     = $Engine->fetch(dirname(__FILE__) . '/MegaMenu.Independent.html');
             $result['subMenus'] = \array_unique($this->subMenus);
         } else {
             $Engine->assign([
-                'this'         => $this,
-                'Site'         => $this->getSite(),
-                'Project'      => $this->getProject(),
-                'Mobile'       => $this->Mobile,
-                'Start'        => $this->getStart(),
-                'children'     => $this->getStart()->getNavigation(),
-                'Rewrite'      => QUI::getRewrite(),
-                'jsControl'    => 'package/quiqqer/menu/bin/MegaMenu',
-                'prepend'      => $this->prepend,
-                'append'       => $this->append,
-                'childControl' => $childControl,
-                'showMenu'     => true
+                'this'          => $this,
+                'Site'          => $this->getSite(),
+                'Project'       => $this->getProject(),
+                'Mobile'        => $this->Mobile,
+                'Start'         => $this->getStart(),
+                'children'      => $this->getStart()->getNavigation(),
+                'Rewrite'       => QUI::getRewrite(),
+                'jsControl'     => 'package/quiqqer/menu/bin/MegaMenu',
+                'prepend'       => $this->prepend,
+                'append'        => $this->append,
+                'childControl'  => $childControl,
+                'showMenu'      => true,
+                'hideOnDesktop' => $hideOnDesktop,
+                'hideOnMobile'  => $hideOnMobile
             ]);
 
             if ($this->getProject()->getConfig('menu.settings.type') == 'noMenu') {
@@ -191,7 +204,7 @@ class MegaMenu extends AbstractMenu
             }
 
             $result             = [];
-            $result['html']     = $Engine->fetch(dirname(__FILE__).'/MegaMenu.html');
+            $result['html']     = $Engine->fetch(dirname(__FILE__) . '/MegaMenu.html');
             $result['subMenus'] = \array_unique($this->subMenus);
         }
 
