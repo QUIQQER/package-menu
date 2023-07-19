@@ -103,18 +103,6 @@
 /** page navigation -> mobile
  * ========================================================== */
 
-@media screen and (max-width: 767px) {
-    .hide-on-mobile {
-        display: none !important;
-    }
-}
-
-@media screen and (min-width: 768px) {
-    .hide-on-desktop {
-        display: none !important;
-    }
-}
-
 .page-menu .quiqqer-slideoutAdvanced-page-navigation-level-1 {
     position: initial;
     display: block;

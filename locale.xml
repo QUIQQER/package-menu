@@ -72,6 +72,14 @@
             <de><![CDATA[Erweitertes Slideout Menü]]></de>
             <en><![CDATA[Advanced Slideout Menu]]></en>
         </locale>
+        <locale name="mobileMenu.settings.breakPoint">
+            <de><![CDATA[Zum Mobile-Menu wechseln ab]]></de>
+            <en><![CDATA[Switch to mobile menu after]]></en>
+        </locale>
+        <locale name="mobileMenu.settings.breakPoint.desc">
+            <de><![CDATA[Wert, bei dessen Unterschreitung das Menü in die mobile Version wechselt (Standardwert ist <strong>767</strong>). Diese Angabe bezieht sich auf die Monitorgröße gemessen in Pixel.]]></de>
+            <en><![CDATA[Value below which the menu will switch to the mobile version (default value is <strong>767</strong>). This specification refers to the monitor size measured in pixels.]]></en>
+        </locale>
 
         <!-- mobile menu standard -->
         <locale name="mobileMenu.standard.settings.title">
