@@ -109,11 +109,9 @@ class MegaMenu extends AbstractMenu
             $showMenuDelay = intval($this->getProject()->getConfig('menu.settings.showMenuDelay'));
         }
 
-        if (
-            $this->getAttribute('showMenuDelay') !== '' &&
+        if ($this->getAttribute('showMenuDelay') !== '' &&
             $this->getAttribute('showMenuDelay') !== false &&
-            intval($this->getAttribute('showMenuDelay')) >= 0
-        ) {
+            intval($this->getAttribute('showMenuDelay')) >= 0) {
             $showMenuDelay = intval($this->getAttribute('showMenuDelay'));
         }
 
@@ -180,8 +178,8 @@ class MegaMenu extends AbstractMenu
                 'breakPoint'   => $breakPoint
             ]);
 
-            $result             = [];
-            $result['html']     = $Engine->fetch(dirname(__FILE__).'/MegaMenu.Independent.html');
+            $result         = [];
+            $result['html'] = $Engine->fetch(dirname(__FILE__).'/MegaMenu.Independent.html');
         } else {
             $Engine->assign([
                 'this'         => $this,
@@ -203,8 +201,8 @@ class MegaMenu extends AbstractMenu
                 $Engine->assign('showMenu', false);
             }
 
-            $result             = [];
-            $result['html']     = $Engine->fetch(dirname(__FILE__).'/MegaMenu.html');
+            $result         = [];
+            $result['html'] = $Engine->fetch(dirname(__FILE__).'/MegaMenu.html');
         }
 
         $result['subMenus'] = \array_unique($this->subMenus);
