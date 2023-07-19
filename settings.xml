@@ -18,9 +18,9 @@
                         <type><![CDATA[string]]></type>
                         <defaultvalue>slideout</defaultvalue>
                     </conf>
-                    <conf name="mediaQuery">
+                    <conf name="breakPoint">
                         <type><![CDATA[number]]></type>
-                        <defaultvalue>768</defaultvalue>
+                        <defaultvalue>767</defaultvalue>
                     </conf>
                 </section>
                 <section name="mobileMenu.standard.settings">
@@ -106,12 +106,12 @@
                                     <locale group="quiqqer/menu" var="mobileMenu.settings.template.slideoutAdvanced"/>
                                 </option>
                             </select>
-                            <input conf="mobileMenu.settings.mediaQuery" type="number" min="0" max="5000">
+                            <input conf="mobileMenu.settings.breakPoint" type="number" min="0" max="5000">
                                 <text>
-                                    <locale group="quiqqer/menu" var="mobileMenu.settings.mediaQuery"/>
+                                    <locale group="quiqqer/menu" var="mobileMenu.settings.breakPoint"/>
                                 </text>
                                 <description>
-                                    <locale group="quiqqer/menu" var="mobileMenu.settings.mediaQuery.desc"/>
+                                    <locale group="quiqqer/menu" var="mobileMenu.settings.breakPoint.desc"/>
                                 </description>
                             </input>
                         </settings>
