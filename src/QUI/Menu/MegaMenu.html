@@ -1,20 +1,18 @@
+<style>
+    @media screen and (max-width: {$hideOnMobile}) {
+        .megaMenu-hide-on-mobile {
+            display: none !important;
+        }
+    }
+
+    @media screen and (min-width: {$hideOnDesktop}) {
+        .megaMenu-hide-on-desktop {
+            display: none !important;
+        }
+    }
+</style>
+
 <nav class="megaMenu-hide-on-mobile">
-
-    <style>
-        @media screen and (max-width: {$hideOnMobile}) {
-            .megaMenu-hide-on-mobile {
-                display: none !important;
-            }
-        }
-
-        @media screen and (min-width: {$hideOnDesktop}) {
-            .megaMenu-hide-on-desktop {
-                display: none !important;
-            }
-        }
-
-    </style>
-
     {$prepend}
 
     <ul class="quiqqer-menu-megaMenu-list">
