@@ -44,6 +44,7 @@ class MegaMenu extends AbstractMenu
             'showLevel'           => 1,
             'showHomeLink'        => false,
             'showShortDesc'       => false,
+            'breakPoint'          => 767
         ]);
 
         if ($this->getProject()->getConfig('menu.settings.type')) {
@@ -151,6 +152,15 @@ class MegaMenu extends AbstractMenu
         $this->setAttribute('data-qui-options-enablemobile', $this->getAttribute('enableMobile') ? 1 : 0);
         $this->setAttribute('data-qui-options-showmenuafter', $showMenuDelay);
 
+        $breakPoint = intval($this->getProject()->getConfig('mobileMenu.settings.breakPoint'));
+
+        if (!$breakPoint) {
+            $breakPoint = intval($this->getAttribute('breakPoint'));
+        }
+
+        if ($breakPoint < 1) {
+            $breakPoint = 767;
+        }
 
         if ($this->getAttribute('menuId')) {
             $IndependentMenu = Independent\Handler::getMenu($this->getAttribute('menuId'));
@@ -164,12 +174,12 @@ class MegaMenu extends AbstractMenu
                 'prepend'      => $this->prepend,
                 'append'       => $this->append,
                 'childControl' => $childControl,
-                'showMenu'     => true
+                'showMenu'     => true,
+                'breakPoint'   => $breakPoint
             ]);
 
-            $result             = [];
-            $result['html']     = $Engine->fetch(dirname(__FILE__).'/MegaMenu.Independent.html');
-            $result['subMenus'] = \array_unique($this->subMenus);
+            $result         = [];
+            $result['html'] = $Engine->fetch(dirname(__FILE__).'/MegaMenu.Independent.html');
         } else {
             $Engine->assign([
                 'this'         => $this,
@@ -183,17 +193,19 @@ class MegaMenu extends AbstractMenu
                 'prepend'      => $this->prepend,
                 'append'       => $this->append,
                 'childControl' => $childControl,
-                'showMenu'     => true
+                'showMenu'     => true,
+                'breakPoint'   => $breakPoint
             ]);
 
             if ($this->getProject()->getConfig('menu.settings.type') == 'noMenu') {
                 $Engine->assign('showMenu', false);
             }
 
-            $result             = [];
-            $result['html']     = $Engine->fetch(dirname(__FILE__).'/MegaMenu.html');
-            $result['subMenus'] = \array_unique($this->subMenus);
+            $result         = [];
+            $result['html'] = $Engine->fetch(dirname(__FILE__).'/MegaMenu.html');
         }
+
+        $result['subMenus'] = \array_unique($this->subMenus);
 
         QUI\Cache\Manager::set($cache, $result);
 
