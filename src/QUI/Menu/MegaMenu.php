@@ -54,7 +54,7 @@ class MegaMenu extends AbstractMenu
         parent::__construct($attributes);
 
         $this->addCSSClass('quiqqer-menu-megaMenu');
-        $this->addCSSFile(dirname(__FILE__) . '/MegaMenu.css');
+        $this->addCSSFile(dirname(__FILE__).'/MegaMenu.css');
 
         if (!$this->getAttribute('enableMobile')) {
             return;
@@ -89,7 +89,7 @@ class MegaMenu extends AbstractMenu
      */
     public function getBody()
     {
-        $cache = EventHandler::menuCacheName() . '/megaMenu/';
+        $cache = EventHandler::menuCacheName().'/megaMenu/';
 
         $attributes = $this->getAttributes();
         $attributes = \array_filter($attributes, function ($entry) {
@@ -97,7 +97,7 @@ class MegaMenu extends AbstractMenu
         });
 
         $cache .= \md5(
-            $this->getSite()->getCachePath() .
+            $this->getSite()->getCachePath().
             \serialize($attributes)
         );
 
@@ -109,9 +109,11 @@ class MegaMenu extends AbstractMenu
             $showMenuDelay = intval($this->getProject()->getConfig('menu.settings.showMenuDelay'));
         }
 
-        if ($this->getAttribute('showMenuDelay') !== '' &&
+        if (
+            $this->getAttribute('showMenuDelay') !== '' &&
             $this->getAttribute('showMenuDelay') !== false &&
-            intval($this->getAttribute('showMenuDelay')) >= 0) {
+            intval($this->getAttribute('showMenuDelay')) >= 0
+        ) {
             $showMenuDelay = intval($this->getAttribute('showMenuDelay'));
         }
 
@@ -154,12 +156,12 @@ class MegaMenu extends AbstractMenu
 
         $breakPoint = $this->getProject()->getConfig('mobileMenu.settings.mediaQuery');
 
-        if ($breakPoint == null) {
+        if (!$breakPoint) {
             $breakPoint = $this->getAttribute('breakPoint');
         }
 
-        $hideOnDesktop = $breakPoint . 'px';
-        $hideOnMobile  = ($breakPoint - 1) . 'px';
+        $hideOnDesktop = $breakPoint.'px';
+        $hideOnMobile  = ($breakPoint - 1).'px';
 
         if ($this->getAttribute('menuId')) {
             $IndependentMenu = Independent\Handler::getMenu($this->getAttribute('menuId'));
@@ -179,7 +181,7 @@ class MegaMenu extends AbstractMenu
             ]);
 
             $result             = [];
-            $result['html']     = $Engine->fetch(dirname(__FILE__) . '/MegaMenu.Independent.html');
+            $result['html']     = $Engine->fetch(dirname(__FILE__).'/MegaMenu.Independent.html');
             $result['subMenus'] = \array_unique($this->subMenus);
         } else {
             $Engine->assign([
@@ -204,7 +206,7 @@ class MegaMenu extends AbstractMenu
             }
 
             $result             = [];
-            $result['html']     = $Engine->fetch(dirname(__FILE__) . '/MegaMenu.html');
+            $result['html']     = $Engine->fetch(dirname(__FILE__).'/MegaMenu.html');
             $result['subMenus'] = \array_unique($this->subMenus);
         }
 
