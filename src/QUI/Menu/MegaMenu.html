@@ -1,4 +1,19 @@
-<nav class="hide-on-mobile">
+<style>
+    @media screen and (max-width: {$breakPoint}px) {
+        .megaMenu-hide-on-mobile {
+            display: none !important;
+        }
+    }
+
+    @media screen and (min-width: {$breakPoint + 1}px) {
+        .megaMenu-hide-on-desktop {
+            display: none !important;
+        }
+    }
+</style>
+
+<nav class="megaMenu-hide-on-mobile">
+
     {$prepend}
 
     <ul class="quiqqer-menu-megaMenu-list">
@@ -55,7 +70,7 @@
     {$append}
 </nav>
 {if $Mobile}
-<div class="hide-on-desktop">
+<div class="megaMenu-hide-on-desktop">
     {$prepend}
 
     <div class="quiqqer-menu-megaMenu-mobile">
