@@ -20,12 +20,12 @@ use function json_encode;
  */
 class Menu
 {
-    protected int    $id;
-    protected ?array $title          = null;
-    protected ?array $workingTitle   = null;
-    protected array  $data           = [];
-    protected array  $children       = [];
-    protected int    $currentChildId = 0;
+    protected int $id;
+    protected ?array $title = null;
+    protected ?array $workingTitle = null;
+    protected array $data = [];
+    protected array $children = [];
+    protected int $currentChildId = 0;
 
     /**
      * @param int|array $menuId - menu id or menu data
@@ -40,7 +40,8 @@ class Menu
         } else {
             $data = $menuId;
 
-            if (!isset($data['id'])
+            if (
+                !isset($data['id'])
                 || !isset($data['title'])
                 || !isset($data['workingTitle'])
             ) {
@@ -155,10 +156,10 @@ class Menu
     public function toArray(): array
     {
         return [
-            'id'           => $this->getId(),
-            'title'        => $this->getTitle(),
+            'id' => $this->getId(),
+            'title' => $this->getTitle(),
             'workingTitle' => $this->getWorkingTitle(),
-            'data'         => $this->data
+            'data' => $this->data
         ];
     }
 
@@ -226,10 +227,10 @@ class Menu
     public function getData(): array
     {
         return [
-            'id'           => $this->id,
-            'title'        => $this->title,
+            'id' => $this->id,
+            'title' => $this->title,
             'workingTitle' => $this->workingTitle,
-            'data'         => $this->data
+            'data' => $this->data
         ];
     }
 
@@ -248,9 +249,9 @@ class Menu
         QUI\Permissions\Permission::checkPermission('quiqqer.menu.edit', $PermissionUser);
 
         QUI::getDataBase()->update(Handler::table(), [
-            'title'        => json_encode($this->title),
+            'title' => json_encode($this->title),
             'workingTitle' => json_encode($this->workingTitle),
-            'data'         => json_encode($this->data)
+            'data' => json_encode($this->data)
         ], [
             'id' => $this->getId()
         ]);
@@ -385,9 +386,11 @@ class Menu
             $result['icon'] = $item['icon'];
         }
 
-        if (isset($item['type'])
+        if (
+            isset($item['type'])
             && class_exists($item['type'])
-            && new $item['type']() instanceof AbstractMenuItem) {
+            && new $item['type']() instanceof AbstractMenuItem
+        ) {
             $result['type'] = $item['type'];
         }
 

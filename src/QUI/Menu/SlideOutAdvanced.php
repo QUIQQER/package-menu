@@ -22,16 +22,16 @@ class SlideOutAdvanced extends QUI\Control
     public function __construct($attributes = [])
     {
         $this->setAttributes([
-            'menuId'              => false, // if set independent menu template will be used
+            'menuId' => false, // if set independent menu template will be used
             'showFirstLevelIcons' => false, // current it works only for independent menu
-            'showHomeLink'        => true,
-            'showShortDesc'       => true,
+            'showHomeLink' => true,
+            'showShortDesc' => true,
         ]);
 
         parent::__construct($attributes);
 
         $this->addCSSFile(
-            \dirname(__FILE__).'/SlideOutAdvanced.css'
+            \dirname(__FILE__) . '/SlideOutAdvanced.css'
         );
     }
 
@@ -44,25 +44,25 @@ class SlideOutAdvanced extends QUI\Control
         $Engine = QUI::getTemplateManager()->getEngine();
 
         $params = [
-            'this'          => $this,
-            'Project'       => $this->getProject(),
-            'jsControl'     => 'package/quiqqer/menu/bin/SlideoutAdvanced',
+            'this' => $this,
+            'Project' => $this->getProject(),
+            'jsControl' => 'package/quiqqer/menu/bin/SlideoutAdvanced',
             'showShortDesc' => $this->getAttribute('showShortDesc'),
-            'showHomeLink'  => $this->getAttribute('showHomeLink')
+            'showHomeLink' => $this->getAttribute('showHomeLink')
         ];
 
         if ($this->getAttribute('menuId')) {
             $IndependentMenu = Independent\Handler::getMenu($this->getAttribute('menuId'));
 
-            $template                      = dirname(__FILE__).'/SlideOutAdvanced.Independent.html';
-            $params['FileMenu']            = dirname(__FILE__).'/SlideOutAdvanced.Children.Independent.html';
-            $params['IndependentMenu']     = $IndependentMenu;
-            $params['Site']                = $this->getSite();
+            $template = dirname(__FILE__) . '/SlideOutAdvanced.Independent.html';
+            $params['FileMenu'] = dirname(__FILE__) . '/SlideOutAdvanced.Children.Independent.html';
+            $params['IndependentMenu'] = $IndependentMenu;
+            $params['Site'] = $this->getSite();
             $params['showFirstLevelIcons'] = $this->getAttribute('showFirstLevelIcons');
         } else {
-            $template           = dirname(__FILE__).'/SlideOutAdvanced.html';
-            $params['FileMenu'] = dirname(__FILE__).'/SlideOutAdvanced.Children.html';
-            $params['Site']     = $this->getSite();
+            $template = dirname(__FILE__) . '/SlideOutAdvanced.html';
+            $params['FileMenu'] = dirname(__FILE__) . '/SlideOutAdvanced.Children.html';
+            $params['Site'] = $this->getSite();
         }
 
         $Engine->assign($params);

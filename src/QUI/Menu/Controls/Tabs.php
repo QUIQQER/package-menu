@@ -25,29 +25,37 @@ class Tabs extends QUI\Control
     {
         // default options
         $this->setAttributes([
-            'class'              => 'quiqqer-tabs',
-            'qui-class'          => 'package/quiqqer/menu/bin/Controls/NavTabs',
-            'activeEntry'        => 1, // number
-            'entries'            => [],
-            'template'           => 'simple',
+            'class' => 'quiqqer-tabs',
+            'qui-class' => 'package/quiqqer/menu/bin/Controls/NavTabs',
+            'activeEntry' => 1,
+            // number
+            'entries' => [],
+            'template' => 'simple',
 
             // tabs nav
-            'navImgHeight'       => 20, // number
-            'navStyle'           => 'imgLeft', // imgLeft, imgTop, onlyImg
-            'navWrapText'        => 'wrap', // wrap / noWrap; allow breaking text on space. 'noWrap' set "white-space: nowrap;" CSS property on nav text
-            'navFillSpace'       => false, // it feels the available space
-            'navCenter'          => false,
+            'navImgHeight' => 20,
+            // number
+            'navStyle' => 'imgLeft',
+            // imgLeft, imgTop, onlyImg
+            'navWrapText' => 'wrap',
+            // wrap / noWrap; allow breaking text on space. 'noWrap' set "white-space: nowrap;" CSS property on nav text
+            'navFillSpace' => false,
+            // it feels the available space
+            'navCenter' => false,
             'enableDragToScroll' => true,
 
             // tabs content
-            'contentImgMinWidth' => 200, // number; do not use large values, recommended is between 100 and 600
-            'contentImgMaxWidth' => 400, // number; do not use large values, recommended is between 200 and 600
-            'contentTextWidth'   => 600, // number
+            'contentImgMinWidth' => 200,
+            // number; do not use large values, recommended is between 100 and 600
+            'contentImgMaxWidth' => 400,
+            // number; do not use large values, recommended is between 200 and 600
+            'contentTextWidth' => 600,
+            // number
         ]);
 
         parent::__construct($attributes);
 
-        $this->addCSSFile(dirname(__FILE__).'/Tabs.css');
+        $this->addCSSFile(dirname(__FILE__) . '/Tabs.css');
     }
 
     /**
@@ -57,8 +65,8 @@ class Tabs extends QUI\Control
      */
     public function getBody()
     {
-        $Engine         = QUI::getTemplateManager()->getEngine();
-        $entries        = $this->getAttribute('entries');
+        $Engine = QUI::getTemplateManager()->getEngine();
+        $entries = $this->getAttribute('entries');
         $enabledEntries = [];
 
         if (is_string($entries)) {
@@ -85,11 +93,11 @@ class Tabs extends QUI\Control
         $template = 'simple';
 
         /* nav */
-        $showNavText    = true;
-        $navWrapText    = 'navText__wrap';
+        $showNavText = true;
+        $navWrapText = 'navText__wrap';
         $navTabStyleCss = 'navTabStyle__imgLeft';
-        $navAlignment   = '';
-        $navFillSpace   = '';
+        $navAlignment = '';
+        $navFillSpace = '';
 
         switch ($this->getAttribute('navStyle')) {
             case 'imgTop':
@@ -97,7 +105,7 @@ class Tabs extends QUI\Control
                 break;
             case 'onlyImg':
                 $navTabStyleCss = 'navTabStyle__onlyImg';
-                $showNavText    = false;
+                $showNavText = false;
         }
 
         if (!$this->getAttribute('navFillSpace') && $this->getAttribute('navCenter')) {
@@ -114,21 +122,21 @@ class Tabs extends QUI\Control
         }
 
         $Engine->assign([
-            'this'               => $this,
-            'entries'            => $enabledEntries,
-            'active'             => $active,
-            'navImgHeight'       => $this->getAttribute('navImgHeight'),
-            'navStyle'           => $this->getAttribute('navStyle'),
-            'navWrapText'        => $navWrapText,
-            'navTabStyleCss'     => $navTabStyleCss,
-            'showNavText'        => $showNavText,
-            'navAlignment'       => $navAlignment,
-            'navFillSpace'       => $navFillSpace,
-            'contentTextWidth'   => $this->getAttribute('contentTextWidth'),
+            'this' => $this,
+            'entries' => $enabledEntries,
+            'active' => $active,
+            'navImgHeight' => $this->getAttribute('navImgHeight'),
+            'navStyle' => $this->getAttribute('navStyle'),
+            'navWrapText' => $navWrapText,
+            'navTabStyleCss' => $navTabStyleCss,
+            'showNavText' => $showNavText,
+            'navAlignment' => $navAlignment,
+            'navFillSpace' => $navFillSpace,
+            'contentTextWidth' => $this->getAttribute('contentTextWidth'),
             'contentImgMaxWidth' => $this->getAttribute('contentImgMaxWidth'),
             'contentImgMinWidth' => $this->getAttribute('contentImgMinWidth'),
         ]);
 
-        return $Engine->fetch(dirname(__FILE__).'/Tabs.html');
+        return $Engine->fetch(dirname(__FILE__) . '/Tabs.html');
     }
 }

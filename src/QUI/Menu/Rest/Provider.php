@@ -2,17 +2,20 @@
 
 namespace QUI\Menu\Rest;
 
-use QUI;
-use QUI\REST\ProviderInterface;
-use Psr\Http\Message\ServerRequestInterface as RequestInterface;
-use Psr\Http\Message\ResponseInterface as ResponseInterface;
+use Exception;
 use Psr\Http\Message\MessageInterface;
-use QUI\REST\Server;
+use Psr\Http\Message\ResponseInterface as ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface as RequestInterface;
+use QUI;
 use QUI\CoreRest\Handler;
-use Slim\Routing\RouteCollectorProxy;
-use QUI\Utils\Security\Orthos;
-use QUI\Menu\Independent\Handler as MenuHandler;
 use QUI\Menu\Independent\Factory as MenuFactory;
+use QUI\Menu\Independent\Handler as MenuHandler;
+use QUI\REST\ProviderInterface;
+use QUI\REST\Server;
+use QUI\Utils\Security\Orthos;
+use Slim\Routing\RouteCollectorProxy;
+
+use function is_array;
 
 /**
  * Class Provider
@@ -50,18 +53,18 @@ class Provider implements ProviderInterface
     public function create(RequestInterface $Request, ResponseInterface $Response): MessageInterface
     {
         $params = $Request->getParsedBody();
-        $menu   = [];
+        $menu = [];
 
         $requiredFields = [
-            'title',
+            'title'
         ];
 
         foreach ($requiredFields as $field) {
             if (empty($params[$field])) {
-                return Handler::getGenericErrorResponse('Field "'.$field.'" is missing.');
+                return Handler::getGenericErrorResponse('Field "' . $field . '" is missing.');
             }
 
-            if (\is_array($params[$field])) {
+            if (is_array($params[$field])) {
                 $value = Orthos::clearArray($params[$field]);
             } else {
                 $value = Orthos::clear($params[$field]);
@@ -88,7 +91,7 @@ class Provider implements ProviderInterface
                     break;
 
                 default:
-                    if (\is_array($params[$field])) {
+                    if (is_array($params[$field])) {
                         $value = Orthos::clearArray($params[$field]);
                     } else {
                         $value = Orthos::clear($params[$field]);
@@ -109,20 +112,20 @@ class Provider implements ProviderInterface
 
                 try {
                     $Menu = MenuHandler::getMenu($menuId);
-                } catch (\Exception $Exception) {
+                } catch (Exception $Exception) {
                     QUI\System\Log::writeDebugException($Exception);
                     $Menu = false;
                 }
 
                 if ($Menu) {
                     throw new QUI\Exception(
-                        'Menu with specific id #'.$menuId.' cannot be created, since a menu with this id already'
-                        .' exists.'
+                        'Menu with specific id #' . $menuId . ' cannot be created, since a menu with this id already'
+                        . ' exists.'
                     );
                 }
             }
 
-            $Menu      = MenuFactory::createMenu();
+            $Menu = MenuFactory::createMenu();
             $newMenuId = $Menu->getId();
 
             if ($menuId) {
@@ -137,7 +140,7 @@ class Provider implements ProviderInterface
                 );
 
                 $newMenuId = $menuId;
-                $Menu      = MenuHandler::getMenu($newMenuId);
+                $Menu = MenuHandler::getMenu($newMenuId);
             }
 
             $Menu->setTitle($menu['title']);
@@ -151,7 +154,7 @@ class Provider implements ProviderInterface
             }
 
             $Menu->save(QUI::getUsers()->getSystemUser());
-        } catch (\Exception $Exception) {
+        } catch (Exception $Exception) {
             return Handler::getGenericExceptionResponse($Exception);
         }
 
@@ -173,7 +176,7 @@ class Provider implements ProviderInterface
     public function get(RequestInterface $Request, ResponseInterface $Response): MessageInterface
     {
         $params = $Request->getParsedBody();
-        $menu   = [];
+        $menu = [];
 
         $requiredFields = [
             'id'
@@ -181,7 +184,7 @@ class Provider implements ProviderInterface
 
         foreach ($requiredFields as $field) {
             if (empty($params[$field])) {
-                return Handler::getGenericErrorResponse('Field "'.$field.'" is missing.');
+                return Handler::getGenericErrorResponse('Field "' . $field . '" is missing.');
             }
 
             $menu[$field] = Orthos::clear($params[$field]);
@@ -189,7 +192,7 @@ class Provider implements ProviderInterface
 
         try {
             $Menu = MenuHandler::getMenu($menu['id']);
-        } catch (\Exception $Exception) {
+        } catch (Exception $Exception) {
             return Handler::getGenericExceptionResponse($Exception);
         }
 
@@ -209,7 +212,7 @@ class Provider implements ProviderInterface
     public function update(RequestInterface $Request, ResponseInterface $Response): MessageInterface
     {
         $params = $Request->getParsedBody();
-        $menu   = [];
+        $menu = [];
 
         $requiredFields = [
             'id'
@@ -217,7 +220,7 @@ class Provider implements ProviderInterface
 
         foreach ($requiredFields as $field) {
             if (empty($params[$field])) {
-                return Handler::getGenericErrorResponse('Field "'.$field.'" is missing.');
+                return Handler::getGenericErrorResponse('Field "' . $field . '" is missing.');
             }
 
             $menu[$field] = Orthos::clear($params[$field]);
@@ -241,7 +244,7 @@ class Provider implements ProviderInterface
                     break;
 
                 default:
-                    if (\is_array($params[$field])) {
+                    if (is_array($params[$field])) {
                         $value = Orthos::clearArray($params[$field]);
                     } else {
                         $value = Orthos::clear($params[$field]);
@@ -267,14 +270,14 @@ class Provider implements ProviderInterface
             }
 
             $Menu->save(QUI::getUsers()->getSystemUser());
-        } catch (\Exception $Exception) {
+        } catch (Exception $Exception) {
             QUI\System\Log::writeException($Exception);
 
             return Handler::getGenericExceptionResponse($Exception);
         }
 
         return Handler::getGenericSuccessResponse(
-            'Menu #'.$menu['id'].' successfully updated.',
+            'Menu #' . $menu['id'] . ' successfully updated.',
             $Menu->toArray()
         );
     }
@@ -289,7 +292,7 @@ class Provider implements ProviderInterface
     public function delete(RequestInterface $Request, ResponseInterface $Response): MessageInterface
     {
         $params = $Request->getParsedBody();
-        $menu   = [];
+        $menu = [];
 
         $requiredFields = [
             'id'
@@ -297,7 +300,7 @@ class Provider implements ProviderInterface
 
         foreach ($requiredFields as $field) {
             if (empty($params[$field])) {
-                return Handler::getGenericErrorResponse('Field "'.$field.'" is missing.');
+                return Handler::getGenericErrorResponse('Field "' . $field . '" is missing.');
             }
 
             $menu[$field] = Orthos::clear($params[$field]);
@@ -305,12 +308,12 @@ class Provider implements ProviderInterface
 
         try {
             MenuFactory::deleteMenu((int)$menu['id']);
-        } catch (\Exception $Exception) {
+        } catch (Exception $Exception) {
             return Handler::getGenericExceptionResponse($Exception);
         }
 
         return Handler::getGenericSuccessResponse(
-            'Menu #'.$menu['id'].' successfully deleted.'
+            'Menu #' . $menu['id'] . ' successfully deleted.'
         );
     }
 

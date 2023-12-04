@@ -20,7 +20,7 @@ class Elastic extends QUI\Control
     /**
      * @param array $attributes
      */
-    public function __construct($attributes = array())
+    public function __construct($attributes = [])
     {
         parent::__construct($attributes);
     }
@@ -33,13 +33,13 @@ class Elastic extends QUI\Control
     {
         $Engine = QUI::getTemplateManager()->getEngine();
 
-        $Engine->assign(array(
-            'FileMenu'  => dirname(__FILE__) . '/Menu.Children.html',
-            'this'      => $this,
-            'Site'      => $this->getSite(),
-            'Project'   => $this->getProject(),
+        $Engine->assign([
+            'FileMenu' => dirname(__FILE__) . '/Menu.Children.html',
+            'this' => $this,
+            'Site' => $this->getSite(),
+            'Project' => $this->getProject(),
             'jsControl' => 'package/quiqqer/menu/bin/ElasticMenu'
-        ));
+        ]);
 
         return $Engine->fetch(dirname(__FILE__) . '/Menu.html');
     }

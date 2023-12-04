@@ -35,7 +35,7 @@ class Simple extends AbstractChild
         parent::__construct($params);
 
         $this->addCSSClass('quiqqer-menu-megaMenu-children-simple');
-        $this->addCSSFile(dirname(__FILE__).'/Simple.css');
+        $this->addCSSFile(dirname(__FILE__) . '/Simple.css');
     }
 
     /**
@@ -51,24 +51,28 @@ class Simple extends AbstractChild
         if ($this->getAttribute('independentMenu')) {
             $MenuChild = $this->getAttribute('MenuChild');
 
-            if (!$this->getAttribute('MenuChild') && !$MenuChild instanceof QUI\Menu\Independent\Items\AbstractMenuItem) {
+            if (
+                !$this->getAttribute(
+                    'MenuChild'
+                ) && !$MenuChild instanceof QUI\Menu\Independent\Items\AbstractMenuItem
+            ) {
                 return '';
             }
 
             $Engine->assign([
-                'this'     => $this,
+                'this' => $this,
                 'children' => $MenuChild->getChildren()
             ]);
 
-            $template = dirname(__FILE__).'/Simple.Independent.html';
+            $template = dirname(__FILE__) . '/Simple.Independent.html';
         } else {
             $Engine->assign([
-                'this'     => $this,
+                'this' => $this,
                 'children' => $this->getChildren(),
-                'Site'     => $this->getSite()
+                'Site' => $this->getSite()
             ]);
 
-            $template = dirname(__FILE__).'/Simple.html';
+            $template = dirname(__FILE__) . '/Simple.html';
         }
 
         return $Engine->fetch($template);

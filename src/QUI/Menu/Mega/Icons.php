@@ -3,6 +3,7 @@
 /**
  * This file contains QUI\Menu\Mega\Icons
  */
+
 namespace QUI\Menu\Mega;
 
 use QUI;
@@ -24,7 +25,7 @@ class Icons extends AbstractChild
      *
      * @param array $params
      */
-    public function __construct(array $params = array())
+    public function __construct(array $params = [])
     {
         parent::__construct($params);
 
@@ -42,11 +43,11 @@ class Icons extends AbstractChild
     {
         $Engine = QUI::getTemplateManager()->getEngine();
 
-        $Engine->assign(array(
-            'this'     => $this,
+        $Engine->assign([
+            'this' => $this,
             'children' => $this->getChildren(),
-            'Site'     => $this->getSite()
-        ));
+            'Site' => $this->getSite()
+        ]);
 
         return $Engine->fetch(dirname(__FILE__) . '/Icons.html');
     }

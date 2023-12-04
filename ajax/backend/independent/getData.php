@@ -3,6 +3,7 @@
 /**
  * This file contains package_quiqqer_menu_ajax_backend_independent_getData
  */
+
 QUI::$Ajax->registerFunction(
     'package_quiqqer_menu_ajax_backend_independent_getData',
     function ($id) {

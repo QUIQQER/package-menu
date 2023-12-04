@@ -29,7 +29,7 @@ class Smarty
             return '';
         }
 
-        $menuId    = $params['id'];
+        $menuId = $params['id'];
         $cacheName = Handler::getMenuCacheName($menuId, $Project);
 
         try {
@@ -38,7 +38,7 @@ class Smarty
         }
 
         try {
-            $Menu    = QUI\Menu\Independent\Handler::getMenu($params['id']);
+            $Menu = QUI\Menu\Independent\Handler::getMenu($params['id']);
             $Control = new $params['control']($Menu);
         } catch (QUI\Exception $Exception) {
             QUI\System\Log::addError($Exception->getMessage());

@@ -33,12 +33,12 @@ class UrlList extends QUI\Control
     {
         // defaults values
         $this->setAttributes([
-            'class'          => 'quiqqer-urlList',
-            'headerText'     => '', // title above the url list
-            'startId'        => false, // id or site link
-            'menuId'         => false, // id of an (independent) menu
-            'display'        => 'default',
-            'icon'           => '', // only fontawesome icons are supported
+            'class' => 'quiqqer-urlList',
+            'headerText' => '', // title above the url list
+            'startId' => false, // id or site link
+            'menuId' => false, // id of an (independent) menu
+            'display' => 'default',
+            'icon' => '', // only fontawesome icons are supported
             'resetLinkColor' => false // if true, the link inherit color from parent
         ]);
 
@@ -57,17 +57,17 @@ class UrlList extends QUI\Control
         if ($this->getAttribute('menuId')) {
             // independent menu
             $children = $this->getChildrenForIndependentMenu();
-            $template = dirname(__FILE__).'/UrlList.Independent.Default.html';
+            $template = dirname(__FILE__) . '/UrlList.Independent.Default.html';
         } elseif ($this->getAttribute('startId')) {
             // qui site
             $children = $this->getChildrenForQUISite();
-            $template = dirname(__FILE__).'/UrlList.Default.html';
+            $template = dirname(__FILE__) . '/UrlList.Default.html';
         } else {
             return '';
         }
 
-        $Engine           = QUI::getTemplateManager()->getEngine();
-        $icon             = '';
+        $Engine = QUI::getTemplateManager()->getEngine();
+        $icon = '';
         $restLinkColorCss = '';
 
         if ($this->getAttribute('icon') && strpos($this->getAttribute('icon'), 'fa ') === 0) {
@@ -86,14 +86,14 @@ class UrlList extends QUI\Control
         }
 
         $Engine->assign([
-            'this'             => $this,
-            'headerText'       => $this->getAttribute('headerText'),
-            'children'         => $children,
-            'icon'             => $icon,
+            'this' => $this,
+            'headerText' => $this->getAttribute('headerText'),
+            'children' => $children,
+            'icon' => $icon,
             'restLinkColorCss' => $restLinkColorCss
         ]);
 
-        $this->addCSSFile(dirname(__FILE__).'/UrlList.Default.css');
+        $this->addCSSFile(dirname(__FILE__) . '/UrlList.Default.css');
 
         return $Engine->fetch($template);
     }

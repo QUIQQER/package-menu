@@ -21,15 +21,15 @@ class Anchor extends AbstractMenuItem
      */
     public function getUrl(): string
     {
-        $Site    = $this->getSite();
-        $data    = $this->getCustomData();
+        $Site = $this->getSite();
+        $data = $this->getCustomData();
         $current = QUI::getLocale()->getCurrent();
 
         if (!isset($data['url'])) {
             return '';
         }
 
-        $url    = '';
+        $url = '';
         $anchor = [];
 
         if ($Site) {
@@ -65,7 +65,7 @@ class Anchor extends AbstractMenuItem
 
         try {
             $siteUrl = $data['site'];
-            $Site    = QUI\Projects\Site\Utils::getSiteByLink($siteUrl);
+            $Site = QUI\Projects\Site\Utils::getSiteByLink($siteUrl);
         } catch (QUI\Exception $Exception) {
             return null;
         }
@@ -75,8 +75,8 @@ class Anchor extends AbstractMenuItem
         // if current language is another language as the site
         if ($current !== $Site->getAttribute('lang')) {
             try {
-                $Project     = $Site->getProject();
-                $langId      = $Site->getId($current);
+                $Project = $Site->getProject();
+                $langId = $Site->getId($current);
                 $LangProject = QUI::getProject($Project->getName(), $current);
                 return $LangProject->get($langId);
             } catch (QUI\Exception $exception) {
