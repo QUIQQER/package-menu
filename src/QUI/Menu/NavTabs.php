@@ -111,9 +111,9 @@ class NavTabs extends QUI\Control
             $short = '';
 
             if ($this->getAttribute('showShort') && $Site->getAttribute('short')) {
-                $short = '<div class="quiqqer-menu-navTabs-content-item-shortDesc text-muted">' . $Site->getAttribute(
-                        'short'
-                    ) . '</div>';
+                $short = '<div class="quiqqer-menu-navTabs-content-item-shortDesc text-muted">' .
+                    $Site->getAttribute('short') .
+                    '</div>';
             }
 
             $entryContent = $short . $Site->getAttribute('content');
