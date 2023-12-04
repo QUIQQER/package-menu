@@ -25,18 +25,25 @@ class FloatedNav extends QUI\Control
     {
         // default options
         $this->setAttributes([
-            'class'               => 'quiqqer-floatedNavControl',
-            'menuId'              => false,
-            'posX'                => 'right', // right, left
-            'forceVerticalCenter' => true, // if true, container will be centered per JS. pure css way (top: 50%; transform: translateY: (-50%);) causes jumping effect on mobile, when url bar disappears
-            'size'                => 'medium', // small, medium, large
-            'design'              => 'iconBar', // iconBar, flat
-            'animationType'       => false, // false, showAll (show entire control), showOneByOne (show each entry one by one)
-            'initAnimation'       => false,
-            'animationEasing'     => 'easeOutExpo', // see easing names on https://easings.net/
+            'class' => 'quiqqer-floatedNavControl',
+            'menuId' => false,
+            'posX' => 'right',
+            // right, left
+            'forceVerticalCenter' => true,
+            // if true, container will be centered per JS. pure css way (top: 50%; transform: translateY: (-50%);) causes jumping effect on mobile, when url bar disappears
+            'size' => 'medium',
+            // small, medium, large
+            'design' => 'iconBar',
+            // iconBar, flat
+            'animationType' => false,
+            // false, showAll (show entire control), showOneByOne (show each entry one by one)
+            'initAnimation' => false,
+            'animationEasing' => 'easeOutExpo',
+            // see easing names on https://easings.net/
 //            'navInitOpen'     => 'always', // always, desktop, never
-            'showToggleButton'    => 'mobile', // always, mobile, hide,
-            'showLangSwitch'      => false,
+            'showToggleButton' => 'mobile',
+            // always, mobile, hide,
+            'showLangSwitch' => false,
         ]);
 
         parent::__construct($attributes);
@@ -44,7 +51,7 @@ class FloatedNav extends QUI\Control
         $this->setJavaScriptControl('package/quiqqer/menu/bin/Controls/FloatedNav');
 
         $this->addCSSFile(
-            dirname(__FILE__).'/FloatedNav.css'
+            dirname(__FILE__) . '/FloatedNav.css'
         );
     }
 
@@ -55,7 +62,7 @@ class FloatedNav extends QUI\Control
      */
     public function getBody()
     {
-        $Engine     = QUI::getTemplateManager()->getEngine();
+        $Engine = QUI::getTemplateManager()->getEngine();
         $LangSwitch = null;
 
         try {
@@ -91,7 +98,7 @@ class FloatedNav extends QUI\Control
             case 'small':
             case 'medium':
             case 'large':
-                $size = 'quiqqer-floatedNavControl__size-'.$this->getAttribute('size');
+                $size = 'quiqqer-floatedNavControl__size-' . $this->getAttribute('size');
                 break;
 
             default:
@@ -100,7 +107,7 @@ class FloatedNav extends QUI\Control
 
         switch ($this->getAttribute('design')) {
             case 'flat':
-                $design = 'quiqqer-floatedNavControl__design-'.$this->getAttribute('design');
+                $design = 'quiqqer-floatedNavControl__design-' . $this->getAttribute('design');
                 break;
 
             case 'iconBar':
@@ -111,7 +118,7 @@ class FloatedNav extends QUI\Control
         switch ($this->getAttribute('posX')) {
             case 'left':
             case 'right':
-                $posX = 'quiqqer-floatedNavControl__posX-'.$this->getAttribute('posX');
+                $posX = 'quiqqer-floatedNavControl__posX-' . $this->getAttribute('posX');
                 $this->setJavaScriptControlOption('position', $this->getAttribute('posX'));
                 break;
 
@@ -126,7 +133,7 @@ class FloatedNav extends QUI\Control
             try {
                 $LangSwitch = new QUI\Bricks\Controls\LanguageSwitches\Flags([
                     'showFlags' => 0,
-                    'class'     => 'quiqqer-floatedNav-entry'
+                    'class' => 'quiqqer-floatedNav-entry'
                 ]);
             } catch (QUI\Exception $Exception) {
                 QUI\System\Log::writeException($Exception);
@@ -140,7 +147,7 @@ class FloatedNav extends QUI\Control
             case 'showOneByOne':
                 $this->setJavaScriptControlOption('animationtype', $this->getAttribute('animationType'));
                 $this->setJavaScriptControlOption('animationeasing', $this->getAnimationEasingName());
-                $animation = 'quiqqer-floatedNav__animation-'.$this->getAttribute('animationType');
+                $animation = 'quiqqer-floatedNav__animation-' . $this->getAttribute('animationType');
                 break;
         }
 
@@ -164,14 +171,14 @@ class FloatedNav extends QUI\Control
         $children = $IndependentMenu->getChildren();
 
         $Engine->assign([
-            'this'             => $this,
-            'children'         => $children,
-            'animation'        => $animation,
-            'LangSwitch'       => $LangSwitch,
+            'this' => $this,
+            'children' => $children,
+            'animation' => $animation,
+            'LangSwitch' => $LangSwitch,
             'showToggleButton' => $showToggleButton
         ]);
 
-        return $Engine->fetch(dirname(__FILE__).'/FloatedNav.html');
+        return $Engine->fetch(dirname(__FILE__) . '/FloatedNav.html');
     }
 
     /**

@@ -47,7 +47,7 @@ class Site extends AbstractMenuItem
 
         try {
             $siteUrl = $data['site'];
-            $Site    = QUI\Projects\Site\Utils::getSiteByLink($siteUrl);
+            $Site = QUI\Projects\Site\Utils::getSiteByLink($siteUrl);
         } catch (QUI\Exception $Exception) {
             return null;
         }
@@ -57,8 +57,8 @@ class Site extends AbstractMenuItem
         // if current language is another language as the site
         if ($current !== $Site->getAttribute('lang')) {
             try {
-                $Project     = $Site->getProject();
-                $langId      = $Site->getId($current);
+                $Project = $Site->getProject();
+                $langId = $Site->getId($current);
                 $LangProject = QUI::getProject($Project->getName(), $current);
 
                 return $LangProject->get($langId);
@@ -123,7 +123,7 @@ class Site extends AbstractMenuItem
             }
 
             $siteUrl = $data['site'];
-            $Site    = QUI\Projects\Site\Utils::getSiteByLink($siteUrl);
+            $Site = QUI\Projects\Site\Utils::getSiteByLink($siteUrl);
 
             return $Site->getAttribute('title');
         } catch (QUI\Exception $Exception) {

@@ -31,20 +31,20 @@ class MegaMenu extends AbstractMenu
     public function __construct($attributes = [])
     {
         $this->setAttributes([
-            'showStart'           => false,
-            'Start'               => false,
-            'startText'           => '', // optional: displayed text
-            'data-qui'            => 'package/quiqqer/menu/bin/MegaMenu',
-            'display'             => 'Standard',
-            'enableMobile'        => true,
-            'menuId'              => false,
+            'showStart' => false,
+            'Start' => false,
+            'startText' => '', // optional: displayed text
+            'data-qui' => 'package/quiqqer/menu/bin/MegaMenu',
+            'display' => 'Standard',
+            'enableMobile' => true,
+            'menuId' => false,
             'showFirstLevelIcons' => false, // current it works only for independent menu
-            'showMenuDelay'       => false,
-            'collapseSubmenu'     => false,
-            'showLevel'           => 1,
-            'showHomeLink'        => false,
-            'showShortDesc'       => false,
-            'breakPoint'          => 767
+            'showMenuDelay' => false,
+            'collapseSubmenu' => false,
+            'showLevel' => 1,
+            'showHomeLink' => false,
+            'showShortDesc' => false,
+            'breakPoint' => 767
         ]);
 
         if ($this->getProject()->getConfig('menu.settings.type')) {
@@ -54,7 +54,7 @@ class MegaMenu extends AbstractMenu
         parent::__construct($attributes);
 
         $this->addCSSClass('quiqqer-menu-megaMenu');
-        $this->addCSSFile(dirname(__FILE__).'/MegaMenu.css');
+        $this->addCSSFile(dirname(__FILE__) . '/MegaMenu.css');
 
         if (!$this->getAttribute('enableMobile')) {
             return;
@@ -89,7 +89,7 @@ class MegaMenu extends AbstractMenu
      */
     public function getBody()
     {
-        $cache = EventHandler::menuCacheName().'/megaMenu/';
+        $cache = EventHandler::menuCacheName() . '/megaMenu/';
 
         $attributes = $this->getAttributes();
         $attributes = \array_filter($attributes, function ($entry) {
@@ -97,7 +97,7 @@ class MegaMenu extends AbstractMenu
         });
 
         $cache .= \md5(
-            $this->getSite()->getCachePath().
+            $this->getSite()->getCachePath() .
             \serialize($attributes)
         );
 
@@ -109,9 +109,11 @@ class MegaMenu extends AbstractMenu
             $showMenuDelay = intval($this->getProject()->getConfig('menu.settings.showMenuDelay'));
         }
 
-        if ($this->getAttribute('showMenuDelay') !== '' &&
+        if (
+            $this->getAttribute('showMenuDelay') !== '' &&
             $this->getAttribute('showMenuDelay') !== false &&
-            intval($this->getAttribute('showMenuDelay')) >= 0) {
+            intval($this->getAttribute('showMenuDelay')) >= 0
+        ) {
             $showMenuDelay = intval($this->getAttribute('showMenuDelay'));
         }
 
@@ -168,41 +170,41 @@ class MegaMenu extends AbstractMenu
             $children = $IndependentMenu->getChildren();
 
             $Engine->assign([
-                'this'         => $this,
-                'Mobile'       => $this->Mobile,
-                'children'     => $children,
-                'prepend'      => $this->prepend,
-                'append'       => $this->append,
+                'this' => $this,
+                'Mobile' => $this->Mobile,
+                'children' => $children,
+                'prepend' => $this->prepend,
+                'append' => $this->append,
                 'childControl' => $childControl,
-                'showMenu'     => true,
-                'breakPoint'   => $breakPoint
+                'showMenu' => true,
+                'breakPoint' => $breakPoint
             ]);
 
-            $result         = [];
-            $result['html'] = $Engine->fetch(dirname(__FILE__).'/MegaMenu.Independent.html');
+            $result = [];
+            $result['html'] = $Engine->fetch(dirname(__FILE__) . '/MegaMenu.Independent.html');
         } else {
             $Engine->assign([
-                'this'         => $this,
-                'Site'         => $this->getSite(),
-                'Project'      => $this->getProject(),
-                'Mobile'       => $this->Mobile,
-                'Start'        => $this->getStart(),
-                'children'     => $this->getStart()->getNavigation(),
-                'Rewrite'      => QUI::getRewrite(),
-                'jsControl'    => 'package/quiqqer/menu/bin/MegaMenu',
-                'prepend'      => $this->prepend,
-                'append'       => $this->append,
+                'this' => $this,
+                'Site' => $this->getSite(),
+                'Project' => $this->getProject(),
+                'Mobile' => $this->Mobile,
+                'Start' => $this->getStart(),
+                'children' => $this->getStart()->getNavigation(),
+                'Rewrite' => QUI::getRewrite(),
+                'jsControl' => 'package/quiqqer/menu/bin/MegaMenu',
+                'prepend' => $this->prepend,
+                'append' => $this->append,
                 'childControl' => $childControl,
-                'showMenu'     => true,
-                'breakPoint'   => $breakPoint
+                'showMenu' => true,
+                'breakPoint' => $breakPoint
             ]);
 
             if ($this->getProject()->getConfig('menu.settings.type') == 'noMenu') {
                 $Engine->assign('showMenu', false);
             }
 
-            $result         = [];
-            $result['html'] = $Engine->fetch(dirname(__FILE__).'/MegaMenu.html');
+            $result = [];
+            $result['html'] = $Engine->fetch(dirname(__FILE__) . '/MegaMenu.html');
         }
 
         $result['subMenus'] = \array_unique($this->subMenus);

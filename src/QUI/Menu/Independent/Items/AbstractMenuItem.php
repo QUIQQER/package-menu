@@ -39,7 +39,7 @@ abstract class AbstractMenuItem
         }
 
         $current = $Locale->getCurrent();
-        $title   = $this->attributes['title'];
+        $title = $this->attributes['title'];
 
         if (is_string($title)) {
             $title = json_decode($title, true);
@@ -62,7 +62,7 @@ abstract class AbstractMenuItem
             $Locale = QUI::getLocale();
         }
 
-        $data    = $this->getCustomData();
+        $data = $this->getCustomData();
         $current = $Locale->getCurrent();
 
         if (is_array($data) && isset($data['name'])) {
@@ -198,9 +198,9 @@ abstract class AbstractMenuItem
             $Locale = QUI::getLocale();
         }
 
-        $url      = $this->getUrl();
-        $title    = $this->getTitle($Locale);
-        $name     = $this->getName($Locale);
+        $url = $this->getUrl();
+        $title = $this->getTitle($Locale);
+        $name = $this->getName($Locale);
         $relValue = $this->getRel();
 
         // rel attribute
@@ -227,7 +227,7 @@ abstract class AbstractMenuItem
         }
 
         // target attribute
-        $target          = $this->getTarget();
+        $target = $this->getTarget();
         $targetAttribute = '';
 
         if (!empty($target)) {
