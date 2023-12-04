@@ -33,20 +33,20 @@ class NavTabs extends QUI\Control
     public function __construct($attributes = [])
     {
         $this->setAttributes([
-            'nodeName'    => 'div',
-            'class'       => 'quiqqer-menu-navTabs',
-            'data-qui'    => 'package/quiqqer/menu/bin/Controls/NavTabs',
+            'nodeName' => 'div',
+            'class' => 'quiqqer-menu-navTabs',
+            'data-qui' => 'package/quiqqer/menu/bin/Controls/NavTabs',
             'activeEntry' => 1, // number
-            'parentSite'  => false, // for child sites, example: index.php?project=test&lang=de&id=1
-            'showShort'   => false, // only if parentSite set
-            'max'         => 10,
-            'entries'     => [],
-            'template'    => 'default'
+            'parentSite' => false, // for child sites, example: index.php?project=test&lang=de&id=1
+            'showShort' => false, // only if parentSite set
+            'max' => 10,
+            'entries' => [],
+            'template' => 'default'
         ]);
 
         parent::__construct($attributes);
 
-        $this->addCSSFile(dirname(__FILE__).'/NavTabs.css');
+        $this->addCSSFile(dirname(__FILE__) . '/NavTabs.css');
     }
 
     /**
@@ -69,12 +69,12 @@ class NavTabs extends QUI\Control
         }
 
         $Engine->assign([
-            'this'    => $this,
+            'this' => $this,
             'entries' => $this->entries,
-            'active'  => $active
+            'active' => $active
         ]);
 
-        return $Engine->fetch(dirname(__FILE__).'/NavTabs.html');
+        return $Engine->fetch(dirname(__FILE__) . '/NavTabs.html');
     }
 
     /**
@@ -111,13 +111,15 @@ class NavTabs extends QUI\Control
             $short = '';
 
             if ($this->getAttribute('showShort') && $Site->getAttribute('short')) {
-                $short = '<div class="quiqqer-menu-navTabs-content-item-shortDesc text-muted">'.$Site->getAttribute('short').'</div>';
+                $short = '<div class="quiqqer-menu-navTabs-content-item-shortDesc text-muted">' .
+                    $Site->getAttribute('short') .
+                    '</div>';
             }
 
-            $entryContent = $short.$Site->getAttribute('content');
+            $entryContent = $short . $Site->getAttribute('content');
 
             $entry = [
-                'title'   => $Site->getAttribute('title'),
+                'title' => $Site->getAttribute('title'),
                 'content' => $entryContent,
             ];
 
@@ -154,7 +156,7 @@ class NavTabs extends QUI\Control
             }
 
             $entry = [
-                'title'   => $dataSet[0],
+                'title' => $dataSet[0],
                 'content' => $dataSet[1],
             ];
 

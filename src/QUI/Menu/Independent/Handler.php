@@ -39,9 +39,9 @@ class Handler
     public static function getMenuCacheName($menuId = false, QUI\Projects\Project $Project = null): string
     {
         if ($Project) {
-            $project     = $Project->getName();
-            $lang        = $Project->getLang();
-            $template    = $Project->getAttribute('template');
+            $project = $Project->getName();
+            $lang = $Project->getLang();
+            $template = $Project->getAttribute('template');
             $projectHash = '/' . md5($project . '/' . $lang . '/' . $template);
         } else {
             $projectHash = '';
@@ -64,7 +64,7 @@ class Handler
     public static function getMenuData(int $menuId): array
     {
         $data = QUI::getDataBase()->fetch([
-            'from'  => self::table(),
+            'from' => self::table(),
             'where' => [
                 'id' => $menuId
             ],

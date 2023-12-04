@@ -49,7 +49,8 @@ class EventHandler
      */
     public static function onSmartyInit(Smarty $Smarty)
     {
-        if (!isset($Smarty->registered_plugins['function'])
+        if (
+            !isset($Smarty->registered_plugins['function'])
             || !isset($Smarty->registered_plugins['function']['menu'])
         ) {
             $Smarty->registerPlugin("function", "menu", "\\QUI\\Menu\\Independent\\Smarty::menu");

@@ -24,10 +24,10 @@ class OnePageNav extends QUI\Control
     {
         // default options
         $this->setAttributes([
-            'title'       => 'One Page Navigation',
+            'title' => 'One Page Navigation',
             'contentList' => false,
-            'entries'     => [],
-            'qui-class'   => 'package/quiqqer/menu/bin/Controls/OnePageNav'
+            'entries' => [],
+            'qui-class' => 'package/quiqqer/menu/bin/Controls/OnePageNav'
         ]);
 
         parent::__construct($attributes);
@@ -44,7 +44,7 @@ class OnePageNav extends QUI\Control
      */
     public function getBody()
     {
-        $Engine  = QUI::getTemplateManager()->getEngine();
+        $Engine = QUI::getTemplateManager()->getEngine();
         $entries = $this->getAttribute('entries');
 
         if (is_string($entries)) {
@@ -52,7 +52,7 @@ class OnePageNav extends QUI\Control
         }
 
         $Engine->assign([
-            'this'    => $this,
+            'this' => $this,
             'entries' => $entries
         ]);
 

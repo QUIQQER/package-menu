@@ -4,13 +4,10 @@
  * This file contains package_quiqqer_menu_ajax_backend_independent_get
  */
 
-/**
- *
- */
 QUI::$Ajax->registerFunction(
     'package_quiqqer_menu_ajax_backend_independent_get',
     function ($id) {
-        $Menu   = QUI\Menu\Independent\Handler::getMenu($id);
+        $Menu = QUI\Menu\Independent\Handler::getMenu($id);
         $result = $Menu->toArray();
 
         function parseChildren(&$data)
@@ -36,7 +33,7 @@ QUI::$Ajax->registerFunction(
                     $data['children'][$key] = parseChildren($entry);
                 }
 
-                $data['children'][$key]['typeIcon']      = $icon;
+                $data['children'][$key]['typeIcon'] = $icon;
                 $data['children'][$key]['titleFrontend'] = $Item->getTitle();
             }
 

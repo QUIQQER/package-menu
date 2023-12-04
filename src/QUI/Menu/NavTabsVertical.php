@@ -25,20 +25,20 @@ class NavTabsVertical extends QUI\Control
     {
         // default options
         $this->setAttributes([
-            'class'          => 'quiqqer-menu-navTabsVertical',
-            'qui-class'      => 'package/quiqqer/menu/bin/Controls/NavTabs',
-            'navTitle'       => false,
-            'navContent'     => false,
-            'imagePos'       => 'top',
-            'imageMaxWidth'  => false,
+            'class' => 'quiqqer-menu-navTabsVertical',
+            'qui-class' => 'package/quiqqer/menu/bin/Controls/NavTabs',
+            'navTitle' => false,
+            'navContent' => false,
+            'imagePos' => 'top',
+            'imageMaxWidth' => false,
             'imageMaxHeight' => false,
-            'entries'        => [],
-            'template'       => 'default'
+            'entries' => [],
+            'template' => 'default'
         ]);
 
         parent::__construct($attributes);
 
-        $this->addCSSFile(dirname(__FILE__).'/NavTabsVertical.css');
+        $this->addCSSFile(dirname(__FILE__) . '/NavTabsVertical.css');
     }
 
     /**
@@ -48,7 +48,7 @@ class NavTabsVertical extends QUI\Control
      */
     public function getBody()
     {
-        $Engine  = QUI::getTemplateManager()->getEngine();
+        $Engine = QUI::getTemplateManager()->getEngine();
         $entries = $this->getAttribute('entries');
         $enabledEntries = [];
 
@@ -65,13 +65,13 @@ class NavTabsVertical extends QUI\Control
         }
 
         $Engine->assign([
-            'this'       => $this,
-            'entries'    => $enabledEntries,
-            'navTitle'   => $this->getAttribute('navTitle'),
+            'this' => $this,
+            'entries' => $enabledEntries,
+            'navTitle' => $this->getAttribute('navTitle'),
             'navContent' => $this->getAttribute('navContent'),
-            'imagePos'   => $this->getAttribute('imagePos')
+            'imagePos' => $this->getAttribute('imagePos')
         ]);
 
-        return $Engine->fetch(dirname(__FILE__).'/NavTabsVertical.html');
+        return $Engine->fetch(dirname(__FILE__) . '/NavTabsVertical.html');
     }
 }

@@ -18,9 +18,9 @@ class Factory
         QUI\Permissions\Permission::checkPermission('quiqqer.menu.create');
 
         QUI::getDataBase()->insert(Handler::table(), [
-            'title'        => '',
+            'title' => '',
             'workingTitle' => '',
-            'data'         => ''
+            'data' => ''
         ]);
 
         $lastId = QUI::getPDO()->lastInsertId();

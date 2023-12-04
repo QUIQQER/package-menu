@@ -15,7 +15,7 @@
 QUI::$Ajax->registerFunction(
     'package_quiqqer_menu_ajax_backend_independent_create',
     function ($title, $workingTitle) {
-        $title        = json_decode($title, true);
+        $title = json_decode($title, true);
         $workingTitle = json_decode($workingTitle, true);
 
         $Menu = \QUI\Menu\Independent\Factory::createMenu();

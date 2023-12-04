@@ -28,7 +28,7 @@ class DropDownMenu extends QUI\Control
 
         parent::__construct($attributes);
 
-        $this->addCSSFile(\dirname(__FILE__).'/DropDownMenu.css');
+        $this->addCSSFile(\dirname(__FILE__) . '/DropDownMenu.css');
     }
 
     /**
@@ -39,7 +39,7 @@ class DropDownMenu extends QUI\Control
      */
     public function getBody()
     {
-        $cache = EventHandler::menuCacheName().'/dropDownMenu/';
+        $cache = EventHandler::menuCacheName() . '/dropDownMenu/';
 
         $attributes = $this->getAttributes();
         $attributes = \array_filter($attributes, function ($entry) {
@@ -47,10 +47,10 @@ class DropDownMenu extends QUI\Control
         });
 
         $cache .= \md5(
-            $this->getSite()->getCachePath().
+            $this->getSite()->getCachePath() .
             \serialize($attributes)
         );
-        
+
         try {
             return QUI\Cache\Manager::get($cache);
         } catch (QUI\Exception $Exception) {
@@ -59,13 +59,13 @@ class DropDownMenu extends QUI\Control
         $Engine = QUI::getTemplateManager()->getEngine();
 
         $Engine->assign([
-            'this'     => $this,
-            'Site'     => $this->getSite(),
-            'Project'  => $this->getProject(),
-            'FileMenu' => \dirname(__FILE__).'/DropDownMenu.Children.html'
+            'this' => $this,
+            'Site' => $this->getSite(),
+            'Project' => $this->getProject(),
+            'FileMenu' => \dirname(__FILE__) . '/DropDownMenu.Children.html'
         ]);
 
-        $result = $Engine->fetch(\dirname(__FILE__).'/DropDownMenu.html');
+        $result = $Engine->fetch(\dirname(__FILE__) . '/DropDownMenu.html');
 
         QUI\Cache\Manager::set($cache, $result);
 
