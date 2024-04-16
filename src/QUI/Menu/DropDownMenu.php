@@ -7,9 +7,7 @@
 namespace QUI\Menu;
 
 use QUI;
-
 use QUI\Exception;
-
 use QUI\Interfaces\Projects\Site;
 
 use function array_filter;
