@@ -7,6 +7,9 @@
 namespace QUI\Menu;
 
 use QUI;
+use QUI\Projects\Site\Utils;
+
+use function count;
 
 /**
  * Class NavTabs
@@ -25,12 +28,12 @@ class NavTabs extends QUI\Control
      *
      * @var array
      */
-    private $entries = [];
+    private array $entries = [];
 
     /**
      * @param array $attributes
      */
-    public function __construct($attributes = [])
+    public function __construct(array $attributes = [])
     {
         $this->setAttributes([
             'nodeName' => 'div',
@@ -53,7 +56,7 @@ class NavTabs extends QUI\Control
      * @return string
      * @throws QUI\Exception
      */
-    public function getBody()
+    public function getBody(): string
     {
         $Engine = QUI::getTemplateManager()->getEngine();
         $this->setJavaScriptControlOption('animation', 'slide');
@@ -83,13 +86,13 @@ class NavTabs extends QUI\Control
      * @return array|string
      * @throws QUI\Exception
      */
-    private function getChildrenFromParent()
+    private function getChildrenFromParent(): array|string
     {
         $ParentSite = null;
 
         if ($this->getAttribute('parentSite')) {
             try {
-                $ParentSite = \QUI\Projects\Site\Utils::getSiteByLink($this->getAttribute('parentSite'));
+                $ParentSite = Utils::getSiteByLink($this->getAttribute('parentSite'));
             } catch (QUI\Exception $Exception) {
                 QUI\System\Log::addDebug($Exception->getMessage());
 
@@ -143,7 +146,7 @@ class NavTabs extends QUI\Control
      */
     public function setData(array $data)
     {
-        if (\count($data) < 1) {
+        if (count($data) < 1) {
             return false;
         }
 
@@ -151,7 +154,7 @@ class NavTabs extends QUI\Control
 
         /** @var QUI\Projects\Site $Site */
         foreach ($data as $dataSet) {
-            if (\count($dataSet) < 2) {
+            if (count($dataSet) < 2) {
                 continue;
             }
 

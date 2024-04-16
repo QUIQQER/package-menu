@@ -7,6 +7,7 @@
 namespace QUI\Menu;
 
 use QUI;
+use QUI\Exception;
 use QUI\Projects\Site\Utils;
 
 /**
@@ -50,9 +51,10 @@ class UrlList extends QUI\Control
     /**
      * (non-PHPdoc)
      *
+     * @throws Exception
      * @see \QUI\Control::create()
      */
-    public function getBody()
+    public function getBody(): string
     {
         if ($this->getAttribute('menuId')) {
             // independent menu
@@ -70,7 +72,7 @@ class UrlList extends QUI\Control
         $icon = '';
         $restLinkColorCss = '';
 
-        if ($this->getAttribute('icon') && strpos($this->getAttribute('icon'), 'fa ') === 0) {
+        if ($this->getAttribute('icon') && str_starts_with($this->getAttribute('icon'), 'fa ')) {
             $icon = $this->getAttribute('icon');
         }
 

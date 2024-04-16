@@ -16,9 +16,9 @@ use QUI;
 class Standard extends AbstractChild
 {
     /**
-     * @var null
+     * @var array|null
      */
-    protected $children = null;
+    protected ?array $children = null;
 
     /**
      * Standard constructor.
@@ -39,7 +39,7 @@ class Standard extends AbstractChild
      * @return string
      * @throws QUI\Exception
      */
-    public function getBody()
+    public function getBody(): string
     {
         $Engine = QUI::getTemplateManager()->getEngine();
 

@@ -8,6 +8,16 @@ namespace QUI\Menu;
 
 use QUI;
 
+use QUI\Exception;
+
+use QUI\Interfaces\Projects\Site;
+
+use function array_filter;
+use function dirname;
+use function is_object;
+use function md5;
+use function serialize;
+
 /**
  * Class DropDownMenu
  * Creates an Drop Down Menu
@@ -20,7 +30,7 @@ class DropDownMenu extends QUI\Control
     /**
      * @param array $attributes
      */
-    public function __construct($attributes = [])
+    public function __construct(array $attributes = [])
     {
         $this->setAttribute('class', 'qui-menu-dropdown');
         $this->setAttribute('qui-class', 'package/quiqqer/menu/bin/DropDownMenu');
@@ -28,7 +38,7 @@ class DropDownMenu extends QUI\Control
 
         parent::__construct($attributes);
 
-        $this->addCSSFile(\dirname(__FILE__) . '/DropDownMenu.css');
+        $this->addCSSFile(dirname(__FILE__) . '/DropDownMenu.css');
     }
 
     /**
@@ -37,23 +47,23 @@ class DropDownMenu extends QUI\Control
      * @return string
      * @throws QUI\Exception
      */
-    public function getBody()
+    public function getBody(): string
     {
         $cache = EventHandler::menuCacheName() . '/dropDownMenu/';
 
         $attributes = $this->getAttributes();
-        $attributes = \array_filter($attributes, function ($entry) {
-            return \is_object($entry) === false;
+        $attributes = array_filter($attributes, function ($entry) {
+            return is_object($entry) === false;
         });
 
-        $cache .= \md5(
+        $cache .= md5(
             $this->getSite()->getCachePath() .
-            \serialize($attributes)
+            serialize($attributes)
         );
 
         try {
             return QUI\Cache\Manager::get($cache);
-        } catch (QUI\Exception $Exception) {
+        } catch (QUI\Exception) {
         }
 
         $Engine = QUI::getTemplateManager()->getEngine();
@@ -62,10 +72,10 @@ class DropDownMenu extends QUI\Control
             'this' => $this,
             'Site' => $this->getSite(),
             'Project' => $this->getProject(),
-            'FileMenu' => \dirname(__FILE__) . '/DropDownMenu.Children.html'
+            'FileMenu' => dirname(__FILE__) . '/DropDownMenu.Children.html'
         ]);
 
-        $result = $Engine->fetch(\dirname(__FILE__) . '/DropDownMenu.html');
+        $result = $Engine->fetch(dirname(__FILE__) . '/DropDownMenu.html');
 
         QUI\Cache\Manager::set($cache, $result);
 
@@ -75,9 +85,10 @@ class DropDownMenu extends QUI\Control
     /**
      * Return the current site
      *
-     * @return mixed|QUI\Projects\Site
+     * @return Site
+     * @throws Exception
      */
-    protected function getSite()
+    protected function getSite(): QUI\Interfaces\Projects\Site
     {
         if ($this->getAttribute('Site')) {
             return $this->getAttribute('Site');

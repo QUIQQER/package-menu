@@ -15,12 +15,12 @@ abstract class AbstractMenu extends QUI\Control
     /**
      * @var string
      */
-    protected $append = '';
+    protected string $append = '';
 
     /**
      * @var string
      */
-    protected $prepend = '';
+    protected string $prepend = '';
 
     /**
      * append html to the menu
@@ -28,7 +28,7 @@ abstract class AbstractMenu extends QUI\Control
      *
      * @param string $html
      */
-    public function appendHTML($html)
+    public function appendHTML(string $html): void
     {
         $this->append = $html;
     }
@@ -39,7 +39,7 @@ abstract class AbstractMenu extends QUI\Control
      *
      * @param string $html
      */
-    public function prependHTML($html)
+    public function prependHTML(string $html): void
     {
         $this->prepend = $html;
     }

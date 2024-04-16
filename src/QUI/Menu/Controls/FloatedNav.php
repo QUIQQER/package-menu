@@ -21,7 +21,7 @@ class FloatedNav extends QUI\Control
      *
      * @param array $attributes
      */
-    public function __construct($attributes = [])
+    public function __construct(array $attributes = [])
     {
         // default options
         $this->setAttributes([
@@ -60,7 +60,7 @@ class FloatedNav extends QUI\Control
      *
      * @see \QUI\Control::create()
      */
-    public function getBody()
+    public function getBody(): string
     {
         $Engine = QUI::getTemplateManager()->getEngine();
         $LangSwitch = null;
@@ -73,11 +73,8 @@ class FloatedNav extends QUI\Control
             return '';
         }
 
-        if (!$IndependentMenu) {
-            return '';
-        }
-
         $showToggleButton = true;
+
         switch ($this->getAttribute('showToggleButton')) {
             case 'always':
                 $this->setJavaScriptControlOption('showtogglebutton', 'always');
@@ -94,26 +91,15 @@ class FloatedNav extends QUI\Control
                 break;
         }
 
-        switch ($this->getAttribute('size')) {
-            case 'small':
-            case 'medium':
-            case 'large':
-                $size = 'quiqqer-floatedNavControl__size-' . $this->getAttribute('size');
-                break;
+        $size = match ($this->getAttribute('size')) {
+            'small', 'medium', 'large' => 'quiqqer-floatedNavControl__size-' . $this->getAttribute('size'),
+            default => 'quiqqer-floatedNavControl__size-medium',
+        };
 
-            default:
-                $size = 'quiqqer-floatedNavControl__size-medium';
-        }
-
-        switch ($this->getAttribute('design')) {
-            case 'flat':
-                $design = 'quiqqer-floatedNavControl__design-' . $this->getAttribute('design');
-                break;
-
-            case 'iconBar':
-            default:
-                $design = 'quiqqer-floatedNavControl__design-iconsBar';
-        }
+        $design = match ($this->getAttribute('design')) {
+            'flat' => 'quiqqer-floatedNavControl__design-' . $this->getAttribute('design'),
+            default => 'quiqqer-floatedNavControl__design-iconsBar',
+        };
 
         switch ($this->getAttribute('posX')) {
             case 'left':
@@ -130,14 +116,10 @@ class FloatedNav extends QUI\Control
         }
 
         if ($this->getAttribute('showLangSwitch')) {
-            try {
-                $LangSwitch = new QUI\Bricks\Controls\LanguageSwitches\Flags([
-                    'showFlags' => 0,
-                    'class' => 'quiqqer-floatedNav-entry'
-                ]);
-            } catch (QUI\Exception $Exception) {
-                QUI\System\Log::writeException($Exception);
-            }
+            $LangSwitch = new QUI\Bricks\Controls\LanguageSwitches\Flags([
+                'showFlags' => 0,
+                'class' => 'quiqqer-floatedNav-entry'
+            ]);
         }
 
         $animation = '';
@@ -187,7 +169,7 @@ class FloatedNav extends QUI\Control
      *
      * @return false|mixed|string
      */
-    public function getAnimationEasingName()
+    public function getAnimationEasingName(): mixed
     {
         switch ($this->getAttribute('animationEasing')) {
             case 'easeInQuad':
