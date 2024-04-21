@@ -110,10 +110,16 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuManagement', [
                         width    : 50
                     },
                     {
-                        header   : QUILocale.get(lg, 'grid.menuTitle'),
+                        header   : QUILocale.get(lg, 'menu.title'),
                         dataIndex: 'title',
                         dataType : 'string',
-                        width    : 150
+                        width    : 250
+                    },
+                    {
+                        header   : QUILocale.get(lg, 'menu.workingTitle'),
+                        dataIndex: 'workingTitle',
+                        dataType : 'string',
+                        width    : 350
                     }
                 ]
             });

@@ -303,6 +303,8 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                 };
             };
 
+            this.setMenuTitle();
+
             let result = toArray(this.$Map.firstChild());
 
             return this.$refreshItemDisplay().then(() => {
@@ -315,6 +317,42 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
             }).then(() => {
                 this.Loader.hide();
             });
+        },
+
+        /**
+         * Set the title of this.$Map, so the title changes in the left panel.
+         * Also set menu title and working title to the variables:
+         *   this.$title
+         *   this.$workingTitle
+         *
+         * This function is a small workaround for this user flow:
+         *   "User change the menu title (and working title) and save directly the menu by clicking save-button".
+         */
+        setMenuTitle: function() {
+            const selected = this.$Map.getSelectedChildren();
+
+            if (selected.length === 1 && selected[0].getAttribute('value') !== 'start') {
+                return;
+            }
+
+            const Title = this.$InnerContainer.getElement('[name="title"]');
+            const WorkingTitle = this.$InnerContainer.getElement('[name="workingTitle"]');
+
+            if (!Title) {
+                return;
+            }
+
+            selected[0].setAttribute('itemTitle', Title.value);
+
+            this.$title = JSON.decode(Title.value);
+            this.$workingTitle = JSON.decode(WorkingTitle.value);
+
+            let current = QUILocale.getCurrent();
+
+            if (current in this.$title) {
+                selected[0].setAttribute('text', this.$title[current]);
+                selected[0].setAttribute('title', this.$title[current]);
+            }
         },
 
         addItem: function (Parent, where) {
@@ -580,12 +618,15 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                 this.$ActiveItem = null;
                 this.$ActiveMapItem = null;
                 this.$InnerContainer.set('html', Mustache.render(templateSettings, {
-                    settingsTitle: QUILocale.get('quiqqer/quiqqer', 'settings'),
-                    title        : QUILocale.get('quiqqer/quiqqer', 'title')
+                    title        : QUILocale.get('quiqqer/menu', 'menu.title'),
+                    workingTitle: QUILocale.get('quiqqer/menu', 'menu.workingTitle')
                 }));
 
-                this.$InnerContainer.getElement('[name="title"]').set('value', JSON.stringify(this.$title));
-                this.$InnerContainer.getElement('[name="workingTitle"]').set('value', JSON.stringify(this.$workingTitle));
+                const TitleNode = this.$InnerContainer.getElement('[name="title"]'),
+                WorkingTitleNode = this.$InnerContainer.getElement('[name="workingTitle"]');
+
+                TitleNode.set('value', JSON.stringify(this.$title));
+                WorkingTitleNode.set('value', JSON.stringify(this.$workingTitle));
             }).then(() => {
                 return QUI.parse(this.$InnerContainer);
             }).then(() => {

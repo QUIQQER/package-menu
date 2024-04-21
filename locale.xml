@@ -554,9 +554,13 @@
             <de><![CDATA[ID]]></de>
             <en><![CDATA[ID]]></en>
         </locale>
-        <locale name="grid.menuTitle">
+        <locale name="menu.title">
             <de><![CDATA[Titel]]></de>
             <en><![CDATA[Title]]></en>
+        </locale>
+        <locale name="menu.workingTitle">
+            <de><![CDATA[Arbeitstitel]]></de>
+            <en><![CDATA[Working title]]></en>
         </locale>
 
         <locale name="creation.window.title">
