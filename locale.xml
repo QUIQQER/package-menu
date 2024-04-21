@@ -527,17 +527,33 @@
             <de><![CDATA[Menu Eintrag: Zu einem Anker]]></de>
             <en><![CDATA[Menu entry: To an anchor]]></en>
         </locale>
+        <locale name="item.anchor.short">
+            <de><![CDATA[Mit diesem Menütyp ist es möglich, eine interne QUIQQER-Seite auszuwählen und einen Anker festzulegen.]]></de>
+            <en><![CDATA[With this menu type it is possible to select an internal QUIQQER page and define an anchor.]]></en>
+        </locale>
         <locale name="item.custom.title">
             <de><![CDATA[Menu Eintrag: Custom Event]]></de>
             <en><![CDATA[Menu entry: Custom Event]]></en>
+        </locale>
+        <locale name="item.custom.short">
+            <de><![CDATA[Individuelle Anpassung des Menüpunktes. Man kann eine Seite auswählen, eine benutzerdefinierte JavaScript-Funktion aufrufen und vieles mehr.]]></de>
+            <en><![CDATA[Customisation of the menu item. You can select a page, call up a customised JavaScript function and much more.]]></en>
         </locale>
         <locale name="item.site.title">
             <de><![CDATA[Menu Eintrag: Zu einer internen Seite von einem Projekt]]></de>
             <en><![CDATA[Menu entry: To an internal page from a project]]></en>
         </locale>
+        <locale name="item.site.short">
+            <de><![CDATA[Erlaubt die Auswahl eines interner QUIQQER Seite.]]></de>
+            <en><![CDATA[Allows selection of an internal QUIQQER page.Klicken, um Alternative zu verwenden]]></en>
+        </locale>
         <locale name="item.url.title">
             <de><![CDATA[Menu Eintrag: Zu einer anderen URL]]></de>
             <en><![CDATA[Menu entry: To another URL]]></en>
+        </locale>
+        <locale name="item.url.short">
+            <de><![CDATA[Es ist möglich, sowohl eine interne QUIQQER Seite auszuwählen als auch den Link zu einer externen Seiten zu setzen.]]></de>
+            <en><![CDATA[It is possible to select both an internal QUIQQER page and a link to an external page.]]></en>
         </locale>
         <locale name="menu.saved.successfully">
             <de><![CDATA[Das Menü wurde erfolgreich gespeichert.]]></de>

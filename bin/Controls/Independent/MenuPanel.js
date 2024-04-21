@@ -18,13 +18,13 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
     'package/quiqqer/menu/bin/classes/IndependentHandler',
 
     'Mustache',
-    'text!package/quiqqer/menu/bin/Controls/Independent/MenuPanel.Create.html',
+    'text!package/quiqqer/menu/bin/Controls/Independent/MenuPanel.ItemCard.html',
     'text!package/quiqqer/menu/bin/Controls/Independent/MenuPanel.Settings.html',
     'css!package/quiqqer/menu/bin/Controls/Independent/MenuPanel.css'
 
 ], function (QUI, QUIPanel, QUIMap, QUIMapItem, QUIConfirm,
              QUIContextMenu, QUIContextMenuItem, QUIContextSeparator, InputMultiLang,
-             QUIAjax, QUILocale, IndependentHandler, Mustache, templateCreate, templateSettings) {
+             QUIAjax, QUILocale, IndependentHandler, Mustache, templateItemCard, templateSettings) {
     "use strict";
 
     const lg = 'quiqqer/menu';
@@ -232,7 +232,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                             if (text === '' || text === '###') {
                                 text = '?';
                             }
-                            
+
                             Item = new QUIMapItem({
                                 text     : text,
                                 icon     : data.typeIcon,
@@ -373,8 +373,8 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
             new QUIConfirm({
                 icon     : 'fa fa-plus',
                 title    : QUILocale.get(lg, 'quiqqer.menu.independent.addItem.title'),
-                maxHeight: 400,
-                maxWidth : 500,
+                maxHeight: 550,
+                maxWidth : 700,
                 autoclose: false,
                 events   : {
                     onOpen: (Win) => {
@@ -382,25 +382,18 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
 
                         Win.Loader.show();
 
-                        Content.set('html', Mustache.render(templateCreate, {
-                            text     : QUILocale.get(lg, 'create.window.text'),
-                            textTitle: QUILocale.get('quiqqer/quiqqer', 'title'),
-                            textName : QUILocale.get('quiqqer/quiqqer', 'name'),
-                            textType : QUILocale.get('quiqqer/quiqqer', 'type')
-                        }));
+                        Content.set(
+                            'html',
+
+                            `<p>`+ QUILocale.get(lg, 'create.window.text') +
+                            '</p>' +
+                            '<form style="width: 100%;">' +
+                            '   <div class="qui-menuPanel-optionList"></div>' +
+                            '</form>'
+                        );
 
                         IndependentHandler.getItemTypes().then((list) => {
-                            const Types = Content.getElement('[name="itemType"]');
-
-                            for (let i = 0, len = list.length; i < len; i++) {
-                                new Element('option', {
-                                    html       : list[i].title,
-                                    value      : list[i].class,
-                                    'data-icon': list[i].icon
-                                }).inject(Types);
-                            }
-
-                            Types.value = 'QUI\\Menu\\Independent\\Items\\Site';
+                            this.$createOptionList(list, Content);
 
                             return QUI.parse(Win.getContent());
                         }).then(function () {
@@ -414,8 +407,8 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
 
                         let type = Form.elements.itemType.value;
 
-                        const Option = Form.elements.itemType.getElement(
-                            'option[value="' + CSS.escape(type) + '"]'
+                        const Option = Form.getElement(
+                            '[value="' + CSS.escape(type) + '"]'
                         );
 
                         let itemAttributes = {
@@ -467,11 +460,13 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                 return;
             }
 
+            const itemType = Item.getAttribute('itemType');
+
             new QUIConfirm({
                 icon     : 'fa fa-edit',
                 title    : QUILocale.get(lg, 'quiqqer.menu.independent.changeItemType.title'),
-                maxHeight: 400,
-                maxWidth : 500,
+                maxHeight: 550,
+                maxWidth : 700,
                 autoclose: false,
                 events   : {
                     onOpen: (Win) => {
@@ -480,27 +475,17 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                         Content.set(
                             'html',
 
-                            QUILocale.get(lg, 'quiqqer.menu.independent.changeItemType.message') +
-                            '' +
-                            '<form style="width: 100%; text-align: center; margin-top: 20px">' +
-                            '   <select name="itemType"></select>' +
+                            `<p>`+ QUILocale.get(lg, 'quiqqer.menu.independent.changeItemType.message') +
+                            '</p>' +
+                            '<form style="width: 100%;">' +
+                            '   <div class="qui-menuPanel-optionList"></div>' +
                             '</form>'
                         );
 
                         Win.Loader.show();
 
                         IndependentHandler.getItemTypes().then((list) => {
-                            const Types = Content.getElement('[name="itemType"]');
-
-                            for (let i = 0, len = list.length; i < len; i++) {
-                                new Element('option', {
-                                    html       : list[i].title,
-                                    value      : list[i].class,
-                                    'data-icon': list[i].icon
-                                }).inject(Types);
-                            }
-
-                            Types.value = Item.getAttribute('itemType');
+                            this.$createOptionList(list, Content, itemType);
 
                             return QUI.parse(Win.getContent());
                         }).then(function () {
@@ -515,8 +500,8 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                         const Form = Content.getElement('form');
 
                         const type = Form.elements.itemType.value;
-                        const Option = Form.elements.itemType.getElement(
-                            'option[value="' + CSS.escape(type) + '"]'
+                        const Option = Form.getElement(
+                            '[value="' + CSS.escape(type) + '"]'
                         );
 
                         Item.setAttribute('itemType', type);
@@ -532,6 +517,47 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
                     }
                 }
             }).open();
+        },
+
+        /**
+         * Create custom option list based on passed list of menu types
+         *
+         * @param list
+         * @param Content
+         * @param selected
+         */
+        $createOptionList: function(list, Content, selected = false) {
+            const OptionsList = Content.getElement('.qui-menuPanel-optionList'),
+                selectedItem = selected ? selected : 'QUI\\Menu\\Independent\\Items\\Site';
+
+            const toggleSelected = function(event) {
+                OptionsList.getElements('label').forEach(function(Label) {
+                    Label.classList.remove('checked');
+                });
+
+                event.target.getParent('label').classList.add('checked');
+            };
+
+            for (let i = 0, len = list.length; i < len; i++) {
+                const Item = list[i];
+                const Label = new Element('label', {
+                    'class': 'qui-menuPanel-optionList__option',
+                    html: Mustache.render(templateItemCard, {
+                        title: Item.title,
+                        desc: Item.desc,
+                        icon: Item.icon,
+                        value: Item.class
+                    })
+                });
+
+                if (Item.class === selectedItem) {
+                    Label.querySelector('input').checked = true;
+                    Label.classList.add('checked');
+                }
+
+                Label.inject(OptionsList);
+                Label.getElement('input').addEventListener('change', toggleSelected);
+            }
         },
 
         /**

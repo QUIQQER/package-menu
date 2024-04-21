@@ -23,6 +23,16 @@ class Site extends AbstractMenuItem
     }
 
     /**
+     * Short description of the menu types
+     *
+     * @return string
+     */
+    public static function itemShort(): string
+    {
+        return QUI::getLocale()->get('quiqqer/menu', 'item.site.short');
+    }
+
+    /**
      * @return string
      */
     public static function itemJsControl(): string
