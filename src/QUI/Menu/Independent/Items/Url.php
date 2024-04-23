@@ -36,6 +36,16 @@ class Url extends AbstractMenuItem
     }
 
     /**
+     * Short description of the menu types
+     *
+     * @return string
+     */
+    public static function itemShort(): string
+    {
+        return QUI::getLocale()->get('quiqqer/menu', 'item.url.short');
+    }
+
+    /**
      * @return string
      */
     public static function itemIcon(): string

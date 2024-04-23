@@ -20,3 +20,51 @@
 .quiqqer-menu-menuPanel-innerContainer > div {
     width: 100%;
 }
+
+/****************************************/
+/* Options list: create and edit window */
+/****************************************/
+.qui-menuPanel-optionList {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    margin-top: 3rem;
+}
+
+.qui-menuPanel-optionList__option {
+    background: #f5f5f5;
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    display: flex;
+    gap: 0.5rem 1.5rem;
+}
+
+.qui-menuPanel-optionList__option-image {
+    font-size: 3rem;
+    width: 4rem;
+    flex-shrink: 0;
+    text-align: center;
+    align-self: flex-start;
+    opacity: 0.5;
+}
+
+.qui-menuPanel-optionList__option-title {
+    margin-bottom: 0.25rem;
+    font-weight: bold;
+}
+
+.qui-menuPanel-optionList__option-desc {
+    opacity: 0.75;
+}
+
+/* checked */
+.qui-menuPanel-optionList__option.checked {
+    outline: 2px solid;
+    outline-offset: -2px;
+}
+
+.qui-menuPanel-optionList__option.checked .qui-menuPanel-optionList__option-image {
+    opacity: 1;
+}
