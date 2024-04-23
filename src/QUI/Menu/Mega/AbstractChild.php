@@ -53,7 +53,7 @@ abstract class AbstractChild extends QUI\Control
      * @return int
      * @throws Exception
      */
-    public function count()
+    public function count(): int
     {
         return count($this->getChildren());
     }

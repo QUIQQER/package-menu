@@ -144,7 +144,7 @@ class MegaMenu extends AbstractMenu
             }
 
             return $cacheResult['html'];
-        } catch (QUI\Exception $Exception) {
+        } catch (QUI\Exception) {
         }
 
         $Engine = QUI::getTemplateManager()->getEngine();

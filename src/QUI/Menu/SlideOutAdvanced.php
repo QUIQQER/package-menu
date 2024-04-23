@@ -8,9 +8,11 @@ namespace QUI\Menu;
 
 use QUI;
 
+use function dirname;
+
 /**
  * Class MenuAdvanced
- * Creates an slideout menu
+ * Creates a slide-out menu
  *
  * @package QUI\Menu
  */
@@ -19,7 +21,7 @@ class SlideOutAdvanced extends QUI\Control
     /**
      * @param array $attributes
      */
-    public function __construct($attributes = [])
+    public function __construct(array $attributes = [])
     {
         $this->setAttributes([
             'menuId' => false, // if set independent menu template will be used
@@ -31,7 +33,7 @@ class SlideOutAdvanced extends QUI\Control
         parent::__construct($attributes);
 
         $this->addCSSFile(
-            \dirname(__FILE__) . '/SlideOutAdvanced.css'
+            dirname(__FILE__) . '/SlideOutAdvanced.css'
         );
     }
 
@@ -73,9 +75,9 @@ class SlideOutAdvanced extends QUI\Control
     /**
      * Return the current site
      *
-     * @return mixed|QUI\Projects\Site
+     * @return QUI\Interfaces\Projects\Site
      */
-    protected function getSite()
+    protected function getSite(): QUI\Interfaces\Projects\Site
     {
         if ($this->getAttribute('Site')) {
             return $this->getAttribute('Site');

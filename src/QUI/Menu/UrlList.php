@@ -30,7 +30,7 @@ class UrlList extends QUI\Control
     /**
      * @param array $attributes
      */
-    public function __construct($attributes = [])
+    public function __construct(array $attributes = [])
     {
         // defaults values
         $this->setAttributes([
@@ -106,7 +106,7 @@ class UrlList extends QUI\Control
      * @return array
      * @throws QUI\Exception
      */
-    public function getChildrenForIndependentMenu()
+    public function getChildrenForIndependentMenu(): array
     {
         $IndependentMenu = Independent\Handler::getMenu($this->getAttribute('menuId'));
 
@@ -116,10 +116,10 @@ class UrlList extends QUI\Control
     /**
      * Get sites for QUI site
      *
-     * @return array
-     * @throws QUI\Exception
+     * @return array|int
+     * @throws Exception
      */
-    public function getChildrenForQUISite()
+    public function getChildrenForQUISite(): array|int
     {
         $Project = $this->getProject();
 
@@ -146,7 +146,7 @@ class UrlList extends QUI\Control
      * @return array|int
      * @throws QUI\Exception
      */
-    public function getChildren(QUI\Projects\Site $Site)
+    public function getChildren(QUI\Projects\Site $Site): array|int
     {
         if (!$this->getAttribute('showAllChildren')) {
             return $Site->getNavigation();

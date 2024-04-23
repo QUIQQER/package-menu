@@ -18,7 +18,7 @@ use function serialize;
 
 /**
  * Class DropDownMenu
- * Creates an Drop Down Menu
+ * Creates a Drop-Down Menu
  *
  * @package QUI\Menu
  * @author  www.pcsg.de (Henning Leutz)

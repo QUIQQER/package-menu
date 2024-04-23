@@ -82,7 +82,7 @@ abstract class AbstractMenuItem
 
     /**
      * alias for name
-     * - can be use for the `a title=""` attribute
+     * - can be used for the `a title=""` attribute
      *
      * @param Locale|null $Locale
      * @return string
@@ -179,7 +179,7 @@ abstract class AbstractMenuItem
     /**
      * @return mixed
      */
-    public function getCustomData()
+    public function getCustomData(): mixed
     {
         if (isset($this->attributes['data'])) {
             return $this->attributes['data'];
@@ -322,7 +322,7 @@ abstract class AbstractMenuItem
      *
      * @param AbstractMenuItem $Item
      */
-    public function appendChild(AbstractMenuItem $Item)
+    public function appendChild(AbstractMenuItem $Item): void
     {
         $this->children[] = $Item;
     }
