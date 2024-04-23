@@ -271,6 +271,16 @@ abstract class AbstractMenuItem
     abstract public static function itemTitle();
 
     /**
+     * Short description of the menu types
+     *
+     * @return string
+     */
+    public static function itemShort(): string
+    {
+        return '';
+    }
+
+    /**
      * @return string
      */
     public static function itemIcon(): string

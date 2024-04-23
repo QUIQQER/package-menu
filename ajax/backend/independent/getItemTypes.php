@@ -18,6 +18,7 @@ QUI::$Ajax->registerFunction(
         foreach ($list as $class) {
             $result[] = [
                 'title' => call_user_func([$class, 'itemTitle']),
+                'desc' => call_user_func([$class, 'itemShort']),
                 'icon' => call_user_func([$class, 'itemIcon']),
                 'jsControl' => call_user_func([$class, 'itemJsControl']),
                 'class' => $class
