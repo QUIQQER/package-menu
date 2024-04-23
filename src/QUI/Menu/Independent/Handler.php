@@ -115,10 +115,10 @@ class Handler
     public static function getItemList(): array
     {
         return [
-            QUI\Menu\Independent\Items\Anchor::class,
-            QUI\Menu\Independent\Items\Custom::class,
             QUI\Menu\Independent\Items\Site::class,
+            QUI\Menu\Independent\Items\Anchor::class,
             QUI\Menu\Independent\Items\Url::class,
+            QUI\Menu\Independent\Items\Custom::class,
         ];
     }
 }
