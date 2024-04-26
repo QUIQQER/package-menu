@@ -4,6 +4,8 @@
  * This file contains package_quiqqer_menu_ajax_backend_independent_get
  */
 
+use QUI\Menu\Independent\Items\AbstractMenuItem;
+
 QUI::$Ajax->registerFunction(
     'package_quiqqer_menu_ajax_backend_independent_get',
     function ($id) {
@@ -21,7 +23,7 @@ QUI::$Ajax->registerFunction(
                     continue;
                 }
 
-                /* @var $Item \QUI\Menu\Independent\Items\AbstractMenuItem */
+                /* @var $Item AbstractMenuItem */
                 $Item = new $entry['type']($entry);
                 $icon = QUI\Menu\Independent\Items\Site::itemIcon(); // default
 
