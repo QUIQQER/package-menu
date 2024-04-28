@@ -653,6 +653,14 @@
             The rel attribute specifies the relationship between the current document and the linked document.
             ]]></en>
         </locale>
+        <locale name="tpl.short">
+            <de><![CDATA[Kurzbeschreibung]]></de>
+            <en><![CDATA[Short description]]></en>
+        </locale>
+        <locale name="tpl.shortDesc">
+            <de><![CDATA[Kurzer Text, der unter dem Link angezeigt wird. Diese Eigenschaft wird nicht in allen Menü-Arten verwendet (unterstützt wird u.A. "MegaMenu: Einfache Liste mit Unterseiten").]]></de>
+            <en><![CDATA[Short text displayed under the link. This property is not used in all menu types (i.e. support for "MegaMenu: Simple list mit sub pages").]]></en>
+        </locale>
         <locale name="tpl.click">
             <de><![CDATA[Klick Event (JavaScript)]]></de>
             <en><![CDATA[Click event (JavaScript)]]></en>
