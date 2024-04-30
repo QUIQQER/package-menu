@@ -29,7 +29,7 @@ class Provider implements ProviderInterface
      *
      * @param Server $Server
      */
-    public function register(Server $Server)
+    public function register(Server $Server): void
     {
         $Slim = $Server->getSlim();
 
@@ -158,12 +158,9 @@ class Provider implements ProviderInterface
             return Handler::getGenericExceptionResponse($Exception);
         }
 
-        return Handler::getGenericSuccessResponse(
-            'Menu created.',
-            [
-                'id' => $newMenuId
-            ]
-        );
+        return Handler::getGenericSuccessResponse('Menu created.', [
+            'id' => $newMenuId
+        ]);
     }
 
     /**
@@ -318,11 +315,11 @@ class Provider implements ProviderInterface
     }
 
     /**
-     * Get file containting OpenApi definition for this API.
+     * Get file containing OpenApi definition for this API.
      *
      * @return string|false - Absolute file path or false if no definition exists
      */
-    public function getOpenApiDefinitionFile()
+    public function getOpenApiDefinitionFile(): bool|string
     {
         return false;
     }
