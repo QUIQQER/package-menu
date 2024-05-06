@@ -44,6 +44,8 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Custom', [
 
                 title           : QUILocale.get('quiqqer/quiqqer', 'title'),
                 linkTitle       : QUILocale.get(lg, 'tpl.linkTitle'),
+                short: QUILocale.get(lg, 'tpl.short'),
+                shortDesc: QUILocale.get(lg, 'tpl.shortDesc'),
                 icon            : QUILocale.get(lg, 'tpl.icon'),
                 url             : QUILocale.get(lg, 'tpl.url'),
                 rel             : QUILocale.get(lg, 'tpl.rel'),
@@ -107,6 +109,10 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Custom', [
                 data.url = '';
             }
 
+            if (typeof data.short === 'undefined') {
+                data.short = '';
+            }
+
             if (typeof data.name === 'undefined') {
                 data.name = '';
             }
@@ -137,11 +143,16 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Custom', [
                     this.getElm().getElement('[name="title"]').get('data-quiid')
                 );
 
+                this.$Short = QUI.Controls.getById(
+                    this.getElm().getElement('[name="short"]').get('data-quiid')
+                );
+
                 this.$Name = QUI.Controls.getById(
                     this.getElm().getElement('[name="name"]').get('data-quiid')
                 );
 
                 this.$Title.setData(title);
+                this.$Short.setData(data.short);
                 this.$Name.setData(data.name);
 
                 if (this.$Title.isLoaded()) {
@@ -149,6 +160,14 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Custom', [
                 } else {
                     this.$Title.addEvent('load', () => {
                         this.$Title.open();
+                    });
+                }
+
+                 if (this.$Short.isLoaded()) {
+                    this.$Short.open();
+                } else {
+                    this.$Short.addEvent('load', () => {
+                        this.$Short.open();
                     });
                 }
 
@@ -171,6 +190,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Custom', [
                 title: this.$Title.getValue(),
                 icon : Form.elements.icon.value,
                 data : {
+                    short: Form.elements.short.value,
                     url     : Form.elements.url.value,
                     rel     : Form.elements.rel.value,
                     target  : Form.elements.target.value,

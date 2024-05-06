@@ -1,7 +1,8 @@
 .quiqqer-menu-megaMenu-children-simple {
     width: auto;
     display: inline-block;
-    min-width: 200px;
+    min-width: 12rem;
+    max-width: 25rem;
 }
 
 .quiqqer-menu-megaMenu-children-simple-entry {
@@ -24,4 +25,9 @@
     padding: 10px 25px;
     display: block;
     cursor: pointer;
+}
+
+.quiqqer-menu-megaMenu-children-simple-entry-short {
+    font-size: 0.8em;
+    color: var(--_qui-megaMenu-text-color--muted);
 }
