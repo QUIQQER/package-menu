@@ -53,6 +53,36 @@ abstract class AbstractMenuItem
     }
 
     /**
+     * @param ?Locale $Locale
+     * @return string
+     */
+    public function getShort(Locale $Locale = null): string
+    {
+        if ($Locale === null) {
+            $Locale = QUI::getLocale();
+        }
+
+        $current = $Locale->getCurrent();
+        $data = $this->getCustomData();
+
+        if (!is_array($data) || !isset($data['short'])) {
+            return '';
+        }
+
+        $short = $data['short'];
+
+        if (is_string($short)) {
+            $short = json_decode($short, true);
+        }
+
+        if (isset($short[$current])) {
+            return $short[$current];
+        }
+
+        return '';
+    }
+
+    /**
      * @param Locale|null $Locale
      * @return string
      */

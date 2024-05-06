@@ -1,4 +1,11 @@
 .quiqqer-menu-megaMenu {
+    --_qui-megaMenu-link-color: var(--qui-nav-link-color, var(--qui-body-color, #202428));
+    --_qui-megaMenu-link-color--hover: var(--qui-nav-link-color--hover, var(--qui-color-primary, #202428));
+    --_qui-megaMenu-sublink-color: var(--qui-nav-sublink-color, var(--qui-body-color, #202428));
+    --_qui-megaMenu-sublink-color--hover: var(--qui-nav-sublink-color--hover, var(--qui-color-primary, #202428));
+    --_qui-megaMenu-text-color: var(--qui-nav-text-color, var(--qui-body-color, #202428));
+    --_qui-megaMenu-text-color--muted: var(--qui-nav-text-color--muted, var(--qui-text-muted, #646e7d));
+
     float: left;
     position: relative;
     z-index: 50;
