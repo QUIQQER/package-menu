@@ -2,6 +2,7 @@
 
 namespace QUI\Menu\Independent;
 
+use Exception;
 use QUI;
 use QUI\Menu\Independent\Items\AbstractMenuItem;
 
@@ -33,7 +34,7 @@ class Menu
      * @throws QUI\Exception
      * @throws QUI\Database\Exception
      */
-    public function __construct($menuId)
+    public function __construct(int|array $menuId)
     {
         if (is_numeric($menuId)) {
             $data = Handler::getMenuData($menuId);
@@ -92,7 +93,7 @@ class Menu
      * @param array $children
      * @return void
      */
-    protected function buildChildren($Parent, array $children)
+    protected function buildChildren(AbstractMenuItem|Menu $Parent, array $children): void
     {
         foreach ($children as $item) {
             $type = $item['type'];
@@ -124,7 +125,7 @@ class Menu
      *
      * @param AbstractMenuItem $Item
      */
-    public function appendChild(AbstractMenuItem $Item)
+    public function appendChild(AbstractMenuItem $Item): void
     {
         $this->children[] = $Item;
     }
@@ -244,7 +245,7 @@ class Menu
      * @throws QUI\Database\Exception
      * @throws QUI\Permissions\Exception
      */
-    public function save(?QUI\Interfaces\Users\User $PermissionUser = null)
+    public function save(?QUI\Interfaces\Users\User $PermissionUser = null): void
     {
         QUI\Permissions\Permission::checkPermission('quiqqer.menu.edit', $PermissionUser);
 
@@ -258,7 +259,7 @@ class Menu
 
         try {
             QUI::getEvents()->fireEvent('quiqqerMenuIndependentSave', [$this]);
-        } catch (\Exception $Exception) {
+        } catch (Exception $Exception) {
             QUI\System\Log::writeException($Exception);
         }
     }
@@ -269,7 +270,7 @@ class Menu
      * @param array|null $title - ['de' => '', 'en' => '']
      * @return void
      */
-    public function setTitle(?array $title)
+    public function setTitle(?array $title): void
     {
         if ($title === null) {
             return;
@@ -294,7 +295,7 @@ class Menu
      * @param array|null $title - ['de' => '', 'en' => '']
      * @return void
      */
-    public function setWorkingTitle(?array $title)
+    public function setWorkingTitle(?array $title): void
     {
         if ($title === null) {
             return;
@@ -317,7 +318,7 @@ class Menu
      * @param array|null $data
      * @return void
      */
-    public function setData(?array $data)
+    public function setData(?array $data): void
     {
         if ($data === null) {
             return;

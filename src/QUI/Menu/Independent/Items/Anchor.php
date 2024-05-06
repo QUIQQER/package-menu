@@ -35,7 +35,7 @@ class Anchor extends AbstractMenuItem
         if ($Site) {
             try {
                 $url .= $Site->getUrlRewritten();
-            } catch (QUI\Exception $Exception) {
+            } catch (QUI\Exception) {
             }
         }
 
@@ -66,7 +66,7 @@ class Anchor extends AbstractMenuItem
         try {
             $siteUrl = $data['site'];
             $Site = QUI\Projects\Site\Utils::getSiteByLink($siteUrl);
-        } catch (QUI\Exception $Exception) {
+        } catch (QUI\Exception) {
             return null;
         }
 
@@ -79,7 +79,7 @@ class Anchor extends AbstractMenuItem
                 $langId = $Site->getId($current);
                 $LangProject = QUI::getProject($Project->getName(), $current);
                 return $LangProject->get($langId);
-            } catch (QUI\Exception $exception) {
+            } catch (QUI\Exception) {
                 return null;
             }
         }

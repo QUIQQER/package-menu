@@ -6,6 +6,7 @@
 
 namespace QUI\Menu;
 
+use Exception;
 use QUI;
 
 /**
@@ -20,7 +21,7 @@ class Elastic extends QUI\Control
     /**
      * @param array $attributes
      */
-    public function __construct($attributes = [])
+    public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
     }
@@ -28,8 +29,9 @@ class Elastic extends QUI\Control
     /**
      * @return string
      * @throws QUI\Exception
+     * @throws Exception
      */
-    public function getBody()
+    public function getBody(): string
     {
         $Engine = QUI::getTemplateManager()->getEngine();
 
@@ -48,8 +50,9 @@ class Elastic extends QUI\Control
      * Return the current site
      *
      * @return mixed|QUI\Projects\Site
+     * @throws QUI\Exception
      */
-    protected function getSite()
+    protected function getSite(): mixed
     {
         if ($this->getAttribute('Site')) {
             return $this->getAttribute('Site');

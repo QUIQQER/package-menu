@@ -1,5 +1,5 @@
 {
-  "name": "quiqqer\/menu",
+  "name": "quiqqer/menu",
   "type": "quiqqer-module",
   "description": "The Plugin menu provides various menu controls.",
   "license": [
@@ -10,21 +10,21 @@
     {
       "name": "Henning Leutz",
       "email": "leutz@pcsg.de",
-      "homepage": "http:\/\/www.pcsg.de",
+      "homepage": "https://www.pcsg.de",
       "role": "Developer"
     }
   ],
   "support": {
     "email": "support@pcsg.de",
-    "url": "http:\/\/www.pcsg.de"
+    "url": "https://www.pcsg.de"
   },
   "require": {
-    "php": ">=5.3",
-    "quiqqer\/quiqqer": "*@dev"
+    "php": "^8.1",
+    "quiqqer/core": "^2"
   },
   "autoload": {
     "psr-4": {
-      "QUI\\Menu\\": "src\/QUI\/Menu"
+      "QUI\\Menu\\": "src/QUI/Menu"
     }
   }
 }

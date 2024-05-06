@@ -58,7 +58,7 @@ class Site extends AbstractMenuItem
         try {
             $siteUrl = $data['site'];
             $Site = QUI\Projects\Site\Utils::getSiteByLink($siteUrl);
-        } catch (QUI\Exception $Exception) {
+        } catch (QUI\Exception) {
             return null;
         }
 
@@ -72,7 +72,7 @@ class Site extends AbstractMenuItem
                 $LangProject = QUI::getProject($Project->getName(), $current);
 
                 return $LangProject->get($langId);
-            } catch (QUI\Exception $exception) {
+            } catch (QUI\Exception) {
                 return null;
             }
         }
@@ -136,7 +136,7 @@ class Site extends AbstractMenuItem
             $Site = QUI\Projects\Site\Utils::getSiteByLink($siteUrl);
 
             return $Site->getAttribute('title');
-        } catch (QUI\Exception $Exception) {
+        } catch (QUI\Exception) {
         }
 
         return '';
@@ -152,7 +152,7 @@ class Site extends AbstractMenuItem
         if ($Site) {
             try {
                 return $Site->getUrlRewritten();
-            } catch (QUI\Exception $Exception) {
+            } catch (QUI\Exception) {
                 return '';
             }
         }

@@ -6,6 +6,7 @@
 
 namespace QUI\Menu;
 
+use Exception;
 use QUI;
 use QUI\Projects\Site\Utils;
 
@@ -21,7 +22,7 @@ class SidebarDropDownMenu extends QUI\Control
     /**
      * @param array $attributes
      */
-    public function __construct($attributes = [])
+    public function __construct(array $attributes = [])
     {
         // defaults values
         $this->setAttributes([
@@ -48,9 +49,10 @@ class SidebarDropDownMenu extends QUI\Control
     /**
      * (non-PHPdoc)
      *
+     * @throws Exception
      * @see \QUI\Control::create()
      */
-    public function getBody()
+    public function getBody(): string
     {
         $Engine = QUI::getTemplateManager()->getEngine();
         $Project = $this->getProject();
@@ -164,12 +166,13 @@ class SidebarDropDownMenu extends QUI\Control
         $this->addCSSFile($css);
 
         $html = $Engine->fetch($template);
-        $html = '<nav>' . $html . '</nav>';
-
-        return $html;
+        return '<nav>' . $html . '</nav>';
     }
 
-    public function getChildren(QUI\Projects\Site $Site)
+    /**
+     * @throws QUI\Exception
+     */
+    public function getChildren(QUI\Projects\Site $Site): array|int
     {
         if (!$this->getAttribute('showAllChildren')) {
             return $Site->getNavigation();
