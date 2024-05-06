@@ -25,7 +25,7 @@ class EventHandler
     /**
      * @param Site $Site
      */
-    public static function onSiteSave(Site $Site)
+    public static function onSiteSave(Site $Site): void
     {
         QUI\Cache\Manager::clear(self::menuCacheName());
     }
@@ -35,7 +35,7 @@ class EventHandler
      *
      * @return void
      */
-    public static function onProjectConfigSave()
+    public static function onProjectConfigSave(): void
     {
         QUI\Cache\Manager::clear(self::menuCacheName());
     }
@@ -47,7 +47,7 @@ class EventHandler
      * @param Smarty $Smarty
      * @throws SmartyException
      */
-    public static function onSmartyInit(Smarty $Smarty)
+    public static function onSmartyInit(Smarty $Smarty): void
     {
         if (
             !isset($Smarty->registered_plugins['function'])
@@ -62,7 +62,7 @@ class EventHandler
      *
      * @return void
      */
-    public static function onAdminLoadFooter()
+    public static function onAdminLoadFooter(): void
     {
         $jsFile = URL_OPT_DIR . 'quiqqer/menu/bin/onAdminLoadFooter.js';
         echo '<script src="' . $jsFile . '" async></script>';
@@ -72,7 +72,7 @@ class EventHandler
      * @param $menuId
      * @return void
      */
-    public static function onQuiqqerMenuIndependentClear($menuId)
+    public static function onQuiqqerMenuIndependentClear($menuId): void
     {
         QUI\Cache\Manager::clear(self::menuCacheName());
     }

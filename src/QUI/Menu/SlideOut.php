@@ -20,7 +20,7 @@ class SlideOut extends QUI\Control
     /**
      * @param array $attributes
      */
-    public function __construct($attributes = [])
+    public function __construct(array $attributes = [])
     {
         $this->setAttributes([
             'showHomeLink' => true,
@@ -37,7 +37,7 @@ class SlideOut extends QUI\Control
      * @return string
      * @throws QUI\Exception
      */
-    public function getBody()
+    public function getBody(): string
     {
         $Engine = QUI::getTemplateManager()->getEngine();
 
@@ -77,9 +77,9 @@ class SlideOut extends QUI\Control
     /**
      * Return the current site
      *
-     * @return mixed|QUI\Projects\Site
+     * @return QUI\Interfaces\Projects\Site
      */
-    protected function getSite()
+    protected function getSite(): QUI\Interfaces\Projects\Site
     {
         if ($this->getAttribute('Site')) {
             return $this->getAttribute('Site');

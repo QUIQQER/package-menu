@@ -7,6 +7,9 @@
 /**
  * Return the item name
  */
+
+use QUI\Menu\Independent\Items\AbstractMenuItem;
+
 QUI::$Ajax->registerFunction(
     'package_quiqqer_menu_ajax_backend_independent_getItemName',
     function ($item) {
@@ -16,7 +19,7 @@ QUI::$Ajax->registerFunction(
             return '';
         }
 
-        /* @var $Item \QUI\Menu\Independent\Items\AbstractMenuItem */
+        /* @var $Item AbstractMenuItem */
         $Item = new $item['type']($item);
         return $Item->getName();
     },

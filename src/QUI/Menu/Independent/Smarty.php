@@ -14,7 +14,9 @@ class Smarty
     /**
      * Menu function for smarty
      *
-     * @return void
+     * @param $params
+     * @param $smarty
+     * @return string
      */
     public static function menu($params, $smarty): string
     {
@@ -25,7 +27,7 @@ class Smarty
 
         try {
             $Project = QUI::getRewrite()->getProject();
-        } catch (QUI\Exception $Exception) {
+        } catch (QUI\Exception) {
             return '';
         }
 
@@ -34,7 +36,7 @@ class Smarty
 
         try {
             return QUI\Cache\Manager::get($cacheName);
-        } catch (QUI\Exception $Exception) {
+        } catch (QUI\Exception) {
         }
 
         try {

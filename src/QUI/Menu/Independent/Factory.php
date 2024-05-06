@@ -2,6 +2,7 @@
 
 namespace QUI\Menu\Independent;
 
+use Exception;
 use QUI;
 
 /**
@@ -29,7 +30,7 @@ class Factory
 
         try {
             QUI::getEvents()->fireEvent('quiqqerMenuIndependentCreate', [$Menu]);
-        } catch (\Exception $Exception) {
+        } catch (Exception $Exception) {
             QUI\System\Log::writeException($Exception);
         }
 
@@ -42,7 +43,7 @@ class Factory
      * @throws QUI\Database\Exception
      * @throws QUI\Permissions\Exception
      */
-    public static function deleteMenu(int $menuId)
+    public static function deleteMenu(int $menuId): void
     {
         QUI\Permissions\Permission::checkPermission('quiqqer.menu.delete');
 
@@ -52,7 +53,7 @@ class Factory
 
         try {
             QUI::getEvents()->fireEvent('quiqqerMenuIndependentDelete', [$menuId]);
-        } catch (\Exception $Exception) {
+        } catch (Exception $Exception) {
             QUI\System\Log::writeException($Exception);
         }
     }
