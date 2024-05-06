@@ -17,6 +17,12 @@
                 <span class="quiqqer-menu-megaMenu-children-simple-entry-title">
                     {$Child->getTitle()}
                 </span>
+
+                {if $Child->getShort()}
+                <div class="quiqqer-menu-megaMenu-children-simple-entry-short">
+                    {$Child->getShort()}
+                </div>
+                {/if}
             </a>
         {else}
             <span class="qui-menu-siteid-{$Child->getIdentifier()}">
@@ -27,6 +33,15 @@
                 <span class="quiqqer-menu-megaMenu-children-simple-entry-title">
                     {$Child->getTitle()}
                 </span>
+                <span class="quiqqer-menu-megaMenu-children-simple-entry-title">
+                    {$Child->getTitle()}
+                </span>
+
+                {if $Child->getShort()}
+                <div class="quiqqer-menu-megaMenu-children-simple-entry-short">
+                    {$Child->getShort()}
+                </div>
+                {/if}
             </span>
         {/if}
     </div>
