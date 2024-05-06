@@ -3,6 +3,8 @@
 namespace QUI\Menu\Mega;
 
 use QUI;
+use QUI\Exception;
+use QUI\Interfaces\Projects\Site;
 
 /**
  * Class AbstractMenu
@@ -15,14 +17,15 @@ abstract class AbstractChild extends QUI\Control
     /**
      * @var null|array
      */
-    protected $children = null;
+    protected ?array $children = null;
 
     /**
      * Return the current site
      *
-     * @return mixed|QUI\Projects\Site
+     * @return Site
+     * @throws Exception
      */
-    protected function getSite()
+    protected function getSite(): QUI\Interfaces\Projects\Site
     {
         if ($this->getAttribute('Site')) {
             return $this->getAttribute('Site');
@@ -32,9 +35,10 @@ abstract class AbstractChild extends QUI\Control
     }
 
     /**
-     * @return array
+     * @return array|null
+     * @throws Exception
      */
-    public function getChildren()
+    public function getChildren(): ?array
     {
         if (is_null($this->children)) {
             $this->children = $this->getSite()->getNavigation();
@@ -47,8 +51,9 @@ abstract class AbstractChild extends QUI\Control
      * Returns the number of children
      *
      * @return int
+     * @throws Exception
      */
-    public function count()
+    public function count(): int
     {
         return count($this->getChildren());
     }

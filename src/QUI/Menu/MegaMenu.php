@@ -6,7 +6,15 @@
 
 namespace QUI\Menu;
 
+use Exception;
 use QUI;
+
+use function array_filter;
+use function array_merge;
+use function array_unique;
+use function is_object;
+use function md5;
+use function serialize;
 
 /**
  * Class MegaMenu
@@ -16,19 +24,21 @@ use QUI;
 class MegaMenu extends AbstractMenu
 {
     /**
-     * @var SlideOut
+     * @var SlideOut|SlideOutAdvanced|null
      */
-    protected $Mobile = null;
+    protected SlideOutAdvanced|null|SlideOut $Mobile = null;
 
     /**
      * @var array
      */
-    protected $subMenus = [];
+    protected array $subMenus = [];
 
     /**
      * @param array $attributes
+     * @throws QUI\Exception
+     * @throws Exception
      */
-    public function __construct($attributes = [])
+    public function __construct(array $attributes = [])
     {
         $this->setAttributes([
             'showStart' => false,
@@ -86,19 +96,20 @@ class MegaMenu extends AbstractMenu
     /**
      * @return string
      * @throws QUI\Exception
+     * @throws Exception
      */
-    public function getBody()
+    public function getBody(): string
     {
         $cache = EventHandler::menuCacheName() . '/megaMenu/';
 
         $attributes = $this->getAttributes();
-        $attributes = \array_filter($attributes, function ($entry) {
-            return \is_object($entry) === false;
+        $attributes = array_filter($attributes, function ($entry) {
+            return is_object($entry) === false;
         });
 
-        $cache .= \md5(
+        $cache .= md5(
             $this->getSite()->getCachePath() .
-            \serialize($attributes)
+            serialize($attributes)
         );
 
         $childControl = $this->getMenuControl($this->getAttribute('display'));
@@ -125,7 +136,7 @@ class MegaMenu extends AbstractMenu
 
             foreach ($cacheResult['subMenus'] as $childControl) {
                 $Instance = new $childControl();
-                $cssFiles = \array_merge($cssFiles, $Instance->getCSSFiles());
+                $cssFiles = array_merge($cssFiles, $Instance->getCSSFiles());
             }
 
             foreach ($cssFiles as $cssFile) {
@@ -133,7 +144,7 @@ class MegaMenu extends AbstractMenu
             }
 
             return $cacheResult['html'];
-        } catch (QUI\Exception $Exception) {
+        } catch (QUI\Exception) {
         }
 
         $Engine = QUI::getTemplateManager()->getEngine();
@@ -207,7 +218,7 @@ class MegaMenu extends AbstractMenu
             $result['html'] = $Engine->fetch(dirname(__FILE__) . '/MegaMenu.html');
         }
 
-        $result['subMenus'] = \array_unique($this->subMenus);
+        $result['subMenus'] = array_unique($this->subMenus);
 
         QUI\Cache\Manager::set($cache, $result);
 
@@ -215,9 +226,11 @@ class MegaMenu extends AbstractMenu
     }
 
     /**
-     * @return QUI\Projects\Site
+     * @return QUI\Interfaces\Projects\Site
+     * @throws QUI\Exception
+     * @throws Exception
      */
-    public function getStart()
+    public function getStart(): QUI\Interfaces\Projects\Site
     {
         if ($this->getAttribute('Start')) {
             return $this->getAttribute('Start');
@@ -230,9 +243,9 @@ class MegaMenu extends AbstractMenu
      * Return the menu control class name for a menu control shortcut
      *
      * @param $control
-     * @return mixed
+     * @return false|string
      */
-    public function getMenuControl($control)
+    public function getMenuControl($control): bool|string
     {
         switch ($control) {
             case 'Image':
@@ -292,7 +305,7 @@ class MegaMenu extends AbstractMenu
     /**
      * @param $subMenu
      */
-    public function addSubMenu($subMenu)
+    public function addSubMenu($subMenu): void
     {
         $this->subMenus[] = $subMenu;
     }
@@ -300,9 +313,10 @@ class MegaMenu extends AbstractMenu
     /**
      * Return the current site
      *
-     * @return mixed|QUI\Projects\Site
+     * @return QUI\Interfaces\Projects\Site
+     * @throws QUI\Exception
      */
-    protected function getSite()
+    protected function getSite(): QUI\Interfaces\Projects\Site
     {
         if ($this->getAttribute('Site')) {
             return $this->getAttribute('Site');
@@ -317,8 +331,9 @@ class MegaMenu extends AbstractMenu
      * @param $slideOutParam
      * @return SlideOutAdvanced|SlideOut
      * @throws QUI\Exception
+     * @throws Exception
      */
-    protected function getMobileMenu($slideOutParam)
+    protected function getMobileMenu($slideOutParam): SlideOut|SlideOutAdvanced
     {
         if ($this->getProject()->getConfig('mobileMenu.settings.type') == 'slideoutAdvanced') {
             $Menu = new QUI\Menu\SlideOutAdvanced($slideOutParam);

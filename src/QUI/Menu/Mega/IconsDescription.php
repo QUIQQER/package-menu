@@ -17,9 +17,9 @@ use QUI;
 class IconsDescription extends AbstractChild
 {
     /**
-     * @var null
+     * @var array|null
      */
-    protected $children = null;
+    protected ?array $children = null;
 
     /**
      * Standard constructor.
@@ -40,7 +40,7 @@ class IconsDescription extends AbstractChild
      * @return string
      * @throws QUI\Exception
      */
-    public function getBody()
+    public function getBody(): string
     {
         $Engine = QUI::getTemplateManager()->getEngine();
 
