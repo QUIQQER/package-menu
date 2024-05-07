@@ -37,7 +37,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Site', [
         $onInject: function () {
             this.getElm().set('data-qui', this.getType());
             this.getElm().set('html', Mustache.render(template, {
-                status           : QUILocale.get('quiqqer/quiqqer', 'status'),
+                status           : QUILocale.get('quiqqer/core', 'status'),
                 statusDescription: QUILocale.get(lg, 'tpl.statusDescription'),
 
                 site          : QUILocale.get(lg, 'tpl.Site'),

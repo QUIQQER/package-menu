@@ -112,7 +112,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/Input', [
             new Element('button', {
                 'class': 'button qui-button--no-icon qui-button qui-utils-noselect',
                 html   : '<span class="fa fa-remove"></span>',
-                title  : QUILocale.get('quiqqer/quiqqer', 'remove'),
+                title  : QUILocale.get('quiqqer/core', 'remove'),
                 events : {
                     click: (e) => {
                         e.stop();

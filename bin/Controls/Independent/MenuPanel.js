@@ -76,7 +76,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
             // buttons
             this.addButton({
                 name  : 'save',
-                text  : QUILocale.get('quiqqer/quiqqer', 'save'),
+                text  : QUILocale.get('quiqqer/core', 'save'),
                 events: {
                     click: this.save
                 }
@@ -85,7 +85,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
             /*
             this.addButton({
                 name  : 'add',
-                text  : QUILocale.get('quiqqer/quiqqer', 'add'),
+                text  : QUILocale.get('quiqqer/core', 'add'),
                 events: {
                     click: () => {
                         this.addItem();
@@ -126,7 +126,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuPanel', [
             this.addButton({
                 name    : 'delete',
                 disabled: true,
-                text    : QUILocale.get('quiqqer/quiqqer', 'remove'),
+                text    : QUILocale.get('quiqqer/core', 'remove'),
                 events  : {
                     click: this.addItem
                 }
