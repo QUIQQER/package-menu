@@ -187,7 +187,7 @@
     <settings>
         <window name="quiqqer-cache" menu-parent="/settings/quiqqer/">
             <title>
-                <locale group="quiqqer/quiqqer" var="quiqqer.settings.cache"/>
+                <locale group="quiqqer/core" var="quiqqer.settings.cache"/>
             </title>
 
             <params>
@@ -199,7 +199,7 @@
 
                 <settings title="clearMenuCache" name="clearMenuCache">
                     <title>
-                        <locale group="quiqqer/quiqqer" var="quiqqer.menu.clearMenuCache.title"/>
+                        <locale group="quiqqer/core" var="quiqqer.menu.clearMenuCache.title"/>
                     </title>
 
                     <button>boom</button>
