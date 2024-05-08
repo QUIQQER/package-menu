@@ -80,7 +80,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuManagement', [
             // buttons
             this.addButton({
                 name     : 'add',
-                text     : QUILocale.get('quiqqer/quiqqer', 'add'),
+                text     : QUILocale.get('quiqqer/core', 'add'),
                 textimage: 'fa fa-plus',
                 events   : {
                     onClick: this.openCreationWindow
@@ -90,7 +90,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/MenuManagement', [
             this.addButton({
                 disabled : true,
                 name     : 'delete',
-                text     : QUILocale.get('quiqqer/quiqqer', 'remove'),
+                text     : QUILocale.get('quiqqer/core', 'remove'),
                 textimage: 'fa fa-trash',
                 events   : {
                     onClick: this.openDeletionWindow

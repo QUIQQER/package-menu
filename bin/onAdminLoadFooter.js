@@ -41,7 +41,7 @@ window.addEvent('domready', function () {
 
                             QUI.getMessageHandler(function (QUI) {
                                 QUI.addSuccess(
-                                    QUILocale.get('quiqqer/quiqqer', 'message.clear.cache.successful')
+                                    QUILocale.get('quiqqer/core', 'message.clear.cache.successful')
                                 );
                             });
                         }, {

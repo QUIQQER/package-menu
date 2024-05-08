@@ -39,10 +39,10 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Custom', [
         $onInject: function () {
             this.getElm().set('data-qui', this.getType());
             this.getElm().set('html', Mustache.render(template, {
-                status           : QUILocale.get('quiqqer/quiqqer', 'status'),
+                status           : QUILocale.get('quiqqer/core', 'status'),
                 statusDescription: QUILocale.get(lg, 'tpl.statusDescription'),
 
-                title           : QUILocale.get('quiqqer/quiqqer', 'title'),
+                title           : QUILocale.get('quiqqer/core', 'title'),
                 linkTitle       : QUILocale.get(lg, 'tpl.linkTitle'),
                 short: QUILocale.get(lg, 'tpl.short'),
                 shortDesc: QUILocale.get(lg, 'tpl.shortDesc'),

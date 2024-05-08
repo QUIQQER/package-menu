@@ -37,11 +37,11 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Anchor', [
         $onInject: function () {
             this.getElm().set('data-qui', this.getType());
             this.getElm().set('html', Mustache.render(template, {
-                status           : QUILocale.get('quiqqer/quiqqer', 'status'),
+                status           : QUILocale.get('quiqqer/core', 'status'),
                 statusDescription: QUILocale.get(lg, 'tpl.statusDescription'),
 
                 site     : QUILocale.get(lg, 'tpl.Site'),
-                title    : QUILocale.get('quiqqer/quiqqer', 'title'),
+                title    : QUILocale.get('quiqqer/core', 'title'),
                 linkTitle: QUILocale.get(lg, 'tpl.linkTitle'),
                 icon     : QUILocale.get(lg, 'tpl.icon'),
                 anchor   : QUILocale.get(lg, 'tpl.anchor'),
