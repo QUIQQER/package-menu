@@ -1,0 +1,23 @@
+.quiqqer-submenu {
+    --_quiqqer-menu-submenu__gap: clamp(0.5rem, 3%, 1rem);
+}
+
+/* reset */
+.quiqqer-submenu__items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* general */
+.quiqqer-submenu__link {
+    cursor: pointer;
+}
+
+.quiqqer-submenu__link:not(:hover) {
+    color: var(--_quiqqer-menu-submenu__linkColor);
+}
+
+.quiqqer-submenu__link:is(:hover, :active, :focus) {
+    color: var(--_quiqqer-menu-submenu__linkColor--hover);
+}
