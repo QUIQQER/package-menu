@@ -10,11 +10,13 @@
                            title="{$Child->getTitleAttribute()|escape:'html'}"
                            {if $Child->getTarget()}target="{$Child->getTarget()}"{/if}>
                             {if $this->getAttribute('showImages') && $Child->getIcon()}
-                                {if $IconHandler->isIcon($Child->getIcon())}
-                                    <span class="{$Child->getIcon()} fa-fw quiqqer-submenu__icon"></span>
-                                {else}
-                                    {image src=$Child->getIcon() height="50" class="quiqqer-submenu__icon quiqqer-submenu__icon--image"}
-                                {/if}
+                                <div class="quiqqer-submenu__iconContainer">
+                                    {if $IconHandler->isIcon($Child->getIcon())}
+                                        <span class="{$Child->getIcon()} fa-fw quiqqer-submenu__icon"></span>
+                                    {else}
+                                        {image src=$Child->getIcon() height="500" class="quiqqer-submenu__image"}
+                                    {/if}
+                                </div>
                             {/if}
                             <span class="quiqqer-submenu__label">{$Child->getTitle()}</span>
                         </a>
@@ -22,11 +24,13 @@
                         <span class="quiqqer-submenu__link"
                               title="{$Child->getTitleAttribute()|escape:'html'}">
                             {if $this->getAttribute('showImages') && $Child->getIcon()}
-                                {if $IconHandler->isIcon($Child->getIcon())}
-                                    <span class="{$Child->getIcon()} fa-fw quiqqer-submenu__icon"></span>
-                                {else}
-                                    {image src=$Child->getIcon() height="50" class="quiqqer-submenu__icon quiqqer-submenu__icon--image"}
-                                {/if}
+                                <div class="quiqqer-submenu__iconContainer">
+                                    {if $IconHandler->isIcon($Child->getIcon())}
+                                        <span class="{$Child->getIcon()} fa-fw quiqqer-submenu__icon"></span>
+                                    {else}
+                                        {image src=$Child->getIcon() height="500" class="quiqqer-submenu__image"}
+                                    {/if}
+                                </div>
                             {/if}
                             <span class="quiqqer-submenu__label">{$Child->getTitle()}</span>
                         </span>

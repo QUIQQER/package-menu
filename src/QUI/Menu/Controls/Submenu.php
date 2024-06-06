@@ -37,11 +37,18 @@ class Submenu extends QUI\Control
             'class' => 'quiqqer-submenu',
             'startId' => false, // id or site link
             'menuId' => false, // id of an independent menu
-            'template' => 'list.buttonStyle', // 'list.buttonStyle', 'list.simple'
+            'template' => 'list-buttonStyle', // 'list-buttonStyle', 'list-simple', 'box-imageTop', 'box-imageOverlay'
             'useIcons' => false,
+            'controlBgColor' => '',
+            'controlBgPadding' => '1rem',
             'linkColor' => 'inherit',
             'linkColorHover' => 'inherit',
-            'itemsAlignment' => 'flex-start' // 'flex-start', 'center', 'flex-end', 'space-between', 'space-around'
+            'itemsAlignment' => 'center', // 'flex-start', 'center', 'flex-end', 'space-between', 'space-around'
+            'showImages' => true, // if true, icons or images will be displayed
+            'imageFitMode' => 'cover', // any valid css property for image-fit attribute , i.e. 'cover', 'contain', 'scale-down'
+            'imageContainerHeight' => '',// any valid css property (with unit!) for height attribute, i.e. '150px', '10vw' or even clamp() function (if no value passed the container will be a square)
+            'boxBgColor' => '#f5f5f6',
+            'boxWidth' => '250px'// any valid css property (with unit!) for height attribute, i.e. '250px', '10vw' or even clamp() function
         ]);
 
         parent::__construct($attributes);
@@ -71,24 +78,42 @@ class Submenu extends QUI\Control
             return '';
         }
 
+        $url = false;
+
+        if (QUI::getRewrite()->getSite()->getUrlRewritten()) {
+            $url = QUI::getRewrite()->getSite()->getUrlRewritten();
+        }
+
         $Engine = QUI::getTemplateManager()->getEngine();
 
-        if ($this->getAttribute('linkColor')) {
-            $this->setCustomVariable(
-                'linkColor',
-                $this->getAttribute('linkColor')
-            );
-        }
-
-        if ($this->getAttribute('linkColorHover')) {
-            $this->setCustomVariable(
-                'linkColor--hover',
-                'var(--qui-primary, ' . $this->getAttribute('linkColorHover') . ')'
-            );
-        }
-
         switch ($this->getAttribute('template')) {
-            case 'list.simple':
+            case 'box-imageTop':
+            case 'box-imageOverlay':
+                $templateName = '/Submenu.Box.html';
+
+                if ($isIndependentMenu) {
+                    $templateName = '/Submenu.Box.Independent.html';
+                }
+
+                $this->addCSSClass('quiqqer-submenu--' . $this->getAttribute('template'));
+
+                $this->templateFile = dirname(__FILE__) . $templateName;
+                $this->templateCssFile = dirname(__FILE__) . '/Submenu.Box.css';
+
+                $this->setCustomVariable('imageFitMode', $this->getAttribute('imageFitMode'));
+
+                $imageContainerHeight = $this->getAttribute('imageContainerHeight');
+
+                if ($imageContainerHeight) {
+                    $this->setCustomVariable('imageContainerHeight', $imageContainerHeight);
+                }
+
+                $this->setCustomVariable('boxBgColor', $this->getAttribute('boxBgColor'));
+                $this->setCustomVariable('boxWidth', $this->getAttribute('boxWidth'));
+
+                break;
+
+            case 'list-simple':
                 $templateName = '/Submenu.List.html';
 
                 if ($isIndependentMenu) {
@@ -102,11 +127,15 @@ class Submenu extends QUI\Control
                 break;
 
             default:
-            case 'list.buttonStyle':
+            case 'list-buttonStyle':
                 $templateName = '/Submenu.List.html';
 
                 if ($isIndependentMenu) {
                     $templateName = '/Submenu.List.Independent.html';
+                }
+
+                if (!$this->getAttribute('controlBgColor')) {
+                    $this->setAttribute('controlBgColor', '#f5f5f5');
                 }
 
                 $this->templateFile = dirname(__FILE__) . $templateName;
@@ -114,6 +143,40 @@ class Submenu extends QUI\Control
                 $this->addCSSClass('quiqqer-submenu--list-buttonStyle');
 
                 break;
+        }
+
+        if ($this->getAttribute('controlBgColor')) {
+            $this->setCustomVariable(
+                'controlBgColor',
+                $this->getAttribute('controlBgColor')
+            );
+
+            if ($this->getAttribute('controlBgPadding')) {
+                $this->addCSSClass('quiqqer-submenu--controlPadding');
+
+                $this->setCustomVariable(
+                    'controlBgPadding',
+                    $this->getAttribute('controlBgPadding')
+                );
+            }
+        }
+
+        if ($this->getAttribute('linkColor')) {
+            $this->setCustomVariable(
+                'linkColor',
+                $this->getAttribute('linkColor')
+            );
+
+            $this->addCSSClass('quiqqer-submenu__link--linkColor');
+        }
+
+        if ($this->getAttribute('linkColorHover')) {
+            $this->setCustomVariable(
+                'linkColor--hover',
+                $this->getAttribute('linkColorHover')
+            );
+
+            $this->addCSSClass('quiqqer-submenu__link--linkColorHover');
         }
 
         switch ($this->getAttribute('itemsAlignment')) {
@@ -126,7 +189,7 @@ class Submenu extends QUI\Control
                 break;
 
             default:
-                $itemsAlignment = 'flex-start';
+                $itemsAlignment = 'center';
                 break;
         }
 
@@ -134,7 +197,9 @@ class Submenu extends QUI\Control
 
         $Engine->assign([
             'this' => $this,
-            'children' => $children
+            'children' => $children,
+            'url' => $url,
+            'IconHandler' => new QUI\Icons\Handler()
         ]);
 
         $this->addCSSFile(dirname(__FILE__) . '/Submenu.css');

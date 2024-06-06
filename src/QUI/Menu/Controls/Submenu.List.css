@@ -1,23 +1,30 @@
 .quiqqer-submenu--list-simple,
 .quiqqer-submenu--list-buttonStyle {
-    --_quiqqer-menu-submenu__controlBgColor: var(--qui-menu-submenu__controlBgColor, #f5f5f5);
     --_quiqqer-menu-submenu__linkBgColor: var(--quiqqer-menu-submenu__linkBgColor, transparent);
     --_quiqqer-menu-submenu__linkBgColor--hover: var(--quiqqer-menu-submenu__linkBgColor--hover, #fff);
 }
 
 /* Styling: general */
-.quiqqer-submenu__icon {
-    margin-right: 0.5em;
-}
-
-/* Styling: simple list */
-:where(.quiqqer-submenu--list-simple) .quiqqer-submenu__items,
-:where(.quiqqer-submenu--list-buttonStyle) .quiqqer-submenu__items {
+:where(.quiqqer-submenu--list-simple, .quiqqer-submenu--list-buttonStyle) .quiqqer-submenu__items {
     display: flex;
     gap: 0 calc(var(--_quiqqer-menu-submenu__gap) * 1.5);
     flex-wrap: wrap;
     justify-content: var(--_quiqqer-menu-submenu__itemsAlignment);
+    align-items: center;
 }
+
+:where(.quiqqer-submenu--list-simple, .quiqqer-submenu--list-buttonStyle) .quiqqer-submenu__icon {
+    margin-right: 0.5em;
+}
+
+:where(.quiqqer-submenu--list-simple, .quiqqer-submenu--list-buttonStyle) .quiqqer-submenu__icon--image {
+    height: 1.5em;
+    width: auto;
+    vertical-align: middle;
+}
+
+/* Styling: simple list */
+
 
 /* Styling: button style */
 .quiqqer-submenu--list-buttonStyle {
@@ -34,4 +41,8 @@
 
 :where(.quiqqer-submenu--list-buttonStyle) .quiqqer-submenu__link:is(:hover, :active, :focus) {
     background-color: var(--_quiqqer-menu-submenu__linkBgColor--hover);
+}
+
+:where(.quiqqer-submenu--list-buttonStyle) .quiqqer-submenu__icon--image {
+    border-radius: 0.25em;
 }

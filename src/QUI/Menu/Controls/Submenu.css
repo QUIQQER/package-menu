@@ -1,5 +1,7 @@
 .quiqqer-submenu {
-    --_quiqqer-menu-submenu__gap: clamp(0.5rem, 3%, 1rem);
+    --_quiqqer-menu-submenu__gap: clamp(0.5rem, 2vw, 1rem);
+
+    background-color: var(--_quiqqer-menu-submenu__controlBgColor);
 }
 
 /* reset */
@@ -10,14 +12,18 @@
 }
 
 /* general */
+.quiqqer-submenu--controlPadding {
+    padding: var(--_quiqqer-menu-submenu__controlBgPadding);
+}
+
 .quiqqer-submenu__link {
     cursor: pointer;
 }
 
-.quiqqer-submenu__link:not(:hover) {
+:where(.quiqqer-submenu__link--linkColor) .quiqqer-submenu__link {
     color: var(--_quiqqer-menu-submenu__linkColor);
 }
 
-.quiqqer-submenu__link:is(:hover, :active, :focus) {
+:where(.quiqqer-submenu__link--linkColorHover) .quiqqer-submenu__link:is(:hover, :active, :focus) {
     color: var(--_quiqqer-menu-submenu__linkColor--hover);
 }
