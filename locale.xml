@@ -515,6 +515,166 @@
             <de><![CDATA[Tab Einträge]]></de>
             <en><![CDATA[Tab entries]]></en>
         </locale>
+
+
+        <locale name="bricks.submenu.title">
+            <de><![CDATA[Menü: Submenu (Navigation)]]></de>
+            <en><![CDATA[Menu: Submenu]]></en>
+        </locale>
+        <locale name="bricks.submenu.desc">
+            <de><![CDATA[Platziere auf deiner Seite eine Subnavigation. Dadurch kann innerhalb der Seite gescrollt oder zu anderen Unterseiten verlinkt werden.]]></de>
+            <en><![CDATA[Place a sub-navigation on your page. This allows you to scroll within the page or link to other subpages.]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.menuId">
+            <de><![CDATA[Menu ID]]></de>
+            <en><![CDATA[Menu ID]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.menuId.desc">
+            <de><![CDATA[Menu ID auswählen.]]></de>
+            <en><![CDATA[Select your menu]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.startId">
+            <de><![CDATA[Elternseite]]></de>
+            <en><![CDATA[Parent site]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.startId.desc">
+            <de><![CDATA[Bitte die Elternseite auswählen. <strong>Achtung!</strong> Wenn "Menu ID" ausgewählt ist, hat diese Option keine Auswirkung.]]></de>
+            <en><![CDATA[Select the parent site. <strong>Notice:</strong> if "Menu ID" is selected, this option has no effect.]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.template">
+            <de><![CDATA[Vorlage]]></de>
+            <en><![CDATA[Template]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.template.list-simple">
+            <de><![CDATA[Liste: einfach]]></de>
+            <en><![CDATA[List: simple]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.template.list-buttonStyle">
+            <de><![CDATA[Liste: Button Style]]></de>
+            <en><![CDATA[Liste: button style]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.template.box-imageTop">
+            <de><![CDATA[Box: Bild / Icon vor dem Text]]></de>
+            <en><![CDATA[Box: Image with text below]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.template.box-imageOverlay">
+            <de><![CDATA[Box: Text über dem Bild (nicht für Icons geeignet)]]></de>
+            <en><![CDATA[Box: Text above the image (not suitable for icons)]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.controlBgColor">
+            <de><![CDATA[Menu Hintergrundfarbe]]></de>
+            <en><![CDATA[Menu background color]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.controlBgColor.desc">
+            <de><![CDATA[Die ausgewählte Farbe wird hinter dem Menü angewendet.]]></de>
+            <en><![CDATA[The selected color is applied behind the menu.]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.linkColor">
+            <de><![CDATA[Link Farbe]]></de>
+            <en><![CDATA[Link color]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.linkColor.desc">
+            <de><![CDATA[Setzt die Farbe des Links. Wenn keine Farbe ausgewählt ist, wird die Farbe vererbt (meistens Textfarbe).]]></de>
+            <en><![CDATA[Sets the color of the link. If no color is selected, the color is inherited (usually text color).]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.linkColorHover">
+            <de><![CDATA[Aktive Link Farbe ("hover")]]></de>
+            <en><![CDATA[Hover link color]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.linkColorHover.desc">
+            <de><![CDATA[Diese Farbe wird benutzt, wenn man mit der Maus über dem Link fährt.]]></de>
+            <en><![CDATA[This color is used when you move the mouse over the link.]]></en>
+        </locale>
+
+        <locale name="bricks.submenu.settings.itemsAlignment">
+            <de><![CDATA[Menüpunkte Ausrichtung]]></de>
+            <en><![CDATA[Menu items alignment]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.itemsAlignment.start">
+            <de><![CDATA[Anfang (links)]]></de>
+            <en><![CDATA[Start (left)]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.itemsAlignment.center">
+            <de><![CDATA[Zentriert]]></de>
+            <en><![CDATA[Center]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.itemsAlignment.end">
+            <de><![CDATA[Ende (rechts)]]></de>
+            <en><![CDATA[End (right)]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.itemsAlignment.space-between">
+            <de><![CDATA[Menüpunkte gleichmäßig verteilen ("space between")]]></de>
+            <en><![CDATA[Space between]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.itemsAlignment.space-around">
+            <de><![CDATA[Menüpunkte gleichmäßig verteilen ("space around")]]></de>
+            <en><![CDATA[Space around]]></en>
+        </locale>
+
+        <locale name="bricks.submenu.settings.showImages">
+            <de><![CDATA[Bilder / Icons aktivieren]]></de>
+            <en><![CDATA[Active images or icons]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.showImages.desc">
+            <de><![CDATA[Falls die einzelne Einträge Bilder oder Icons eingestellt haben, werden diese angezeigt (außer in Template "List: einfach").]]></de>
+            <en><![CDATA[If the menu entries have images or icons set, these are displayed (except in template "List: simple").]]></en>
+        </locale>
+
+        <locale name="bricks.submenu.settings.imageFitMode">
+            <de><![CDATA[Bildverhalten]]></de>
+            <en><![CDATA[Image fit mode]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.imageFitMode.desc">
+            <de><![CDATA[Diese Einstellung hat Auswirkung nur auf Bilder, keine Icons.]]></de>
+            <en><![CDATA[This setting only affects images, not icons.]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.imageFitMode.fill">
+            <de><![CDATA[Fill: Die gesamte Fläche Ausfüllen - Bild kann verzerrt werden]]></de>
+            <en><![CDATA[Fill: Fill the entire area - image can be distorted]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.imageFitMode.contain">
+            <de><![CDATA[Contain: Bild wird verkleinert um in den verfügbaren Platz zu passen]]></de>
+            <en><![CDATA[Contain: Image is resized to fit in the available space]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.imageFitMode.cover">
+            <de><![CDATA[Cover: Die gesamte Fläche Ausfüllen - Bild kann abgeschnitten werden]]></de>
+            <en><![CDATA[Cover: Fill entire area - image can be cut off]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.imageFitMode.none">
+            <de><![CDATA[None: das Bild behält seine originale Größe]]></de>
+            <en><![CDATA[None: the image retains its original size]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.imageFitMode.scale-down">
+            <de><![CDATA[Scale down: das Bild wird u.U. verkleinert.]]></de>
+            <en><![CDATA[Scale down: the image may be reduced in size.]]></en>
+        </locale>
+
+        <locale name="bricks.submenu.settings.imageContainerHeight">
+            <de><![CDATA[Höhe der Bildbox]]></de>
+            <en><![CDATA[Image container height]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.imageContainerHeight.desc">
+            <de><![CDATA[Man kan jeden validen CSS Wert verwenden, auch die <code>clamp()</code> Funktion. Wird kein Wert gesetzt, wird die Box quadratisch.]]></de>
+            <en><![CDATA[You can use any valid CSS value, including the <code>clamp()</code> function. If no value is set, the container becomes square.]]></en>
+        </locale>
+
+        <locale name="bricks.submenu.settings.boxBgColor">
+            <de><![CDATA[Bildbox Farbe]]></de>
+            <en><![CDATA[Image container color]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.boxBgColor.desc">
+            <de><![CDATA[Diese Einstellung funktioniert nur mit Templates "Box: Bild / Icon oben" und "Box: Text über dem Bild" zusammen.]]></de>
+            <en><![CDATA[This setting only works with templates "Box: image or icon top" and "Box: Image with text below" together.]]></en>
+        </locale>
+
+        <locale name="bricks.submenu.settings.boxWidth">
+            <de><![CDATA[Breite der Menüeinträgen]]></de>
+            <en><![CDATA[Width of the menu items]]></en>
+        </locale>
+        <locale name="bricks.submenu.settings.boxWidth.desc">
+            <de><![CDATA[Man kan jeden validen CSS Wert verwenden, auch die <code>clamp()</code> Funktion. Diese Einstellung funktioniert nur mit Templates "Box: Bild / Icon oben" und "Box: Text über dem Bild" zusammen.]]></de>
+            <en><![CDATA[You can use any valid CSS value, including the <code>clamp()</code> function. If no value is set, the container becomes square. This setting only works with templates "Box: image or icon top" and "Box: Image with text below" together.]]></en>
+        </locale>
     </groups>
 
     <groups name="quiqqer/menu" datatype="php">

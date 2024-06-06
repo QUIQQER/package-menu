@@ -12,7 +12,7 @@ use QUI\Menu\Independent;
 use QUI\Projects\Site\Utils;
 
 /**
- * Class Subumenu
+ * Class Submenu
  *
  *  It creates a submenu navigation
  *
@@ -38,12 +38,11 @@ class Submenu extends QUI\Control
             'startId' => false, // id or site link
             'menuId' => false, // id of an independent menu
             'template' => 'list-buttonStyle', // 'list-buttonStyle', 'list-simple', 'box-imageTop', 'box-imageOverlay'
-            'useIcons' => false,
             'controlBgColor' => '',
             'controlBgPadding' => '1rem',
             'linkColor' => 'inherit',
             'linkColorHover' => 'inherit',
-            'itemsAlignment' => 'center', // 'flex-start', 'center', 'flex-end', 'space-between', 'space-around'
+            'itemsAlignment' => 'center', // 'start', 'center', 'end', 'space-between', 'space-around'
             'showImages' => true, // if true, icons or images will be displayed
             'imageFitMode' => 'cover', // any valid css property for image-fit attribute , i.e. 'cover', 'contain', 'scale-down'
             'imageContainerHeight' => '',// any valid css property (with unit!) for height attribute, i.e. '150px', '10vw' or even clamp() function (if no value passed the container will be a square)
@@ -180,9 +179,9 @@ class Submenu extends QUI\Control
         }
 
         switch ($this->getAttribute('itemsAlignment')) {
-            case 'flex-start':
+            case 'start':
             case 'center':
-            case 'flex-end':
+            case 'end':
             case 'space-between':
             case 'space-around':
                 $itemsAlignment = $this->getAttribute('itemsAlignment');
