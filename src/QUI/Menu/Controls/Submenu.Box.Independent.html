@@ -1,0 +1,43 @@
+{strip}
+    {if count($children)}
+        <ul class="quiqqer-submenu__items">
+            {assign var=current value='quiqqer-submenu__item--current'}
+
+            {foreach from=$children item=Child}
+                <li class="quiqqer-submenu__item {if $Child->getUrl() === $url}{$current}{/if}">
+                    {if $Child->getUrl()}
+                        <a href="{$Child->getUrl()}" class="quiqqer-submenu__link"
+                           title="{$Child->getTitleAttribute()|escape:'html'}"
+                           {if $Child->getTarget()}target="{$Child->getTarget()}"{/if}>
+                            {if $this->getAttribute('showImages') && $Child->getIcon()}
+                                <div class="quiqqer-submenu__iconContainer">
+                                    {if $IconHandler->isIcon($Child->getIcon())}
+                                        <span class="{$Child->getIcon()} fa-fw quiqqer-submenu__icon"></span>
+                                    {else}
+                                        {image src=$Child->getIcon() height="500" class="quiqqer-submenu__image"}
+                                    {/if}
+                                </div>
+                            {/if}
+                            <span class="quiqqer-submenu__label">{$Child->getTitle()}</span>
+                        </a>
+                    {else}
+                        <span class="quiqqer-submenu__link"
+                              title="{$Child->getTitleAttribute()|escape:'html'}">
+                            {if $this->getAttribute('showImages') && $Child->getIcon()}
+                                <div class="quiqqer-submenu__iconContainer">
+                                    {if $IconHandler->isIcon($Child->getIcon())}
+                                        <span class="{$Child->getIcon()} fa-fw quiqqer-submenu__icon"></span>
+                                    {else}
+                                        {image src=$Child->getIcon() height="500" class="quiqqer-submenu__image"}
+                                    {/if}
+                                </div>
+                            {/if}
+                            <span class="quiqqer-submenu__label">{$Child->getTitle()}</span>
+                        </span>
+                    {/if}
+                </li>
+            {/foreach}
+        </ul>
+    {/if}
+{/strip}
+
