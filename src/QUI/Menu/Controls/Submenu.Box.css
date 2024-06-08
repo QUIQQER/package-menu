@@ -1,0 +1,90 @@
+.quiqqer-submenu--box-imageTop, .quiqqer-submenu--box-imageOverlay {
+    --_quiqqer-menu-submenu__imageOverlayColor: var(--quiqqer-menu-submenu__imageOverlayColor, transparent);
+}
+
+/* Styling: general */
+:where(.quiqqer-submenu--box-imageTop, .quiqqer-submenu--box-imageOverlay) .quiqqer-submenu__items {
+    display: flex;
+    gap: calc(var(--_quiqqer-menu-submenu__gap) * 1.5);
+    flex-wrap: wrap;
+    justify-content: var(--_quiqqer-menu-submenu__itemsAlignment);
+}
+
+:where(.quiqqer-submenu--box-imageTop, .quiqqer-submenu--box-imageOverlay) .quiqqer-submenu__item {
+    flex-basis: var(--_quiqqer-menu-submenu__boxWidth);
+    padding: 0 !important;
+}
+
+:where(.quiqqer-submenu--box-imageTop, .quiqqer-submenu--box-imageOverlay) .quiqqer-submenu__link {
+    text-align: center;
+    background-color: var(--_quiqqer-menu-submenu__boxBgColor);
+    height: 100%;
+}
+
+:where(.quiqqer-submenu--box-imageTop, .quiqqer-submenu--box-imageOverlay) .quiqqer-submenu__iconContainer {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    height: var(--_quiqqer-menu-submenu__imageContainerHeight);
+    overflow: hidden;
+    place-content: center;
+}
+
+:where(.quiqqer-submenu--box-imageTop, .quiqqer-submenu--box-imageOverlay) .quiqqer-submenu__label {
+    display: block;
+    padding: 0.5rem 1rem;
+    width: 100%;
+}
+
+:where(.quiqqer-submenu--box-imageTop, .quiqqer-submenu--box-imageOverlay) .quiqqer-submenu__icon {
+    font-size: 2em;
+    display: inline-block;
+    margin: 1rem;
+}
+
+:where(.quiqqer-submenu--box-imageTop, .quiqqer-submenu--box-imageOverlay) .quiqqer-submenu__image {
+    height: 100%;
+    width: 100%;
+    object-fit: var(--_quiqqer-menu-submenu__imageFitMode);
+    max-width: initial;
+    display: block;
+}
+
+/* Styling: image top */
+:where(.quiqqer-submenu--box-imageTop) .quiqqer-submenu__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+:where(.quiqqer-submenu--box-imageTop) .quiqqer-submenu__label {
+    margin-top: auto;
+}
+
+/* Styling: image overlay */
+:where(.quiqqer-submenu--box-imageOverlay) .quiqqer-submenu__link {
+    display: grid;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+:where(.quiqqer-submenu--box-imageOverlay) .quiqqer-submenu__link:after {
+    content: '';
+    inset: 0;
+    background-color: var(--_quiqqer-menu-submenu__imageOverlayColor);
+    opacity: 0.25;
+    position: absolute;
+    z-index: 2;
+}
+
+:where(.quiqqer-submenu--box-imageOverlay) .quiqqer-submenu__iconContainer {
+    grid-area: 1 / 1 / 2 / 2;
+    position: relative;
+    z-index: 1;
+}
+
+:where(.quiqqer-submenu--box-imageOverlay) .quiqqer-submenu__label {
+    grid-area: 1 / 1 / 2 / 2;
+    position: relative;
+    z-index: 3;
+}
