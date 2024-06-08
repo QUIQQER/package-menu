@@ -554,12 +554,12 @@
             <en><![CDATA[Liste: button style]]></en>
         </locale>
         <locale name="bricks.submenu.settings.template.box-imageTop">
-            <de><![CDATA[Box: Bild / Icon vor dem Text]]></de>
+            <de><![CDATA[Box: Bild / Icon über dem Text]]></de>
             <en><![CDATA[Box: Image with text below]]></en>
         </locale>
         <locale name="bricks.submenu.settings.template.box-imageOverlay">
-            <de><![CDATA[Box: Text über dem Bild (nicht für Icons geeignet)]]></de>
-            <en><![CDATA[Box: Text above the image (not suitable for icons)]]></en>
+            <de><![CDATA[Box: Text über dem Bild (nicht geeignet, wenn Icons als Bild gesetzt ist)]]></de>
+            <en><![CDATA[Box: Text above the image (not suitable if icons are set as images)]]></en>
         </locale>
         <locale name="bricks.submenu.settings.controlBgColor">
             <de><![CDATA[Menu Hintergrundfarbe]]></de>

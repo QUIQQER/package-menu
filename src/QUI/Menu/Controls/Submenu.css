@@ -20,10 +20,10 @@
     cursor: pointer;
 }
 
-:where(.quiqqer-submenu__link--linkColor) .quiqqer-submenu__link {
+:where(.quiqqer-submenu--linkColor) .quiqqer-submenu__link {
     color: var(--_quiqqer-menu-submenu__linkColor);
 }
 
-:where(.quiqqer-submenu__link--linkColorHover) .quiqqer-submenu__link:is(:hover, :active, :focus) {
+:where(.quiqqer-submenu--linkColorHover) .quiqqer-submenu__link:is(:hover, :active, :focus) {
     color: var(--_quiqqer-menu-submenu__linkColor--hover);
 }

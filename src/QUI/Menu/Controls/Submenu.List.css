@@ -13,11 +13,12 @@
     align-items: center;
 }
 
+:where(.quiqqer-submenu--list-simple, .quiqqer-submenu--list-buttonStyle) .quiqqer-submenu__image,
 :where(.quiqqer-submenu--list-simple, .quiqqer-submenu--list-buttonStyle) .quiqqer-submenu__icon {
     margin-right: 0.5em;
 }
 
-:where(.quiqqer-submenu--list-simple, .quiqqer-submenu--list-buttonStyle) .quiqqer-submenu__icon--image {
+:where(.quiqqer-submenu--list-simple, .quiqqer-submenu--list-buttonStyle) .quiqqer-submenu__image {
     height: 1.5em;
     width: auto;
     vertical-align: middle;
@@ -43,6 +44,6 @@
     background-color: var(--_quiqqer-menu-submenu__linkBgColor--hover);
 }
 
-:where(.quiqqer-submenu--list-buttonStyle) .quiqqer-submenu__icon--image {
+:where(.quiqqer-submenu--list-buttonStyle) .quiqqer-submenu__image {
     border-radius: 0.25em;
 }

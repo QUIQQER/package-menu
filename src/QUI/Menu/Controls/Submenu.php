@@ -72,7 +72,6 @@ class Submenu extends QUI\Control
         } elseif ($this->getAttribute('startId')) {
             // qui site
             $children = $this->getChildrenForQUISite();
-            $this->templateFile = dirname(__FILE__) . '/Submenu.List.html';
         } else {
             return '';
         }
@@ -85,6 +84,8 @@ class Submenu extends QUI\Control
 
         $Engine = QUI::getTemplateManager()->getEngine();
 
+        $this->addCSSClass('quiqqer-submenu--' . $this->getAttribute('template'));
+
         switch ($this->getAttribute('template')) {
             case 'box-imageTop':
             case 'box-imageOverlay':
@@ -93,8 +94,6 @@ class Submenu extends QUI\Control
                 if ($isIndependentMenu) {
                     $templateName = '/Submenu.Box.Independent.html';
                 }
-
-                $this->addCSSClass('quiqqer-submenu--' . $this->getAttribute('template'));
 
                 $this->templateFile = dirname(__FILE__) . $templateName;
                 $this->templateCssFile = dirname(__FILE__) . '/Submenu.Box.css';
@@ -121,7 +120,6 @@ class Submenu extends QUI\Control
 
                 $this->templateFile = dirname(__FILE__) . $templateName;
                 $this->templateCssFile = dirname(__FILE__) . '/Submenu.List.css';
-                $this->addCSSClass('quiqqer-submenu--list-simple');
 
                 break;
 
@@ -139,7 +137,6 @@ class Submenu extends QUI\Control
 
                 $this->templateFile = dirname(__FILE__) . $templateName;
                 $this->templateCssFile = dirname(__FILE__) . '/Submenu.List.css';
-                $this->addCSSClass('quiqqer-submenu--list-buttonStyle');
 
                 break;
         }
@@ -166,7 +163,7 @@ class Submenu extends QUI\Control
                 $this->getAttribute('linkColor')
             );
 
-            $this->addCSSClass('quiqqer-submenu__link--linkColor');
+            $this->addCSSClass('quiqqer-submenu--linkColor');
         }
 
         if ($this->getAttribute('linkColorHover')) {
@@ -175,7 +172,7 @@ class Submenu extends QUI\Control
                 $this->getAttribute('linkColorHover')
             );
 
-            $this->addCSSClass('quiqqer-submenu__link--linkColorHover');
+            $this->addCSSClass('quiqqer-submenu--linkColorHover');
         }
 
         switch ($this->getAttribute('itemsAlignment')) {

@@ -13,7 +13,7 @@
                                 {if $IconHandler->isIcon($Child->getIcon())}
                                     <span class="{$Child->getIcon()} fa-fw quiqqer-submenu__icon"></span>
                                 {else}
-                                    {image src=$Child->getIcon() height="50" class="quiqqer-submenu__icon quiqqer-submenu__icon--image"}
+                                    {image src=$Child->getIcon() height="50" class="quiqqer-submenu__image"}
                                 {/if}
                             {/if}
                             <span class="quiqqer-submenu__label">{$Child->getTitle()}</span>
@@ -25,7 +25,7 @@
                                 {if $IconHandler->isIcon($Child->getIcon())}
                                     <span class="{$Child->getIcon()} fa-fw quiqqer-submenu__icon"></span>
                                 {else}
-                                    {image src=$Child->getIcon() height="50" class="quiqqer-submenu__icon quiqqer-submenu__icon--image"}
+                                    {image src=$Child->getIcon() height="50" class="quiqqer-submenu__image"}
                                 {/if}
                             {/if}
                             <span class="quiqqer-submenu__label">{$Child->getTitle()}</span>
