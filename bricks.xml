@@ -339,5 +339,179 @@
             </settings>
         </brick>
 
+        <!-- nav tabs vertical -->
+        <brick control="\QUI\Menu\Bricks\Submenu">
+            <title>
+                <locale group="quiqqer/menu"
+                        var="bricks.submenu.title"/>
+            </title>
+            <description>
+                <locale group="quiqqer/menu"
+                        var="bricks.submenu.description"/>
+            </description>
+
+            <settings>
+                <setting name="menuId" data-qui="package/quiqqer/menu/bin/Controls/Independent/Input" type="text">
+                    <locale group="quiqqer/menu"
+                            var="bricks.submenu.settings.menuId"/>
+                    <description>
+                        <locale group="quiqqer/menu"
+                                var="bricks.submenu.settings.menuId.desc"/>
+                    </description>
+                </setting>
+
+                <setting name="startId" class="project-site">
+                    <locale group="quiqqer/menu"
+                            var="bricks.submenu.settings.startId"/>
+                    <description>
+                        <locale group="quiqqer/menu"
+                                var="bricks.submenu.settings.startId.desc"/>
+                    </description>
+                </setting>
+
+                <setting name="template" type="select">
+                    <locale group="quiqqer/menu"
+                            var="bricks.submenu.settings.template"/>
+
+                    <option value="list-simple">
+                        <locale group="quiqqer/menu"
+                                var="bricks.submenu.settings.template.list-simple"/>
+                    </option>
+                    <option value="list-buttonStyle">
+                        <locale group="quiqqer/menu"
+                                var="bricks.submenu.settings.template.list-buttonStyle"/>
+                    </option>
+                    <option value="box-imageTop">
+                        <locale group="quiqqer/menu"
+                                var="bricks.submenu.settings.template.box-imageTop"/>
+                    </option>
+                    <option value="box-imageOverlay">
+                        <locale group="quiqqer/menu"
+                                var="bricks.submenu.settings.template.box-imageOverlay"/>
+                    </option>
+                </setting>
+
+                <setting name="controlBgColor" type="color">
+                    <locale group="quiqqer/menu"
+                            var="bricks.submenu.settings.controlBgColor"/>
+                    <description>
+                        <locale group="quiqqer/menu"
+                                var="bricks.submenu.settings.controlBgColor.desc"/>
+                    </description>
+                </setting>
+
+                <setting name="linkColor" type="color">
+                    <locale group="quiqqer/menu"
+                            var="bricks.submenu.settings.linkColor"/>
+                    <description>
+                        <locale group="quiqqer/menu"
+                                var="bricks.submenu.settings.linkColor.desc"/>
+                    </description>
+                </setting>
+
+                <setting name="linkColorHover" type="color">
+                    <locale group="quiqqer/menu"
+                            var="bricks.submenu.settings.linkColorHover"/>
+                    <description>
+                        <locale group="quiqqer/menu"
+                                var="bricks.submenu.settings.linkColorHover.desc"/>
+                    </description>
+                </setting>
+
+                <setting name="itemsAlignment" type="select">
+                    <locale group="quiqqer/menu"
+                            var="bricks.submenu.settings.itemsAlignment"/>
+
+                    <option value="start">
+                        <locale group="quiqqer/menu"
+                                var="bricks.submenu.settings.itemsAlignment.start"/>
+                    </option>
+                    <option value="center">
+                        <locale group="quiqqer/menu"
+                                var="bricks.submenu.settings.itemsAlignment.center"/>
+                    </option>
+                    <option value="end">
+                        <locale group="quiqqer/menu"
+                                var="bricks.submenu.settings.itemsAlignment.end"/>
+                    </option>
+                    <option value="space-between">
+                        <locale group="quiqqer/menu"
+                                var="bricks.submenu.settings.itemsAlignment.space-between"/>
+                    </option>
+                    <option value="space-around">
+                        <locale group="quiqqer/menu"
+                                var="bricks.submenu.settings.itemsAlignment.space-around"/>
+                    </option>
+                </setting>
+
+                <setting name="showImages" type="checkbox">
+                    <locale group="quiqqer/menu"
+                            var="bricks.submenu.settings.showImages"/>
+                    <description>
+                        <locale group="quiqqer/menu"
+                                var="bricks.submenu.settings.showImages.desc"/>
+                    </description>
+                </setting>
+
+                <setting name="imageFitMode" type="select">
+                    <locale group="quiqqer/menu"
+                            var="bricks.submenu.settings.imageFitMode"/>
+                    <description>
+                        <locale group="quiqqer/menu"
+                                var="bricks.submenu.settings.imageFitMode.desc"/>
+                    </description>
+
+                    <option value="fill">
+                        <locale group="quiqqer/menu"
+                                var="bricks.submenu.settings.imageFitMode.fill"/>
+                    </option>
+                    <option value="contain">
+                        <locale group="quiqqer/menu"
+                                var="bricks.submenu.settings.imageFitMode.contain"/>
+                    </option>
+                    <option value="cover">
+                        <locale group="quiqqer/menu"
+                                var="bricks.submenu.settings.imageFitMode.cover"/>
+                    </option>
+                    <option value="none">
+                        <locale group="quiqqer/menu"
+                                var="bricks.submenu.settings.imageFitMode.none"/>
+                    </option>
+                    <option value="scale-down">
+                        <locale group="quiqqer/menu"
+                                var="bricks.submenu.settings.imageFitMode.scale-down"/>
+                    </option>
+                </setting>
+
+                <setting name="imageContainerHeight" type="text">
+                    <locale group="quiqqer/menu"
+                            var="bricks.submenu.settings.imageContainerHeight"/>
+                    <description>
+                        <locale group="quiqqer/menu"
+                                var="bricks.submenu.settings.imageContainerHeight.desc"/>
+                    </description>
+                </setting>
+
+                <setting name="boxBgColor" type="color">
+                    <locale group="quiqqer/menu"
+                            var="bricks.submenu.settings.boxBgColor"/>
+                    <description>
+                        <locale group="quiqqer/menu"
+                                var="bricks.submenu.settings.boxBgColor.desc"/>
+                    </description>
+                </setting>
+
+                <setting name="boxWidth" type="text">
+                    <locale group="quiqqer/menu"
+                            var="bricks.submenu.settings.boxWidth"/>
+                    <description>
+                        <locale group="quiqqer/menu"
+                                var="bricks.submenu.settings.boxWidth.desc"/>
+                    </description>
+                </setting>
+
+            </settings>
+        </brick>
+
     </bricks>
 </quiqqer>
