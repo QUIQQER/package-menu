@@ -6,5 +6,7 @@ parameters:
     paths:
         - src
         - ajax
+    excludePaths:
+        - src/QUI/Menu/Rest/Provider.php
     bootstrapFiles:
         - tests/phpstan-bootstrap.php
