@@ -1,0 +1,26 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Strict comparison using \\=\\=\\= between mixed and '' will always evaluate to false\\.$#"
+			count: 1
+			path: src/QUI/Menu/Bricks/Submenu.php
+
+		-
+			message: "#^Call to an undefined method QUI\\\\Interfaces\\\\Projects\\\\Site\\:\\:getCachePath\\(\\)\\.$#"
+			count: 1
+			path: src/QUI/Menu/DropDownMenu.php
+
+		-
+			message: "#^Parameter \\#1 \\$menuId of static method QUI\\\\Menu\\\\Independent\\\\Handler\\:\\:getMenu\\(\\) expects int, string\\|false given\\.$#"
+			count: 1
+			path: src/QUI/Menu/Independent/Factory.php
+
+		-
+			message: "#^Call to an undefined method QUI\\\\Interfaces\\\\Projects\\\\Site\\:\\:getCachePath\\(\\)\\.$#"
+			count: 1
+			path: src/QUI/Menu/MegaMenu.php
+
+		-
+			message: "#^Variable \\$Site in PHPDoc tag @var does not match any variable in the foreach loop\\: \\$data, \\$dataSet$#"
+			count: 1
+			path: src/QUI/Menu/NavTabs.php
