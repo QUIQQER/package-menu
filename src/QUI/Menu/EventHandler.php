@@ -3,9 +3,11 @@
 namespace QUI\Menu;
 
 use QUI;
+use QUI\Config;
 use QUI\Interfaces\Projects\Site;
 use Smarty;
 use SmartyException;
+use QUI\Smarty\Collector;
 
 /**
  * Class EventHandler
@@ -14,6 +16,11 @@ use SmartyException;
  */
 class EventHandler
 {
+    /**
+     * Cache Manager Configs
+     */
+    public static ?Config $Config = null;
+
     /**
      * @return string
      */
@@ -75,5 +82,33 @@ class EventHandler
     public static function onQuiqqerMenuIndependentClear($menuId): void
     {
         QUI\Cache\Manager::clear(self::menuCacheName());
+    }
+
+    /**
+     * @param Collector $Collector
+     * @param QUI\Template $Template
+     * @return void
+     */
+    public static function onQuiqqerTemplateBodyEnd(Collector $Collector, QUI\Template $Template): void
+    {
+        $Projekt = $Template->getAttribute('Project');
+        $menuId = intval($Projekt->getConfig('floatingMenu.settings.menuId'));
+
+        if (!$menuId) {
+            return;
+        }
+
+        $showLandSwitch = $Projekt->getConfig('floatingMenu.settings.showLangSwitch');
+        $toggleButton = $Projekt->getConfig('floatingMenu.settings.toggleButton');
+        // todo - showToggleButton works not correctly in FloatedNav
+        $toggleButton = 'mobile';
+
+        $FloatingMenu = new QUI\Menu\Controls\FloatedNav([
+            'menuId' => $menuId,
+            'showLangSwitch' => $showLandSwitch,
+            'showToggleButton' => $toggleButton
+        ]);
+
+        $Collector->append($FloatingMenu->create());
     }
 }

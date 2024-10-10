@@ -5,4 +5,5 @@
     <event on="onSmartyInit" fire="\QUI\Menu\EventHandler::onSmartyInit"/>
     <event on="onAdminLoadFooter" fire="\QUI\Menu\EventHandler::onAdminLoadFooter"/>
     <event on="onQuiqqerMenuIndependentClear" fire="\QUI\Menu\EventHandler::onQuiqqerMenuIndependentClear"/>
+    <event on="onQuiqqer::template::body::end" fire="\QUI\Menu\EventHandler::onQuiqqerTemplateBodyEnd"/>
 </events>
