@@ -2,9 +2,11 @@ includes:
     - phpstan-baseline.neon
 
 parameters:
-    level: 1
+    level: 5
     paths:
         - src
         - ajax
+    excludePaths:
+        - src/QUI/Menu/Rest/Provider.php
     bootstrapFiles:
         - tests/phpstan-bootstrap.php

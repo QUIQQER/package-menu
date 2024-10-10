@@ -31,7 +31,7 @@
                         <type><![CDATA[number]]></type>
                         <defaultvalue>1</defaultvalue>
                     </conf>
-                </section>`
+                </section>
                 <section name="mobileMenu.slideoutAdvanced.settings">
                     <conf name="homeLink">
                         <type><![CDATA[number]]></type>
@@ -39,6 +39,19 @@
                     </conf>
                     <conf name="shortDesc">
                         <type><![CDATA[number]]></type>
+                    </conf>
+                </section>
+                <section name="floatingMenu.settings">
+                    <conf name="menuId">
+                        <type><![CDATA[number]]></type>
+                    </conf>
+                    <conf name="showLangSwitch">
+                        <type><![CDATA[bool]]></type>
+                        <defaultvalue>false</defaultvalue>
+                    </conf>
+                    <conf name="toggleButton">
+                        <type><![CDATA[text]]></type>
+                        <defaultvalue>mobile</defaultvalue>
                     </conf>
                 </section>
             </config>
@@ -175,6 +188,56 @@
                                     <locale group="quiqqer/menu" var="mobileMenu.slideoutAdvanced.settings.shortDesc.desc"/>
                                 </description>
                             </input>
+                        </settings>
+
+                        <!-- floated menu -->
+                        <settings title="floatingMenu.settings" name="floatingMenu.settings">
+                            <title>
+                                <locale group="quiqqer/menu" var="floatingMenu.settings.title"/>
+                            </title>
+
+                            <text>
+                                <locale group="quiqqer/menu" var="floatingMenu.settings.desc"/>
+                            </text>
+
+                            <input conf="floatingMenu.settings.menuId" type="text"
+                                   data-qui="package/quiqqer/menu/bin/Controls/Independent/Input"
+                            >
+                                <text>
+                                    <locale group="quiqqer/menu" var="floatingMenu.settings.menuId"/>
+                                </text>
+                                <description>
+                                    <locale group="quiqqer/menu" var="floatingMenu.settings.menuId.desc"/>
+                                </description>
+                            </input>
+
+                            <input conf="floatingMenu.settings.showLangSwitch" type="checkbox">
+                                <text>
+                                    <locale group="quiqqer/menu" var="floatingMenu.settings.showLangSwitch"/>
+                                </text>
+                                <description>
+                                    <locale group="quiqqer/menu" var="floatingMenu.settings.showLangSwitch.desc"/>
+                                </description>
+                            </input>
+
+<!--                            <select conf="floatingMenu.settings.toggleButton">-->
+<!--                                <text>-->
+<!--                                    <locale group="quiqqer/menu" var="floatingMenu.settings.toggleButton"/>-->
+<!--                                </text>-->
+<!--                                <description>-->
+<!--                                    <locale group="quiqqer/menu" var="floatingMenu.settings.toggleButton.desc"/>-->
+<!--                                </description>-->
+
+<!--                                <option value="mobile">-->
+<!--                                    <locale group="quiqqer/menu" var="floatingMenu.settings.toggleButton.mobile"/>-->
+<!--                                </option>-->
+<!--                                <option value="always">-->
+<!--                                    <locale group="quiqqer/menu" var="floatingMenu.settings.toggleButton.always"/>-->
+<!--                                </option>-->
+<!--                                <option value="hide">-->
+<!--                                    <locale group="quiqqer/menu" var="floatingMenu.settings.toggleButton.hide"/>-->
+<!--                                </option>-->
+<!--                            </select>-->
                         </settings>
                     </category>
                 </categories>
