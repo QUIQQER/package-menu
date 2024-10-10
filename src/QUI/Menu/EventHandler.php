@@ -91,15 +91,15 @@ class EventHandler
      */
     public static function onQuiqqerTemplateBodyEnd(Collector $Collector, QUI\Template $Template): void
     {
-        $Projekt = $Template->getAttribute('Project');
-        $menuId = intval($Projekt->getConfig('floatingMenu.settings.menuId'));
+        $Project = $Template->getAttribute('Project');
+        $menuId = intval($Project->getConfig('floatingMenu.settings.menuId'));
 
         if (!$menuId) {
             return;
         }
 
-        $showLandSwitch = $Projekt->getConfig('floatingMenu.settings.showLangSwitch');
-        $toggleButton = $Projekt->getConfig('floatingMenu.settings.toggleButton');
+        $showLandSwitch = $Project->getConfig('floatingMenu.settings.showLangSwitch');
+        $toggleButton = $Project->getConfig('floatingMenu.settings.toggleButton');
         // todo - showToggleButton works not correctly in FloatedNav
         $toggleButton = 'mobile';
 
