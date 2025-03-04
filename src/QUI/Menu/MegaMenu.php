@@ -26,7 +26,7 @@ class MegaMenu extends AbstractMenu
     /**
      * @var SlideOut|SlideOutAdvanced|null
      */
-    protected SlideOutAdvanced|null|SlideOut $Mobile = null;
+    protected SlideOutAdvanced | null | SlideOut $Mobile = null;
 
     /**
      * @var array
@@ -101,17 +101,18 @@ class MegaMenu extends AbstractMenu
     public function getBody(): string
     {
         $cache = EventHandler::menuCacheName() . '/megaMenu/';
+        $siteCachePath = '';
 
         $attributes = $this->getAttributes();
         $attributes = array_filter($attributes, function ($entry) {
             return is_object($entry) === false;
         });
 
-        $cache .= md5(
-            $this->getSite()->getCachePath() .
-            serialize($attributes)
-        );
+        if (method_exists($this->getSite(), 'getCachePath')) {
+            $siteCachePath = $this->getSite()->getCachePath();
+        }
 
+        $cache .= md5($siteCachePath . serialize($attributes));
         $childControl = $this->getMenuControl($this->getAttribute('display'));
 
         $showMenuDelay = 0;
@@ -245,7 +246,7 @@ class MegaMenu extends AbstractMenu
      * @param $control
      * @return false|string
      */
-    public function getMenuControl($control): bool|string
+    public function getMenuControl($control): bool | string
     {
         switch ($control) {
             case 'Image':
@@ -333,7 +334,7 @@ class MegaMenu extends AbstractMenu
      * @throws QUI\Exception
      * @throws Exception
      */
-    protected function getMobileMenu($slideOutParam): SlideOut|SlideOutAdvanced
+    protected function getMobileMenu($slideOutParam): SlideOut | SlideOutAdvanced
     {
         if ($this->getProject()->getConfig('mobileMenu.settings.type') == 'slideoutAdvanced') {
             $Menu = new QUI\Menu\SlideOutAdvanced($slideOutParam);
