@@ -48,16 +48,18 @@ class DropDownMenu extends QUI\Control
     public function getBody(): string
     {
         $cache = EventHandler::menuCacheName() . '/dropDownMenu/';
+        $siteCachePath = '';
 
         $attributes = $this->getAttributes();
         $attributes = array_filter($attributes, function ($entry) {
             return is_object($entry) === false;
         });
 
-        $cache .= md5(
-            $this->getSite()->getCachePath() .
-            serialize($attributes)
-        );
+        if (method_exists($this->getSite(), 'getCachePath')) {
+            $siteCachePath = $this->getSite()->getCachePath();
+        }
+
+        $cache .= md5($siteCachePath . serialize($attributes));
 
         try {
             return QUI\Cache\Manager::get($cache);

@@ -32,19 +32,27 @@ class Submenu extends QUI\Control
         // defaults values
         $this->setAttributes([
             'class' => 'quiqqer-menu-bricks-submenu',
-            'startId' => false, // id or site link
-            'menuId' => false, // id of an independent menu
-            'template' => 'list-buttonStyle', // 'list-buttonStyle', 'list-simple', 'box-imageTop', 'box-imageOverlay'
+            'startId' => false,
+            // id or site link
+            'menuId' => false,
+            // id of an independent menu
+            'template' => 'list-buttonStyle',
+            // 'list-buttonStyle', 'list-simple', 'box-imageTop', 'box-imageOverlay'
             'controlBgColor' => '',
             'controlBgPadding' => '1rem',
             'linkColor' => '',
             'linkColorHover' => '',
-            'itemsAlignment' => 'center', // 'start', 'center', 'end', 'space-between', 'space-around'
-            'showImages' => true, // if true, icons or images will be displayed
-            'imageFitMode' => 'cover', // any valid css property for image-fit attribute , i.e. 'cover', 'contain', 'scale-down'
-            'imageContainerHeight' => '',// any valid css property (with unit!) for height attribute, i.e. '150px', '10vw' or even clamp() function (if no value passed the container will be a square)
+            'itemsAlignment' => 'center',
+            // 'start', 'center', 'end', 'space-between', 'space-around'
+            'showImages' => true,
+            // if true, icons or images will be displayed
+            'imageFitMode' => 'cover',
+            // any valid css property for image-fit attribute , i.e. 'cover', 'contain', 'scale-down'
+            'imageContainerHeight' => '',
+            // any valid css property (with unit!) for height attribute, i.e. '150px', '10vw' or even clamp() function (if no value passed the container will be a square)
             'boxBgColor' => '#f5f5f6',
-            'boxWidth' => '250px'// any valid css property (with unit!) for height attribute, i.e. '250px', '10vw' or even clamp() function
+            'boxWidth' => '250px'
+            // any valid css property (with unit!) for height attribute, i.e. '250px', '10vw' or even clamp() function
         ]);
 
         parent::__construct($attributes);
@@ -52,12 +60,6 @@ class Submenu extends QUI\Control
         $this->setAttribute('cacheable', false);
     }
 
-    /**
-     * (non-PHPdoc)
-     *
-     * @throws Exception
-     * @see \QUI\Control::create()
-     */
     public function getBody(): string
     {
         $Engine = QUI::getTemplateManager()->getEngine();
@@ -70,7 +72,7 @@ class Submenu extends QUI\Control
 
         $linkColorHover = $this->getAttribute('linkColorHover');
 
-        if ($linkColor === '') {
+        if (empty($linkColor)) {
             $linkColorHover = 'inherit';
         }
 

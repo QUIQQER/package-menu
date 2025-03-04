@@ -36,8 +36,10 @@ class Handler
      * @param QUI\Projects\Project|null $Project
      * @return string
      */
-    public static function getMenuCacheName(bool|int $menuId = false, QUI\Projects\Project $Project = null): string
-    {
+    public static function getMenuCacheName(
+        bool | int $menuId = false,
+        null | QUI\Projects\Project $Project = null
+    ): string {
         if ($Project) {
             $project = $Project->getName();
             $lang = $Project->getLang();
