@@ -34,7 +34,7 @@ class Menu
      * @throws QUI\Exception
      * @throws QUI\Database\Exception
      */
-    public function __construct(int|array $menuId)
+    public function __construct(int | array $menuId)
     {
         if (is_numeric($menuId)) {
             $data = Handler::getMenuData($menuId);
@@ -93,7 +93,7 @@ class Menu
      * @param array $children
      * @return void
      */
-    protected function buildChildren(AbstractMenuItem|Menu $Parent, array $children): void
+    protected function buildChildren(AbstractMenuItem | Menu $Parent, array $children): void
     {
         foreach ($children as $item) {
             $type = $item['type'];
@@ -180,7 +180,7 @@ class Menu
      * @param QUI\Locale|null $Locale
      * @return string
      */
-    public function getTitle(QUI\Locale $Locale = null): string
+    public function getTitle(null | QUI\Locale $Locale = null): string
     {
         if ($this->title === null) {
             return '';
@@ -203,7 +203,7 @@ class Menu
      * @param QUI\Locale|null $Locale
      * @return string
      */
-    public function getWorkingTitle(QUI\Locale $Locale = null): string
+    public function getWorkingTitle(null | QUI\Locale $Locale = null): string
     {
         if ($this->workingTitle === null) {
             return '';

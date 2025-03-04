@@ -24,8 +24,7 @@ class Factory
             'data' => ''
         ]);
 
-        $lastId = QUI::getPDO()->lastInsertId();
-
+        $lastId = (int)QUI::getPDO()->lastInsertId();
         $Menu = Handler::getMenu($lastId);
 
         try {

@@ -32,7 +32,7 @@ abstract class AbstractMenuItem
      * @param ?Locale $Locale
      * @return string
      */
-    public function getTitle(Locale $Locale = null): string
+    public function getTitle(null | Locale $Locale = null): string
     {
         if ($Locale === null) {
             $Locale = QUI::getLocale();
@@ -56,7 +56,7 @@ abstract class AbstractMenuItem
      * @param ?Locale $Locale
      * @return string
      */
-    public function getShort(Locale $Locale = null): string
+    public function getShort(null | Locale $Locale = null): string
     {
         if ($Locale === null) {
             $Locale = QUI::getLocale();
@@ -86,7 +86,7 @@ abstract class AbstractMenuItem
      * @param Locale|null $Locale
      * @return string
      */
-    public function getName(Locale $Locale = null): string
+    public function getName(null | Locale $Locale = null): string
     {
         if ($Locale === null) {
             $Locale = QUI::getLocale();
@@ -117,7 +117,7 @@ abstract class AbstractMenuItem
      * @param Locale|null $Locale
      * @return string
      */
-    public function getTitleAttribute(Locale $Locale = null): string
+    public function getTitleAttribute(null | Locale $Locale = null): string
     {
         return $this->getName($Locale);
     }
@@ -222,7 +222,7 @@ abstract class AbstractMenuItem
      * @param Locale|null $Locale
      * @return string
      */
-    public function getHTML(QUI\Locale $Locale = null): string
+    public function getHTML(null | Locale $Locale = null): string
     {
         if ($Locale === null) {
             $Locale = QUI::getLocale();

@@ -102,7 +102,7 @@ class Site extends AbstractMenuItem
      * @param Locale|null $Locale
      * @return string
      */
-    public function getName(Locale $Locale = null): string
+    public function getName(null | Locale $Locale = null): string
     {
         $Site = $this->getSite();
 
@@ -114,10 +114,10 @@ class Site extends AbstractMenuItem
     }
 
     /**
-     * @param QUI\Locale|null $Locale
+     * @param Locale|null $Locale
      * @return string
      */
-    public function getTitle(QUI\Locale $Locale = null): string
+    public function getTitle(null | Locale $Locale = null): string
     {
         $Site = $this->getSite();
 

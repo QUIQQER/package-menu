@@ -86,7 +86,7 @@ class NavTabs extends QUI\Control
      * @return array|string
      * @throws QUI\Exception
      */
-    private function getChildrenFromParent(): array|string
+    private function getChildrenFromParent(): array | string
     {
         $ParentSite = null;
 
@@ -152,7 +152,6 @@ class NavTabs extends QUI\Control
 
         $entries = [];
 
-        /** @var QUI\Projects\Site $Site */
         foreach ($data as $dataSet) {
             if (count($dataSet) < 2) {
                 continue;
