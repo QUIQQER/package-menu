@@ -5,16 +5,12 @@
 {/if}
 <div class="quiqqer-menu-megaMenu-children-image-entry {if $isInPath}quiqqer-menu-megaMenu-children-image-entry--current{/if}">
     <a href="{url site=$Child}">
-        {image src=$Child->getAttribute('image_site') width=300 assign=bg onlysrc=1}
-        <div class="quiqqer-menu-megaMenu-children-image-entry-img"
-             style="background-image: url('{$bg}')"
-        >
-            &nbsp;
-            {image src=$Child->getAttribute('image_site') onlyicon=1}
+        <div class="quiqqer-menu-megaMenu-children-image-entry-image">
+            {image src=$Child->getAttribute('image_site') width="300"}
         </div>
-        <span class="quiqqer-menu-megaMenu-children-image-entry-title">
+        <div class="quiqqer-menu-megaMenu-children-image-entry-title">
             {$Child->getAttribute('title')}
-        </span>
+        </div>
     </a>
 </div>
 {/foreach}
