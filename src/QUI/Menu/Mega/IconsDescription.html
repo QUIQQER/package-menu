@@ -28,7 +28,7 @@
                        title="{$SubChild->getAttribute('title')|escape:'html'}"
                     class="quiqqer-menu-megaMenu-children-iconsDesc-list-entry-short-link"
                     >
-                    {image src=$SubChild->getAttribute('image_site') width=40}
+                    {image src=$SubChild->getAttribute('image_site') width="40" loading="lazy"}
                     <span class="quiqqer-menu-megaMenu-children-iconsDesc-list-entry-short-link-title">
                             {$SubChild->getAttribute('title')}
                             {if $SubChild->getAttribute('short') !== ''}
