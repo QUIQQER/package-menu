@@ -129,6 +129,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Custom', [
             this.getElm().getElement('[name="url"]').set('value', data.url);
             this.getElm().getElement('[name="rel"]').set('value', data.rel);
             this.getElm().getElement('[name="menuType"]').set('value', data.menuType);
+            this.getElm().getElement('[name="click"]').set('value', data.click);
 
             IndependentHandler.getTypeName(this.getAttribute('type')).then((name) => {
                 const TH = this.getElm().getElement('th');
