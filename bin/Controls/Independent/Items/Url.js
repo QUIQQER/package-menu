@@ -167,7 +167,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Url', [
                 title: this.$Title.getValue(),
                 icon : Form.elements.icon.value,
                 data : {
-                    url     : Form.elements.url.value,
+                    url     : Form.elements.url.value.trim(),
                     target  : Form.elements.target.value,
                     menuType: Form.elements.menuType.value,
                     status  : Form.elements.status.checked ? 1 : 0,
