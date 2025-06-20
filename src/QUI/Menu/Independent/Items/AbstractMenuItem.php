@@ -28,6 +28,15 @@ abstract class AbstractMenuItem
 
     //region frontend methods
 
+
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->attributes['type'];
+    }
+
     /**
      * @param ?Locale $Locale
      * @return string

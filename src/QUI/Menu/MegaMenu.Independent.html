@@ -45,10 +45,13 @@
                         {/if}
                     </a>
                 {else}
-                    <span class="qui-menu-siteid-{$Child->getIdentifier()} quiqqer-menu-megaMenu-list-item-inner">
+                    <span class="qui-menu-siteid-{$Child->getIdentifier()} quiqqer-menu-megaMenu-list-item-inner"
+                          {if $Child->getType() ==='QUI\Menu\Independent\Items\Custom' && $Child->getClickEvent()}onclick="{$Child->getClickEvent()}"{/if}
+                    >
                         {if $this->getAttribute('showFirstLevelIcons') &&  $Child->getIcon() && $Child->getIcon()|strpos:'image' !== 'false' }
                             {image src=$Child->getIcon() onlyicon=1}
                         {/if}
+
 
                         {$Child->getTitle()}
 
