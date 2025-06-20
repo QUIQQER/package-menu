@@ -28,6 +28,17 @@ class Custom extends AbstractMenuItem
         return '';
     }
 
+    /**
+     * Get the click event
+     *
+     * @return string|null
+     */
+    public function getClickEvent()
+    {
+        $data = $this->getCustomData();
+        return isset($data['click']) ? htmlspecialchars($data['click'], ENT_QUOTES, 'UTF-8') : null;
+    }
+
     //endregion
 
     //region type stuff
