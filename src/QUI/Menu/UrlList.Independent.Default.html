@@ -31,7 +31,9 @@
                         </a>
                     {else}
                         <span class="quiqqer-urlList-entry-link"
-                              title="{$Child->getTitleAttribute()|escape:'html'}">
+                              title="{$Child->getTitleAttribute()|escape:'html'}"
+                              {if $Child->getType() ==='QUI\Menu\Independent\Items\Custom' && $Child->getClickEvent()}onclick="{$Child->getClickEvent()}"{/if}
+                        >
                             {if $icon}
                                 <span class="{$icon} fa-fw quiqqer-urlList-entry-link-icon"></span>
                             {/if}
