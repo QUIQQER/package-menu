@@ -192,7 +192,7 @@ define('package/quiqqer/menu/bin/Controls/Independent/Items/Custom', [
                 icon : Form.elements.icon.value,
                 data : {
                     short: Form.elements.short.value,
-                    url     : Form.elements.url.value,
+                    url     : Form.elements.url.value.trim(),
                     rel     : Form.elements.rel.value,
                     target  : Form.elements.target.value,
                     menuType: Form.elements.menuType.value,
