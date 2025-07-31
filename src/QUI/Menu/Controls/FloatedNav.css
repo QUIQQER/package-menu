@@ -64,6 +64,7 @@
 /* lang switch */
 .quiqqer-floatedNav .quiqqer-bricks-languageswitch-flag {
     display: flex;
+    gap: 0;
     flex-direction: column;
     float: none;
     font-size: calc(0.75 * var(--quiqqer-floatedNav-fontSize));
