@@ -51,7 +51,7 @@ define('package/quiqqer/menu/bin/MegaMenu', [
             }
 
             this.$Menu = new Element('div', {
-                'class': 'quiqqer-menu-megaMenu-list-item-menu control-background',
+                'class': 'quiqqer-menu-megaMenu-list-item-menu',
                 styles : {
                     opacity: 0,
                     top    : 0

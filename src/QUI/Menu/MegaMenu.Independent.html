@@ -12,7 +12,7 @@
     }
 </style>
 
-<nav class="megaMenu-hide-on-mobile">
+<nav class="quiqqer-menu-wrapper megaMenu-hide-on-mobile">
 
     {$prepend}
 
@@ -40,8 +40,8 @@
 
                         {$Child->getTitle()}
 
-                        {if count($subchildren)}
-                            <span class="fa fa-angle-down"></span>
+                        {if count($subchildren) && $subMenuIndicator}
+                            <span class="fa {$subMenuIndicator}"></span>
                         {/if}
                     </a>
                 {else}
@@ -55,8 +55,8 @@
 
                         {$Child->getTitle()}
 
-                        {if count($subchildren)}
-                            <span class="fa fa-angle-down"></span>
+                        {if count($subchildren) && $subMenuIndicator}
+                            <span class="fa {$subMenuIndicator}"></span>
                         {/if}
                     </span>
                 {/if}

@@ -7,24 +7,21 @@
 
 .quiqqer-menu-megaMenu-children-simple-entry {
     display: block;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
     position: relative;
-    transition: 0.2s all ease-in-out;
 }
 
-.quiqqer-menu-megaMenu-children-simple-entry:hover {
-    background-color: rgba(255,255,255,0.1);
-}
-
-.quiqqer-menu-megaMenu-children-simple-entry:last-child {
-    border-bottom: none;
-}
-
-.quiqqer-menu-megaMenu-children-simple-entry a,
-.quiqqer-menu-megaMenu-children-simple-entry__noUrl > span:first-child {
-    padding: 10px 25px;
+.quiqqer-menu-megaMenu-children-simple-entry__inner {
+    padding: 0.75em 1.5em;
     display: block;
     cursor: pointer;
+    color: var(--_qui-megaMenu-submenu-link-color);
+    background-color: var(--_qui-megaMenu-submenu-link-bgColor);
+    transition: var(--_qui-megaMenu-transition);
+}
+
+.quiqqer-menu-megaMenu-children-simple-entry__inner:is(:hover, :active) {
+    color: var(--_qui-megaMenu-submenu-link-color--hover);
+    background-color: var(--_qui-megaMenu-submenu-link-bgColor--hover);
 }
 
 .quiqqer-menu-megaMenu-children-simple-entry-short {
