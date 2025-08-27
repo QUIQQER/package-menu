@@ -149,14 +149,6 @@ define('package/quiqqer/menu/bin/SlideOut', [
                 });
             });
 
-            // fix for IE - z-index must have the value 0
-            if (navigator.appName == 'Microsoft Internet Explorer' ||
-                !!(navigator.userAgent.match(/Trident/) ||
-                    navigator.userAgent.match(/rv:11/)) ||
-                (typeof $.browser !== "undefined" && $.browser.msie == 1)) {
-                Elm.setStyle('z-index', 1);
-            }
-
             Elm.setStyle('display', 'none');
 
             var BodyWrapper = document.getElement('.slideout-panel');
