@@ -86,6 +86,21 @@ define('package/quiqqer/menu/bin/SlideoutAdvanced', [
 
             Elm = Elm.getParent();
 
+            if (Elm.get('data-qui-options-menu-button')) {
+                this.setAttribute(
+                    'menu-button',
+                    Elm.get('data-qui-options-menu-button').toInt()
+                );
+            }
+
+
+            if (Elm.get('data-qui-options-touch')) {
+                this.setAttribute(
+                    'touch',
+                    Elm.get('data-qui-options-touch').toInt() ? true : false
+                );
+            }
+
             let links = Elm.querySelectorAll('a');
 
             links.forEach((Link) => {
@@ -176,20 +191,23 @@ define('package/quiqqer/menu/bin/SlideoutAdvanced', [
             Elm.inject(document.body);
 
             // menu button
-            this.MenuButton = new Element('button', {
-                'class': 'page-menu-opener',
-                html   : '<span class="fa fa-list"></span>' +
-                    '<span class="page-menu-opener-text">MENU</span>',
-                styles : {
-                    display : 'none',
-                    'float' : 'left',
-                    opacity : 0,
-                    position: 'fixed'
-                },
-                events : {
-                    click: this.toggle
-                }
-            }).inject(document.body);
+            if (this.getAttribute('menu-button')) {
+                this.MenuButton = new Element('button', {
+                    'class': 'page-menu-opener',
+                    html   : '<span class="fa fa-list"></span>' +
+                        '<span class="page-menu-opener-text">MENU</span>',
+                    styles : {
+                        display : 'none',
+                        'float' : 'left',
+                        opacity : 0,
+                        position: 'fixed'
+                    },
+                    events : {
+                        click: this.toggle
+                    }
+                }).inject(document.body);
+            }
+
 
             if (typeOf(Elm.get('data-show-button-on-desktop')) === 'string') {
                 this.setAttribute(
@@ -240,44 +258,29 @@ define('package/quiqqer/menu/bin/SlideoutAdvanced', [
             QUI.addEvent('resize', this.$onResize);
             QUI.addEvent('load', this.$onResize);
 
-            if (Elm.get('data-qui-options-menu-button')) {
-                this.setAttribute(
-                    'menu-button',
-                    Elm.get('data-qui-options-menu-button').toInt()
-                );
-            }
-
-
-            if (Elm.get('data-qui-options-touch')) {
-                this.setAttribute(
-                    'touch',
-                    Elm.get('data-qui-options-touch').toInt() ? true : false
-                );
-            }
-
 
             // attributes
-            if (this.getAttribute('top')) {
+            if (this.getAttribute('top') && this.MenuButton) {
                 this.MenuButton.setStyle('top', this.getAttribute('top'));
                 this.MenuButton.setStyle('bottom', null);
             }
 
-            if (this.getAttribute('left')) {
+            if (this.getAttribute('left') && this.MenuButton) {
                 this.MenuButton.setStyle('left', this.getAttribute('left'));
                 this.MenuButton.setStyle('right', null);
             }
 
-            if (this.getAttribute('right')) {
+            if (this.getAttribute('right') && this.MenuButton) {
                 this.MenuButton.setStyle('right', this.getAttribute('right'));
                 this.MenuButton.setStyle('left', null);
             }
 
-            if (this.getAttribute('bottom')) {
+            if (this.getAttribute('bottom') && this.MenuButton) {
                 this.MenuButton.setStyle('bottom', this.getAttribute('bottom'));
                 this.MenuButton.setStyle('top', null);
             }
 
-            if (!this.getAttribute('show-button-on-desktop')) {
+            if (!this.getAttribute('show-button-on-desktop') && this.MenuButton) {
                 this.MenuButton.addClass('hide-on-desktop');
             }
 
@@ -321,7 +324,9 @@ define('package/quiqqer/menu/bin/SlideoutAdvanced', [
                 BodyWrapper.setStyle('boxShadow', '2px 0 10px 5px rgba(0, 0, 0, 0.3');
 
                 self.hideMenuButton(function () {
-                    self.MenuButton.setStyle('display', 'none');
+                    if (self.MenuButton) {
+                        self.MenuButton.setStyle('display', 'none');
+                    }
                 });
             });
 
@@ -361,7 +366,9 @@ define('package/quiqqer/menu/bin/SlideoutAdvanced', [
             this.Slideout.on('close', function () {
                 BodyWrapper.setStyle('boxShadow', null);
 
-                self.MenuButton.setStyle('display', null);
+                if (self.MenuButton) {
+                    self.MenuButton.setStyle('display', null);
+                }
 
                 var Closer = document.getElement('.page-menu-close');
 
@@ -432,6 +439,14 @@ define('package/quiqqer/menu/bin/SlideoutAdvanced', [
          * @param callback
          */
         hideMenuButton: function (callback) {
+            if (!this.MenuButton) {
+                if (typeof callback === 'function') {
+                    callback();
+                }
+
+                return;
+            }
+
             moofx(this.MenuButton).animate({
                 opacity: 0
             }, {
@@ -457,7 +472,11 @@ define('package/quiqqer/menu/bin/SlideoutAdvanced', [
                 return;
             }
 
-            if (!this.getAttribute('menu-button')) {
+            if (!this.MenuButton) {
+                if (typeof callback === 'function') {
+                    callback();
+                }
+
                 return;
             }
 
