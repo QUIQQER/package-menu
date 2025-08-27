@@ -675,6 +675,11 @@
             <de><![CDATA[Man kan jeden validen CSS Wert verwenden, auch die <code>clamp()</code> Funktion. Diese Einstellung funktioniert nur mit Templates "Box: Bild / Icon oben" und "Box: Text über dem Bild" zusammen.]]></de>
             <en><![CDATA[You can use any valid CSS value, including the <code>clamp()</code> function. If no value is set, the container becomes square. This setting only works with templates "Box: image or icon top" and "Box: Image with text below" together.]]></en>
         </locale>
+
+        <locale name="frontend.megaMenu.mobileBtnOpener.text">
+            <de><![CDATA[Menü]]></de>
+            <en><![CDATA[Menu]]></en>
+        </locale>
     </groups>
 
     <groups name="quiqqer/menu" datatype="php">
