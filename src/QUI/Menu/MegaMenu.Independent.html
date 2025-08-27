@@ -12,7 +12,7 @@
     }
 </style>
 
-<nav class="quiqqer-menu-wrapper megaMenu-hide-on-mobile">
+<nav class="quiqqer-menu-megaMenu__wrapperDesktop megaMenu-hide-on-mobile">
 
     {$prepend}
 
@@ -79,15 +79,16 @@
     {$append}
 </nav>
 {if $Mobile}
-    <div class="megaMenu-hide-on-desktop">
+    <div class="quiqqer-menu-megaMenu__wrapperMobile megaMenu-hide-on-desktop">
         {$prepend}
 
-        <div class="quiqqer-menu-megaMenu-mobile">
-            <span class="fa fa-bars"></span>
-            <span>Menü</span>
-        </div>
+        <button class="quiqqer-menu-megaMenu-mobile-openerBtn" role="button" data-name="quiqqer-menu-megaMenu-mobile-openerBtn">
+            <span class="fa fa-bars icon" aria-hidden="true"></span>
+            <span class="label">{locale group="quiqqer/menu" var="frontend.megaMenu.mobileBtnOpener.text"}</span>
+        </button>
 
         {$append}
+
         {$Mobile->create()}
     </div>
 {/if}

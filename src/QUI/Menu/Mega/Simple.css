@@ -28,3 +28,17 @@
     font-size: 0.8em;
     color: var(--_qui-megaMenu-text-color--muted);
 }
+
+.quiqqer-menu-megaMenu-children-simple:after {
+    opacity: var(--_qui-megaMenu-submenu-simple-showArrow);
+    border-bottom: var(--_qui-megaMenu-submenu-simple-arrowSize) solid var(--_qui-megaMenu-submenu-bgColor);
+    border-left: var(--_qui-megaMenu-submenu-simple-arrowSize) solid transparent;
+    border-right: var(--_qui-megaMenu-submenu-simple-arrowSize) solid transparent;
+    border-top: var(--_qui-megaMenu-submenu-simple-arrowSize) solid transparent;
+    content: '';
+    height: 0;
+    width: 0;
+    left: 1.5em; /* quiqqer-menu-megaMenu-children-simple padding left */
+    position: absolute;
+    top: calc(-1 * 2 * var(--_qui-megaMenu-submenu-simple-arrowSize));
+}
