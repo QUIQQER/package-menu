@@ -1,13 +1,10 @@
 .quiqqer-menu-megaMenu-children-simple {
     width: auto;
-    display: inline-block;
+    display: block;
     min-width: 12rem;
     max-width: 25rem;
-}
-
-.quiqqer-menu-megaMenu-children-simple-entry {
-    display: block;
-    position: relative;
+    overflow: hidden;
+    border-radius: var(--_qui-megaMenu-submenu-borderRadius);
 }
 
 .quiqqer-menu-megaMenu-children-simple-entry__inner {
