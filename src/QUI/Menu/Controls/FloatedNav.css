@@ -49,9 +49,9 @@
 
 .quiqqer-floatedNav-entry-inner,
 .quiqqer-floatedNav-toggleBtn {
-    background: var(--qui-color-main, #333);
-    border: var(--qui-border-width, 2px) solid var(--qui-color-main, #333);
-    color: var(--qui-color-main-contrast, #fff);
+    background: var(--qui-colors-primary, #333);
+    border: var(--qui-border-width, 2px) solid var(--qui-colors-primary, #333);
+    color: var(--qui-colors-primary--accent, #fff);
     cursor: pointer;
     display: block;
     font-size: var(--quiqqer-floatedNav-fontSize);
@@ -73,8 +73,8 @@
 }
 
 .quiqqer-floatedNav .quiqqer-bricks-languageswitch-flag-entry {
-    background: var(--qui-color-main, #333);
-    color: var(--qui-color-main-contrast, #fff);
+    background: var(--qui-colors-primary, #333);
+    color: var(--qui-colors-primary--accent, #fff);
     font-weight: bold;
     line-height: calc(0.5 * var(--quiqqer-floatedNav-size));
     padding: 0;
@@ -83,7 +83,8 @@
 }
 
 .quiqqer-floatedNav .quiqqer-bricks-languageswitch-flag-entry:not(.active) {
-    background-color: var(--qui-color-dark, #333);
+    background-color: var(--qui-colors-dark, #333);
+    color: var(--qui-colors-white, #fff);
 }
 
 .quiqqer-floatedNav .quiqqer-bricks-languageswitch-flag-entry:not(:first-child) {
@@ -97,9 +98,8 @@
 
 
 /* hover */
-.quiqqer-floatedNav-entry:hover,
-.quiqqer-bricks-languageswitch-flag-entry:hover,
-.quiqqer-floatedNav-toggleBtn:hover {
+.quiqqer-floatedNav-entry-inner:hover,
+.quiqqer-floatedNav-entry .quiqqer-bricks-languageswitch-flag-entry:hover {
     filter: brightness(90%);
 }
 
