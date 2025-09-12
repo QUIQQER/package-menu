@@ -61,7 +61,7 @@
     transition: var(--_qui-megaMenu-transition);
 }
 
-.quiqqer-menu-megaMenu-list-item-inner:is(:hover, :active) {
+.quiqqer-menu-megaMenu-list-item-inner:is(:hover, :active, :focus) {
     color: var(--_qui-megaMenu-link-color--hover);
     background-color: var(--_qui-megaMenu-link-bgColor--hover);
 }
