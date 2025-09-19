@@ -53,7 +53,9 @@
 }
 
 .quiqqer-menu-megaMenu-list-item-inner {
-    display: block;
+    display: flex;
+    gap: 0.5em;
+    align-items: baseline;
     cursor: pointer;
     color: var(--_qui-megaMenu-link-color);
     padding: var(--_qui-megaMenu-link-padding);

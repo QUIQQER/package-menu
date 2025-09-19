@@ -44,9 +44,8 @@
                title="{$Child->getAttribute('title')|escape:'html'}">
                 {$Child->getAttribute('title')}
 
-                {if $showMenu && count($subchildren) &&
-                $Child->getAttribute('quiqqer.megamenu.settings.type') !== 'noMenu'}
-                <span class="fa fa-angle-down"></span>
+                {if $showMenu && count($subchildren) && $subMenuIndicator && $Child->getAttribute('quiqqer.megamenu.settings.type') !== 'noMenu'}
+                    <span class="fa {$subMenuIndicator}" aria-hidden="true"></span>
                 {/if}
             </a>
 
