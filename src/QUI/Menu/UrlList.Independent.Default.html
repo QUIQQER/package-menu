@@ -11,33 +11,34 @@
 {/if}
 
 {if $headerText}
-    <h5 class="quiqqer-urlList-title">
+    <p class="qui-menu-urlList__listTitle">
         {$headerText}
-    </h5>
+    </p>
 {/if}
 {strip}
     {if count( $children )}
-        <ul class="quiqqer-urlList-entries list-unstyled">
+        <ul class="qui-menu-urlList__entries">
             {foreach from=$children item=Child}
-                <li class="quiqqer-urlList-entry">
+                <li class="qui-menu-urlList__entry">
                     {if $Child->getUrl()}
-                        <a href="{$Child->getUrl()}" class="quiqqer-urlList-entry-link {$restLinkColorCss}"
+                        <a href="{$Child->getUrl()}" class="qui-menu-urlList__link"
                            title="{$Child->getTitleAttribute()|escape:'html'}"
-                           {if $Child->getTarget()}target="{$Child->getTarget()}"{/if}>
+                           {if $Child->getTarget()}target="{$Child->getTarget()}"{/if}
+                        >
                             {if $icon}
-                                <span class="{$icon} fa-fw quiqqer-urlList-entry-link-icon"></span>
+                                <span class="{$icon} fa-fw qui-menu-urlList__linkIcon"></span>
                             {/if}
-                            <span class="quiqqer-urlList-entry-link-text">{$Child->getTitle()}</span>
+                            <span class="qui-menu-urlList__linkText">{$Child->getTitle()}</span>
                         </a>
                     {else}
-                        <span class="quiqqer-urlList-entry-link"
+                        <span class="qui-menu-urlList__link"
                               title="{$Child->getTitleAttribute()|escape:'html'}"
                               {if $Child->getType() ==='QUI\Menu\Independent\Items\Custom' && $Child->getClickEvent()}onclick="{$Child->getClickEvent()}"{/if}
                         >
                             {if $icon}
-                                <span class="{$icon} fa-fw quiqqer-urlList-entry-link-icon"></span>
+                                <span class="{$icon} fa-fw qui-menu-urlList__linkIcon"></span>
                             {/if}
-                            <span class="quiqqer-urlList-entry-link-text">{$Child->getTitle()}</span>
+                            <span class="qui-menu-urlList__linkText">{$Child->getTitle()}</span>
                         </span>
                     {/if}
                 </li>
