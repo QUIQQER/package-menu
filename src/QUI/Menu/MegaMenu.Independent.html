@@ -12,7 +12,7 @@
     }
 </style>
 
-<nav class="megaMenu-hide-on-mobile">
+<nav class="quiqqer-menu-megaMenu__wrapperDesktop megaMenu-hide-on-mobile">
 
     {$prepend}
 
@@ -40,12 +40,12 @@
 
                         {$Child->getTitle()}
 
-                        {if count($subchildren)}
-                            <span class="fa fa-angle-down"></span>
+                        {if count($subchildren) && $subMenuIndicator}
+                            <span class="{$subMenuIndicator}" aria-hidden="true"></span>
                         {/if}
                     </a>
                 {else}
-                    <span class="qui-menu-siteid-{$Child->getIdentifier()} quiqqer-menu-megaMenu-list-item-inner"
+                    <span class="qui-menu-siteid-{$Child->getIdentifier()} quiqqer-menu-megaMenu-list-item-inner" tabindex="0" role="button"
                           {if $Child->getType() ==='QUI\Menu\Independent\Items\Custom' && $Child->getClickEvent()}onclick="{$Child->getClickEvent()}"{/if}
                     >
                         {if $this->getAttribute('showFirstLevelIcons') &&  $Child->getIcon() && $Child->getIcon()|strpos:'image' !== 'false' }
@@ -55,8 +55,8 @@
 
                         {$Child->getTitle()}
 
-                        {if count($subchildren)}
-                            <span class="fa fa-angle-down"></span>
+                        {if count($subchildren) && $subMenuIndicator}
+                            <span class="{$subMenuIndicator}" aria-hidden="true"></span>
                         {/if}
                     </span>
                 {/if}
@@ -79,15 +79,16 @@
     {$append}
 </nav>
 {if $Mobile}
-    <div class="megaMenu-hide-on-desktop">
+    <div class="quiqqer-menu-megaMenu__wrapperMobile megaMenu-hide-on-desktop">
         {$prepend}
 
-        <div class="quiqqer-menu-megaMenu-mobile">
-            <span class="fa fa-bars"></span>
-            <span>Menü</span>
-        </div>
+        <button class="quiqqer-menu-megaMenu-mobile-openerBtn" role="button" data-name="quiqqer-menu-megaMenu-mobile-openerBtn">
+            <span class="fa fa-bars icon" aria-hidden="true"></span>
+            <span class="label">{locale group="quiqqer/menu" var="frontend.megaMenu.mobileBtnOpener.text"}</span>
+        </button>
 
         {$append}
+
         {$Mobile->create()}
     </div>
 {/if}

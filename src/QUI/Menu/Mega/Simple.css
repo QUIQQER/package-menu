@@ -1,33 +1,41 @@
 .quiqqer-menu-megaMenu-children-simple {
     width: auto;
-    display: inline-block;
+    display: block;
     min-width: 12rem;
     max-width: 25rem;
+    overflow: hidden;
+    border-radius: var(--_qui-megaMenu-submenu-borderRadius);
 }
 
-.quiqqer-menu-megaMenu-children-simple-entry {
-    display: block;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    position: relative;
-    transition: 0.2s all ease-in-out;
-}
-
-.quiqqer-menu-megaMenu-children-simple-entry:hover {
-    background-color: rgba(255,255,255,0.1);
-}
-
-.quiqqer-menu-megaMenu-children-simple-entry:last-child {
-    border-bottom: none;
-}
-
-.quiqqer-menu-megaMenu-children-simple-entry a,
-.quiqqer-menu-megaMenu-children-simple-entry__noUrl > span:first-child {
-    padding: 10px 25px;
+.quiqqer-menu-megaMenu-children-simple-entry__inner {
+    padding: 0.75em 1.5em;
     display: block;
     cursor: pointer;
+    color: var(--_qui-megaMenu-submenu-link-color);
+    background-color: var(--_qui-megaMenu-submenu-link-bgColor);
+    transition: var(--_qui-megaMenu-transition);
+}
+
+.quiqqer-menu-megaMenu-children-simple-entry__inner:is(:hover, :active) {
+    color: var(--_qui-megaMenu-submenu-link-color--hover);
+    background-color: var(--_qui-megaMenu-submenu-link-bgColor--hover);
 }
 
 .quiqqer-menu-megaMenu-children-simple-entry-short {
     font-size: 0.8em;
     color: var(--_qui-megaMenu-text-color--muted);
+}
+
+.quiqqer-menu-megaMenu-children-simple:after {
+    opacity: var(--_qui-megaMenu-submenu-simple-showArrow);
+    border-bottom: var(--_qui-megaMenu-submenu-simple-arrowSize) solid var(--_qui-megaMenu-submenu-bgColor);
+    border-left: var(--_qui-megaMenu-submenu-simple-arrowSize) solid transparent;
+    border-right: var(--_qui-megaMenu-submenu-simple-arrowSize) solid transparent;
+    border-top: var(--_qui-megaMenu-submenu-simple-arrowSize) solid transparent;
+    content: '';
+    height: 0;
+    width: 0;
+    left: 1.5em; /* quiqqer-menu-megaMenu-children-simple padding left */
+    position: absolute;
+    top: calc(-1 * 2 * var(--_qui-megaMenu-submenu-simple-arrowSize));
 }

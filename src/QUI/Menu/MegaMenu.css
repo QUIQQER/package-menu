@@ -1,45 +1,81 @@
 .quiqqer-menu-megaMenu {
-    --_qui-megaMenu-link-color: var(--qui-nav-link-color, var(--qui-body-color, #202428));
-    --_qui-megaMenu-link-color--hover: var(--qui-nav-link-color--hover, var(--qui-color-primary, #202428));
-    --_qui-megaMenu-sublink-color: var(--qui-nav-sublink-color, var(--qui-body-color, #202428));
-    --_qui-megaMenu-sublink-color--hover: var(--qui-nav-sublink-color--hover, var(--qui-color-primary, #202428));
-    --_qui-megaMenu-text-color: var(--qui-nav-text-color, var(--qui-body-color, #202428));
-    --_qui-megaMenu-text-color--muted: var(--qui-nav-text-color--muted, var(--qui-text-muted, #646e7d));
+    --_qui-megaMenu-list-gap: var(--qui-megaMenu-list-gap, 0.5em);
 
-    float: left;
+    --_qui-megaMenu-link-color: var(--qui-megaMenu-link-color, var(--qui-colors-body, #202428));
+    --_qui-megaMenu-link-color--hover: var(--qui-megaMenu-link-color--hover, var(--qui-colors-gray-950, #10171a));
+    --_qui-megaMenu-link-bgColor: var(--qui-megaMenu-link-bgColor, transparent);
+    --_qui-megaMenu-link-bgColor--hover: var(--qui-megaMenu-link-bgColor--hover, var(--qui-colors-gray-25, #f5f5f5));
+    --_qui-megaMenu-link-padding: var(--qui-megaMenu-link-padding, 0.25em 0.5em);
+    --_qui-megaMenu-link-borderRadius: var(--qui-megaMenu-link-borderRadius, 0.5em);
+    --_qui-megaMenu-transition: var(--qui-megaMenu-transition, none);
+
+    --_qui-megaMenu-text-color: var(--qui-megaMenu-text-color, var(--qui-colors-body, #202428));
+    --_qui-megaMenu-text-color--muted: var(--qui-megaMenu-text-color--muted, var(--qui-colors-muted, #646e7d));
+
+    --_qui-megaMenu-submenu-bgColor: var(--qui-megaMenu-submenu-bgColor, #fff);
+    --_qui-megaMenu-submenu-borderRadius: var(--qui-megaMenu-submenu-borderRadius, 0.5rem);
+    --_qui-megaMenu-submenu-link-color: var(--qui-megaMenu-submenu-link-color, var(--qui-colors-body, #202428));
+    --_qui-megaMenu-submenu-link-color--hover: var(--qui-megaMenu-submenu-link-color--hover, var(--qui-colors-gray-950, #10171a));
+    --_qui-megaMenu-submenu-link-bgColor: var(--qui-megaMenu-submenu-link-color, transparent);
+    --_qui-megaMenu-submenu-link-bgColor--hover: var(--qui-megaMenu-submenu-link-color--hover, var(--qui-colors-gray-25, #f5f5f5));
+
+    --_qui-megaMenu-submenu-simple-showArrow: var(--qui-megaMenu-submenu-simple-showArrow, 0);
+    --_qui-megaMenu-submenu-simple-arrowSize: var(--qui-megaMenu-submenu-simple-arrowSize, 10px);
+
+
     position: relative;
     z-index: 50;
     width: 100%;
 }
 
-.quiqqer-menu-megaMenu .megaMenu-hide-on-desktop  {
+.quiqqer-menu-megaMenu__wrapperDesktop,
+.quiqqer-menu-megaMenu__wrapperMobile {
     width: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .quiqqer-menu-megaMenu-list {
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--_qui-megaMenu-list-gap);
 }
 
 .quiqqer-menu-megaMenu-list-item {
-    display: block;
-    float: left;
+    display: flex;
+    align-items: center;
     list-style-type: none;
-    padding: 10px;
     position: relative;
+    padding: 0;
+    margin: 0;
 }
 
 .quiqqer-menu-megaMenu-list-item-inner {
-    display: block;
+    display: flex;
+    gap: 0.5em;
+    align-items: baseline;
     cursor: pointer;
+    color: var(--_qui-megaMenu-link-color);
+    padding: var(--_qui-megaMenu-link-padding);
+    border-radius: var(--_qui-megaMenu-link-borderRadius);
+    transition: var(--_qui-megaMenu-transition);
+}
+
+.quiqqer-menu-megaMenu-list-item-inner:is(:hover, :active, :focus) {
+    color: var(--_qui-megaMenu-link-color--hover);
+    background-color: var(--_qui-megaMenu-link-bgColor--hover);
 }
 
 /** sub menu data
  ================================================= */
 
 .quiqqer-menu-megaMenu-list-item-menu {
+    background-color: var(--_qui-megaMenu-submenu-bgColor);
+    border-radius: var(--_qui-megaMenu-submenu-borderRadius);
     align-content: stretch;
-    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.35);
+    box-shadow: 0 0 16px rgba(17, 17, 26, 0.1);
     display: none;
     left: 0;
     position: absolute;
@@ -47,8 +83,12 @@
     width: 100%;
 }
 
-/** sub menu data
+/** mobile
  ================================================= */
+.quiqqer-menu-megaMenu-mobile-openerBtn {
+    align-self: center;
+    margin-left: auto;
+}
 
 .quiqqer-menu-megaMenu-mobile {
     cursor: pointer;

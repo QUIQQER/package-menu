@@ -54,6 +54,8 @@ class MegaMenu extends AbstractMenu
             'showLevel' => 1,
             'showHomeLink' => false,
             'showShortDesc' => false,
+            // a valid FontAwesome icon that is placed next to the first-level link label if the link has a submenu
+            'subMenuIndicator' => 'fa-solid fa-angle-down',
             'breakPoint' => 767
         ]);
 
@@ -189,7 +191,8 @@ class MegaMenu extends AbstractMenu
                 'append' => $this->append,
                 'childControl' => $childControl,
                 'showMenu' => true,
-                'breakPoint' => $breakPoint
+                'breakPoint' => $breakPoint,
+                'subMenuIndicator' => $this->getAttribute('subMenuIndicator')
             ]);
 
             $result = [];
@@ -208,7 +211,8 @@ class MegaMenu extends AbstractMenu
                 'append' => $this->append,
                 'childControl' => $childControl,
                 'showMenu' => true,
-                'breakPoint' => $breakPoint
+                'breakPoint' => $breakPoint,
+                'subMenuIndicator' => $this->getAttribute('subMenuIndicator')
             ]);
 
             if ($this->getProject()->getConfig('menu.settings.type') == 'noMenu') {
