@@ -126,6 +126,7 @@ define('package/quiqqer/menu/bin/SlideOut', [
             ToggleButton.addEvent("click", function (e)
             {
                 e.preventDefault();
+                e.stopPropagation();
 
                 if (runs) {
                     return;
@@ -588,10 +589,9 @@ define('package/quiqqer/menu/bin/SlideOut', [
 
                         Icon.removeClass("quiqqer-menu-levels-rotate");
                         resolve();
-                    }``
+                    }
                 });
             });
         }
     });
-
 });
