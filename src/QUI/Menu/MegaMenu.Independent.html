@@ -46,7 +46,7 @@
                     </a>
                 {else}
                     <span class="qui-menu-siteid-{$Child->getIdentifier()} quiqqer-menu-megaMenu-list-item-inner" tabindex="0" role="button"
-                          {if $Child->getType() ==='QUI\Menu\Independent\Items\Custom' && $Child->getClickEvent()}onclick="{$Child->getClickEvent()}"{/if}
+                          {if $Child->getType() ==='QUI\Menu\Independent\Items\Custom' && $Child->getClickEvent()}onclick="{$Child->getClickEvent()}" data-name="custom-event"{/if}
                     >
                         {if $this->getAttribute('showFirstLevelIcons') &&  $Child->getIcon() && $Child->getIcon()|strpos:'image' !== 'false' }
                             {image src=$Child->getIcon() onlyicon=1}
