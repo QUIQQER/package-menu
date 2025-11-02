@@ -118,6 +118,16 @@ define('package/quiqqer/menu/bin/SlideoutAdvanced', [
                 });
             });
 
+            // fix for iPad, onclick doesn't work
+            Elm.querySelectorAll('[data-name="custom-event"]').forEach((CustomEventElm) => {
+                const func = CustomEventElm.getAttribute('onclick');
+
+                CustomEventElm.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    eval(func);
+                });
+            });
+
             this.NavUlContainer = Elm.querySelector('.quiqqer-slideoutAdvanced-page-navigation-level-1');
             var nextButtons      = this.NavUlContainer.getElements(".quiqqer-slideoutAdvanced-icon-next"),
                 backButtons      = this.NavUlContainer.getElements(".quiqqer-slideoutAdvanced-backBtn");

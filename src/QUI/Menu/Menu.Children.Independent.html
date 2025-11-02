@@ -55,7 +55,7 @@
                     {* custom event *}
                     <span class="qui-menu-siteid-{$Child->getIdentifier()} left-menu-a"
                           title="{$Child->getTitleAttribute()|escape:'html'}" role="button"
-                          {if $Child->getType() ==='QUI\Menu\Independent\Items\Custom' && $Child->getClickEvent()}onclick="{$Child->getClickEvent()}"{/if}
+                          {if $Child->getType() ==='QUI\Menu\Independent\Items\Custom' && $Child->getClickEvent()}onclick="{$Child->getClickEvent()}" data-name="custom-event"{/if}
                     >
                         {if count($Child->getChildren())}
                             {* With children *}

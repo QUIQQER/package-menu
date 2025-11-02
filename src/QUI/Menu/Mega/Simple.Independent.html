@@ -25,7 +25,9 @@
                 {/if}
             </a>
         {else}
-            <span class="qui-menu-siteid-{$Child->getIdentifier()} quiqqer-menu-megaMenu-children-simple-entry__inner">
+            <span class="qui-menu-siteid-{$Child->getIdentifier()} quiqqer-menu-megaMenu-children-simple-entry__inner"
+                  {if $Child->getType() ==='QUI\Menu\Independent\Items\Custom' && $Child->getClickEvent()}onclick="{$Child->getClickEvent()}" data-name="custom-event"{/if}
+            >
                 {if $Child->getIcon() && $Child->getIcon()|strpos:'image.php' !== 0 }
                     {image src=$Child->getIcon() onlyicon=1}
                 {/if}

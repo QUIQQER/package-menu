@@ -73,6 +73,16 @@ define('package/quiqqer/menu/bin/MegaMenu', [
             let self    = this,
                 timeout = null;
 
+            // fix for iPad, onclick doesn't work
+            this.$Nav.querySelectorAll('[data-name="custom-event"]').forEach((CustomEventElm) => {
+                const func = CustomEventElm.getAttribute('onclick');
+
+                CustomEventElm.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    eval(func);
+                });
+            });
+
             this.$Nav.getElements('.quiqqer-menu-megaMenu-list-item').addEvents({
                 click   : function (event) {
                     event.stop();

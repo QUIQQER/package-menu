@@ -118,6 +118,16 @@ define('package/quiqqer/menu/bin/SlideOut', [
                 });
             });
 
+            // fix for iPad, onclick doesn't work
+            Elm.querySelectorAll('[data-name="custom-event"]').forEach((CustomEventElm) => {
+                const func = CustomEventElm.getAttribute('onclick');
+
+                CustomEventElm.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    eval(func);
+                });
+            });
+
             var Parent = this.getElm(),
             ToggleButton = Parent.getElements(".quiqqer-menu-levels");
 
