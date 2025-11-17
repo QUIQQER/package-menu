@@ -38,6 +38,7 @@ define('package/quiqqer/menu/bin/MegaMenu', [
             this.$enter        = false;
             this.$Nav          = null;
             this.showMenuDelay = 250;
+            this.isSimpleMenu = false;
         },
 
         /**
@@ -51,7 +52,7 @@ define('package/quiqqer/menu/bin/MegaMenu', [
             }
 
             this.$Menu = new Element('div', {
-                'class': 'quiqqer-menu-megaMenu-list-item-menu control-background',
+                'class': 'quiqqer-menu-megaMenu-list-item-menu',
                 styles : {
                     opacity: 0,
                     top    : 0
@@ -71,6 +72,16 @@ define('package/quiqqer/menu/bin/MegaMenu', [
 
             let self    = this,
                 timeout = null;
+
+            // fix for iPad, onclick doesn't work
+            this.$Nav.querySelectorAll('[data-name="custom-event"]').forEach((CustomEventElm) => {
+                const func = CustomEventElm.getAttribute('onclick');
+
+                CustomEventElm.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    eval(func);
+                });
+            });
 
             this.$Nav.getElements('.quiqqer-menu-megaMenu-list-item').addEvents({
                 click   : function (event) {
@@ -178,7 +189,7 @@ define('package/quiqqer/menu/bin/MegaMenu', [
 
             var SlideNode  = document.getElement('[data-slideOut="mobileMenu-SlideOut"]'),
                 SlideOut   = QUI.Controls.getById(SlideNode.get('data-quiid')),
-                MobileMenu = this.getElm().getElement('.quiqqer-menu-megaMenu-mobile');
+                MobileMenu = this.getElm().getElement('[data-name="quiqqer-menu-megaMenu-mobile-openerBtn"]');
 
             if (!MobileMenu) {
                 return;
@@ -205,9 +216,10 @@ define('package/quiqqer/menu/bin/MegaMenu', [
          */
         showMenuFor: function (liElement) {
             var Menu         = liElement.getElement('.quiqqer-menu-megaMenu-list-item-menu'),
-                isSimpleMenu = false,
                 leftOffset   = 0,
                 self         = this;
+
+            this.isSimpleMenu = false;
 
             if (!Menu) {
                 return this.$hide();
@@ -217,7 +229,7 @@ define('package/quiqqer/menu/bin/MegaMenu', [
             if (Menu.getElement('.quiqqer-menu-megaMenu-children-simple')) {
                 var megaMenu = this.getElm();
                 leftOffset   = parseInt(liElement.getPosition(megaMenu).x);
-                isSimpleMenu = true;
+                this.isSimpleMenu = true;
             }
 
             this.$Menu.set('html', Menu.get('html'));
@@ -254,34 +266,41 @@ define('package/quiqqer/menu/bin/MegaMenu', [
                 }
             });
 
-            return this.$show(leftOffset, isSimpleMenu);
+            return this.$show(leftOffset);
         },
 
         /**
          * Show the menu
          * @returns {Promise}
          */
-        $show: function (leftOffset, isSimpleMenu) {
+        $show: function (leftOffset) {
             this.$liSize = this.getElm().getSize().y;
 
             return new Promise(function (resolve) {
 
-                var width = '';
-                if (isSimpleMenu) {
-                    width = 'auto';
+                const initStyles = {
+                    display: 'flex',
+                        top    : this.$liSize,
+                        left   : leftOffset,
+                        width  : '',
+                    transform: null,
+                    transformOrigin: null,
+                };
+
+                const animatedStyles = {
+                    opacity: 1
+                };
+
+                if (this.isSimpleMenu) {
+                    initStyles.width = 'auto';
+                    initStyles.transform = 'scale(0.8)';
+                    initStyles.transformOrigin = 'top left';
+                    animatedStyles.transform = 'scale(1)';
                 }
 
-                this.$Menu.setStyles({
-                    display: 'flex',
-                    top    : this.$liSize, // vorerst, sonst schauts doof aus
-                    left   : leftOffset,
-                    width  : width
-                });
+                this.$Menu.setStyles(initStyles);
 
-                moofx(this.$Menu).animate({
-                    opacity: 1,
-                    top    : this.$liSize
-                }, {
+                moofx(this.$Menu).animate(animatedStyles, {
                     duration: 200,
                     callback: resolve
                 });
@@ -293,11 +312,16 @@ define('package/quiqqer/menu/bin/MegaMenu', [
          * @returns {Promise}
          */
         $hide: function () {
+            const animatedStyles = {
+                opacity: 0
+            };
+
+            if (this.isSimpleMenu) {
+                animatedStyles.transform = 'scale(0.8)';
+            }
+
             return new Promise(function (resolve) {
-                moofx(this.$Menu).animate({
-                    opacity: 0,
-                    top    : this.$liSize - 10
-                }, {
+                moofx(this.$Menu).animate(animatedStyles, {
                     duration: 200,
                     callback: function () {
                         this.$Menu.setStyles({

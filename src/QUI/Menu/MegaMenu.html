@@ -12,7 +12,7 @@
     }
 </style>
 
-<nav class="megaMenu-hide-on-mobile">
+<nav class="quiqqer-menu-megaMenu__wrapperDesktop megaMenu-hide-on-mobile">
 
     {$prepend}
 
@@ -44,24 +44,23 @@
                title="{$Child->getAttribute('title')|escape:'html'}">
                 {$Child->getAttribute('title')}
 
-                {if $showMenu && count($subchildren) &&
-                $Child->getAttribute('quiqqer.megamenu.settings.type') !== 'noMenu'}
-                <span class="fa fa-angle-down"></span>
+                {if $showMenu && count($subchildren) && $subMenuIndicator && $Child->getAttribute('quiqqer.megamenu.settings.type') !== 'noMenu'}
+                    <span class="fa {$subMenuIndicator}" aria-hidden="true"></span>
                 {/if}
             </a>
 
             {if $showMenu && $Child->getAttribute('quiqqer.megamenu.settings.type') && $Child->getAttribute('quiqqer.megamenu.settings.type') !== ''}
-            {assign var=usedControl value=$this->getMenuControl($Child->getAttribute('quiqqer.megamenu.settings.type'))}
+                {assign var=usedControl value=$this->getMenuControl($Child->getAttribute('quiqqer.megamenu.settings.type'))}
             {/if}
 
             {if $showMenu && $usedControl}
-            {control control=$usedControl Site=$Child assign=Control}
-            {assign var=t_ value=$this->addSubMenu($usedControl)}
-            {if $Control->count()}
-            <div class="quiqqer-menu-megaMenu-list-item-menu">
-                {$Control->create()}
-            </div>
-            {/if}
+                {control control=$usedControl Site=$Child assign=Control}
+                {assign var=t_ value=$this->addSubMenu($usedControl)}
+                {if $Control->count()}
+                    <div class="quiqqer-menu-megaMenu-list-item-menu">
+                        {$Control->create()}
+                    </div>
+                {/if}
             {/if}
         </li>
         {/foreach}
@@ -70,15 +69,16 @@
     {$append}
 </nav>
 {if $Mobile}
-<div class="megaMenu-hide-on-desktop">
-    {$prepend}
+    <div class="quiqqer-menu-megaMenu__wrapperMobile megaMenu-hide-on-desktop">
+        {$prepend}
 
-    <div class="quiqqer-menu-megaMenu-mobile">
-        <span class="fa fa-bars"></span>
-        <span>Menü</span>
+        <button class="quiqqer-menu-megaMenu-mobile-openerBtn" role="button" data-name="quiqqer-menu-megaMenu-mobile-openerBtn">
+            <span class="fa fa-bars icon" aria-hidden="true"></span>
+            <span class="label">{locale group="quiqqer/menu" var="frontend.megaMenu.mobileBtnOpener.text"}</span>
+        </button>
+
+        {$append}
+
+        {$Mobile->create()}
     </div>
-
-    {$append}
-    {$Mobile->create()}
-</div>
 {/if}

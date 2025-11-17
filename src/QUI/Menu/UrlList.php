@@ -34,13 +34,13 @@ class UrlList extends QUI\Control
     {
         // defaults values
         $this->setAttributes([
-            'class' => 'quiqqer-urlList',
+            'class' => 'qui-menu-urlList',
             'headerText' => '', // title above the url list
             'startId' => false, // id or site link
             'menuId' => false, // id of an (independent) menu
             'display' => 'default',
             'icon' => '', // only fontawesome icons are supported
-            'resetLinkColor' => false // if true, the link inherit color from parent
+            'resetLinkColor' => true // if true, the link inherit color from parent
         ]);
 
         parent::__construct($attributes);
@@ -70,21 +70,21 @@ class UrlList extends QUI\Control
 
         $Engine = QUI::getTemplateManager()->getEngine();
         $icon = '';
-        $restLinkColorCss = '';
 
         if ($this->getAttribute('icon') && str_starts_with($this->getAttribute('icon'), 'fa ')) {
             $icon = $this->getAttribute('icon');
         }
 
-        if ($this->getAttribute('resetLinkColor')) {
-            $restLinkColorCss = 'quiqqer-urlList-entry-link__resetLinkColor';
-        }
-
         switch ($this->getAttribute('display')) {
             default:
             case 'default':
-                $this->addCSSClass('quiqqer-urlList__default');
+                $cssClass = 'qui-menu-urlList--default'; // "quiqqer-urlList--default" is deprecated
+                $cssFile = 'UrlList.Default.css';
                 break;
+        }
+
+        if ($this->getAttribute('resetLinkColor')) {
+            $this->addCSSClass('qui-menu-urlList--resetLinkColor');
         }
 
         $Engine->assign([
@@ -92,10 +92,10 @@ class UrlList extends QUI\Control
             'headerText' => $this->getAttribute('headerText'),
             'children' => $children,
             'icon' => $icon,
-            'restLinkColorCss' => $restLinkColorCss
         ]);
 
-        $this->addCSSFile(dirname(__FILE__) . '/UrlList.Default.css');
+        $this->addCSSClass($cssClass);
+        $this->addCSSFile(dirname(__FILE__) . '/' . $cssFile);
 
         return $Engine->fetch($template);
     }
@@ -153,5 +153,29 @@ class UrlList extends QUI\Control
         }
 
         return $Site->getChildren();
+    }
+
+    /**
+     * Set custom css variable to the control as inline style
+     * --_qui-menu-urlList-$name: var(--qui-menu-urlList-$name, $value);
+     *
+     * Example:
+     *     --_qui-menu-urlList-linkColor: var(--qui-menu-urlList-linkColor, #ff0000);
+     *
+     * @param string $name
+     * @param string $value
+     *
+     * @return void
+     */
+    private function setCustomVariable(string $name, string $value): void
+    {
+        if (!$name || !$value) {
+            return;
+        }
+
+        $this->setStyle(
+            '--_qui-menu-urlList-' . $name,
+            'var(--qui-menu-urlList-' . $name . ', ' . $value . ')'
+        );
     }
 }

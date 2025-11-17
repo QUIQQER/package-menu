@@ -1,25 +1,51 @@
-.quiqqer-urlList-entries {
-    padding-left: 0;
-    margin: 0 0 1em 0;
+.qui-menu-urlList {
+    --_qui-menu-urlList-title-fontWeight: var(--qui-menu-urlList-title-fontWeight, bold);
+    --_qui-menu-urlList-title-fontSize: var(--qui-menu-urlList-title-fontSize, var(--qui-fs-lg));
+    --_qui-menu-urlList-link-color: var(--qui-menu-urlList-link-color, var(--qui-colors-primary));
+    --_qui-menu-urlList-link-color--hover: var(--qui-menu-urlList-link-color, var(--qui-colors-primary-700));
 }
 
-.quiqqer-urlList-entry {
+/* reset link */
+.qui-menu-urlList--resetLinkColor {
+    --_qui-menu-urlList-link-color: var(--qui-menu-urlList-link-color, inherit);
+}
+
+.qui-menu-urlList__listTitle {
+    font-weight: var(--_qui-menu-urlList-title-fontWeight);
+    font-size: var(--_qui-menu-urlList-title-fontSize);
+    margin-bottom: 0.5em;
+}
+
+.qui-menu-urlList__entries {
+    padding-left: 0;
+    margin: 0 0 1rem 0;
+    list-style: none;
+}
+
+.qui-menu-urlList__entry {
     padding-left: 0;
     margin: 0 0 0.5em 0;
 }
 
-.quiqqer-urlList-entry-link__resetLinkColor {
-    display: inline-flex;
+.qui-menu-urlList__link {
+    display: flex;
+    gap: 0.75em;
+    color: var(--_qui-menu-urlList-link-color);
+}
+
+.qui-menu-urlList__link {
+    display: flex;
+    gap: 0.75em;
+    color: var(--_qui-menu-urlList-link-color);
+}
+
+.qui-menu-urlList__link:is(:hover, :focus, :active) {
+    color: var(--_qui-menu-urlList-link-color--hover);
 }
 
 /* icon */
-.quiqqer-urlList-entry-link-icon {
-    margin-right: 0.5em;
+.qui-menu-urlList__linkIcon {
     flex-shrink: 0;
     line-height: inherit;
 }
 
-/* reset link */
-.quiqqer-urlList-entry-link__resetLinkColor:not(:hover, :focus) {
-    color: inherit;
-}

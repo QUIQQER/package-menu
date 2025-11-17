@@ -95,10 +95,11 @@
     margin-left: 0;
 }
 
-.page-navigation-level-1 a {
+.page-navigation-level-1 .left-menu-a {
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     font-size: 1.125rem;
     padding: 10px 0;
+    display: block;
 }
 
 .page-navigation__noHomeLink .page-navigation-level-1 > li:first-child > a {
@@ -109,13 +110,13 @@
     text-align: center;
 }
 
-.page-navigation-level-2 a {
+.page-navigation-level-2 .left-menu-a {
     border-top: none;
     font-size: 1rem;
     padding: 5px 0;
 }
 
-.page-navigation-level-3 a {
+.page-navigation-level-3 .left-menu-a {
     font-size: 0.875rem;
 }
 
@@ -123,7 +124,7 @@
  * ========================================================== */
 
 .slideout-panel {
-    display: inline-block;
+    display: block;
     width: 100%;
 }
 
