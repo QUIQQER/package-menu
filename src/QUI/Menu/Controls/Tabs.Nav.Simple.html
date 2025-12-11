@@ -1,0 +1,35 @@
+<div class="quiqqer-tabsAdvanced-nav {$navAlignment}">
+    <ul class="quiqqer-tabsAdvanced-nav-inner {$navFillSpace} quiqqer-tab-nav" role="tablist">
+        {foreach from=$entries item=entry key=key}
+            <li class="quiqqer-tabsAdvanced-nav-item {$navTabStyleCss}
+             quiqqer-tab-nav-item {if $key == $active - 1}active{/if}"
+                role="presentation"
+                data-entry-nav-pos="{$key}">
+                <a href="#{QUI\Utils\Security\Orthos::urlEncodeString($entry.tabTitle)}"
+                   data-qui-disableTemplateScroll="1"
+                   class="quiqqer-tabsAdvanced-nav-link {$navTabStyleCss}" draggable="false"
+                   role="tab"
+                   id="{$instanceId}-tab-{$key}"
+                   aria-controls="{QUI\Utils\Security\Orthos::urlEncodeString($entry.tabTitle)}"
+                   aria-selected="{if $key == $active - 1}true{else}false{/if}"
+                   tabindex="{if $key == $active - 1}0{else}-1{/if}">
+                    {if isset($entry.tabIcon) && $entry.tabIcon}
+                        {image src=$entry.tabIcon width="80" height="80"}
+                    {/if}
+
+                    {if $showNavText}
+                        <span class="quiqqer-tabsAdvanced-nav-linkLabel {$navTabStyleCss} {$navWrapText}">
+                            {$entry.tabTitle}
+                        </span>
+                        <span class="quiqqer-tabsAdvanced-progress">
+                            <span class="quiqqer-tabsAdvanced-progress__bar"></span>
+                        </span>
+                    {/if}
+                </a>
+            </li>
+        {/foreach}
+    </ul>
+
+    <!-- Live-Region for screen reader announcements -->
+    <div id="tabs-live" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
+</div>
