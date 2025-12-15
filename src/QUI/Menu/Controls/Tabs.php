@@ -123,13 +123,13 @@ class Tabs extends QUI\Control
                 break;
 
             case 'simple.navBottom':
-               $navPos = 'bottom';
+                $navPos = 'bottom';
                 break;
 
             case 'simple.navTop':
             default:
                 $navPos = 'top';
-            break;
+                break;
         }
 
         /* nav */
