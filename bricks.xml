@@ -180,11 +180,125 @@
                     <locale group="quiqqer/menu"
                             var="control.tabs.template"/>
 
-                    <option value="simple">
+                    <option value="simple.navTop">
                         <locale group="quiqqer/menu"
-                                var="control.tabs.template.simple"/>
+                                var="control.tabs.template.simple.navTop"/>
+                    </option>
+                    <option value="simple.navBottom">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.template.simple.navBottom"/>
                     </option>
                 </setting>
+
+                <setting name="autoPlay" type="checkbox">
+                    <locale group="quiqqer/menu"
+                            var="control.tabs.autoPlay"/>
+                    <description>
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.autoPlay.desc"/>
+                    </description>
+                </setting>
+                <setting name="autoPlay.controls" type="checkbox">
+                    <locale group="quiqqer/menu"
+                            var="control.tabs.autoPlay.controls"/>
+                    <description>
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.autoPlay.controls.desc"/>
+                    </description>
+                </setting>
+                <setting name="autoPlay.controls.alignment" type="select">
+                    <locale group="quiqqer/menu"
+                            var="control.tabs.autoPlay.controls.alignment"/>
+
+                    <option value="left">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.autoPlay.controls.alignment.left"/>
+                    </option>
+                    <option value="center">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.autoPlay.controls.alignment.center"/>
+                    </option>
+                    <option value="right">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.autoPlay.controls.alignment.right"/>
+                    </option>
+                </setting>
+                <setting name="autoPlay.interval" type="number">
+                    <locale group="quiqqer/menu"
+                            var="control.tabs.autoPlay.interval"/>
+                    <description>
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.autoPlay.interval.desc"/>
+                    </description>
+                </setting>
+                <setting name="autoPlay.progress.indicator" type="select">
+                    <locale group="quiqqer/menu"
+                            var="control.tabs.autoPlay.progress.indicator"/>
+
+                    <description>
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.autoPlay.progress.indicator.desc"/>
+                    </description>
+                    <option value="topLeft">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.autoPlay.progress.indicator.progressbar"/>
+                    </option>
+                </setting>
+
+                <setting name="animation" type="select">
+                    <locale group="quiqqer/menu"
+                            var="control.tabs.animation"/>
+
+                    <description>
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.animation.desc"/>
+                    </description>
+                    <option value="fadeOutFadeIn">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.animation.fadeOutFadeIn"/>
+                    </option>
+                    <option value="scaleToSmallScaleFromLarge">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.animation.scaleToSmallScaleFromLarge"/>
+                    </option>
+                    <option value="scaleToSmallScaleFromSmall">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.animation.scaleToSmallScaleFromSmall"/>
+                    </option>
+                    <option value="scaleToLargeScaleFromLarge">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.animation.scaleToLargeScaleFromLarge"/>
+                    </option>
+                    <option value="scaleToLargeScaleFromSmall">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.animation.scaleToLargeScaleFromSmall"/>
+                    </option>
+                    <option value="slideOutToRightSlideInFromLeft">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.animation.slideOutToRightSlideInFromLeft"/>
+                    </option>
+                    <option value="slideOutToRightSlideInFromRight">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.animation.slideOutToRightSlideInFromRight"/>
+                    </option>
+                    <option value="slideOutToLeftSlideInFromRight">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.animation.slideOutToLeftSlideInFromRight"/>
+                    </option>
+                    <option value="slideOutToLeftSlideInFromLeft">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.animation.slideOutToLeftSlideInFromLeft"/>
+                    </option>
+                    <option value="slideOutToBottomSlideInFromBottom">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.animation.slideOutToBottomSlideInFromBottom"/>
+                    </option>
+                    <option value="slideOutToBottomSlideInFromTop">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.animation.slideOutToBottomSlideInFromTop"/>
+                    </option>
+                </setting>
+
 
                 <!-- nav -->
                 <setting name="navImgHeight" type="number">
