@@ -422,10 +422,130 @@
             <de><![CDATA[Design]]></de>
             <en><![CDATA[Design]]></en>
         </locale>
-        <locale name="control.tabs.template.simple">
-            <de><![CDATA[Einfach]]></de>
-            <en><![CDATA[Simple]]></en>
+        <locale name="control.tabs.template.simple.navTop">
+            <de><![CDATA[Einfach - Navigation oben]]></de>
+            <en><![CDATA[Simple - Navigation on top]]></en>
         </locale>
+        <locale name="control.tabs.template.simple.navBottom">
+            <de><![CDATA[Einfach - Navigation unten]]></de>
+            <en><![CDATA[Simple - Navigation on bottom]]></en>
+        </locale>
+
+        <locale name="control.tabs.autoPlay">
+            <de><![CDATA[Automatische Wiedergabe aktivieren]]></de>
+            <en><![CDATA[Enable slider auto play]]></en>
+        </locale>
+        <locale name="control.tabs.autoPlay.desc">
+            <de><![CDATA[Startet den automatischen Wechsel der Tabs. Ist die Option aktiviert, wird nach dem eingestellten Intervall automatisch zum nächsten Tab gewechselt.]]></de>
+            <en><![CDATA[Enables automatic tab switching. When enabled, the slider advances to the next tab automatically after the configured interval.]]></en>
+        </locale>
+
+        <!-- Control: Tabs: autoplay controls (show/hide) -->
+        <locale name="control.tabs.autoPlay.controls">
+            <de><![CDATA[Play/Pause-Schaltfläche anzeigen (Steuerelement)]]></de>
+            <en><![CDATA[Show play/pause control]]></en>
+        </locale>
+        <locale name="control.tabs.autoPlay.controls.desc">
+            <de><![CDATA[Blendet eine Schaltfläche ein, mit der die automatische Wiedergabe gestartet oder pausiert werden kann.]]></de>
+            <en><![CDATA[Displays a button to start or pause the autoplay.]]></en>
+        </locale>
+
+        <!-- Control: Tabs: autoplay controls position -->
+        <locale name="control.tabs.autoPlay.controls.alignment">
+            <de><![CDATA[Position der Steuerelemente]]></de>
+            <en><![CDATA[Controls position]]></en>
+        </locale>
+        <locale name="control.tabs.autoPlay.controls.alignment.left">
+            <de><![CDATA[Links]]></de>
+            <en><![CDATA[Left]]></en>
+        </locale>
+        <locale name="control.tabs.autoPlay.controls.alignment.center">
+            <de><![CDATA[Zentriert]]></de>
+            <en><![CDATA[Center]]></en>
+        </locale>
+        <locale name="control.tabs.autoPlay.controls.alignment.right">
+            <de><![CDATA[Rechts]]></de>
+            <en><![CDATA[Right]]></en>
+        </locale>
+
+
+        <!-- Control: Tabs: autoplay interval -->
+        <locale name="control.tabs.autoPlay.interval">
+            <de><![CDATA[Autoplay-Intervall (ms)]]></de>
+            <en><![CDATA[Autoplay interval (ms)]]></en>
+        </locale>
+        <locale name="control.tabs.autoPlay.interval.desc">
+            <de><![CDATA[Zeit in Millisekunden bis zum automatischen Wechsel zum nächsten Tab.]]></de>
+            <en><![CDATA[Time in milliseconds before automatically switching to the next tab.]]></en>
+        </locale>
+
+        <!-- Control: Tabs: progress indicator -->
+        <locale name="control.tabs.autoPlay.progress.indicator">
+            <de><![CDATA[Fortschrittsanzeige]]></de>
+            <en><![CDATA[Progress indicator]]></en>
+        </locale>
+        <locale name="control.tabs.autoPlay.progress.indicator.desc">
+            <de><![CDATA[Wählt die Anzeigeform für den Fortschritt des Autoplay-Timers aus.]]></de>
+            <en><![CDATA[Selects the visualization for the autoplay timer progress.]]></en>
+        </locale>
+        <locale name="control.tabs.autoPlay.progress.indicator.progressbar">
+            <de><![CDATA[Fortschrittsbalken]]></de>
+            <en><![CDATA[Progress bar]]></en>
+        </locale>
+        <locale name="control.tabs.animation">
+            <de><![CDATA[Animation]]></de>
+            <en><![CDATA[Animation]]></en>
+        </locale>
+        <locale name="control.tabs.animation.desc">
+            <de><![CDATA[Bestimmt, wie die Übergänge zwischen den Tabs animiert werden.]]></de>
+            <en><![CDATA[Determines how the transitions between the tabs are animated.]]></en>
+        </locale>
+        <locale name="control.tabs.animation.fadeOutFadeIn">
+            <de><![CDATA[Aus- und Einblenden]]></de>
+            <en><![CDATA[Fade out & in]]></en>
+        </locale>
+        <locale name="control.tabs.animation.scaleToSmallScaleFromLarge">
+            <de><![CDATA[Zoom: ausblenden auf klein / einblenden von groß]]></de>
+            <en><![CDATA[Zoom: hide to small / show from large]]></en>
+        </locale>
+        <locale name="control.tabs.animation.scaleToSmallScaleFromSmall">
+            <de><![CDATA[Zoom: ausblenden auf klein / einblenden von klein]]></de>
+            <en><![CDATA[Zoom: hide to small / show from small]]></en>
+        </locale>
+        <locale name="control.tabs.animation.scaleToLargeScaleFromLarge">
+            <de><![CDATA[Zoom: ausblenden auf groß / einblenden von groß]]></de>
+            <en><![CDATA[Zoom: hide to large / show from large]]></en>
+        </locale>
+        <locale name="control.tabs.animation.scaleToLargeScaleFromSmall">
+            <de><![CDATA[Zoom: ausblenden auf groß / einblenden von klein]]></de>
+            <en><![CDATA[Zoom: hide to large / show from small]]></en>
+        </locale>
+
+        <locale name="control.tabs.animation.slideOutToRightSlideInFromLeft">
+            <de><![CDATA[Slide: ausblenden nach rechts / einblenden von links]]></de>
+            <en><![CDATA[Slide: hide to right / show from left]]></en>
+        </locale>
+        <locale name="control.tabs.animation.slideOutToRightSlideInFromRight">
+            <de><![CDATA[Slide: ausblenden nach rechts / einblenden von rechts]]></de>
+            <en><![CDATA[Slide: hide to right / show from right]]></en>
+        </locale>
+        <locale name="control.tabs.animation.slideOutToLeftSlideInFromRight">
+            <de><![CDATA[Slide: ausblenden nach links / einblenden von rechts]]></de>
+            <en><![CDATA[Slide: hide to left / show from right]]></en>
+        </locale>
+        <locale name="control.tabs.animation.slideOutToLeftSlideInFromLeft">
+            <de><![CDATA[Slide: ausblenden nach links / einblenden von links]]></de>
+            <en><![CDATA[Slide: hide to left / show from left]]></en>
+        </locale>
+        <locale name="control.tabs.animation.slideOutToBottomSlideInFromBottom">
+            <de><![CDATA[Slide: ausblenden nach unten / einblenden von unten]]></de>
+            <en><![CDATA[Slide: hide to bottom / show from bottom]]></en>
+        </locale>
+        <locale name="control.tabs.animation.slideOutToBottomSlideInFromTop">
+            <de><![CDATA[Slide: ausblenden nach unten / einblenden von oben]]></de>
+            <en><![CDATA[Slide: hide to bottom / show from top]]></en>
+        </locale>
+
         <!-- Control: Tabs: nav img height -->
         <locale name="control.tabs.navImgHeight">
             <de><![CDATA[Höhe der Navigation-Icons]]></de>
@@ -514,6 +634,18 @@
         <locale name="control.tabs.entries">
             <de><![CDATA[Tab Einträge]]></de>
             <en><![CDATA[Tab entries]]></en>
+        </locale>
+        <locale name="frontend.control.tabs.slider.btn.label.play.initial">
+            <de><![CDATA[Automatische Wiedergabe starten]]></de>
+            <en><![CDATA[Start autoplay]]></en>
+        </locale>
+        <locale name="frontend.control.tabs.slider.btn.label.play">
+            <de><![CDATA[Automatische Wiedergabe fortsetzen]]></de>
+            <en><![CDATA[Resume autoplay]]></en>
+        </locale>
+        <locale name="frontend.control.tabs.slider.btn.label.pause">
+            <de><![CDATA[Automatische Wiedergabe pausieren]]></de>
+            <en><![CDATA[Pause autoplay]]></en>
         </locale>
 
 
