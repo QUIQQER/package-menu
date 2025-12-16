@@ -119,9 +119,6 @@ class Tabs extends QUI\Control
 
         /* template */
         switch ($this->getAttribute('template')) {
-            case 'todo': // add more templates in the feature
-                break;
-
             case 'simple.navBottom':
                 $navPos = 'bottom';
                 break;
