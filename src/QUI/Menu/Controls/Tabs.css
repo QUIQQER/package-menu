@@ -89,7 +89,7 @@
 }
 
 .active > .quiqqer-tabsAdvanced-nav-link {
-    color: var(--qui-colors-primary);
+    color: var(--_qui-menu-controls-tabs-accentColor, var(--qui-colors-primary));
 }
 
 /* progress bar */
@@ -98,7 +98,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    height: 3px;
+    height: 4px;
+    border-radius: 2px;
     background: rgba(0, 0, 0, 0.06); /* Track */
     overflow: hidden;
 }
@@ -107,7 +108,7 @@
     display: block;
     width: 0%;
     height: 100%;
-    background: var(--qui-colors-primary, #0a7);
+    background: var(--_qui-menu-controls-tabs-accentColor, var(--qui-colors-primary, #0a7));
 }
 
 @keyframes quiqqer-tab-progress {

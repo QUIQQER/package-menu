@@ -1248,6 +1248,10 @@
             <de><![CDATA[Tab Titel]]></de>
             <en><![CDATA[Tab title]]></en>
         </locale>
+        <locale name="control.tabs.entries.accentColor">
+            <de><![CDATA[Akzentfarbe]]></de>
+            <en><![CDATA[Accent color]]></en>
+        </locale>
         <locale name="control.tabs.entries.entryImage">
             <de><![CDATA[Bild]]></de>
             <en><![CDATA[Image]]></en>

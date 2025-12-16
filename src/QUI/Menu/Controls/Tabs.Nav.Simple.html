@@ -4,7 +4,9 @@
             <li class="quiqqer-tabsAdvanced-nav-item {$navTabStyleCss}
              quiqqer-tab-nav-item {if $key == $active - 1}active{/if}"
                 role="presentation"
-                data-entry-nav-pos="{$key}">
+                data-entry-nav-pos="{$key}"
+                {if isset($entry.accentColor)}style="--_qui-menu-controls-tabs-accentColor: {$entry.accentColor};"{/if}
+            >
                 <a href="#{QUI\Utils\Security\Orthos::urlEncodeString($entry.tabTitle)}"
                    data-qui-disableTemplateScroll="1"
                    class="quiqqer-tabsAdvanced-nav-link {$navTabStyleCss}" draggable="false"
