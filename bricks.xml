@@ -363,6 +363,24 @@
                 </setting>
 
                 <!-- content -->
+
+                <setting name="contentPos" type="select">
+                    <locale group="quiqqer/menu"
+                            var="control.tabs.contentPos"/>
+
+                    <option value="top">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.contentPos.top"/>
+                    </option>
+                    <option value="center">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.contentPos.center"/>
+                    </option>
+                    <option value="bottom">
+                        <locale group="quiqqer/menu"
+                                var="control.tabs.contentPos.bottom"/>
+                    </option>
+                </setting>
                 <!-- content: img width -->
                 <setting name="contentImgMinWidth" type="number">
                     <locale group="quiqqer/menu"

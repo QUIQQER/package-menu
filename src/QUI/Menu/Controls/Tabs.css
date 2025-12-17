@@ -283,6 +283,8 @@
 
 .quiqqer-tabsAdvanced-content-body {
     grid-area: content;
+    display: flex;
+    align-items: var(--_qui-menu-controls-tabs-contentPos);
 }
 
 .quiqqer-tabsAdvanced-content-body-inner {
