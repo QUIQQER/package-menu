@@ -32,6 +32,7 @@ define('package/quiqqer/menu/bin/Controls/Tabs', [
             '$onImport',
             '$resize',
             'toggle',
+            '$onVisibilityChange',
             '$mouseMoveHandler',
             '$mouseDownHandler',
             '$mouseUpHandler'
@@ -76,6 +77,7 @@ define('package/quiqqer/menu/bin/Controls/Tabs', [
 
             // progress / autoplay state
             this.isPaused     = false;
+            this._autoPausedByVisibility = false;
             this._progressRef = null; // {bar, container, handler}
             this.SliderBtn    = null;
             this._isSwitching = false; // prevents button flickering during internal auto-switch
@@ -273,6 +275,31 @@ define('package/quiqqer/menu/bin/Controls/Tabs', [
                     }
                 });
             }
+
+            // Autoplay uses a CSS animation + JS timeout as a fallback. When the browser tab is in the background,
+            // animations/timers can get throttled and the content-switch animation can hang. If that happens while
+            // autoplay keeps advancing, multiple panels can end up visible. To avoid this, we auto-pause autoplay
+            // when the document is hidden and only auto-resume if we paused it ourselves (not if the user paused).
+            document.addEventListener('visibilitychange', this.$onVisibilityChange);
+        },
+
+        $onVisibilityChange: function () {
+            if (!this.options.autoplay) {
+                return;
+            }
+
+            if (document.hidden) {
+                if (!this.isPaused) {
+                    this._autoPausedByVisibility = true;
+                    this.pauseAutoplay();
+                }
+                return;
+            }
+
+            if (this._autoPausedByVisibility) {
+                this._autoPausedByVisibility = false;
+                this.resumeAutoplay();
+            }
         },
 
         /**
@@ -348,6 +375,9 @@ define('package/quiqqer/menu/bin/Controls/Tabs', [
                 self.NavContentContainer.setStyle('height', null);
 
                 self._isSwitching = false; // internal switch finished
+
+                // Ensure a consistent final state: only the newly active content stays visible.
+                self.$normalizePanels();
 
                 // update ARIA status
                 try {
@@ -433,12 +463,18 @@ define('package/quiqqer/menu/bin/Controls/Tabs', [
             const self = this;
 
             return new Promise(function (resolve) {
-                self.$animFuncOut(Item).then(function () {
-                    Item.removeClass('active');
-                    Item.setStyle('display', 'none');
-
-                    resolve();
-                });
+                // Fail-safe:
+                // - if the animation function is missing, returns non-Promise, throws, or never resolves
+                //   we still MUST continue and force the final DOM state (display:none).
+                // Otherwise a single stuck animation can leave multiple panels visible.
+                self.$withTimeout(self.$safeAnim(self.$animFuncOut, Item), 1200)
+                    .catch(function () {
+                    })
+                    .then(function () {
+                        Item.removeClass('active');
+                        Item.setStyle('display', 'none');
+                        resolve();
+                    });
             });
         },
 
@@ -452,14 +488,38 @@ define('package/quiqqer/menu/bin/Controls/Tabs', [
             var self = this;
 
             return new Promise(function (resolve) {
-                self.$animFuncIn(Item).then(function () {
-                    Item.style.display = null;
-                    Item.style.opacity = null;
-                    Item.addClass('active');
-                    self.ActiveContent = Item;
+                // Same fail-safe as hideContent(): even if the animation hangs, we still activate exactly one panel.
+                self.$withTimeout(self.$safeAnim(self.$animFuncIn, Item), 1200)
+                    .catch(function () {
+                    })
+                    .then(function () {
+                        Item.style.display = null;
+                        Item.style.opacity = null;
+                        Item.addClass('active');
+                        self.ActiveContent = Item;
+                        resolve();
+                    });
+            });
+        },
 
-                    resolve();
-                });
+        /**
+         * Ensure a consistent final state: only the newly active content stays visible.
+         */
+        $normalizePanels: function () {
+            if (!this.navContents || !this.navContents.length) {
+                return;
+            }
+
+            const active = this.ActiveContent;
+
+            this.navContents.forEach(function (Content) {
+                if (active && Content === active) {
+                    Content.style.display = null;
+                    Content.addClass('active');
+                } else {
+                    Content.removeClass('active');
+                    Content.setStyle('display', 'none');
+                }
             });
         },
 
@@ -636,8 +696,19 @@ define('package/quiqqer/menu/bin/Controls/Tabs', [
          * @return Promise
          */
         $scaleOutToLarge: function (Item) {
+            // console.log(Item)
+            // return new Promise((resolve) => {
+            //     moofx(Item).animate({
+            //         opacity : 0,
+            //         'transform': 'scale(1.05)'
+            //     }, {
+            //         callback: resolve
+            //     });
+            // });
+
             return this.$animate(Item, {
-                scale: 1.05,
+                // scale: 1.05,
+                'transform': 'scale(1.05)',
                 opacity: 0
             });
         },
@@ -669,10 +740,19 @@ define('package/quiqqer/menu/bin/Controls/Tabs', [
          */
         $scaleInFromSmall: function (Item) {
             Item.setStyles({
-                scale: 0.95,
+                // scale: 0.95,
                 'transform': 'scale(0.95)',
                 opacity : 0
             });
+
+            // return new Promise((resolve) => {
+            //     moofx(Item).animate({
+            //         opacity : 1,
+            //         'transform': 'scale(1)',
+            //     }, {
+            //         callback: resolve
+            //     });
+            // });
 
             return this.$animate(Item, {
                 opacity : 1,
@@ -793,6 +873,45 @@ define('package/quiqqer/menu/bin/Controls/Tabs', [
             });
         },
 
+        /**
+         * Normalize the result of an animation function to a real Promise.
+         * Covers:
+         * - fn missing -> resolve immediately
+         * - fn returns non-Promise -> Promise.resolve(...) makes it awaitable
+         * - fn throws sync -> convert to rejected Promise
+         *
+         * @param fn
+         * @param Item
+         * @returns {Promise<never>|Promise<Awaited<*>>|Promise<void>}
+         */
+        $safeAnim: function (fn, Item) {
+            try {
+                if (typeof fn !== 'function') {
+                    return Promise.resolve();
+                }
+                return Promise.resolve(fn.call(this, Item));
+            } catch (e) {
+                return Promise.reject(e);
+            }
+        },
+
+        /**
+         * Never block the tab switching forever: race the animation against a timeout.
+         * Timeout resolves (not rejects) on purpose: the caller will enforce the final DOM state anyway.
+         *
+         * @param promiseLike
+         * @param ms
+         * @returns {Promise<Awaited<unknown>>}
+         */
+        $withTimeout: function (promiseLike, ms) {
+            return Promise.race([
+                Promise.resolve(promiseLike),
+                new Promise(function (resolve) {
+                    setTimeout(resolve, ms);
+                })
+            ]);
+        },
+
         // region drag to scroll
 
         /**
@@ -906,10 +1025,6 @@ define('package/quiqqer/menu/bin/Controls/Tabs', [
                     return;
                 }
 
-                // cleanup listeners (avoid double-fire across vendor events)
-                Bar.removeEvent('animationend', onEnd);
-                Bar.removeEvent('webkitAnimationEnd', onEnd);
-
                 if (self._progressRef.timeout) {
                     clearTimeout(self._progressRef.timeout);
                     self._progressRef.timeout = null;
@@ -919,22 +1034,20 @@ define('package/quiqqer/menu/bin/Controls/Tabs', [
                     self.$goToNextTab(NavItem);
                 }
             };
-            Bar.addEvent('animationend', onEnd);
-            Bar.addEvent('webkitAnimationEnd', onEnd);
 
             const startTs = performance.now();
             const duration = dur;
-            const fallbackTimeout = setTimeout(function () {
+            const timeout = setTimeout(function () {
                 if (!self.isPaused && self.options.autoplay) {
                     onEnd();
                 }
-            }, dur + 60);
+            }, dur);
 
             this._progressRef = {
                 bar      : Bar,
                 container: Progress,
                 handler  : onEnd,
-                timeout  : fallbackTimeout,
+                timeout  : timeout,
                 startedAt: startTs,
                 duration : duration,
                 remainingMs: duration

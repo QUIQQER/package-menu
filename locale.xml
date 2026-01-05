@@ -603,6 +603,23 @@
             <de><![CDATA[Wenn eingeschaltet, werden die Navigationspunkte zentriert. Wenn die Option "Volle Breite nutzen" aktiv ist, hat diese Einstellung keine Auswirkung.]]></de>
             <en><![CDATA[If enabled, the navigation entries are centered. If the "Use full width" option is active, this setting has no effect.]]></en>
         </locale>
+        <locale name="control.tabs.contentPos">
+            <de><![CDATA[Inhalt Ausrichtung]]></de>
+            <en><![CDATA[Content position]]></en>
+        </locale>
+        <locale name="control.tabs.contentPos.top">
+            <de><![CDATA[Oben]]></de>
+            <en><![CDATA[Top]]></en>
+        </locale>
+        <locale name="control.tabs.contentPos.center">
+            <de><![CDATA[Zentriert]]></de>
+            <en><![CDATA[Center]]></en>
+        </locale>
+        <locale name="control.tabs.contentPos.bottom">
+            <de><![CDATA[Unten]]></de>
+            <en><![CDATA[Bottom]]></en>
+        </locale>
+
         <!-- Control: content: img min width -->
         <locale name="control.tabs.contentImgMinWidth">
             <de><![CDATA[Inhalts-Bild: minimale Breit]]></de>

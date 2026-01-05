@@ -214,7 +214,7 @@
     margin-top: var(--qui-spacing-2xl, 3rem);
 }
 
-.quiqqer-tabsAdvanced-content-item {
+.quiqqer-tabsAdvanced-content-itemWrapper {
     --min-image-container-width: 200px;
     display: grid;
     gap: var(--qui-spacing-xl, 2rem);
@@ -223,41 +223,41 @@
     margin-inline: auto;
 }
 
-.quiqqer-tabsAdvanced-content-item.no-image {
+.quiqqer-tabsAdvanced-content-itemWrapper.no-image {
     gap: 0;
     grid-template-areas: "content";
 }
 
 @media screen and (min-width: 768px) {
 
-    .quiqqer-tabsAdvanced-content-item:not(.no-image).left {
+    .quiqqer-tabsAdvanced-content-itemWrapper:not(.no-image).left {
         grid-template-areas: "image content";
         grid-template-columns: 1fr auto;
     }
 
-    .quiqqer-tabsAdvanced-content-item:not(.no-image).right {
+    .quiqqer-tabsAdvanced-content-itemWrapper:not(.no-image).right {
         grid-template-areas: "content image";
         grid-template-columns: auto 1fr;
     }
 
-    .quiqqer-tabsAdvanced-content-item:not(.no-image).top {
+    .quiqqer-tabsAdvanced-content-itemWrapper:not(.no-image).top {
         grid-template-areas: "image" "content";
         width: max-content;
         margin-inline: auto;
     }
 
-    .quiqqer-tabsAdvanced-content-item:not(.no-image).bottom {
+    .quiqqer-tabsAdvanced-content-itemWrapper:not(.no-image).bottom {
         grid-template-areas: "content" "image";
         width: max-content;
         margin-inline: auto;
     }
 
-    .quiqqer-tabsAdvanced-content-item.top {
+    .quiqqer-tabsAdvanced-content-itemWrapper.top {
         width: max-content;
         margin-inline: auto;
     }
 
-    .quiqqer-tabsAdvanced-content-item.bottom {
+    .quiqqer-tabsAdvanced-content-itemWrapper.bottom {
         width: max-content;
         margin-inline: auto;
     }
@@ -283,6 +283,8 @@
 
 .quiqqer-tabsAdvanced-content-body {
     grid-area: content;
+    display: flex;
+    align-items: var(--_qui-menu-controls-tabs-contentPos);
 }
 
 .quiqqer-tabsAdvanced-content-body-inner {
@@ -291,7 +293,7 @@
 }
 
 @media screen and (max-width: 767px) {
-    .quiqqer-tabsAdvanced-content-item {
+    .quiqqer-tabsAdvanced-content-itemWrapper {
         display: block;
     }
 

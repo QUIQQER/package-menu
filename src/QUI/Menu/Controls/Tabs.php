@@ -53,6 +53,7 @@ class Tabs extends QUI\Control
             'enableDragToScroll' => true,
 
             // tabs content
+            'contentPos' => 'center', // top, center, bottom
             'contentImgMinWidth' => 200,
             // number; do not use large values, recommended is between 100 and 800
             'contentImgMaxWidth' => 400,
@@ -119,9 +120,6 @@ class Tabs extends QUI\Control
 
         /* template */
         switch ($this->getAttribute('template')) {
-            case 'todo': // add more templates in the feature
-                break;
-
             case 'simple.navBottom':
                 $navPos = 'bottom';
                 break;
@@ -165,6 +163,14 @@ class Tabs extends QUI\Control
         if ($this->getAttribute('navWrapText') === 'noWrap') {
             $navWrapText = 'navText__noWrap';
         }
+
+        $contentPos = match ($this->getAttribute('contentPos')) {
+            'top' => 'flex-start',
+            'bottom' => 'flex-end',
+            default => 'center',
+        };
+
+        $this->setCustomVariable('contentPos', $contentPos);
 
         $contentImgMaxWidth = $this->getAttribute('contentImgMaxWidth');
         $contentImgMinWidth = $this->getAttribute('contentImgMinWidth');

@@ -18,6 +18,10 @@
     <div class="quiqqer-tabsAdvanced-content quiqqer-tab-content">
         <ul class="quiqqer-tabsAdvanced-content-inner">
             {foreach from=$entries item=entry key=key}
+                {if !isset($entry.tabTitle) || !$entry.tabTitle}
+                    {continue}
+                {/if}
+
                 {* image *}
                 {assign var=imgSrc value=false}
                 {if isset($entry.entryImage) && $entry.entryImage}
@@ -35,43 +39,44 @@
                 {if (isset($entry.entryTitle) && $entry.entryTitle) || (isset($entry.entryContent) && $entry.entryContent)}
                     {assign var=content value=true}
                 {/if}
-                <li class="quiqqer-tabsAdvanced-content-item quiqqer-tab-content-item {$imgPos}
-                    {if !$imgSrc}no-image{/if}
-                    {if !$content}no-content{/if}
-                    {if $key == $active - 1}active{/if}"
+                <li class="quiqqer-tabsAdvanced-content-item quiqqer-tab-content-item {if $key == $active - 1}active{/if}"
                     {if $key !== $active - 1}style="display: none;"{/if}
                     role="tabpanel"
                     aria-labelledby="{$instanceId}-tab-{$key}"
                     aria-hidden="{if $key == $active - 1}false{else}true{/if}"
                     tabindex="0"
                     data-entry-content-pos="{$key}"
-                    id="{QUI\Utils\Security\Orthos::urlEncodeString($entry.tabTitle)}">
-
-                    {if $imgSrc}
-                        <div class="quiqqer-tabsAdvanced-content-image">
-                            <div class="quiqqer-tabsAdvanced-content-image-inner">
-                            {image src=$imgSrc width=$contentImgMaxWidth}
-                            </div>
-                        </div>
-                    {/if}
-
-                    {if $content}
-                        <div class="quiqqer-tabsAdvanced-content-body">
-                        <div class="quiqqer-tabsAdvanced-content-body-inner">
-                            {if isset($entry.entryTitle) && $entry.entryTitle}
-                                <h2 class="quiqqer-tabsAdvanced-content-title">
-                                    {$entry.entryTitle}
-                                </h2>
-                            {/if}
-
-                            {if isset($entry.entryContent) && $entry.entryContent}
-                                <div class="quiqqer-tabsAdvanced-content-text default-content">
-                                    {$entry.entryContent}
+                    id="{QUI\Utils\Security\Orthos::urlEncodeString($entry.tabTitle)}"
+                >
+                    <div class="quiqqer-tabsAdvanced-content-itemWrapper {$imgPos} {if !$imgSrc}no-image{/if} {if !$content}no-content{/if}"
+                        {if isset($entry.accentColor)}style="--_qui-menu-controls-tabs-accentColor: {$entry.accentColor};"{/if}
+                    >
+                        {if $imgSrc}
+                            <div class="quiqqer-tabsAdvanced-content-image">
+                                <div class="quiqqer-tabsAdvanced-content-image-inner">
+                                {image src=$imgSrc width=$contentImgMaxWidth}
                                 </div>
-                            {/if}
-                        </div>
-                        </div>
-                    {/if}
+                            </div>
+                        {/if}
+
+                        {if $content}
+                            <div class="quiqqer-tabsAdvanced-content-body">
+                            <div class="quiqqer-tabsAdvanced-content-body-inner">
+                                {if isset($entry.entryTitle) && $entry.entryTitle}
+                                    <h2 class="quiqqer-tabsAdvanced-content-title">
+                                        {$entry.entryTitle}
+                                    </h2>
+                                {/if}
+
+                                {if isset($entry.entryContent) && $entry.entryContent}
+                                    <div class="quiqqer-tabsAdvanced-content-text default-content">
+                                        {$entry.entryContent}
+                                    </div>
+                                {/if}
+                            </div>
+                            </div>
+                        {/if}
+                    </div>
                 </li>
             {/foreach}
         </ul>

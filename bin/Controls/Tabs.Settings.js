@@ -290,12 +290,19 @@ define('package/quiqqer/menu/bin/Controls/Tabs.Settings', [
                 entry  = this.$data[i];
                 insert = {
                     tabIcon        : '',
+                    tabTitle : '',
+                    accentColor : '',
                     entryImage       : '',
+                    entryImagePos: '',
+                    entryTitle   : '',
+                    entryContent : '',
                     tabIconPreview : new Element('span', {html: '&nbsp;'}),
                     entryImagePreview: new Element('span', {html: '&nbsp;'})
                 };
 
                 entry.isDisabled = parseInt(entry.isDisabled);
+
+                insert.isDisabled = entry.isDisabled;
 
                 insert.isDisabledDisplay = new QUISwitch({
                     status: entry.isDisabled,
@@ -564,11 +571,14 @@ define('package/quiqqer/menu/bin/Controls/Tabs.Settings', [
 
             for (var i = 0, len = gridData.length; i < len; i++) {
                 data.push({
-                    isDisabled  : parseInt(gridData[i].isDisabled),
-                    titleIcon   : gridData[i].titleIcon,
-                    entryTitle  : gridData[i].entryTitle,
-                    entryImage  : gridData[i].entryImage,
-                    entryContent: gridData[i].entryContent
+                    isDisabled   : parseInt(gridData[i].isDisabled || 0),
+                    tabIcon      : gridData[i].tabIcon || '',
+                    tabTitle     : gridData[i].tabTitle || '',
+                    accentColor  : gridData[i].accentColor || '',
+                    entryImage   : gridData[i].entryImage || gridData[i].image || '',
+                    entryImagePos: gridData[i].entryImagePos || '',
+                    entryTitle   : gridData[i].entryTitle || '',
+                    entryContent : gridData[i].entryContent || ''
                 });
             }
 
