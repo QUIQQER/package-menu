@@ -16,8 +16,8 @@
     --_qui-megaMenu-submenu-borderRadius: var(--qui-megaMenu-submenu-borderRadius, 0.5rem);
     --_qui-megaMenu-submenu-link-color: var(--qui-megaMenu-submenu-link-color, var(--qui-colors-body, #202428));
     --_qui-megaMenu-submenu-link-color--hover: var(--qui-megaMenu-submenu-link-color--hover, var(--qui-colors-gray-950, #10171a));
-    --_qui-megaMenu-submenu-link-bgColor: var(--qui-megaMenu-submenu-link-color, transparent);
-    --_qui-megaMenu-submenu-link-bgColor--hover: var(--qui-megaMenu-submenu-link-color--hover, var(--qui-colors-gray-25, #f5f5f5));
+    --_qui-megaMenu-submenu-link-bgColor: var(--qui-megaMenu-submenu-link-bgColor, transparent);
+    --_qui-megaMenu-submenu-link-bgColor--hover: var(--qui-megaMenu-submenu-link-bgColor--hover, var(--qui-colors-gray-25, #f5f5f5));
 
     --_qui-megaMenu-submenu-simple-showArrow: var(--qui-megaMenu-submenu-simple-showArrow, 0);
     --_qui-megaMenu-submenu-simple-arrowSize: var(--qui-megaMenu-submenu-simple-arrowSize, 10px);
