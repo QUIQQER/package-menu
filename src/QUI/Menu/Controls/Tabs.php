@@ -53,6 +53,7 @@ class Tabs extends QUI\Control
             'enableDragToScroll' => true,
 
             // tabs content
+            'contentPos' => 'center', // top, center, bottom
             'contentImgMinWidth' => 200,
             // number; do not use large values, recommended is between 100 and 800
             'contentImgMaxWidth' => 400,
@@ -119,9 +120,6 @@ class Tabs extends QUI\Control
 
         /* template */
         switch ($this->getAttribute('template')) {
-            case 'todo': // add more templates in the feature
-                break;
-
             case 'simple.navBottom':
                 $navPos = 'bottom';
                 break;
@@ -166,6 +164,14 @@ class Tabs extends QUI\Control
             $navWrapText = 'navText__noWrap';
         }
 
+        $contentPos = match ($this->getAttribute('contentPos')) {
+            'top' => 'flex-start',
+            'bottom' => 'flex-end',
+            default => 'center',
+        };
+
+        $this->setCustomVariable('contentPos', $contentPos);
+
         $contentImgMaxWidth = $this->getAttribute('contentImgMaxWidth');
         $contentImgMinWidth = $this->getAttribute('contentImgMinWidth');
         $contentTextWidth = $this->getAttribute('contentTextWidth');
@@ -174,9 +180,7 @@ class Tabs extends QUI\Control
             $contentImgMaxWidth = 400;
         }
 
-        if ($contentImgMaxWidth) {
-            $this->setCustomVariable('contentImgMaxWidth', $contentImgMaxWidth . 'px');
-        }
+        $this->setCustomVariable('contentImgMaxWidth', $contentImgMaxWidth . 'px');
 
         if ($contentImgMinWidth) {
             $this->setCustomVariable('contentImgMinWidth', $contentImgMinWidth . 'px');
@@ -191,9 +195,7 @@ class Tabs extends QUI\Control
             default => 'left'
         };
 
-        if ($controlsAlignments) {
-            $this->setCustomVariable('controlsAlignment', $controlsAlignments);
-        }
+        $this->setCustomVariable('controlsAlignment', $controlsAlignments);
 
         $animation = match ($this->getAttribute('animation')) {
             'fadeOutFadeIn',

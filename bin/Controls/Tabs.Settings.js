@@ -164,6 +164,12 @@ define('package/quiqqer/menu/bin/Controls/Tabs.Settings', [
                         width    : 120
                     },
                     {
+                        header   : QUILocale.get(lg, 'control.tabs.entries.accentColor'),
+                        dataIndex: 'accentColor',
+                        dataType : 'code',
+                        width    : 100
+                    },
+                    {
                         header   : QUILocale.get(lg, 'control.tabs.entries.entryImage'),
                         dataIndex: 'entryImagePreview',
                         dataType : 'node',
@@ -284,12 +290,19 @@ define('package/quiqqer/menu/bin/Controls/Tabs.Settings', [
                 entry  = this.$data[i];
                 insert = {
                     tabIcon        : '',
+                    tabTitle : '',
+                    accentColor : '',
                     entryImage       : '',
+                    entryImagePos: '',
+                    entryTitle   : '',
+                    entryContent : '',
                     tabIconPreview : new Element('span', {html: '&nbsp;'}),
                     entryImagePreview: new Element('span', {html: '&nbsp;'})
                 };
 
                 entry.isDisabled = parseInt(entry.isDisabled);
+
+                insert.isDisabled = entry.isDisabled;
 
                 insert.isDisabledDisplay = new QUISwitch({
                     status: entry.isDisabled,
@@ -319,6 +332,10 @@ define('package/quiqqer/menu/bin/Controls/Tabs.Settings', [
 
                 if ("tabTitle" in entry) {
                     insert.tabTitle = entry.tabTitle;
+                }
+
+                if ("accentColor" in entry) {
+                    insert.accentColor = entry.accentColor;
                 }
 
                 // entry image
@@ -398,6 +415,7 @@ define('package/quiqqer/menu/bin/Controls/Tabs.Settings', [
                 isDisabled   : 0,
                 tabIcon      : '',
                 tabTitle     : '',
+                accentColor  : '',
                 entryImage   : '',
                 entryImagePos: '',
                 entryTitle   : '',
@@ -414,6 +432,10 @@ define('package/quiqqer/menu/bin/Controls/Tabs.Settings', [
 
             if ("tabTitle" in params) {
                 entry.tabTitle = params.tabTitle;
+            }
+
+            if ("accentColor" in params) {
+                entry.accentColor = params.accentColor;
             }
 
             if ("entryImage" in params && params.entryImage !== '') {
@@ -453,6 +475,7 @@ define('package/quiqqer/menu/bin/Controls/Tabs.Settings', [
                 isDisabled   : 0,
                 tabIcon      : '',
                 tabTitle     : '',
+                accentColor  : '',
                 entryImage   : '',
                 entryImagePos: '',
                 entryTitle   : '',
@@ -469,6 +492,10 @@ define('package/quiqqer/menu/bin/Controls/Tabs.Settings', [
 
             if ("tabTitle" in params) {
                 entry.tabTitle = params.tabTitle;
+            }
+
+            if ("accentColor" in params) {
+                entry.accentColor = params.accentColor;
             }
 
             if ("entryImage" in params && params.entryImage !== '') {
@@ -544,11 +571,14 @@ define('package/quiqqer/menu/bin/Controls/Tabs.Settings', [
 
             for (var i = 0, len = gridData.length; i < len; i++) {
                 data.push({
-                    isDisabled  : parseInt(gridData[i].isDisabled),
-                    titleIcon   : gridData[i].titleIcon,
-                    entryTitle  : gridData[i].entryTitle,
-                    entryImage  : gridData[i].entryImage,
-                    entryContent: gridData[i].entryContent
+                    isDisabled   : parseInt(gridData[i].isDisabled || 0),
+                    tabIcon      : gridData[i].tabIcon || '',
+                    tabTitle     : gridData[i].tabTitle || '',
+                    accentColor  : gridData[i].accentColor || '',
+                    entryImage   : gridData[i].entryImage || gridData[i].image || '',
+                    entryImagePos: gridData[i].entryImagePos || '',
+                    entryTitle   : gridData[i].entryTitle || '',
+                    entryContent : gridData[i].entryContent || ''
                 });
             }
 
@@ -617,6 +647,7 @@ define('package/quiqqer/menu/bin/Controls/Tabs.Settings', [
                     var isDisabled    = Dialog.IsDisabledSwitch.getStatus();
                     var TabIcon       = Form.elements.tabIcon;
                     var tabTitle      = Form.elements.tabTitle;
+                    var accentColor   = Form.elements.accentColor;
                     var entryImage    = Form.elements.entryImage;
                     var entryImagePos = Form.elements.entryImagePos;
                     var entryTitle    = Form.elements.entryTitle;
@@ -626,6 +657,7 @@ define('package/quiqqer/menu/bin/Controls/Tabs.Settings', [
                         isDisabled   : isDisabled,
                         tabIcon      : TabIcon.value,
                         tabTitle     : tabTitle.value,
+                        accentColor  : accentColor.value,
                         entryImage   : entryImage.value,
                         entryImagePos: entryImagePos.value,
                         entryTitle   : entryTitle.value,
@@ -636,13 +668,14 @@ define('package/quiqqer/menu/bin/Controls/Tabs.Settings', [
                 });
 
 
-                Dialog.addEvent('onOpenAfterCreate', function () {
+                Dialog.addEvent('onOpen', function () {
 
                     var Content = Dialog.getContent();
                     var Form    = Content.getElement('form');
 
                     var TabIcon       = Form.elements.tabIcon;
                     var tabTitle      = Form.elements.tabTitle;
+                    var accentColor   = Form.elements.accentColor;
                     var entryImage    = Form.elements.entryImage;
                     var entryImagePos = Form.elements.entryImagePos;
                     var entryTitle    = Form.elements.entryTitle;
@@ -656,6 +689,7 @@ define('package/quiqqer/menu/bin/Controls/Tabs.Settings', [
 
                     TabIcon.value       = data.tabIcon;
                     tabTitle.value      = data.tabTitle;
+                    accentColor.value   = data.accentColor;
                     entryImage.value    = data.entryImage;
                     entryImagePos.value = data.entryImagePos;
                     entryTitle.value    = data.entryTitle;
@@ -663,6 +697,7 @@ define('package/quiqqer/menu/bin/Controls/Tabs.Settings', [
 
                     TabIcon.fireEvent('change');
                     tabTitle.fireEvent('change');
+                    accentColor.fireEvent('change');
                     entryImage.fireEvent('change');
                     entryImagePos.fireEvent('change');
                     entryTitle.fireEvent('change');
@@ -692,6 +727,7 @@ define('package/quiqqer/menu/bin/Controls/Tabs.Settings', [
                     var isDisabled    = Dialog.IsDisabledSwitch.getStatus();
                     var TabIcon       = Form.elements.tabIcon;
                     var tabTitle      = Form.elements.tabTitle;
+                    var accentColor   = Form.elements.accentColor;
                     var entryImage    = Form.elements.entryImage;
                     var entryImagePos = Form.elements.entryImagePos;
                     var entryTitle    = Form.elements.entryTitle;
@@ -701,6 +737,7 @@ define('package/quiqqer/menu/bin/Controls/Tabs.Settings', [
                         isDisabled   : isDisabled,
                         tabIcon      : TabIcon.value,
                         tabTitle     : tabTitle.value,
+                        accentColor  : accentColor.value,
                         entryImage   : entryImage.value,
                         entryImagePos: entryImagePos.value,
                         entryTitle   : entryTitle.value,
@@ -743,6 +780,7 @@ define('package/quiqqer/menu/bin/Controls/Tabs.Settings', [
                                         isDisabled   : QUILocale.get(lg, prefix + 'isDisabled'),
                                         tabIcon      : QUILocale.get(lg, prefix + 'tabIcon'),
                                         tabTitle     : QUILocale.get(lg, prefix + 'tabTitle'),
+                                        accentColor  : QUILocale.get(lg, prefix + 'accentColor'),
                                         entryImage   : QUILocale.get(lg, prefix + 'entryImage'),
                                         entryImagePos: QUILocale.get(lg, prefix + 'entryImagePos'),
                                         optionLeft   : QUILocale.get(lg, prefix + 'entryImagePos.left'),
