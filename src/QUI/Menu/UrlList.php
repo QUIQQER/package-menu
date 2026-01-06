@@ -154,28 +154,4 @@ class UrlList extends QUI\Control
 
         return $Site->getChildren();
     }
-
-    /**
-     * Set custom css variable to the control as inline style
-     * --_qui-menu-urlList-$name: var(--qui-menu-urlList-$name, $value);
-     *
-     * Example:
-     *     --_qui-menu-urlList-linkColor: var(--qui-menu-urlList-linkColor, #ff0000);
-     *
-     * @param string $name
-     * @param string $value
-     *
-     * @return void
-     */
-    private function setCustomVariable(string $name, string $value): void
-    {
-        if (!$name || !$value) {
-            return;
-        }
-
-        $this->setStyle(
-            '--_qui-menu-urlList-' . $name,
-            'var(--qui-menu-urlList-' . $name . ', ' . $value . ')'
-        );
-    }
 }
