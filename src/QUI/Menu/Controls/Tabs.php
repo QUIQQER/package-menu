@@ -180,9 +180,7 @@ class Tabs extends QUI\Control
             $contentImgMaxWidth = 400;
         }
 
-        if ($contentImgMaxWidth) {
-            $this->setCustomVariable('contentImgMaxWidth', $contentImgMaxWidth . 'px');
-        }
+        $this->setCustomVariable('contentImgMaxWidth', $contentImgMaxWidth . 'px');
 
         if ($contentImgMinWidth) {
             $this->setCustomVariable('contentImgMinWidth', $contentImgMinWidth . 'px');
@@ -197,9 +195,7 @@ class Tabs extends QUI\Control
             default => 'left'
         };
 
-        if ($controlsAlignments) {
-            $this->setCustomVariable('controlsAlignment', $controlsAlignments);
-        }
+        $this->setCustomVariable('controlsAlignment', $controlsAlignments);
 
         $animation = match ($this->getAttribute('animation')) {
             'fadeOutFadeIn',
