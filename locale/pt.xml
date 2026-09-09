@@ -1,0 +1,978 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<locales>
+    <groups name="quiqqer/menu" datatype="php,js">
+        <locale name="package.title">
+<pt><![CDATA[QUIQQER - Menu]]></pt>
+        </locale>
+        <locale name="package.description" html="true">
+<pt><![CDATA[O plugin de menus disponibiliza vários controlos de navegação.]]></pt>
+        </locale>
+
+        <locale name="menu.settings.category">
+<pt><![CDATA[Menu]]></pt>
+        </locale>
+        <locale name="menu.settings.title">
+<pt><![CDATA[Menu]]></pt>
+        </locale>
+        <locale name="menu.settings.showMenuDelay">
+<pt><![CDATA[Atraso do submenu]]></pt>
+        </locale>
+        <locale name="menu.settings.showMenuDelay.desc">
+<pt><![CDATA[Indica o tempo em milissegundos. Com 250, o submenu aparece após manteres o ponteiro sobre o item durante 1/4 de segundo. Com 0, é apresentado imediatamente.]]></pt>
+        </locale>
+        <locale name="menu.settings.type">
+<pt><![CDATA[Tipo de menu]]></pt>
+        </locale>
+        <locale name="menu.settings.type.desc">
+<pt><![CDATA[Define o estilo predefinido dos submenus pendentes do MegaMenu. A seleção aplica-se às entradas subordinadas de cada item do menu; os ícones, as imagens e as descrições são apresentados nas subpáginas de níveis inferiores, consoante o tipo de menu.]]></pt>
+        </locale>
+        <locale name="menu.settings.type.site.desc">
+<pt><![CDATA[Substitui a definição do projeto para o submenu pendente desta página. A opção "Usar a predefinição do projeto" aplica a definição do projeto.]]></pt>
+        </locale>
+        <locale name="menu.settings.type.inherit">
+<pt><![CDATA[Usar a predefinição do projeto]]></pt>
+        </locale>
+        <locale name="menu.settings.Standard">
+<pt><![CDATA[MegaMenu - Com subpáginas]]></pt>
+        </locale>
+        <locale name="menu.settings.Icons">
+<pt><![CDATA[MegaMenu - Subpáginas com ícones]]></pt>
+        </locale>
+        <locale name="menu.settings.IconsDescription">
+<pt><![CDATA[MegaMenu - Subpáginas com ícones, imagens e descrições]]></pt>
+        </locale>
+        <locale name="menu.settings.Image">
+<pt><![CDATA[MegaMenu - Imagens de página grandes]]></pt>
+        </locale>
+        <locale name="menu.settings.Simple">
+<pt><![CDATA[MegaMenu - Lista simples de subpáginas]]></pt>
+        </locale>
+        <locale name="menu.settings.noMenu">
+<pt><![CDATA[MegaMenu - Sem menu pendente]]></pt>
+        </locale>
+
+<!-- mobile menu -->
+        <locale name="mobileMenu.settings.title">
+<pt><![CDATA[Menu móvel]]></pt>
+        </locale>
+        <locale name="mobileMenu.settings.type">
+<pt><![CDATA[Tipo de menu móvel]]></pt>
+        </locale>
+        <locale name="mobileMenu.settings.template.slideout">
+<pt><![CDATA[Slideout (predefinido)]]></pt>
+        </locale>
+        <locale name="mobileMenu.settings.template.slideoutAdvanced">
+<pt><![CDATA[Menu Slideout avançado]]></pt>
+        </locale>
+        <locale name="mobileMenu.settings.breakPoint">
+<pt><![CDATA[Usar o menu móvel até esta largura]]></pt>
+        </locale>
+        <locale name="mobileMenu.settings.breakPoint.desc">
+<pt><![CDATA[Largura máxima da janela para apresentar o menu móvel (o valor predefinido é <strong>767</strong>). O valor é indicado em píxeis.]]></pt>
+        </locale>
+
+<!-- mobile menu standard -->
+        <locale name="mobileMenu.standard.settings.title">
+<pt><![CDATA[Slideout (predefinido)]]></pt>
+        </locale>
+        <locale name="mobileMenu.standard.settings.desc">
+<pt><![CDATA[Menu móvel predefinido do QUIQQER.]]></pt>
+        </locale>
+        <locale name="mobileMenu.standard.settings.collapseSubmenu">
+<pt><![CDATA[Recolher os itens de navegação]]></pt>
+        </locale>
+        <locale name="mobileMenu.standard.settings.collapseSubmenu.desc">
+<pt><![CDATA[Recomenda-se ativar esta opção em menus grandes. Apenas são apresentados os níveis de navegação indicados (com o valor "1", apenas o primeiro nível). Os submenus podem ser abertos tocando na seta.]]></pt>
+        </locale>
+        <locale name="mobileMenu.standard.settings.showLevel">
+<pt><![CDATA[Níveis visíveis]]></pt>
+        </locale>
+        <locale name="mobileMenu.standard.settings.showLevel.desc">
+<pt><![CDATA[Define quantos níveis de navegação são apresentados inicialmente. Se selecionares "1", apenas o primeiro nível fica visível e os restantes ficam recolhidos.]]></pt>
+        </locale>
+
+<!-- mobile menu advanced -->
+        <locale name="mobileMenu.slideoutAdvanced.settings.title">
+<pt><![CDATA[Menu Slideout avançado]]></pt>
+        </locale>
+        <locale name="mobileMenu.slideoutAdvanced.settings.desc">
+<pt><![CDATA[Este menu apresenta apenas um nível de cada vez. Podes avançar e recuar entre os níveis tocando nas setas. Também permite apresentar as descrições das páginas, se estiverem disponíveis.]]></pt>
+        </locale>
+        <locale name="mobileMenu.slideoutAdvanced.settings.homeLink">
+<pt><![CDATA[Mostrar a ligação para a página inicial]]></pt>
+        </locale>
+        <locale name="mobileMenu.slideoutAdvanced.settings.shortDesc">
+<pt><![CDATA[Mostrar a descrição breve]]></pt>
+        </locale>
+        <locale name="mobileMenu.slideoutAdvanced.settings.shortDesc.desc">
+<pt><![CDATA[Esta opção não tem efeito se for utilizado um menu personalizado (denominado <i>"Independent Menu"</i>).]]></pt>
+        </locale>
+        <locale name="mobileMenu.slideoutAdvanced.btn.back">
+<pt><![CDATA[Voltar]]></pt>
+        </locale>
+
+<!-- sidebar menu -->
+        <locale name="menu.control.sidebarDropDownMenu.title">
+<pt><![CDATA[Menu: Navegação lateral]]></pt>
+        </locale>
+        <locale name="menu.control.sidebarDropDownMenu.description">
+<pt><![CDATA[Apresenta uma navegação com vários níveis como menu lateral. Em alternativa, pode ser utilizado um menu independente em vez da estrutura de páginas.]]></pt>
+        </locale>
+
+        <locale name="menu.control.sidebarDropDownMenu.setting.display">
+<pt><![CDATA[Disposição]]></pt>
+        </locale>
+        <locale name="menu.control.sidebarDropDownMenu.setting.display.simple">
+<pt><![CDATA[Simples]]></pt>
+        </locale>
+        <locale name="menu.control.sidebarDropDownMenu.setting.display.advanced">
+<pt><![CDATA[Avançado]]></pt>
+        </locale>
+        <locale name="menu.control.sidebarDropDownMenu.setting.startId">
+<pt><![CDATA[ID da página inicial]]></pt>
+        </locale>
+        <locale name="menu.control.sidebarDropDownMenu.setting.menuId">
+<pt><![CDATA[ID do menu]]></pt>
+        </locale>
+        <locale name="menu.control.sidebarDropDownMenu.setting.menuId.desc">
+<pt><![CDATA[Seleciona um menu independente. Se for indicado um ID de menu, esse menu é utilizado em vez da estrutura de páginas.]]></pt>
+        </locale>
+        <locale name="menu.control.sidebarDropDownMenu.setting.parentLink">
+<pt><![CDATA[Mostrar a ligação para a página ascendente]]></pt>
+        </locale>
+        <locale name="menu.control.sidebarDropDownMenu.setting.levels">
+<pt><![CDATA[Profundidade de navegação]]></pt>
+        </locale>
+        <locale name="menu.control.sidebarDropDownMenu.setting.onlyFirstLevelIcons">
+<pt><![CDATA[Mostrar ícones apenas no primeiro nível]]></pt>
+        </locale>
+        <locale name="menu.control.sidebarDropDownMenu.setting.onlyFirstLevelIcons.desc">
+<pt><![CDATA[Só funciona com a disposição "Avançado"]]></pt>
+        </locale>
+
+        <locale name="menu.control.sidebarDropDownMenu.setting.listType">
+<pt><![CDATA[Formato da lista]]></pt>
+        </locale>
+        <locale name="menu.control.sidebarDropDownMenu.setting.listType.fontAwesome">
+<pt><![CDATA[Lista padrão com ícones]]></pt>
+        </locale>
+        <locale name="menu.control.sidebarDropDownMenu.setting.listType.sitePicture">
+<pt><![CDATA[Imagens das páginas ou ícones]]></pt>
+        </locale>
+        <locale name="menu.control.sidebarDropDownMenu.setting.listType.none">
+<pt><![CDATA[Nenhum]]></pt>
+        </locale>
+        <locale name="menu.control.sidebarDropDownMenu.setting.listType.desc">
+<pt><![CDATA[Só funciona com a disposição "Avançado"]]></pt>
+        </locale>
+        <locale name="menu.control.sidebarDropDownMenu.setting.showAllChildren">
+<pt><![CDATA[Mostrar também as páginas ocultas na navegação.]]></pt>
+        </locale>
+
+<!-- url list -->
+        <locale name="menu.control.urlList.title">
+<pt><![CDATA[Menu: Lista de ligações]]></pt>
+        </locale>
+        <locale name="menu.control.urlList.description">
+<pt><![CDATA[Lista simples de páginas, ideal para o rodapé. Este componente apresenta apenas o primeiro nível de subpáginas.]]></pt>
+        </locale>
+        <locale name="menu.control.urlList.setting.display">
+<pt><![CDATA[Disposição]]></pt>
+        </locale>
+        <locale name="menu.control.urlList.setting.display.default">
+<pt><![CDATA[Predefinido]]></pt>
+        </locale>
+        <locale name="menu.control.urlList.setting.headerText">
+<pt><![CDATA[Título acima da lista de páginas]]></pt>
+        </locale>
+        <locale name="menu.control.urlList.setting.menuId">
+<pt><![CDATA[ID do menu]]></pt>
+        </locale>
+        <locale name="menu.control.urlList.setting.menuId.desc">
+<pt><![CDATA[Seleciona um menu]]></pt>
+        </locale>
+        <locale name="menu.control.urlList.setting.startId">
+<pt><![CDATA[Página ascendente]]></pt>
+        </locale>
+        <locale name="menu.control.urlList.setting.startId.desc">
+<pt><![CDATA[Seleciona a página ascendente. <strong>Atenção:</strong> se estiver selecionado um "ID do menu", esta opção não tem efeito.]]></pt>
+        </locale>
+        <locale name="menu.control.urlList.setting.icon">
+<pt><![CDATA[Ícone]]></pt>
+        </locale>
+        <locale name="menu.control.urlList.setting.icon.desc">
+<pt><![CDATA[Se selecionares um ícone, este será apresentado antes da ligação (apenas ícones do FontAwesome). <strong>Sugestão:</strong> na janela de seleção, podes usar o filtro <code>right</code> para encontrar setas que apontam para a direita.]]></pt>
+        </locale>
+        <locale name="menu.control.urlList.setting.resetLinkColor">
+<pt><![CDATA[Repor a cor das ligações]]></pt>
+        </locale>
+        <locale name="menu.control.urlList.setting.resetLinkColor.desc">
+<pt><![CDATA[Se esta opção estiver ativa, as ligações terão a mesma cor que o texto da página (não afeta o efeito ao passar o ponteiro). <strong>Atenção:</strong> o modelo utilizado pode substituir esta opção.]]></pt>
+        </locale>
+
+<!-- one page nav -->
+        <locale name="menu.control.OnePageNav.title">
+<pt><![CDATA[Menu: Navegação numa só página (para páginas de destino)]]></pt>
+        </locale>
+        <locale name="menu.control.OnePageNav.description">
+<pt><![CDATA[Menu para um site de uma só página. Os itens do menu deslocam a vista até às secções correspondentes da página inicial.]]></pt>
+        </locale>
+        <locale name="menu.control.OnePageNav.addLink">
+<pt><![CDATA[Adicionar ligação]]></pt>
+        </locale>
+        <locale name="menu.control.OnePageNav.entries">
+<pt><![CDATA[Entradas]]></pt>
+        </locale>
+        <locale name="menu.control.OnePageNav.entries.linkTitle">
+<pt><![CDATA[Título da ligação]]></pt>
+        </locale>
+        <locale name="menu.control.OnePageNav.entries.linkType">
+<pt><![CDATA[Tipo de ligação]]></pt>
+        </locale>
+        <locale name="menu.control.OnePageNav.entries.linkType.anchor">
+<pt><![CDATA[Âncora]]></pt>
+        </locale>
+        <locale name="menu.control.OnePageNav.entries.linkType.url">
+<pt><![CDATA[URL]]></pt>
+        </locale>
+        <locale name="menu.control.OnePageNav.entries.link" html="true">
+<pt><![CDATA[Ligação de página ou seletor CSS. <br><strong>Ligação de página:</strong> o URL tem de ser válido. <br><strong>Seletor CSS:</strong> elemento até ao qual a vista deve deslocar-se. Por exemplo, <i>.css-Klasse</i>, <i>#elementId</i>]]></pt>
+        </locale>
+
+<!-- nav tabs vertical -->
+        <locale name="control.navTabsVertical.title">
+<pt><![CDATA[Menu: Separadores de navegação verticais]]></pt>
+        </locale>
+        <locale name="control.navTabsVertical.description">
+<pt><![CDATA[Itens de menu verticais. O conteúdo é apresentado ao lado do menu.]]></pt>
+        </locale>
+        <locale name="control.verticalTabSwitcher.description">
+<pt><![CDATA[Itens de menu verticais. O conteúdo é apresentado ao lado do menu.]]></pt>
+        </locale>
+        <locale name="control.navTabsVertical.imagePos">
+<pt><![CDATA[Posição da imagem]]></pt>
+        </locale>
+        <locale name="control.navTabsVertical.imagePos.top">
+<pt><![CDATA[Antes do conteúdo]]></pt>
+        </locale>
+        <locale name="control.navTabsVertical.imagePos.bottom">
+<pt><![CDATA[Depois do conteúdo]]></pt>
+        </locale>
+        <locale name="control.navTabsVertical.imageMaxWidth">
+<pt><![CDATA[Largura máxima da imagem]]></pt>
+        </locale>
+        <locale name="control.navTabsVertical.imageMaxHeight">
+<pt><![CDATA[Altura máxima da imagem]]></pt>
+        </locale>
+        <locale name="control.navTabsVertical.navTitle">
+<pt><![CDATA[Título antes dos separadores]]></pt>
+        </locale>
+        <locale name="control.navTabsVertical.navContent">
+<pt><![CDATA[Conteúdo antes dos separadores]]></pt>
+        </locale>
+        <locale name="control.navTabsVertical.entries">
+<pt><![CDATA[Separadores]]></pt>
+        </locale>
+        <locale name="control.navTabsVertical.entries.add.title">
+<pt><![CDATA[Adicionar entrada]]></pt>
+        </locale>
+        <locale name="control.navTabsVertical.entries.edit.title">
+<pt><![CDATA[Editar entrada]]></pt>
+        </locale>
+        <locale name="control.navTabsVertical.entries.delete.title">
+<pt><![CDATA[Tens a certeza de que pretendes remover esta entrada?]]></pt>
+        </locale>
+        <locale name="control.navTabsVertical.entries.delete.information">
+<pt><![CDATA[Não é possível recuperar a entrada]]></pt>
+        </locale>
+        <locale name="control.navTabsVertical.entries.addButton">
+<pt><![CDATA[Adicionar entrada]]></pt>
+        </locale>
+        <locale name="control.navTabsVertical.entries.isDisable">
+<pt><![CDATA[Desativado]]></pt>
+        </locale>
+        <locale name="control.navTabsVertical.entries.entryTitle">
+<pt><![CDATA[Título]]></pt>
+        </locale>
+        <locale name="control.navTabsVertical.entries.entryTitleIcon">
+<pt><![CDATA[Ícone (antes do título)]]></pt>
+        </locale>
+        <locale name="control.navTabsVertical.entries.entryTitleIconColor">
+<pt><![CDATA[Cor do ícone]]></pt>
+        </locale>
+        <locale name="control.navTabsVertical.entries.entryContent">
+<pt><![CDATA[Conteúdo]]></pt>
+        </locale>
+        <locale name="control.navTabsVertical.entries.entryImage">
+<pt><![CDATA[Imagem]]></pt>
+        </locale>
+
+        <locale name="permission.quiqqer.menu._header">
+<pt><![CDATA[Menu do QUIQQER]]></pt>
+        </locale>
+        <locale name="permission.quiqqer.menu.mcp.canUse">
+<pt><![CDATA[Pode utilizar as ferramentas MCP de menus]]></pt>
+        </locale>
+        <locale name="permission.quiqqer.menu.create">
+<pt><![CDATA[Pode criar menus]]></pt>
+        </locale>
+        <locale name="permission.quiqqer.menu.delete">
+<pt><![CDATA[Pode eliminar menus]]></pt>
+        </locale>
+        <locale name="permission.quiqqer.menu.edit">
+<pt><![CDATA[Pode editar menus]]></pt>
+        </locale>
+
+        <locale name="provider.Rest.title">
+<pt><![CDATA[API REST de menus do QUIQQER]]></pt>
+        </locale>
+
+<!-- Control: Tabs -->
+        <locale name="control.tabs.title">
+<pt><![CDATA[Menu: Separadores avançados]]></pt>
+        </locale>
+        <locale name="control.tabs.description">
+<pt><![CDATA[Cria separadores com conteúdos diferentes. Escolhe os ícones e a disposição dos separadores. Além de texto, podes incluir imagens no conteúdo.]]></pt>
+        </locale>
+        <locale name="control.tabs.template">
+<pt><![CDATA[Design]]></pt>
+        </locale>
+        <locale name="control.tabs.template.simple.navTop">
+<pt><![CDATA[Simples - Navegação em cima]]></pt>
+        </locale>
+        <locale name="control.tabs.template.simple.navBottom">
+<pt><![CDATA[Simples - Navegação em baixo]]></pt>
+        </locale>
+        <locale name="control.tabs.template.buttonBar">
+<pt><![CDATA[Barra de botões - Navegação em cima]]></pt>
+        </locale>
+        <locale name="control.tabs.template.buttonBar.navBottom">
+<pt><![CDATA[Barra de botões - Navegação em baixo]]></pt>
+        </locale>
+        <locale name="control.tabs.template.tabular">
+<pt><![CDATA[Em tabela]]></pt>
+        </locale>
+
+        <locale name="control.tabs.autoPlay">
+<pt><![CDATA[Ativar a reprodução automática]]></pt>
+        </locale>
+        <locale name="control.tabs.autoPlay.desc">
+<pt><![CDATA[Ativa a mudança automática de separadores. Quando esta opção está ativa, passa automaticamente para o separador seguinte após o intervalo configurado.]]></pt>
+        </locale>
+
+<!-- Control: Tabs: autoplay interval -->
+        <locale name="control.tabs.autoPlay.interval">
+<pt><![CDATA[Intervalo de reprodução automática (ms)]]></pt>
+        </locale>
+        <locale name="control.tabs.autoPlay.interval.desc">
+<pt><![CDATA[Tempo em milissegundos antes de passar automaticamente para o separador seguinte.]]></pt>
+        </locale>
+        <locale name="control.tabs.autoPlay.pauseOnHover">
+<pt><![CDATA[Pausar ao passar o ponteiro]]></pt>
+        </locale>
+        <locale name="control.tabs.autoPlay.pauseOnHover.desc">
+<pt><![CDATA[Pausa temporariamente a reprodução automática enquanto o ponteiro estiver sobre qualquer parte do componente de separadores. A reprodução automática continua ativa e é retomada ao retirar o ponteiro.]]></pt>
+        </locale>
+
+<!-- Control: Tabs: progress indicator -->
+        <locale name="control.tabs.autoPlay.progress.indicator">
+<pt><![CDATA[Indicador de progresso]]></pt>
+        </locale>
+        <locale name="control.tabs.autoPlay.progress.indicator.desc">
+<pt><![CDATA[Seleciona como é apresentado o progresso do temporizador da reprodução automática.]]></pt>
+        </locale>
+        <locale name="control.tabs.autoPlay.progress.indicator.progressbar">
+<pt><![CDATA[Barra de progresso]]></pt>
+        </locale>
+        <locale name="control.tabs.animation">
+<pt><![CDATA[Animação]]></pt>
+        </locale>
+        <locale name="control.tabs.animation.desc">
+<pt><![CDATA[Define como são animadas as transições entre separadores.]]></pt>
+        </locale>
+        <locale name="control.tabs.animation.fadeOutFadeIn">
+<pt><![CDATA[Desvanecer e aparecer]]></pt>
+        </locale>
+        <locale name="control.tabs.animation.scaleToSmallScaleFromLarge">
+<pt><![CDATA[Zoom: sair reduzindo / entrar a partir de um tamanho maior]]></pt>
+        </locale>
+        <locale name="control.tabs.animation.scaleToSmallScaleFromSmall">
+<pt><![CDATA[Zoom: sair reduzindo / entrar a partir de um tamanho menor]]></pt>
+        </locale>
+        <locale name="control.tabs.animation.scaleToLargeScaleFromLarge">
+<pt><![CDATA[Zoom: sair ampliando / entrar a partir de um tamanho maior]]></pt>
+        </locale>
+        <locale name="control.tabs.animation.scaleToLargeScaleFromSmall">
+<pt><![CDATA[Zoom: sair ampliando / entrar a partir de um tamanho menor]]></pt>
+        </locale>
+
+        <locale name="control.tabs.animation.slideOutToRightSlideInFromLeft">
+<pt><![CDATA[Deslizamento: sair para a direita / entrar pela esquerda]]></pt>
+        </locale>
+        <locale name="control.tabs.animation.slideOutToRightSlideInFromRight">
+<pt><![CDATA[Deslizamento: sair para a direita / entrar pela direita]]></pt>
+        </locale>
+        <locale name="control.tabs.animation.slideOutToLeftSlideInFromRight">
+<pt><![CDATA[Deslizamento: sair para a esquerda / entrar pela direita]]></pt>
+        </locale>
+        <locale name="control.tabs.animation.slideOutToLeftSlideInFromLeft">
+<pt><![CDATA[Deslizamento: sair para a esquerda / entrar pela esquerda]]></pt>
+        </locale>
+        <locale name="control.tabs.animation.slideOutToBottomSlideInFromBottom">
+<pt><![CDATA[Deslizamento: sair para baixo / entrar por baixo]]></pt>
+        </locale>
+        <locale name="control.tabs.animation.slideOutToBottomSlideInFromTop">
+<pt><![CDATA[Deslizamento: sair para baixo / entrar por cima]]></pt>
+        </locale>
+
+<!-- Control: Tabs: nav img height -->
+        <locale name="control.tabs.navImgHeight">
+<pt><![CDATA[Altura dos ícones de navegação]]></pt>
+        </locale>
+        <locale name="control.tabs.navImgHeight.desc">
+<pt><![CDATA[Define o tamanho dos ícones na navegação por separadores, em píxeis. O valor predefinido é 20.]]></pt>
+        </locale>
+<!-- Control: Tabs: nav img style (position) -->
+        <locale name="control.tabs.navStyle">
+<pt><![CDATA[Estilo dos ícones de navegação]]></pt>
+        </locale>
+        <locale name="control.tabs.navStyle.imgLeft">
+<pt><![CDATA[Ícone à esquerda]]></pt>
+        </locale>
+        <locale name="control.tabs.navStyle.imgTop">
+<pt><![CDATA[Ícone em cima]]></pt>
+        </locale>
+        <locale name="control.tabs.navStyle.onlyImg">
+<pt><![CDATA[Apenas o ícone. O título fica oculto.]]></pt>
+        </locale>
+<!-- Control: Tabs: nav break text -->
+        <locale name="control.tabs.navWrapText">
+<pt><![CDATA[Quebrar o título de navegação em várias linhas]]></pt>
+        </locale>
+        <locale name="control.tabs.navWrapText.wrap">
+<pt><![CDATA[Predefinido: quebrar o título em várias linhas]]></pt>
+        </locale>
+        <locale name="control.tabs.navWrapText.noWrap">
+<pt><![CDATA[Manter o título numa só linha]]></pt>
+        </locale>
+<!-- Control: Tabs: nav fill -->
+        <locale name="control.tabs.navFillSpace">
+<pt><![CDATA[Separadores de navegação: usar toda a largura]]></pt>
+        </locale>
+        <locale name="control.tabs.navFillSpace.desc">
+<pt><![CDATA[Se estiver ativa, os itens de navegação são esticados para ocupar todo o espaço disponível.]]></pt>
+        </locale>
+<!-- Control: Tabs: nav center -->
+        <locale name="control.tabs.navCenter">
+<pt><![CDATA[Centrar os separadores de navegação]]></pt>
+        </locale>
+        <locale name="control.tabs.navCenter.desc">
+<pt><![CDATA[Se estiver ativa, os itens de navegação são centrados. Esta definição não tem efeito se estiver ativa a opção "Separadores de navegação: usar toda a largura".]]></pt>
+        </locale>
+        <locale name="control.tabs.contentPos">
+<pt><![CDATA[Posição do conteúdo]]></pt>
+        </locale>
+        <locale name="control.tabs.contentPos.top">
+<pt><![CDATA[Em cima]]></pt>
+        </locale>
+        <locale name="control.tabs.contentPos.center">
+<pt><![CDATA[Centrado]]></pt>
+        </locale>
+        <locale name="control.tabs.contentPos.bottom">
+<pt><![CDATA[Em baixo]]></pt>
+        </locale>
+
+<!-- Control: content: img min width -->
+        <locale name="control.tabs.contentImgMinWidth">
+<pt><![CDATA[Imagem do conteúdo: largura mínima]]></pt>
+        </locale>
+        <locale name="control.tabs.contentImgMinWidth.desc">
+<pt><![CDATA[Largura mínima da imagem em píxeis. Evita valores elevados. Recomenda-se um valor entre 100px e 600px. O valor predefinido é 200px.]]></pt>
+        </locale>
+<!-- Control: content: img max width -->
+        <locale name="control.tabs.contentImgMaxWidth">
+<pt><![CDATA[Imagem do conteúdo: largura máxima]]></pt>
+        </locale>
+        <locale name="control.tabs.contentImgMaxWidth.desc">
+<pt><![CDATA[Largura máxima da imagem em píxeis. Evita valores elevados. Recomenda-se um valor entre 200px e 600px. O valor predefinido é 400px.]]></pt>
+        </locale>
+<!-- Control: content: text max width -->
+        <locale name="control.tabs.contentTextWidth">
+<pt><![CDATA[Largura máxima do texto]]></pt>
+        </locale>
+        <locale name="control.tabs.contentTextWidth.desc">
+<pt><![CDATA[Largura máxima do texto em píxeis. Evita valores elevados. Recomenda-se um valor entre 200px e 1000px. O valor predefinido é 600px.]]></pt>
+        </locale>
+<!-- Control: content: entries -->
+        <locale name="control.tabs.entries">
+<pt><![CDATA[Entradas dos separadores]]></pt>
+        </locale>
+        <locale name="control.tabs.category.tabs">
+<pt><![CDATA[Entradas dos separadores]]></pt>
+        </locale>
+        <locale name="frontend.control.tabs.slider.btn.label.play">
+<pt><![CDATA[Retomar a reprodução automática]]></pt>
+        </locale>
+        <locale name="frontend.control.tabs.slider.btn.label.pause">
+<pt><![CDATA[Pausar a reprodução automática]]></pt>
+        </locale>
+
+
+        <locale name="bricks.submenu.title">
+<pt><![CDATA[Menu: Submenu (navegação)]]></pt>
+        </locale>
+        <locale name="bricks.submenu.desc">
+<pt><![CDATA[Adiciona uma navegação secundária à tua página. Permite deslocar a vista dentro da página ou criar ligações para outras subpáginas.]]></pt>
+        </locale>
+        <locale name="bricks.submenu.description">
+<pt><![CDATA[Adiciona uma navegação secundária à tua página. Permite deslocar a vista dentro da página ou criar ligações para outras subpáginas.]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.menuId">
+<pt><![CDATA[ID do menu]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.menuId.desc">
+<pt><![CDATA[Seleciona um menu]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.startId">
+<pt><![CDATA[Página ascendente]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.startId.desc">
+<pt><![CDATA[Seleciona a página ascendente. <strong>Atenção:</strong> se estiver selecionado um "ID do menu", esta opção não tem efeito.]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.template">
+<pt><![CDATA[Modelo]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.template.list-simple">
+<pt><![CDATA[Lista: simples]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.template.list-buttonStyle">
+<pt><![CDATA[Lista: estilo de botões]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.template.box-imageTop">
+<pt><![CDATA[Caixa: imagem ou ícone acima do texto]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.template.box-imageOverlay">
+<pt><![CDATA[Caixa: texto sobreposto à imagem (não adequada para ícones como imagem)]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.controlBgColor">
+<pt><![CDATA[Cor de fundo do menu]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.controlBgColor.desc">
+<pt><![CDATA[A cor selecionada é aplicada ao fundo do menu.]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.linkColor">
+<pt><![CDATA[Cor das ligações]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.linkColor.desc">
+<pt><![CDATA[Define a cor das ligações. Se não for selecionada uma cor, é herdada a existente (normalmente a do texto).]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.linkColorHover">
+<pt><![CDATA[Cor das ligações ao passar o ponteiro]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.linkColorHover.desc">
+<pt><![CDATA[Esta cor é utilizada ao passar o ponteiro sobre a ligação.]]></pt>
+        </locale>
+
+        <locale name="bricks.submenu.settings.itemsAlignment">
+<pt><![CDATA[Alinhamento dos itens do menu]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.itemsAlignment.start">
+<pt><![CDATA[Início (esquerda)]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.itemsAlignment.center">
+<pt><![CDATA[Centrado]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.itemsAlignment.end">
+<pt><![CDATA[Fim (direita)]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.itemsAlignment.space-between">
+<pt><![CDATA[Distribuir uniformemente entre os itens ("space between")]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.itemsAlignment.space-around">
+<pt><![CDATA[Distribuir uniformemente em redor dos itens ("space around")]]></pt>
+        </locale>
+
+        <locale name="bricks.submenu.settings.showImages">
+<pt><![CDATA[Ativar imagens ou ícones]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.showImages.desc">
+<pt><![CDATA[Apresenta as imagens ou os ícones atribuídos aos itens do menu (exceto com o modelo "Lista: simples").]]></pt>
+        </locale>
+
+        <locale name="bricks.submenu.settings.imageFitMode">
+<pt><![CDATA[Ajuste da imagem]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.imageFitMode.desc">
+<pt><![CDATA[Esta definição afeta apenas as imagens, não os ícones.]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.imageFitMode.fill">
+<pt><![CDATA[Fill: preencher toda a área; a imagem pode ficar distorcida]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.imageFitMode.contain">
+<pt><![CDATA[Contain: ajustar a imagem para caber no espaço disponível]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.imageFitMode.cover">
+<pt><![CDATA[Cover: cobrir toda a área; a imagem pode ficar cortada]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.imageFitMode.none">
+<pt><![CDATA[None: manter o tamanho original da imagem]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.imageFitMode.scale-down">
+<pt><![CDATA[Scale down: reduzir a imagem se necessário]]></pt>
+        </locale>
+
+        <locale name="bricks.submenu.settings.imageContainerHeight">
+<pt><![CDATA[Altura do contentor da imagem]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.imageContainerHeight.desc">
+<pt><![CDATA[Podes usar qualquer valor CSS válido, incluindo a função <code>clamp()</code>. Se não for indicado um valor, o contentor fica quadrado.]]></pt>
+        </locale>
+
+        <locale name="bricks.submenu.settings.boxBgColor">
+<pt><![CDATA[Cor do contentor da imagem]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.boxBgColor.desc">
+<pt><![CDATA[Esta definição só funciona com os modelos "Caixa: imagem ou ícone acima do texto" e "Caixa: texto sobreposto à imagem (não adequada para ícones como imagem)".]]></pt>
+        </locale>
+
+        <locale name="bricks.submenu.settings.boxWidth">
+<pt><![CDATA[Largura dos itens do menu]]></pt>
+        </locale>
+        <locale name="bricks.submenu.settings.boxWidth.desc">
+<pt><![CDATA[Podes usar qualquer valor CSS válido, incluindo a função <code>clamp()</code>. Esta definição só funciona com os modelos "Caixa: imagem ou ícone acima do texto" e "Caixa: texto sobreposto à imagem (não adequada para ícones como imagem)".]]></pt>
+        </locale>
+
+        <locale name="frontend.megaMenu.mobileBtnOpener.text">
+<pt><![CDATA[Menu]]></pt>
+        </locale>
+    </groups>
+
+    <groups name="quiqqer/menu" datatype="php">
+        <locale name="menu.text">
+<pt><![CDATA[Gestão de menus]]></pt>
+        </locale>
+
+        <locale name="item.anchor.title">
+<pt><![CDATA[Entrada de menu: ligação a uma âncora]]></pt>
+        </locale>
+        <locale name="item.anchor.short">
+<pt><![CDATA[Este tipo de menu permite selecionar uma página interna do QUIQQER e definir uma âncora.]]></pt>
+        </locale>
+        <locale name="item.custom.title">
+<pt><![CDATA[Entrada de menu: evento personalizado]]></pt>
+        </locale>
+        <locale name="item.custom.short">
+<pt><![CDATA[Personaliza a entrada de menu: podes selecionar uma página, executar uma função JavaScript personalizada e muito mais.]]></pt>
+        </locale>
+        <locale name="item.site.title">
+<pt><![CDATA[Entrada de menu: ligação a uma página interna de um projeto]]></pt>
+        </locale>
+        <locale name="item.site.short">
+<pt><![CDATA[Permite selecionar uma página interna do QUIQQER.]]></pt>
+        </locale>
+        <locale name="item.url.title">
+<pt><![CDATA[Entrada de menu: ligação a outro URL]]></pt>
+        </locale>
+        <locale name="item.url.short">
+<pt><![CDATA[Permite selecionar uma página interna do QUIQQER ou definir uma ligação para uma página externa.]]></pt>
+        </locale>
+        <locale name="menu.saved.successfully">
+<pt><![CDATA[O menu foi guardado com sucesso.]]></pt>
+        </locale>
+
+<!-- floating menu -->
+        <locale name="floatingMenu.settings.title">
+<pt><![CDATA[Menu flutuante]]></pt>
+        </locale>
+        <locale name="floatingMenu.settings.desc">
+<pt><![CDATA[Um menu flutuante sobrepõe-se ao conteúdo da página e costuma permanecer numa posição fixa, mesmo ao deslocar a página para baixo. Pode ser colocado, por exemplo, na margem do ecrã ou num canto. Mantém-se visível para que o utilizador possa aceder-lhe rapidamente em qualquer altura.]]></pt>
+        </locale>
+
+        <locale name="floatingMenu.settings.menuId">
+<pt><![CDATA[ID do menu]]></pt>
+        </locale>
+        <locale name="floatingMenu.settings.menuId.desc">
+<pt><![CDATA[Ao selecionar um menu aqui, este é ativado automaticamente e fica visível para os utilizadores na página. Primeiro, tens de criar um menu em <i>Definições → Gestão de menus</i>. Para desativar o menu flutuante, basta remover o menu selecionado clicando no botão X.]]></pt>
+        </locale>
+        <locale name="floatingMenu.settings.showLangSwitch">
+<pt><![CDATA[Ativar a mudança de idioma]]></pt>
+        </locale>
+        <locale name="floatingMenu.settings.showLangSwitch.desc">
+<pt><![CDATA[Se o projeto estiver disponível em vários idiomas, esta opção permite ativar a mudança de idioma.]]></pt>
+        </locale>
+        <locale name="floatingMenu.settings.toggleButton">
+<pt><![CDATA[Botão para mostrar ou ocultar]]></pt>
+        </locale>
+        <locale name="floatingMenu.settings.toggleButton.desc">
+<pt><![CDATA[Este botão mostra ou oculta a navegação flutuante. Esta opção permite definir quando o botão é apresentado ou se fica sempre oculto.]]></pt>
+        </locale>
+        <locale name="floatingMenu.settings.toggleButton.mobile">
+<pt><![CDATA[Mostrar apenas em dispositivos móveis]]></pt>
+        </locale>
+        <locale name="floatingMenu.settings.toggleButton.always">
+<pt><![CDATA[Mostrar em dispositivos móveis e computadores]]></pt>
+        </locale>
+        <locale name="floatingMenu.settings.toggleButton.hide">
+<pt><![CDATA[Desativado]]></pt>
+        </locale>
+    </groups>
+
+    <groups name="quiqqer/menu" datatype="js">
+        <locale name="menu.panel.management.title">
+<pt><![CDATA[Gestão de menus]]></pt>
+        </locale>
+        <locale name="grid.menuId">
+<pt><![CDATA[ID]]></pt>
+        </locale>
+        <locale name="menu.title">
+<pt><![CDATA[Título]]></pt>
+        </locale>
+        <locale name="menu.workingTitle">
+<pt><![CDATA[Título de trabalho]]></pt>
+        </locale>
+
+        <locale name="creation.window.title">
+<pt><![CDATA[Criar menu]]></pt>
+        </locale>
+        <locale name="create.window.headerText">
+<pt><![CDATA[Propriedades]]></pt>
+        </locale>
+        <locale name="create.window.titleText">
+<pt><![CDATA[Título]]></pt>
+        </locale>
+        <locale name="create.window.workingTitleText">
+<pt><![CDATA[Título de trabalho]]></pt>
+        </locale>
+
+        <locale name="deletion.window.title">
+<pt><![CDATA[Eliminar menus]]></pt>
+        </locale>
+        <locale name="deletion.window.text">
+<pt><![CDATA[Tens a certeza de que pretendes eliminar os seguintes menus?]]></pt>
+        </locale>
+        <locale name="deletion.window.information">
+<pt><![CDATA[Os seguintes menus serão eliminados de forma irreversível: [list]]]></pt>
+        </locale>
+        <locale name="quiqqer.menu.independent.addItem.title">
+<pt><![CDATA[Adicionar entrada de menu]]></pt>
+        </locale>
+
+        <locale name="context.menu.insertBefore">
+<pt><![CDATA[Inserir antes]]></pt>
+        </locale>
+        <locale name="context.menu.insertAfter">
+<pt><![CDATA[Inserir depois]]></pt>
+        </locale>
+        <locale name="context.menu.insertChild">
+<pt><![CDATA[Inserir subentrada]]></pt>
+        </locale>
+        <locale name="context.menu.deleteChild">
+<pt><![CDATA[Eliminar entrada de menu]]></pt>
+        </locale>
+        <locale name="context.menu.activate">
+<pt><![CDATA[Ativar]]></pt>
+        </locale>
+        <locale name="context.menu.deactivate">
+<pt><![CDATA[Desativar]]></pt>
+        </locale>
+        <locale name="tpl.icon">
+<pt><![CDATA[Ícone]]></pt>
+        </locale>
+        <locale name="tpl.anchor">
+<pt><![CDATA[Âncora]]></pt>
+        </locale>
+        <locale name="tpl.url">
+<pt><![CDATA[URL / Endereço]]></pt>
+        </locale>
+        <locale name="tpl.rel">
+<pt><![CDATA[Atributo rel da ligação]]></pt>
+        </locale>
+        <locale name="tpl.relDescription">
+<pt><![CDATA[O atributo rel indica a relação entre o documento atual e o documento associado à ligação.]]></pt>
+        </locale>
+        <locale name="tpl.short">
+<pt><![CDATA[Descrição breve]]></pt>
+        </locale>
+        <locale name="tpl.shortDesc">
+<pt><![CDATA[Texto breve apresentado por baixo da ligação. Esta propriedade não é utilizada em todos os tipos de menu; é suportada, por exemplo, por «MegaMenu - Lista simples de subpáginas».]]></pt>
+        </locale>
+        <locale name="tpl.click">
+<pt><![CDATA[Evento de clique (JavaScript)]]></pt>
+        </locale>
+        <locale name="tpl.clickDescription">
+<pt><![CDATA[Introduz aqui o nome da função JavaScript a executar ao clicar. Para executar uma função própria ao clicar, podes utilizar o ficheiro custom.js do teu projeto.]]></pt>
+        </locale>
+        <locale name="tpl.Site">
+<pt><![CDATA[Página]]></pt>
+        </locale>
+        <locale name="tpl.linkTitle">
+<pt><![CDATA[Título da ligação]]></pt>
+        </locale>
+
+        <locale name="tpl.rel.alternate">
+<pt><![CDATA[alternate - Ligação a uma representação alternativa do documento (por exemplo, versão para impressão, tradução ou cópia espelhada)]]></pt>
+        </locale>
+        <locale name="tpl.rel.author">
+<pt><![CDATA[author - Ligação ao autor do documento]]></pt>
+        </locale>
+        <locale name="tpl.rel.bookmark">
+<pt><![CDATA[bookmark - URL permanente para adicionar aos favoritos]]></pt>
+        </locale>
+        <locale name="tpl.rel.external">
+<pt><![CDATA[external - Indica que o documento associado à ligação não pertence ao mesmo site que o documento atual]]></pt>
+        </locale>
+        <locale name="tpl.rel.help">
+<pt><![CDATA[help - Ligação a um documento de ajuda]]></pt>
+        </locale>
+        <locale name="tpl.rel.license">
+<pt><![CDATA[license - Ligação às informações de licença do documento]]></pt>
+        </locale>
+        <locale name="tpl.rel.next">
+<pt><![CDATA[next - Ligação ao documento seguinte da série]]></pt>
+        </locale>
+        <locale name="tpl.rel.nofollow">
+<pt><![CDATA[nofollow - Utilizado pelo Google para indicar que o seu robô de pesquisa não deve seguir esta ligação]]></pt>
+        </locale>
+        <locale name="tpl.rel.noopener">
+<pt><![CDATA[noopener - Impede que o contexto de navegação criado ao seguir a ligação tenha uma referência ao contexto que o abriu]]></pt>
+        </locale>
+        <locale name="tpl.rel.noreferrer">
+<pt><![CDATA[noreferrer - Oculta a origem da referência. O cabeçalho Referer não é incluído quando o utilizador clica na ligação]]></pt>
+        </locale>
+        <locale name="tpl.rel.prev">
+<pt><![CDATA[prev - Documento anterior de uma seleção]]></pt>
+        </locale>
+        <locale name="tpl.rel.search">
+<pt><![CDATA[search - Ligação a uma ferramenta de pesquisa para o documento]]></pt>
+        </locale>
+        <locale name="tpl.rel.tag">
+<pt><![CDATA[tag - Etiqueta (palavra-chave) para o documento atual]]></pt>
+        </locale>
+
+        <locale name="cache.clear.title">
+<pt><![CDATA[Cache do menu]]></pt>
+        </locale>
+        <locale name="cache.clear.button.title">
+<pt><![CDATA[Publicar menu]]></pt>
+        </locale>
+        <locale name="message.menu.publish.successful">
+<pt><![CDATA[O menu foi publicado com sucesso.]]></pt>
+        </locale>
+        <locale name="context.menu.changeType">
+<pt><![CDATA[Alterar tipo]]></pt>
+        </locale>
+
+        <locale name="window.deleteItem.title">
+<pt><![CDATA[Eliminar entrada?]]></pt>
+        </locale>
+        <locale name="window.deleteItem.text">
+<pt><![CDATA[Tens a certeza de que pretendes eliminar a entrada?]]></pt>
+        </locale>
+        <locale name="window.deleteItem.information">
+<pt><![CDATA[Tens a certeza de que pretendes eliminar a entrada de menu <b>[entry]</b>? Esta entrada será eliminada de forma irreversível e não poderá ser recuperada.]]></pt>
+        </locale>
+
+
+        <locale name="quiqqer.menu.independent.changeItemType.title">
+<pt><![CDATA[Alterar tipo]]></pt>
+        </locale>
+        <locale name="quiqqer.menu.independent.changeItemType.message">
+<pt><![CDATA[Altera o tipo da entrada de menu. Tem em atenção que alguns dados deixarão de poder ser utilizados.]]></pt>
+        </locale>
+
+        <locale name="tpl.statusDescription">
+<pt><![CDATA[Ativa a entrada quando a caixa está assinalada ou desativa-a quando não está. Se estiver desativada, a entrada não é apresentada no menu.]]></pt>
+        </locale>
+        <locale name="tpl.target">
+<pt><![CDATA[Destino (target)]]></pt>
+        </locale>
+        <locale name="tpl.target.none">
+<pt><![CDATA[Predefinição (sem target)]]></pt>
+        </locale>
+        <locale name="tpl.target.self">
+<pt><![CDATA[Mesma janela (_self)]]></pt>
+        </locale>
+        <locale name="tpl.target.frame">
+<pt><![CDATA[Frame]]></pt>
+        </locale>
+        <locale name="tpl.target.popup">
+<pt><![CDATA[Janela pop-up]]></pt>
+        </locale>
+        <locale name="tpl.target.blank">
+<pt><![CDATA[Nova janela (_blank)]]></pt>
+        </locale>
+        <locale name="tpl.target.top">
+<pt><![CDATA[Janela de nível superior (_top)]]></pt>
+        </locale>
+        <locale name="tpl.target.parent">
+<pt><![CDATA[Janela do nível imediatamente superior (_parent)]]></pt>
+        </locale>
+
+        <locale name="context.menu.sort">
+<pt><![CDATA[Ordenar subentradas]]></pt>
+        </locale>
+        <locale name="quiqqer.menu.independent.sort.title">
+<pt><![CDATA[Ordenar subentradas]]></pt>
+        </locale>
+
+        <locale name="create.window.text">
+<pt><![CDATA[Seleciona o tipo da nova entrada. Podes alterá-lo a qualquer momento.]]></pt>
+        </locale>
+
+        <locale name="quiqqer.menu.select.win.title">
+<pt><![CDATA[Atribuir menu]]></pt>
+        </locale>
+        <locale name="quiqqer.menu.select.win.content">
+<pt><![CDATA[Seleciona o menu que pretendes atribuir.]]></pt>
+        </locale>
+        <locale name="quiqqer.menu.select.win.button">
+<pt><![CDATA[Selecionar menu]]></pt>
+        </locale>
+        <locale name="quiqqer.menu.select.fallbackDefaultLang">
+<pt><![CDATA[igual ao idioma predefinido ([menu])]]></pt>
+        </locale>
+
+<!-- Tabs: settings -->
+        <locale name="control.tabs.entries.isDisabled">
+<pt><![CDATA[Desativado]]></pt>
+        </locale>
+
+<!-- Tabs: qui window settings -->
+        <locale name="control.tabs.entries.isDisabled">
+<pt><![CDATA[Desativado]]></pt>
+        </locale>
+        <locale name="control.tabs.entries.tabIcon">
+<pt><![CDATA[Ícone do separador]]></pt>
+        </locale>
+        <locale name="control.tabs.entries.tabTitle">
+<pt><![CDATA[Título do separador]]></pt>
+        </locale>
+        <locale name="control.tabs.entries.accentColor">
+<pt><![CDATA[Cor de destaque]]></pt>
+        </locale>
+        <locale name="control.tabs.entries.entryImage">
+<pt><![CDATA[Imagem]]></pt>
+        </locale>
+        <locale name="control.tabs.entries.entryImagePos">
+<pt><![CDATA[Posição da imagem]]></pt>
+        </locale>
+        <locale name="control.tabs.entries.entryImagePos.left">
+<pt><![CDATA[Esquerda]]></pt>
+        </locale>
+        <locale name="control.tabs.entries.entryImagePos.right">
+<pt><![CDATA[Direita]]></pt>
+        </locale>
+        <locale name="control.tabs.entries.entryImagePos.top">
+<pt><![CDATA[Em cima]]></pt>
+        </locale>
+        <locale name="control.tabs.entries.entryImagePos.bottom">
+<pt><![CDATA[Em baixo]]></pt>
+        </locale>
+        <locale name="control.tabs.entries.entryTitle">
+<pt><![CDATA[Título]]></pt>
+        </locale>
+        <locale name="control.tabs.entries.entryContent">
+<pt><![CDATA[Conteúdo]]></pt>
+        </locale>
+    </groups>
+</locales>
